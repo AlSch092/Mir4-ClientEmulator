@@ -1,5 +1,5 @@
 # Mir4-ClientEmulator
-Network Client Emulator for Mir4 game, written in C#
+Network Client Emulator for Mir4 Global version, written in C#
 
 Project will be uploaded soon.
 
