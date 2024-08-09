@@ -1,0 +1,4 @@
+﻿"Name","DominionPKId","DominionPkNameId","DominionPkIconId","DominionPKRewardType","DominionPKRewardTypeSub","DominionPKRewardValue","DominionPKDurationTime","DominionPKTargetDebuff","DominionPKCostType","DominionPKCostValue","DominionPKSimulteCnt","DominionPKResetCnt"
+"1","1","3350001","1900","1","5","350","86400","500200","4","500","5","10"
+"2","2","3350002","1901","1","5","1050","129600","500201","4","1500","3","6"
+"3","3","3350003","1902","1","5","2100","201600","500202","4","3000","1","2"
