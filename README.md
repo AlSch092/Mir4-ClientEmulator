@@ -1,6 +1,8 @@
 # Mir4-ClientEmulator
 Network Client Emulator for Mir4 Global version, written in C# by AlSch092 @Github. 
 
+![attck](https://github.com/user-attachments/assets/3aaf7133-67af-4e65-bd2f-1f204b8a16f9)  
+
 This project was started in 2022 and retired in 2024.  
 
 ## How-to:  
@@ -14,9 +16,6 @@ Alternatively, you can manually fill out the fields in the main form and click t
 1. Copy the `Data` folder into the same folder as the compiled executable. The program will throw exceptions if this is not completed. I suggest a folder named `Profiles` is also present, which is where account profiles will reside.
 
 ## Structure:  
-This program handles all network actions: you will need to update & use my other project, `Mir4Encryption`, to successfully use this client emulator. Please place the encryption .dll into same folder as this project's executable.
-
-
-![attck](https://github.com/user-attachments/assets/3aaf7133-67af-4e65-bd2f-1f204b8a16f9)  
+This program handles all network actions: you will need to update & use my other project, `Mir4Encryption`, to successfully use this client emulator. Please place the encryption .dll into same folder as this project's executable.  
 
 More detail will be added within the next couple of days, as this will end up being a big write-up.
