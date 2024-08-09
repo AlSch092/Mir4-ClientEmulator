@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_WORLD_SEARCH {
+    int32 search_type = 1;
+    int32 request_page = 2;
+    string search_string = 3;
+    int32 ui_type = 4;
+    int32 world_id = 5;
+    int32 receive_money_limit_type = 6;
+}
+
+message WORLD_CLIENT_SEARCH_GUILD {
+    int32 request_page = 1;
+    string search_string = 2;
+    repeated _guild_search_info search_info = 3;
+    int32 world_id = 4;
+    int32 ui_type = 5;
+}
+
+message WORLD_CLIENT_SEARCH_CHARACTER {
+    int32 request_page = 1;
+    string search_string = 2;
+    repeated _character_search_info search_info = 3;
+    int32 ui_type = 4;
+    int32 world_id = 5;
+}

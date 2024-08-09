@@ -1,0 +1,723 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _guild_info_base_server_sync {
+    string guild_name = 1;
+    string guild_pr = 2;
+    int64 exp = 3;
+    int32 level = 4;
+    uint32 mark_index = 5;
+    uint32 mark_edge_index = 6;
+    uint32 world_id = 7;
+    int64 create_time = 8;
+    int64 master_set_time = 9;
+    bool is_delete_wait = 10;
+    uint32 gift_level = 11;
+    uint32 gift_exp = 12;
+    uint32 gift_box_key = 13;
+    uint64 gift_box_key_full_time = 14;
+    repeated _guild_option option_list = 15;
+    int32 chang_bit_flag = 20;
+}
+
+message _guild_stat_info_server_sync {
+    repeated _guild_stat_info stat_list = 1;
+    int32 status_type = 10;
+    int32 value = 20;
+}
+
+message _guild_dominion_info_server_sync {
+    repeated uint32 dominion_list = 1;
+    uint32 main_dominion = 2;
+    bool is_changed = 3;
+}
+
+message _guild_wanted_target_info_server_sync {
+    uint64 target_user_uid = 1;
+    uint32 grade = 2;
+    int64 start_time = 3;
+    int64 end_time = 4;
+    int32 kill_count = 5;
+    int32 kill_count_limit = 6;
+}
+
+message _guild_wanted_target_kill_info_server_sync {
+    uint64 target_user_uid = 1;
+    int32 kill_count = 2;
+}
+
+message _guild_wanted_info_server_sync {
+    repeated _guild_wanted_target_info_server_sync target_list = 1;
+    repeated _guild_wanted_target_kill_info_server_sync kill_info_list = 2;
+    repeated uint64 del_list = 3;
+    bool is_all_info = 4;
+    uint64 target_user_uid = 10;
+    uint32 grade = 20;
+    int64 start_time = 30;
+    int64 end_time = 40;
+    int32 kill_count = 50;
+}
+
+message _guild_alliance_info_server_sync {
+    uint64 guild_uid = 1;
+    int32 world_id = 2;
+}
+
+message _guild_alliance_manager_info_server_sync {
+    repeated _guild_alliance_info_server_sync add_alliance_guild_list = 1;
+    repeated uint64 del_alliance_guild_list = 2;
+    repeated _guild_alliance_info_server_sync add_alliance_guild_applicant_list = 3;
+    repeated uint64 del_alliance_guild_applicant_list = 4;
+    repeated _guild_alliance_info_server_sync add_alliance_guild_receive_list = 5;
+    repeated uint64 del_alliance_guild_receive_list = 6;
+    bool is_all_info = 7;
+}
+
+message _guild_join_request_target_server_sync {
+    uint64 user_uid = 1;
+    int64 request_time = 2;
+}
+
+message _guild_member_join_request_info_server_sync {
+    repeated _guild_join_request_target_server_sync invite_list = 1;
+    repeated _guild_join_request_target_server_sync applicant_list = 2;
+    repeated uint64 del_invite_list = 3;
+    repeated uint64 del_applicant_list = 4;
+    bool is_all_info = 5;
+}
+
+message _guild_cost_info_server_sync {
+    repeated _cost_info guild_cost_list = 1;
+}
+
+message _guild_shop_resister_goods_server_sync {
+    int32 goods_index = 1;
+    int32 goods_count = 2;
+}
+
+message _guild_shop_log_server_sync {
+    int64 log_uid = 1;
+    int32 type = 2;
+    uint64 user_uid = 3;
+    string nick_name = 4;
+    string profile = 5;
+    int32 goods_index = 6;
+    int32 goods_change_count = 7;
+    uint64 update_time = 8;
+}
+
+message _guild_shop_info_server_sync {
+    repeated _guild_shop_resister_goods_server_sync goods_list = 1;
+    repeated _guild_shop_log_server_sync log_list = 2;
+    repeated int64 del_log_list = 3;
+    bool is_all_info = 4;
+}
+
+message _guild_develop_info {
+    int32 index = 1;
+    uint32 level = 2;
+    int32 exp = 3;
+    bool is_recommend = 4;
+    int64 level_up_start_time = 5;
+    int64 level_up_end_time = 6;
+    bool is_level_up_time = 7;
+    int32 skill_point = 8;
+    bool is_skill_start = 9;
+    int64 skill_start_time = 10;
+    int64 skill_end_time = 11;
+    int32 chang_bit_flag = 12;
+}
+
+message _guild_develop_list_info_server_sync {
+    repeated _guild_develop_info develop_list = 1;
+}
+
+message _guild_hostility_info_list_server_sync {
+    repeated _guild_hostility_info_server_sync hostility_guild_list = 1;
+    repeated uint64 del_list = 2;
+    bool is_all_info = 3;
+}
+
+message _guild_member_manager_info_server_sync {
+    repeated _guild_member_info_server_sync add_member_info = 1;
+    repeated _guild_member_info_server_sync changed_member_info = 2;
+    repeated uint64 del_list = 3;
+    bool is_all_info = 4;
+}
+
+message _guild_except_attack_server_sync {
+    uint64 guild_uid = 1;
+    int32 world_id = 2;
+}
+
+message _guild_except_attack_info_server_sync {
+    repeated _guild_except_attack_server_sync except_attack_info = 1;
+    repeated uint64 del_list = 2;
+    bool is_all_info = 3;
+}
+
+message _guild_command_mark_info_server_sync {
+    repeated _guild_command_mark command_mark_list = 1;
+    repeated int32 del_list = 2;
+    bool is_all_info = 3;
+}
+
+message _guild_point_server_sync {
+    int32 point_type = 1;
+    int32 point_value = 2;
+}
+
+message _guild_point_info_server_sync {
+    repeated _guild_point_server_sync guild_point_info = 1;
+}
+
+message _guild_info_server_sync {
+    _guild_info_base_server_sync guild_base_info = 2;
+    _guild_member_join_request_info_server_sync member_request_info = 3;
+    _guild_wanted_info_server_sync wanted_info = 4;
+    _guild_alliance_manager_info_server_sync alliance_info = 5;
+    _guild_hostility_info_list_server_sync hostility_info = 6;
+    _guild_cost_info_server_sync cost_info = 7;
+    _guild_dominion_info_server_sync dominion_info = 8;
+    _guild_shop_info_server_sync guild_shop_info = 9;
+    _guild_develop_list_info_server_sync develop_info = 10;
+    _guild_except_attack_info_server_sync except_attack_info = 11;
+    _guild_member_manager_info_server_sync memger_info = 12;
+    _guild_command_mark_info_server_sync command_mark_info = 13;
+    _guild_point_info_server_sync point_info = 14;
+    _guild_stat_info_server_sync stat_info = 15;
+    bool is_all = 20;
+}
+
+message _guild_rank_sync {
+    uint64 guild_uid = 1;
+    uint32 rank = 2;
+}
+
+message WORLD_GAME_GUILD_INFO_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_info_server_sync guild_info = 2;
+    int32 result = 3;
+}
+
+message WORLD_GAME_GUILD_CHANGE_STAT_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_stat_info_server_sync stat_info = 2;
+    repeated _guild_stat_info stat_list = 20;
+}
+
+message GUILD_WORLD_GUILD_CHANGE_STAT_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_stat_info_server_sync stat_info = 2;
+}
+
+message GUILD_WORLD_GUILD_LEVELUP_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    int32 guild_level = 2;
+    uint64 guild_exp = 3;
+}
+
+message GUILD_WORLD_GUILD_INFO_SERVER_SYNC_REQ {
+    uint64 guild_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_MEMBER_INFO_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    repeated _guild_member_info_server_sync member_info = 2;
+}
+
+message WORLD_GAME_GUILD_MEMBER_CHANGE_INFO_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    repeated _guild_member_info_server_sync member_info_list = 2;
+}
+
+message WORLD_GAME_GUILD_MEMBER_REQUEST_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    uint64 del_invite_user_uid = 2;
+    uint64 del_applicant_user_uid = 3;
+}
+
+message WORLD_GAME_GUILD_END_SERVER_SYNC {
+    uint64 guild_uid = 1;
+}
+
+message GUILD_WORLD_GUILD_END_SERVER_SYNC {
+    uint64 guild_uid = 1;
+}
+
+message WORLD_GAME_GUILD_RELOAD {
+    uint32 target_guild_world_id = 1;
+    repeated uint64 target_guild_uid = 2;
+    bool is_server_expedition = 3;
+}
+
+message WORLD_GAME_GUILD_SHOP_LOG_SYNC {
+    uint64 guild_uid = 1;
+    repeated _guild_shop_log_server_sync shop_log = 2;
+    repeated int64 register_del_log_uid = 3;
+    repeated int64 buy_del_log_uid = 4;
+}
+
+message GUILD_WORLD_GUILD_INFO_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_info_server_sync guild_info = 2;
+}
+
+message WORLD_GUILD_GUILD_INFO_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_info_server_sync guild_info = 2;
+}
+
+message GUILD_WORLD_GUILD_DELETE_SERVER_SYNC {
+    uint64 guild_uid = 1;
+}
+
+message GUILD_WORLD_GUILD_COST_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    repeated _cost_info guild_cost_info = 2;
+}
+
+message GUILD_WORLD_SYNC_PLAY_WORLD_ID {
+    int32 world_id = 1;
+    bool is_login = 2;
+}
+
+message GUILD_WORLD_GUILD_DEVELOP_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_develop_list_info_server_sync develop_info = 2;
+}
+
+message GUILD_WORLD_OTHER_WORLD_GUILD_LOAD_SYNC {
+    uint64 guild_uid = 1;
+    uint32 world_id = 2;
+}
+
+message GUILD_WORLD_SEND_GUILD_INFO_RESET {
+    uint32 world_id = 1;
+}
+
+message GUILD_WORLD_GUILD_OFFICIAL_GRADE {
+    uint64 guild_uid = 1;
+    repeated _guild_member_info_server_sync member_info_list = 2;
+}
+
+message GAME_WORLD_GUILD_INFO_SYNC_REQUEST {
+    uint64 guild_uid = 1;
+    int32 zone_group_id = 2;
+}
+
+message GUILD_WORLD_SYNC_USER_INFO_BY_GUILD_MEMBER_REQ {
+    uint64 guild_uid = 1;
+    _guild_member_info_server_sync member_info = 2;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_LOCATION_SYNC_REQ {
+    uint64 guild_uid = 1;
+    uint64 user_uid = 2;
+    uint32 locate = 3;
+    int32 current_server_pos = 4;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_PROFILE_CHANGE_REQ {
+    uint64 guild_uid = 1;
+    uint64 user_uid = 2;
+    string profile = 3;
+}
+
+message _db_load_guild_info {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+    int32 mark_id = 3;
+    int32 mark_edge = 4;
+    string guild_pr = 5;
+    int64 exp = 6;
+    uint32 level = 7;
+    uint32 guild_gift_level = 8;
+    uint32 guild_gift_exp = 9;
+    uint32 guild_gift_box_key = 10;
+    uint64 guild_gift_box_key_full_time = 11;
+    uint32 world_id = 12;
+    int64 create_time = 13;
+    uint32 is_npc_shop_open = 14;
+    uint32 is_npc_shop_stop = 15;
+    int64 npc_shop_open_time = 16;
+    int64 npc_shop_end_time = 17;
+    int64 master_set_time = 18;
+    uint32 delete_reserve = 19;
+    uint32 npc_shop_not_first_open = 20;
+    int32 npc_shop_dominion_tid = 21;
+}
+
+message _db_load_guild_option {
+    int32 option_index = 1;
+    int32 option_value = 2;
+}
+
+message _db_load_guild_develop {
+    uint32 index = 1;
+    uint32 level = 2;
+    int32 exp = 3;
+    uint32 is_recommend = 4;
+    int64 level_up_start_time = 5;
+    int64 level_up_end_time = 6;
+    int32 level_up = 7;
+    int32 skill_point = 8;
+    int32 skill_start = 9;
+    int64 skill_start_time = 10;
+    int64 skill_end_time = 11;
+}
+
+message _db_load_guild_member {
+    uint64 user_uid = 1;
+    string nick_name = 2;
+    uint32 class = 3;
+    uint32 level = 4;
+    int64 logout_time = 5;
+    int32 combat_point = 6;
+    uint32 member_grade = 7;
+    string guild_custom_title = 8;
+    int64 member_join_time = 9;
+    string profile = 10;
+    uint64 partner_member_uid = 11;
+    int32 cost_give_count = 12;
+    int64 cost_give_time = 13;
+    int32 official_grade = 14;
+    int64 last_donation_time = 15;
+    repeated _character_guild_receive_cost_server_sync receive_cost = 16;
+}
+
+message _db_load_guild_alliance {
+    uint64 target_guild_uid = 1;
+    uint32 target_world_id = 2;
+}
+
+message _db_load_guild_member_join_request {
+    uint64 character_uid = 1;
+    uint64 time = 2;
+}
+
+message _db_load_guild_member_authority {
+    uint64 character_uid = 1;
+    repeated uint32 option_type_list = 2;
+}
+
+message _db_load_guild_supply_unlock_time {
+    uint32 supply_index = 1;
+    int64 unlock_time = 2;
+    int64 supply_reward_time = 3;
+}
+
+message _db_load_guild_hostility {
+    uint64 declare_guild_uid = 1;
+    uint64 target_guild_uid = 2;
+    uint64 start_time = 3;
+    uint64 end_time = 4;
+    int32 declare_guild_kill_count = 5;
+    int32 target_guild_kill_count = 6;
+    uint32 declare_world_id = 7;
+    uint32 target_world_id = 8;
+}
+
+message _db_load_guild_money {
+    uint32 money_index = 1;
+    int64 money_amount = 2;
+}
+
+message _db_load_guild_expedition {
+    uint32 expedission_id = 1;
+    uint64 clear_date = 2;
+}
+
+message _db_load_guild_wanted {
+    uint64 character_uid = 1;
+    uint32 wanted_grade = 2;
+    int32 kill_count = 3;
+    int64 start_time = 4;
+    int64 end_time = 5;
+    int32 kill_count_limit = 6;
+}
+
+message _db_load_guild_shop_data {
+    int32 goods_index = 1;
+    int32 goods_count = 2;
+}
+
+message _db_load_guild_shop_log_data {
+    int64 log_uid = 1;
+    uint32 action_type = 2;
+    int64 log_time = 3;
+    string user_name = 4;
+    string user_profile = 5;
+    int64 character_uid = 6;
+    int32 goods_index = 7;
+    int32 goods_count = 8;
+}
+
+message _db_load_guild_history_uid {
+    uint32 history_group_id = 1;
+    repeated int64 history_uid = 2;
+}
+
+message _db_load_guild_npc_shop {
+    int32 cost_type = 1;
+    int32 sell_cont = 2;
+    int32 remain_sell_cont = 3;
+    int32 sell_price = 4;
+}
+
+message _db_load_guild_npc_shop_incom {
+    uint32 money_index = 1;
+    int64 money_amount = 2;
+}
+
+message _db_load_guild_expedition_create {
+    uint32 expedission_id = 1;
+    uint32 summon_count = 2;
+    int64 create_date = 3;
+    int64 expedition_reset_time = 4;
+}
+
+message _db_load_guild_cost {
+    uint32 money_index = 1;
+    int64 money_amount = 2;
+}
+
+message _db_load_guild_member_donation {
+    uint64 user_uid = 1;
+    repeated _db_load_guild_cost cost_list = 2;
+}
+
+message _db_load_guild_except_attack {
+    uint64 target_guild_uid = 1;
+    uint32 target_world_id = 2;
+}
+
+message _db_load_guild_point {
+    int32 point_type = 1;
+    int32 point_value = 2;
+}
+
+message _db_load_guild {
+    _db_load_guild_info db_load_guild_info = 1;
+    repeated _db_load_guild_option db_load_guild_option_list = 2;
+    repeated _db_load_guild_develop db_load_guild_develop_list = 3;
+    repeated _db_load_guild_member db_load_guild_member_list = 4;
+    repeated _db_load_guild_alliance db_load_guild_alliance_list = 5;
+    repeated _db_load_guild_alliance db_load_guild_alliance_request_list = 6;
+    repeated _db_load_guild_member_join_request db_load_guild_join_invite_list = 7;
+    repeated _db_load_guild_member_join_request db_load_guild_join_applicant_list = 8;
+    repeated _db_load_guild_member_authority db_load_guild_member_authority_list = 9;
+    repeated _db_load_guild_supply_unlock_time db_load_guild_supply_unlock_time_list = 10;
+    repeated _db_load_guild_hostility db_load_guild_hostility_list = 11;
+    repeated _db_load_guild_money db_load_guild_money_list = 12;
+    repeated _db_load_guild_expedition db_load_guild_expedition_list = 13;
+    repeated _db_load_guild_wanted db_load_guild_wanted_list = 14;
+    repeated _db_load_guild_shop_data db_load_guild_shop_data_list = 15;
+    repeated _db_load_guild_shop_log_data db_load_guild_shop_log_data_list = 16;
+    repeated _db_load_guild_npc_shop db_load_guild_npc_shop_list = 17;
+    repeated _db_load_guild_npc_shop_incom db_load_guild_npc_shop_incom_list = 18;
+    repeated _db_load_guild_expedition_create db_load_guild_expedition_create_list = 19;
+    repeated _db_load_guild_member_donation db_load_guild_member_donation_daily_list = 20;
+    repeated _db_load_guild_member_donation db_load_guild_member_donation_weekly_list = 21;
+    repeated _db_load_guild_except_attack db_load_guild_except_attack_list = 22;
+    _guild_command_mark_info_server_sync command_mark_info = 23;
+    repeated _db_load_guild_alliance db_load_guild_alliance_receive_list = 24;
+    repeated _db_load_guild_point db_load_guild_point_list = 25;
+}
+
+message WORLD_SERVER_LOAD_GUILD_INFO {
+    repeated _db_load_guild load_guild = 1;
+}
+
+message WORLD_SERVER_LOAD_GUILD_INFO_FINISH {
+    
+}
+
+message WORLD_SERVER_GUILD_INFO_ETC_SETTING {
+    
+}
+
+message _guild_relay_packet_info {
+    uint32 cmd = 1;
+    uint32 world_id = 2;
+    uint32 target_world_id = 3;
+    bytes context = 4;
+}
+
+message GUILD_WORLD_REALAY_PACKET_TO_ALL_ZONE_GROUP_BROADCAST {
+    _guild_relay_packet_info packet_info = 1;
+}
+
+message WORLD_GUILD_RELAY_PACKET_TO_WORLD_BROADCAST {
+    _guild_relay_packet_info packet_info = 1;
+}
+
+message GUILD_WORLD_REALAY_PACKET_TO_TARGET_USER {
+    uint64 user_uid = 1;
+    _guild_relay_packet_info packet_info = 2;
+}
+
+message GUILD_WORLD_REALAY_PACKET_TO_ZONE_GROUP {
+    int32 world_server_zone_group_id = 1;
+    _guild_relay_packet_info packet_info = 2;
+}
+
+message GAME_GUILD_RELAY_PACKET_TO_TARGET_WORLD {
+    _guild_relay_packet_info packet_info = 1;
+}
+
+message WORLD_GUILD_RELAY_PACKET_TO_TARGET_WORLD {
+    _guild_relay_packet_info packet_info = 1;
+}
+
+message GUILD_WORLD_GUILD_CREATION {
+    uint64 guild_uid = 1;
+    _guild_info_server_sync guild_sync_info = 2;
+}
+
+message GUILD_WORLD_GUILD_NAME_CHANGE {
+    uint64 guild_uid = 1;
+    _guild_info_base_server_sync guild_base_info = 2;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_ADD {
+    uint64 guild_uid = 1;
+    _guild_info_server_sync guild_sync_info = 2;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_DEL {
+    uint64 guild_uid = 1;
+    _guild_info_server_sync guild_sync_info = 2;
+}
+
+message GUILD_WORLD_GUILD_HOSTILITY_ADD_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_hostility_info_list_server_sync hostility_info = 2;
+}
+
+message GUILD_WORLD_GUILD_HOSTILITY_DEL_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_hostility_info_list_server_sync hostility_info = 2;
+}
+
+message GUILD_WORLD_GUILD_ALLIANCE_APPLICANT_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_alliance_manager_info_server_sync alliance_info = 2;
+}
+
+message GUILD_WORLD_GUILD_ALLIANCE_ADD_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_alliance_manager_info_server_sync alliance_info = 2;
+}
+
+message GUILD_WORLD_GUILD_ALLIANCE_DEL_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_alliance_manager_info_server_sync alliance_info = 2;
+}
+
+message GUILD_WORLD_GUILD_RANK_SORT_DATA_SERVER_SYNC {
+    uint32 target_world_id = 1;
+    repeated _guild_rank_sync guild_rank_list = 2;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_GRADE_SET {
+    uint64 guild_uid = 1;
+    repeated _guild_member_info_server_sync member_info_list = 2;
+}
+
+message GUILD_WORLD_GUILD_CHANGE_PR_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    uint32 world_id = 2;
+    string guild_pr = 3;
+}
+
+message GUILD_WORLD_GUILD_OPTION_SET_SYNC {
+    uint64 guild_uid = 1;
+    _guild_info_base_server_sync guild_base_info = 2;
+}
+
+message GUILD_WORLD_GUILD_HOSTILITY_KILL_SYNC {
+    uint64 guild_uid = 1;
+    _guild_hostility_info_list_server_sync hostility_info = 2;
+}
+
+message GUILD_WORLD_GUILD_GIFT_OPEN_SYNC {
+    uint64 guild_uid = 1;
+    _guild_gift_box_info gift_box_info = 2;
+}
+
+message GUILD_WORLD_GUILD_EXCEPT_ATTACK_SYNC {
+    uint64 guild_uid = 1;
+    bool except_attack_add = 2;
+    repeated _guild_except_attack_server_sync except_attack_info = 3;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_REQUEST_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_member_join_request_info_server_sync member_request_info = 2;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_INVITE {
+    uint64 guild_uid = 1;
+    _guild_member_join_request_info_server_sync member_request_info = 2;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_INVITE_AGREE {
+    uint64 guild_uid = 1;
+    _guild_member_join_request_info_server_sync member_request_info = 2;
+    _guild_member_manager_info_server_sync memger_info = 3;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_AUTHORITY_SET {
+    uint64 guild_uid = 1;
+    _guild_member_manager_info_server_sync memger_info = 2;
+}
+
+message GUILD_WORLD_GUILD_PARTNER_MEMBET_SET {
+    uint64 guild_uid = 1;
+    _guild_member_manager_info_server_sync memger_info = 2;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_CUSTOM_TITLE_SET {
+    uint64 guild_uid = 1;
+    _guild_member_info_server_sync member_info = 2;
+}
+
+message GUILD_WORLD_GUILD_MEMBER_CHANGE_INFO_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_member_manager_info_server_sync member_info = 2;
+}
+
+message GUILD_WORLD_GUILD_DEVELOP_RECOMMEND {
+    uint64 guild_uid = 1;
+    _guild_develop_list_info_server_sync develop_info = 2;
+}
+
+message GUILD_WORLD_GUILD_DEVELOP_SKILL_END {
+    uint64 guild_uid = 1;
+    _guild_develop_list_info_server_sync develop_info = 2;
+}
+
+message GUILD_WORLD_GUILD_DEVELOP_SKILL_START {
+    uint64 guild_uid = 1;
+    _guild_develop_list_info_server_sync develop_info = 2;
+}
+
+message GUILD_WORLD_GUILD_SHOP_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_shop_info_server_sync guild_shop_info = 2;
+}
+
+message GUILD_WORLD_GUILD_WANTED_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    _guild_wanted_info_server_sync wanted_info = 2;
+}
+
+message GUILD_WORLD_GUILD_COMMAND_MARK_SET {
+    uint64 guild_uid = 1;
+    _guild_command_mark_info_server_sync command_mark_info = 2;
+}

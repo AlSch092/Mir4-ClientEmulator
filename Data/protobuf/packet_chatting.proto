@@ -1,0 +1,468 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message _chatting_header {
+    uint64 uid = 1;
+    string name = 2;
+    int32 class_type = 3;
+    int32 level = 4;
+    string guild_name = 5;
+    int32 share_type = 6;
+    uint64 guild_uid = 7;
+    uint64 send_time = 8;
+    string profile = 9;
+    int32 account_grade = 10;
+    int32 official_grade = 11;
+    uint32 world_id = 12;
+    uint32 guild_member_grade = 13;
+    string guild_custom_title = 14;
+    uint32 chatting_server_world_id = 15;
+    bool assassin_mode = 16;
+    bool is_sabuk_master = 17;
+}
+
+message CLIENT_GAME_CHATMSG {
+    int32 type = 1;
+    string msg = 2;
+    bool is_command = 3;
+}
+
+message _save_chatmsg_info {
+    _chatting_header chat_header = 1;
+    string msg = 2;
+    int32 type = 3;
+}
+
+message _save_whisper_chatmsg_info {
+    _chatting_header chat_header = 1;
+    string msg = 2;
+    int32 type = 3;
+    int64 send_user_uid = 4;
+    int64 recv_user_uid = 5;
+}
+
+message _search_user_info {
+    int64 search_uid = 1;
+    string search_name = 2;
+    string search_profile = 3;
+    int64 reg_date = 4;
+    int64 last_chat_msg_time = 5;
+    uint32 class_id = 6;
+    uint32 level = 7;
+    uint32 combat_point = 8;
+}
+
+message _enter_chatting_room_info {
+    uint32 chat_room_type = 1;
+    uint64 chat_room_data = 2;
+    uint64 chat_user_uid = 3;
+    _chatting_header chat_header = 4;
+    uint32 gateway_server_index = 5;
+}
+
+message _alliance_guild_info {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+    uint32 world_id = 3;
+}
+
+message GAME_CLIENT_CHATMSG {
+    _chatting_header chat_header = 1;
+    string msg = 2;
+    int32 type = 3;
+    uint64 target_uid = 4;
+}
+
+message GATEWAY_WORLD_CHATMSG {
+    uint64 character_uid = 1;
+    int32 type = 2;
+    string msg = 3;
+}
+
+message WORLD_GATEWAY_CHATMSG {
+    uint64 character_uid = 1;
+    string name = 2;
+    string msg = 3;
+}
+
+message WORLD_CHATTING_ENTER_CHATTING_ROOM {
+    _enter_chatting_room_info enter_chatting_room_info = 1;
+}
+
+message WORLD_CHATTING_LEAVE_CHATTING_ROOM {
+    uint32 chat_room_type = 1;
+    uint64 chat_user_uid = 2;
+}
+
+message WORLD_CHATTING_SYNC_CHAT_USER_INFO {
+    uint64 chat_user_uid = 1;
+    uint32 chat_user_level = 2;
+    string chat_user_guild_name = 3;
+    uint64 chat_guild_uid = 4;
+    uint32 official_grade = 5;
+    uint32 guild_member_grade = 6;
+    string guild_custom_title = 7;
+    bool is_sabuk_master = 8;
+}
+
+message WORLD_CHATTING_CHATMSG {
+    uint64 chat_user_uid = 1;
+    int32 type = 2;
+    string msg = 3;
+    int32 share_type = 4;
+    uint64 chat_room_uid = 5;
+}
+
+message GAME_MACRO_CHATMSG {
+    uint64 chat_user_uid = 1;
+    int32 type = 2;
+    string msg = 3;
+    int32 share_type = 4;
+}
+
+message WORLD_CHATTING_LOGOUT_CHAT_USER {
+    uint64 chat_user_uid = 2;
+}
+
+message CLIENT_CHATTING_WHISPER {
+    uint64 send_user_uid = 1;
+    uint64 receive_user_uid = 2;
+    string msg = 3;
+    string receive_user_name = 4;
+}
+
+message WORLD_CHATTING_WHISPER {
+    uint64 send_user_uid = 1;
+    uint64 receive_user_uid = 2;
+    string msg = 3;
+    string receive_user_name = 4;
+}
+
+message CHATTING_CLIENT_WHISPER_ERROR {
+    uint32 error_id = 1;
+}
+
+message WORLD_CLIENT_REQUEST_CONNECT_CHATTING_SERVER {
+    string server_ip = 1;
+    uint32 connect_port = 2;
+}
+
+message GATEWAY_CHATTING_REQUEST_LOGIN {
+    uint64 user_uid = 1;
+    uint32 proxy_server_index = 2;
+    uint32 proxy_connected_session_id = 3;
+    bool assassin_mode = 4;
+}
+
+message CLIENT_CHATTING_REQUEST_WHISPER_USER_INFO {
+    string whisper_user_name = 1;
+    uint64 whisper_user_uid = 2;
+}
+
+message CHATTING_CLIENT_WHISPER_USER_INFO_RESULT {
+    uint32 result = 1;
+    _chatting_header whisper_user_info = 2;
+    bool is_hidden = 3;
+}
+
+message WORLD_CHATTING_REQUEST_WHISPER_USER_INFO {
+    string whisper_user_name = 1;
+    uint64 whisper_user_uid = 2;
+    int32 whisper_cmd_type = 3;
+}
+
+message CHATTING_WORLD_WHISPER_USER_INFO_RESULT {
+    uint32 result = 1;
+    uint64 request_user_uid = 2;
+    _chatting_header whisper_user_info = 3;
+    int32 whisper_cmd_type = 4;
+}
+
+message CLIENT_GAME_WORLD_CHATMSG {
+    string msg = 1;
+    uint64 chatting_item_uid = 2;
+}
+
+message GAME_GATEWAY_WORLD_CHATMSG {
+    uint64 character_uid = 1;
+    string msg = 2;
+}
+
+message CLIENT_GAME_ITEM_INFO_SHARE {
+    int32 chatting_type = 1;
+    uint64 share_item_uid = 2;
+    uint64 chatting_item_uid = 3;
+}
+
+message GAME_GATEWAY_ITEM_INFO_SHARE {
+    int32 chatting_type = 1;
+    uint64 share_character_uid = 2;
+    string msg = 3;
+    int32 share_type = 4;
+}
+
+message CLIENT_TRADE_ITEM_INFO_SHARE {
+    int32 chatting_type = 1;
+    uint64 trade_uid = 2;
+}
+
+message TRADE_GATEWAY_ITEM_INFO_SHARE {
+    int32 chatting_type = 1;
+    uint64 share_character_uid = 2;
+    string msg = 3;
+}
+
+message CLIENT_WORLD_CHANGE_VOICE_CHAT_STATE {
+    uint32 voice_chat_room_type = 1;
+    uint64 community_uid = 2;
+    uint32 voice_chat_state = 3;
+}
+
+message WORLD_CLIENT_CHANGE_MEMBER_VOICE_CHAT_STATE {
+    uint32 voice_chat_room_type = 1;
+    uint64 community_uid = 2;
+    uint32 voice_chat_state = 3;
+    uint64 change_user_uid = 4;
+}
+
+message CLIENT_GAME_ITEM_INFO_SHARE_WHISPER {
+    uint64 send_user_uid = 1;
+    uint64 receive_user_uid = 2;
+    uint64 share_item_uid = 3;
+}
+
+message GAME_WORLD_ITEM_INFO_SHARE_WHISPER {
+    uint64 receive_user_uid = 1;
+    string msg = 2;
+}
+
+message CLIENT_TRADE_ITEM_INFO_SHARE_WHISPER {
+    uint64 receive_user_uid = 1;
+    uint64 trade_uid = 2;
+}
+
+message TRADE_WORLD_ITEM_INFO_SHARE_WHISPER {
+    uint64 receive_user_uid = 1;
+    string msg = 2;
+}
+
+message WORLD_CHATTING_SHARE_WHISPER {
+    uint64 receive_user_uid = 1;
+    string msg = 2;
+    uint32 share_type = 3;
+}
+
+message CHATTING_CLIENT_ITEM_INFO_SHARE_WHISPER {
+    uint64 receive_user_uid = 1;
+    string msg = 2;
+    uint32 share_type = 3;
+}
+
+message CHATTING_CLIENT_NOTIFY_GUILD_CHATTING_LIST_START {
+    
+}
+
+message CHATTING_CLIENT_NOTIFY_GUILD_CHATTING_LIST {
+    repeated _save_chatmsg_info chatmsg_info = 1;
+}
+
+message CHATTING_CLIENT_NOTIFY_GUILD_CHATTING_LIST_END {
+    
+}
+
+message CHATTING_CLIENT_NOTIFY_WHISPER_CHATTING_LIST_START {
+    uint64 whisper_user_uid = 1;
+}
+
+message CHATTING_CLIENT_NOTIFY_WHISPER_CHATTING_LIST {
+    uint64 whisper_user_uid = 1;
+    repeated _save_whisper_chatmsg_info chatmsg_info = 2;
+    string whisper_user_profile = 3;
+    int64 reg_date = 4;
+}
+
+message CHATTING_CLIENT_NOTIFY_WHISPER_CHATTING_LIST_END {
+    uint64 whisper_user_uid = 1;
+}
+
+message CLIENT_CHATTING_GUILD_CHATTING_LIST {
+    uint64 chatting_msg_read_time = 1;
+}
+
+message CHATTING_CLIENT_GUILD_CHATTING_LIST_START {
+    
+}
+
+message CHATTING_CLIENT_GUILD_CHATTING_LIST {
+    uint64 chatting_msg_read_time = 1;
+    repeated _save_chatmsg_info chatmsg_info = 2;
+}
+
+message CHATTING_CLIENT_GUILD_CHATTING_LIST_END {
+    
+}
+
+message CLIENT_CHATTING_WHISPER_CHATTING_LIST {
+    uint64 chatting_msg_read_time = 1;
+    uint64 target_user_uid = 2;
+}
+
+message CHATTING_CLIENT_WHISPER_CHATTING_LIST_START {
+    uint64 target_user_uid = 1;
+}
+
+message CHATTING_CLIENT_WHISPER_CHATTING_LIST {
+    uint64 target_user_uid = 1;
+    repeated _save_whisper_chatmsg_info chatmsg_info = 2;
+    string target_user_profile = 3;
+    int64 reg_date = 4;
+}
+
+message CHATTING_CLIENT_WHISPER_CHATTING_LIST_END {
+    uint64 target_user_uid = 1;
+}
+
+message CLIENT_CHATTING_SEARCH_NAME {
+    string search_name = 1;
+}
+
+message CHATTING_CLIENT_SEARCH_NAME {
+    repeated _search_user_info search_user_list = 1;
+}
+
+message CLIENT_CHATTING_DELETE_WHISPER {
+    uint64 target_user_uid = 1;
+}
+
+message CHATTING_CLIENT_DELETE_WHISPER {
+    uint32 result = 1;
+    uint64 target_user_uid = 2;
+}
+
+message CLIENT_CHATTING_GET_WHISPER_LIST {
+    
+}
+
+message CHATTING_CLIENT_NOTIFY_GET_WHISPER_LIST_START {
+    bool is_login = 1;
+}
+
+message CHATTING_CLIENT_NOTIFY_GET_WHISPER_LIST {
+    repeated _search_user_info whisper_list = 1;
+    bool is_login = 2;
+}
+
+message CHATTING_CLIENT_NOTIFY_GET_WHISPER_LIST_END {
+    bool is_login = 1;
+}
+
+message WORLD_CHATTING_SYNC_CHAT_PROFILE {
+    string change_profile = 1;
+}
+
+message CHATTING_CLIENT_NOTIFY_NOTICE {
+    string message = 1;
+    int32 notify_type = 2;
+    uint64 notify_start_time = 3;
+    uint64 notify_end_time = 4;
+    string bg_color = 5;
+    int32 repeat_cycle = 6;
+    string font_color = 7;
+}
+
+message CHATTING_CLIENT_NOTIFY_NOTICE_STOP {
+    
+}
+
+message GATEWAY_TRADE_CHATMSG {
+    uint64 character_uid = 1;
+    int32 type = 2;
+    string msg = 3;
+}
+
+message GATEWAY_SHOP_CHATMSG {
+    uint64 character_uid = 1;
+    int32 type = 2;
+    string msg = 3;
+}
+
+message GATEWAY_LOBBY_CHATMSG {
+    uint64 character_uid = 1;
+    int32 type = 2;
+    string msg = 3;
+}
+
+message CHATTING_GATEWAY_NOTIFY_NOTICE {
+    string message = 1;
+    int32 notify_type = 2;
+    uint64 notify_start_time = 3;
+    uint64 notify_end_time = 4;
+    string bg_color = 5;
+    int32 repeat_cycle = 6;
+    string font_color = 7;
+}
+
+message CHATTING_GATEWAY_NOTIFY_NOTICE_STOP {
+    
+}
+
+message WORLD_CHATTING_RE_ENTER_CHATTING_ROOM_ALL_USER {
+    repeated _enter_chatting_room_info enter_chatting_room_info = 1;
+}
+
+message CLIENT_GAME_SHARE_STAGE_INFO {
+    int32 chat_type = 1;
+    uint64 receive_user_uid = 2;
+    string receive_user_name = 3;
+}
+
+message GAME_WORLD_SHARE_INFO {
+    int32 chat_type = 1;
+    uint64 receive_user_uid = 2;
+    string msg = 3;
+    int32 chat_share_type = 4;
+}
+
+message WORLD_CHATTING_WHISPER_INFO_DELETE {
+    int32 delete_type = 1;
+    uint64 character_uid = 2;
+    uint32 world_id = 3;
+}
+
+message CHATTING_CLIENT_NOTIFY_WHISPER_INFO_DELETE {
+    int32 delete_type = 1;
+    uint64 character_uid = 2;
+}
+
+message CLIENT_GAME_ALLIANCE_GUILD_CHATTING {
+    int32 chatting_type = 1;
+    string msg = 2;
+    int32 share_type = 3;
+    uint64 target_guild_uid = 4;
+}
+
+message GAME_GATEWAY_ALLIANCE_GUILD_CHATTING {
+    uint64 character_uid = 1;
+    int32 chatting_type = 2;
+    string msg = 3;
+    int32 share_type = 4;
+    uint64 target_guild_uid = 5;
+}
+
+message CLIENT_GAME_ALLIANCE_GUILD_LIST {
+    
+}
+
+message GAME_CLIENT_ALLIANCE_GUILD_LIST {
+    repeated _alliance_guild_info _alliance_guild_list = 1;
+}
+
+message RELAY_CHATMSG {
+    uint64 chat_user_uid = 1;
+    int32 type = 2;
+    string msg = 3;
+    int32 share_type = 4;
+    uint64 chat_room_uid = 5;
+    _chatting_header chat_header = 6;
+}

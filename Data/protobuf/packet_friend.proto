@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_WORLD_FRIEND_LIST {
+    
+}
+
+message WORLD_CLIENT_FRIEND_LIST_START {
+    uint32 total_cnt = 1;
+}
+
+message WORLD_CLIENT_FRIEND_LIST {
+    repeated _friend_info friend_list = 1;
+}
+
+message WORLD_CLIENT_FRIEND_LIST_END {
+    
+}
+
+message CLIENT_WORLD_FRIEND_REQUEST_LIST {
+    int32 type = 1;
+}
+
+message WORLD_CLIENT_FRIEND_REQUEST_LIST_START {
+    int32 type = 1;
+    uint32 total_cnt = 2;
+}
+
+message WORLD_CLIENT_FRIEND_REQUEST_LIST {
+    int32 type = 1;
+    repeated _friend_request_info friend_request_list = 2;
+}
+
+message WORLD_CLIENT_FRIEND_REQUEST_LIST_END {
+    int32 type = 1;
+}
+
+message CLIENT_WORLD_RECOMMEND_FRIEND_LIST {
+    
+}
+
+message WORLD_CLIENT_RECOMMEND_FRIEND_LIST {
+    repeated _recommend_friend_info recommend_friend_list = 1;
+}
+
+message GAME_WORLD_RECOMMEND_FRIEND_LIST {
+    
+}
+
+message WORLD_GAME_RECOMMEND_FRIEND_LIST {
+    repeated uint64 recommend_friend_list = 1;
+    uint64 user_uid = 2;
+}
+
+message CLIENT_WORLD_FRIEND_INVITE {
+    uint64 target_user_uid = 1;
+}
+
+message WORLD_CLIENT_FRIEND_INVITE {
+    int32 result = 1;
+    uint64 target_user_uid = 2;
+}
+
+message WORLD_CLIENT_NOTIFY_FRIEND_INVITE {
+    _friend_request_info friend_request_info = 1;
+}
+
+message CLIENT_WORLD_FRIEND_INVITE_CANCEL {
+    uint64 target_user_uid = 1;
+    bool all = 2;
+}
+
+message WORLD_CLIENT_FRIEND_INVITE_CANCEL {
+    int32 result = 1;
+    uint64 target_user_uid = 2;
+}
+
+message WORLD_CLIENT_NOTIFY_FRIEND_INVITE_CANCEL {
+    uint64 send_user_uid = 1;
+}
+
+message CLIENT_WORLD_FRIEND_INVITE_AGREE {
+    uint64 target_user_uid = 1;
+    bool all = 2;
+    bool agree = 3;
+}
+
+message WORLD_CLIENT_FRIEND_INVITE_AGREE {
+    int32 result = 1;
+    bool agree = 2;
+    _friend_info friend_info = 3;
+}
+
+message WORLD_CLIENT_NOTIFY_FRIEND_INVITE_AGREE {
+    bool agree = 1;
+    _friend_info friend_info = 2;
+}
+
+message CLIENT_WORLD_FRIEND_DEL {
+    uint64 friend_uid = 1;
+}
+
+message WORLD_CLIENT_FRIEND_DEL {
+    int32 result = 1;
+    uint64 friend_uid = 2;
+}
+
+message WORLD_CLIENT_NOTIFY_FRIEND_DEL {
+    uint64 friend_uid = 1;
+}
+
+message GAME_WORLD_NOTIFY_FRIEND {
+    uint64 friend_uid = 1;
+    uint64 req_friend_uid = 2;
+    int32 notify_type = 3;
+    _friend_info friend_info = 4;
+    bool is_cancel = 5;
+}
+
+message WORLD_GAME_NOTIFY_FRIEND {
+    uint64 friend_uid = 1;
+    uint64 req_friend_uid = 2;
+    int32 notify_type = 3;
+    _friend_info friend_info = 4;
+    bool is_cancel = 5;
+}
+
+message WORLD_CLIENT_FRIEND_ENTER_NOTIFY {
+    uint64 enter_friend_uid = 1;
+}
+
+message CLIENT_WORLD_FRIEND_SEARCH {
+    string name = 1;
+    int32 search_type = 2;
+}
+
+message WORLD_CLIENT_FRIEND_SEARCH {
+    int32 result = 1;
+    _friend_info_base friend_info_base = 2;
+    bool online = 3;
+    int32 search_type = 4;
+}
+
+message CLIENT_WORLD_FRIEND_FAVORITES {
+    uint64 friend_uid = 1;
+    bool favorites = 2;
+}
+
+message WORLD_CLIENT_FRIEND_FAVORITES {
+    int32 result = 1;
+    uint64 friend_uid = 2;
+    bool favorites = 3;
+}
+
+message GAME_WORLD_FRIEND_ENTER_NOTIFY {
+    uint64 user_uid = 1;
+    repeated uint64 friend_list = 2;
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message GAME_CLIENT_NOTIFY_DAILY_GOODS_INFO {
+    repeated _daily_goods_info daily_goods_info = 1;
+}
+
+message CLIENT_GAME_DAILY_GOODS_ADD {
+    int32 DailyGoodsType = 1;
+    int32 Value = 2;
+}
+
+message GAME_CLIENT_DAILY_GOODS_ADD {
+    _daily_goods_info daily_goods_info = 1;
+    repeated _cost_info character_cost = 2;
+}
+
+message GAME_CLIENT_NOTIFY_DAILY_GOODS_RESET {
+    repeated _daily_goods_info daily_goods_info = 1;
+}

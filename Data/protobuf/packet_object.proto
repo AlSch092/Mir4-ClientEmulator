@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message GAME_CLIENT_ACTIVATE_OBJECT_REWARD {
+    uint64 activate_user_uid = 1;
+    uint64 activated_object_uid = 2;
+    int32 use_inven_count = 3;
+    repeated _cost_info reward_costInfo = 4;
+    repeated _character_inven_item reward_item = 5;
+    uint32 object_id = 6;
+    repeated _stack_item_info del_item_list = 7;
+}
+
+message GAME_CLIENT_CHANGE_OBJECT_STATE {
+    uint64 object_uid = 1;
+    uint32 object_state = 2;
+    string state_string = 3;
+}
+
+message GAME_CLIENT_OBJECT_UPDATE_USE_COUNT {
+    uint64 object_uid = 1;
+    uint32 remaining_use_count = 2;
+}
+
+message GAME_CLIENT_STAGE_MONSTER_STATUS_NOTIFY {
+    int32 message_id = 1;
+}
+
+message CLIENT_GAME_PROUD_ITEM {
+    _vector3 pos = 1;
+    uint64 item_uid = 2;
+}
+
+message GAME_CLIENT_PROUD_ITEM {
+    uint32 result = 1;
+    uint64 item_uid = 2;
+}
+
+message CLIENT_GAME_PROUD_ITEM_CANCEL {
+    uint64 object_uid = 3;
+}
+
+message GAME_CLIENT_PROUD_ITEM_CANCEL {
+    uint32 result = 1;
+}
+
+message GAME_CLIENT_PROUD_ITEM_DISAPPEAR {
+    uint64 object_uid = 1;
+}
+
+message CLIENT_GAME_PROUD_ITEM_INFO {
+    uint64 object_uid = 1;
+}
+
+message GAME_CLIENT_PROUD_ITEM_INFO {
+    uint32 result = 1;
+    int64 despawn_time = 2;
+    string nick_name = 3;
+    _character_inven_item inven_item = 4;
+    uint64 object_uid = 5;
+}
+
+message GAME_CLIENT_PROUD_ITEM_UPDATE_WONDER {
+    uint32 result = 1;
+    uint64 my_daily_wonder = 2;
+    repeated _cost_info cost_info_list = 3;
+}
+
+message CLIENT_GAME_PROUD_ITEM_WONDER {
+    uint64 object_uid = 1;
+}
+
+message GAME_CLIENT_PROUD_ITEM_WONDER {
+    uint32 result = 1;
+    string nick_name = 2;
+    uint32 item_id = 3;
+}

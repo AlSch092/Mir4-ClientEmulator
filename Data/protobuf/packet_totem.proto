@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message GAME_CLIENT_APPEAR_TOTEM {
+    uint64 totem_uid = 1;
+    int32 totem_id = 2;
+    int32 owner_type = 3;
+    uint64 owner_uid = 4;
+    _vector3 loc = 5;
+    float degree = 6;
+    int32 owner_index = 7;
+    string owner_name = 8;
+}
+
+message GAME_CLIENT_ATTACK_TOTEM {
+    uint64 totem_uid = 1;
+    int32 attack_id = 2;
+    _vector3 dest_pos = 3;
+    uint64 target_uid = 4;
+    int32 target_type = 5;
+    float degree = 6;
+}

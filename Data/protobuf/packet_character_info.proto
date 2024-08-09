@@ -1,0 +1,306 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_character.proto";
+import "info_common.proto";
+
+message CLIENT_WORLD_OTHER_CHARACTER_INFO {
+    uint64 target_uid = 1;
+    int32 target_world_id = 2;
+}
+
+message CLIENT_GAME_AROUND_OTHER_CHARACTER_INFO {
+    uint64 target_uid = 1;
+}
+
+message WORLD_CLIENT_OTHER_CHARACTER_INFO {
+    int32 result = 1;
+    _other_user_ui_info character_info = 2;
+    _other_user_ui_info_guild guild_info = 3;
+    _other_user_ui_info_rank rank_info = 4;
+    bool is_my_guild_applicant = 6;
+    bool is_my_guild_invite = 7;
+    uint64 guild_partner_member_uid = 8;
+    uint32 server_index = 9;
+    uint64 request_uid = 10;
+}
+
+message COMMUNITY_GAME_OTHER_CHARACTER_INFO {
+    uint64 request_uid = 1;
+    WORLD_CLIENT_OTHER_CHARACTER_INFO other_info = 2;
+}
+
+message GAME_WORLD_OTHER_CHARACTER_INFO_TO_OTHER_WORLD {
+    int32 world_server_zone_group_id = 1;
+    uint64 wait_uid = 2;
+    repeated uint64 target_uid = 3;
+    uint32 start_world_id = 4;
+}
+
+message WOLRD_GAME_OTHER_CHARACTER_INFO_TO_OTHER_WORLD {
+    uint32 result = 1;
+    uint64 target_uid = 2;
+    uint64 wait_uid = 3;
+    _other_user_ui_info character_info = 4;
+    _other_user_info_etc character_info_etc = 5;
+}
+
+message GAME_WORLD_OTHER_CHARACTER_SAVE_TO_OTHER_WORLD {
+    _other_user_ui_info character_info = 1;
+}
+
+message _other_character_info_change_value {
+    string value_name = 1;
+    uint64 sub_key = 2;
+    int32 int_value = 3;
+    uint64 long_value = 4;
+}
+
+message GAME_WORLD_OTHER_CHARACTER_INFO_CHANGE_VALUE_TO_OTHER_WORLD {
+    uint64 target_uid = 1;
+    repeated _other_character_info_change_value change_values = 2;
+}
+
+message CLIENT_GAME_CHARACTER_CUSTOM_TITLE_CHANGE {
+    string custom_title = 1;
+}
+
+message GAME_CLIENT_CHARACTER_CUSTOM_TITLE_CHANGE {
+    uint32 result = 1;
+    repeated _stack_item_info update_items = 2;
+    string custom_title = 3;
+    int64 custom_title_end_time = 4;
+    bool is_custom_title_show = 5;
+}
+
+message GAME_CLIENT_CHARACTER_CUSTOM_TITLE_CHANGE_FIELD_BROADCAST {
+    uint64 user_uid = 1;
+    string custom_title = 2;
+}
+
+message GAME_CLIENT_CHARACTER_CUSTOM_TITLE_TIME_OUT {
+    
+}
+
+message CLIENT_GAME_CHARACTER_CUSTOM_TITLE_SHOW {
+    bool is_custom_title_show = 1;
+}
+
+message GAME_CLIENT_CHARACTER_CUSTOM_TITLE_SHOW {
+    int32 result = 1;
+    bool is_custom_title_show = 2;
+}
+
+message CLIENT_GAME_CHARACTER_PROFILE_CHANGE {
+    string profile = 1;
+}
+
+message GAME_CLIENT_CHARACTER_PROFILE_CHANGE {
+    uint32 result = 1;
+    string profile = 2;
+}
+
+message GAME_WORLD_CHARACTER_PROFILE_CHANGE {
+    uint64 user_uid = 1;
+    string profile = 2;
+}
+
+message GAME_CLIENT_EXPBOOSTER_CHANGE_NOTIFY {
+    uint32 exp_booster_left_time = 1;
+    uint32 add_exp_booster_time = 2;
+    bool is_item_use = 3;
+    int32 result = 4;
+}
+
+message GAME_CLIENT_EXPBOOSTER_SPEND_START {
+    uint32 exp_booster_left_time = 1;
+}
+
+message GAME_CLIENT_EXPBOOSTER_SPEND_END {
+    uint32 exp_booster_left_time = 1;
+}
+
+message WORLD_GAME_DELETE_CHARACTER {
+    uint64 character_uid = 1;
+}
+
+message WORLD_GAME_DELETE_CHARACTER_END {
+    uint64 character_uid = 1;
+}
+
+message GAME_COMMUNITY_CHANGE_EQUIP_ITEM_INFO {
+    uint64 character_uid = 1;
+    int32 position = 2;
+    CharacterInfoEquipSlot equip_slot = 3;
+}
+
+message GAME_COMMUNITY_CHANGE_EQUIP_COSTUME_INFO {
+    uint64 character_uid = 1;
+    int32 position = 2;
+    _equip_costume_info costume_info = 3;
+}
+
+message GAME_COMMUNITY_CHANGE_LUXURY_COSTUME_INFO {
+    uint64 character_uid = 1;
+    int32 position = 2;
+    _equip_costume_info costume_info = 3;
+}
+
+message GAME_COMMUNITY_CHANGE_LEVEL_INFO {
+    uint64 character_uid = 1;
+    int32 level = 2;
+    int32 combat_point = 3;
+}
+
+message GAME_COMMUNITY_CHANGE_PET_INFO {
+    uint64 character_uid = 1;
+    bool equip = 2;
+    _pet_info pet_info = 3;
+    bool is_upgrade = 4;
+    int32 slot_id = 5;
+}
+
+message GAME_COMMUNITY_CHANGE_NAME_INFO {
+    uint64 character_uid = 1;
+    string name = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_CUSTOM_TITLE_INFO {
+    uint64 character_uid = 1;
+    string custom_title = 2;
+    uint64 custom_title_end_time = 3;
+    bool is_custom_title_show = 4;
+}
+
+message GAME_COMMUNITY_CHANGE_FAME_INFO {
+    uint64 character_uid = 1;
+    uint32 fame_level = 2;
+    uint64 fame_level_exp = 3;
+}
+
+message GAME_COMMUNITY_CHANGE_CLASS_INFO {
+    uint64 character_uid = 1;
+    int32 class = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_COMBAT_POINT_INFO {
+    uint64 character_uid = 1;
+    int32 combat_point = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_PK_POINT_INFO {
+    uint64 character_uid = 1;
+    int32 pk_point = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_PROFILE_INFO {
+    uint64 character_uid = 1;
+    string profile = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_TRAINING_INFO {
+    uint64 character_uid = 1;
+    int32 closed_training_total_level = 2;
+    int32 closed_training_collect_step = 3;
+}
+
+message GAME_COMMUNITY_CHANGE_WONDER_INFO {
+    uint64 character_uid = 1;
+    uint64 daily_wonder = 2;
+    uint64 wonder = 3;
+}
+
+message GAME_COMMUNITY_CHANGE_MASTERY_INFO {
+    uint64 character_uid = 1;
+    int32 mastery_level_count = 2;
+    int32 mastery_level_limit_grade = 3;
+}
+
+message GAME_COMMUNITY_CHANGE_FORCE_INFO {
+    uint64 character_uid = 1;
+    int32 force_id = 2;
+    int32 level = 3;
+    int32 force_level_count = 4;
+}
+
+message GAME_COMMUNITY_CHANGE_SKILL_INFO {
+    uint64 character_uid = 1;
+    int32 skillindex = 2;
+    int32 skilllevel = 3;
+    int32 skill_level_count = 4;
+}
+
+message GAME_COMMUNITY_CHANGE_CUSTOMIZE_INFO {
+    uint64 character_uid = 1;
+    repeated customize_info customize_list = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_GREAT_BUILDING_INFO {
+    uint64 character_uid = 1;
+    _other_user_ui_great_building_info building_info = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_HOLY_STUFF_INFO {
+    uint64 character_uid = 1;
+    _other_user_ui_holy_stuff_info holy_stuff_info = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_SERVER_POS_INFO {
+    uint64 character_uid = 1;
+    int32 server_pos = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_ASSASSIN_MODE {
+    uint64 character_uid = 1;
+    bool mode = 2;
+}
+
+message WORLD_COMMUNITY_CHANGE_RANKING_INFO {
+    int32 process_state = 1;
+    int32 world_id = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_GUILD_MEMBER_INFO {
+    uint64 character_uid = 1;
+    GuildChangeType change_type = 2;
+    string title = 3;
+    int32 grade = 4;
+    uint32 official_grade = 5;
+}
+
+message GAME_COMMUNITY_CHANGE_GUILD_NAME_INFO {
+    uint64 character_uid = 1;
+    _guild_name_ui_info guild_name = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_GUILD_JOIN_INFO {
+    uint64 character_uid = 1;
+    _other_user_ui_info_guild guild_info = 2;
+}
+
+message GAME_COMMUNITY_CHARACTER_INFO_CLEAR {
+    uint64 character_uid = 1;
+}
+
+message GAME_COMMUNITY_CHARACTER_POTENTIAL {
+    uint64 character_uid = 1;
+    repeated _other_user_ui_potential_level_info potential_level_list = 2;
+}
+
+message GAME_COMMUNITY_CHANGE_DOMINION_TITLE {
+    uint64 character_uid = 1;
+    uint32 dominion_title = 2;
+}
+
+enum RankingProcessState {
+    RESET = 0;
+    LOAD = 1;
+}
+
+enum GuildChangeType {
+    TITLE = 0;
+    GRADE = 1;
+    DROP = 2;
+    OFFICIAL_GRADE = 3;
+}

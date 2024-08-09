@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message CLIENT_GAME_ACTIVATE_TRIGGER {
+    uint64 uid = 1;
+    uint32 trigger_group_id = 2;
+    uint32 triggerid = 3;
+    int32 link_entity_type = 4;
+    int32 link_entity_uid = 5;
+}
+
+message GAME_CLIENT_ACTIVATE_TRIGGER {
+    int32 trigger_group_id = 1;
+    int32 triggerid = 2;
+}
+
+message GAME_CLIENT_SYNC_ACTIVATED_TRIGGER {
+    int32 trigger_group_id = 1;
+    repeated int32 triggerid = 2;
+}

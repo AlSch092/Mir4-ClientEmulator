@@ -1,0 +1,422 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+import "packet_skill.proto";
+
+message _monster_part_state_info {
+    int32 parts_id = 1;
+    bool is_on = 2;
+    int32 parts_hp = 3;
+}
+
+message _user_appear_casting_info {
+    bool is_casting = 1;
+    int32 casting_target_type = 2;
+    uint64 casting_target_uid = 3;
+    uint32 casting_type = 4;
+}
+
+message GAME_CLIENT_APPEAR_USER {
+    uint64 uid = 1;
+    int32 classId = 2;
+    string nickname = 3;
+    _vector3 loc = 4;
+    _vector3 dest_pos = 5;
+    float degree = 6;
+    int32 hp = 7;
+    int32 level = 8;
+    int32 weapon_id = 9;
+    int32 costume_id = 10;
+    int32 hair_color_index_id = 11;
+    int32 clothes_color_index = 12;
+    int32 vehicle_id = 13;
+    int32 weapon_level = 14;
+    int32 state = 15;
+    int32 anim_state = 16;
+    float moveSpeed = 17;
+    int32 actionState = 18;
+    repeated _buff_special_effect_info special_effect_info = 19;
+    int32 applied_crowd_control_type = 20;
+    int32 applied_crowd_control_left_time = 21;
+    int32 heightState = 22;
+    int32 pk_grade = 23;
+    int32 pk_assault = 24;
+    int32 max_hp = 25;
+    _guild_name_ui_info guild_info = 26;
+    string custom_title = 27;
+    repeated customize_info customize_list = 28;
+    _user_appear_casting_info casting_info = 29;
+    repeated _equip_costume_info equip_costume_list = 30;
+    int32 pet_leader_id = 31;
+    int32 is_wanted = 33;
+    int32 faction = 34;
+    uint32 world_id = 35;
+    int32 battle_state = 36;
+    uint64 zone_uid = 37;
+    repeated _buff_info buff_list = 38;
+    uint32 dominion_official_grade = 39;
+    int32 guild_camp_kind = 40;
+    bool assassin_mode = 41;
+    bool is_sabuk_master = 42;
+}
+
+message GAME_CLIENT_APPEAR_NPC {
+    uint64 uid = 1;
+    int32 classid = 2;
+    int32 type = 3;
+    _vector3 loc = 4;
+    _vector3 dest_pos = 5;
+    _vector3 rot = 6;
+    int32 state = 7;
+    uint64 target_uid = 8;
+    int32 hp = 9;
+    int32 target_type = 10;
+    repeated _buff_info buff_list = 11;
+    int32 applied_crowd_control_type = 12;
+    int32 applied_crowd_control_left_time = 13;
+    float degree = 14;
+    bool event_state = 15;
+    int32 event_state_left_time_ms = 16;
+    int32 target_slot_index = 17;
+    bool create_appear = 18;
+    int32 event_ani_type_index = 19;
+    int32 move_speed = 20;
+    int32 state_elapsed_time = 21;
+    int32 shield = 22;
+    repeated _monster_part_state_info parts_info_list = 23;
+    uint32 cofirmation_drop_item_index = 24;
+    uint64 owner_guild_uid = 25;
+    string owner_guild_name = 26;
+    int32 effect_state = 27;
+    int32 battle_state = 28;
+    uint64 zone_uid = 29;
+    _guild_simple_info owner_guild_info = 30;
+    int32 guild_camp_kind = 31;
+}
+
+message GAME_CLIENT_APPEAR_OBJECT {
+    uint64 uid = 1;
+    int32 object_id = 2;
+    _vector3 loc = 3;
+    _vector3 rot = 4;
+    float degree = 5;
+    bool create_appear = 6;
+    repeated _object_casting_info casting_info = 7;
+    _guild_simple_info owner_guild_info = 8;
+    uint32 object_state = 9;
+    uint32 remaining_use_cnt = 10;
+    uint32 max_use_cnt = 11;
+    uint32 cofirmation_drop_item_index = 12;
+    string owner_nickname = 13;
+    uint64 owner_uid = 14;
+    uint64 zone_uid = 15;
+    uint64 death_penalty_owner_uid = 16;
+    int32 guild_camp_kind = 17;
+    bool steal_protected = 18;
+    int32 item_id = 19;
+}
+
+message GAME_CLIENT_DISAPPEAR_ENTITY {
+    uint64 uid = 1;
+    int32 entity_type = 2;
+    uint32 disappear_reason = 3;
+    uint64 zone_uid = 4;
+}
+
+message GAME_CLIENT_DISAPPEAR_ENTITY_LIST {
+    repeated GAME_CLIENT_DISAPPEAR_ENTITY disappear_list = 1;
+}
+
+message CLIENT_GAME_SYNC_USER {
+    _vector3 loc = 1;
+    _vector3 direction = 2;
+    float moveSpeed = 3;
+    int32 state = 4;
+    int32 animState = 5;
+    int32 heightState = 6;
+    _vector3 dest_loc = 7;
+    _vector3 fix_loc = 8;
+}
+
+message GAME_CLIENT_SYNC_USER {
+    uint64 uid = 1;
+    _vector3 loc = 2;
+    _vector3 direction = 3;
+    float moveSpeed = 4;
+    int32 state = 5;
+    int32 animState = 6;
+    int32 heightState = 7;
+    int32 actionState = 8;
+    float degree = 9;
+    _vector3 dest_loc = 10;
+    int32 battle_state = 11;
+    uint64 zone_uid = 12;
+}
+
+message GAME_CLIENT_SYNCNPC {
+    uint64 npc_uid = 1;
+    int32 state = 2;
+    int32 type = 3;
+    _vector3 dest_pos = 4;
+    uint64 target_uid = 5;
+    int32 target_type = 6;
+    int32 target_slot_index = 7;
+    int32 move_speed = 8;
+    int32 state_elapsed_time = 9;
+    float degree = 10;
+    _vector3 loc = 11;
+    int32 state_event_value = 12;
+    int32 battle_state = 13;
+    uint64 zone_uid = 14;
+}
+
+message GAME_CLIENT_SYNC_ROTATE {
+    uint64 uid = 1;
+    int32 type = 2;
+    float dest_angle = 3;
+}
+
+message GAME_CLIENT_ENTER_MONSTER_EVENT_STATE {
+    uint64 uid = 1;
+    int32 state_time_ms = 2;
+    int32 ani_type_index = 3;
+}
+
+message GAME_CLIENT_LEAVE_MONSTER_EVENT_STATE {
+    uint64 uid = 1;
+}
+
+message _packet_s_sync_user_info_worldserver {
+    uint64 uid = 1;
+    int32 level = 2;
+    int32 combat_point = 3;
+    uint32 escape_stage_id = 4;
+    _vector3 escape_pos = 5;
+    uint64 guild_uid = 6;
+    uint64 party_uid = 7;
+    int32 class_id = 8;
+}
+
+message GAME_CLIENT_MONSTER_COMEBACK {
+    uint64 monster_uid = 1;
+}
+
+message GAME_CLIENT_SYNC_PARTS_STATE {
+    uint64 owner_monster_uid = 1;
+    int32 parts_id = 2;
+    bool is_on = 3;
+    int32 parts_hp = 4;
+}
+
+message GAME_GATEWAY_ATTACH_BLOCK {
+    uint64 user_uid = 1;
+    uint64 zone_uid = 2;
+    int32 attach_block_index = 3;
+    _vector3 user_pos = 4;
+}
+
+message GAME_GATEWAY_DETACH_BLOCK {
+    uint64 user_uid = 1;
+    uint64 zone_uid = 2;
+    int32 detach_block_index = 3;
+}
+
+message GAME_GATEWAY_CHANGE_BLOCK {
+    uint64 user_uid = 1;
+    uint64 zone_uid = 2;
+    int32 prev_block_index = 3;
+    int32 cur_block_index = 4;
+    _vector3 user_pos = 5;
+}
+
+message GAME_GATEWAY_CHANGE_BLOCK_USER_SYNC {
+    uint64 user_uid = 1;
+    uint64 zone_uid = 2;
+    int32 prev_block_index = 3;
+    int32 cur_block_index = 4;
+    _vector3 user_pos = 5;
+    GAME_CLIENT_SYNC_USER sync_packet = 6;
+    GAME_CLIENT_APPEAR_USER appear_packet = 7;
+    GAME_CLIENT_DISAPPEAR_ENTITY disappear_packet = 8;
+}
+
+message GAME_GATEWAY_CHANGE_BLOCK_MONSTER_SYNC {
+    uint64 zone_uid = 1;
+    int32 prev_block_index = 2;
+    int32 cur_block_index = 3;
+    GAME_CLIENT_APPEAR_NPC monster_appear = 4;
+    uint32 broad_cast_range = 5;
+    GAME_CLIENT_DISAPPEAR_ENTITY disappear_packet = 6;
+}
+
+message GAME_GATEWAY_CHANGE_BLOCK_USER_ATTACK {
+    uint64 user_uid = 1;
+    uint64 zone_uid = 2;
+    int32 prev_block_index = 3;
+    int32 cur_block_index = 4;
+    _vector3 user_pos = 5;
+    GAME_CLIENT_APPEAR_USER appear_packet = 6;
+    GAME_CLIENT_DISAPPEAR_ENTITY disappear_packet = 7;
+    GAME_CLIENT_ATTACK attack_packet = 8;
+}
+
+message GAME_GATEWAY_CHANGE_BLOCK_USER_ATTACK_CHAIN {
+    uint64 user_uid = 1;
+    uint64 zone_uid = 2;
+    int32 prev_block_index = 3;
+    int32 cur_block_index = 4;
+    _vector3 user_pos = 5;
+    GAME_CLIENT_APPEAR_USER appear_packet = 6;
+    GAME_CLIENT_ATTACK_CHAIN attack_chain_packet = 7;
+    GAME_CLIENT_DISAPPEAR_ENTITY disappear_packet = 8;
+}
+
+message GAME_CLIENT_NPC_SHIELD_INFO {
+    uint64 uid = 1;
+    uint64 shield = 2;
+    int32 reason = 3;
+}
+
+message GAME_CLIENT_COMBO_RETAIN_END {
+    
+}
+
+message CLIENT_GAME_AUTO_MOVE_DIRECTING {
+    uint32 index = 1;
+}
+
+message GAME_CLIENT_AUTO_MOVE_DIRECTING {
+    int32 entity_type = 1;
+    uint64 entity_uid = 2;
+    uint32 auto_move_id = 3;
+}
+
+message CLIENT_GAME_QUEST_MOVE_POS {
+    _vector3 dest_loc = 1;
+    int32 quest_index = 2;
+}
+
+message CLIENT_GAME_REQUEST_ENTITY_APPEAR_DATA {
+    uint64 uid = 1;
+    int32 entity_type = 2;
+}
+
+message CLIENT_GAME_SYNC_STATE {
+    int32 state = 1;
+    int32 anim_state = 2;
+}
+
+message GAME_CLIENT_SYNC_STATE {
+    int64 user_uid = 1;
+    int32 state = 2;
+    int32 anim_state = 3;
+}
+
+message GAME_CLIENT_CHANGE_USER_STATE {
+    uint64 user_uid = 1;
+    int32 faction = 2;
+}
+
+message CLIENT_GAME_TARGET_BATTLE_INFO {
+    int32 entity_type = 1;
+    uint64 entity_uid = 2;
+}
+
+message GAME_CLIENT_TARGET_BATTLE_INFO {
+    int32 entity_type = 1;
+    uint64 entity_uid = 2;
+    repeated _stat_info stat_info_list = 3;
+}
+
+message GAME_CLIENT_CHANGE_DROP_OBJECT_STATE {
+    uint64 entity_uid = 1;
+    uint64 owner_uid = 2;
+}
+
+message GAME_CLIENT_BATTLE_STATE {
+    uint64 user_uid = 1;
+    int32 battle_state = 2;
+}
+
+message CLIENT_GAME_RECONNECT_SYNC {
+    
+}
+
+message GAME_CLIENT_RECONNECT_SYNC {
+    uint64 zone_uid = 1;
+    uint32 stage_id = 2;
+    uint32 hp = 3;
+    uint32 mana = 4;
+    uint32 vigor = 5;
+    uint32 rage = 6;
+}
+
+message WORLD_GAME_SYNC_OTHERCHARACTER_INFO {
+    uint64 uid = 1;
+}
+
+message CLIENT_GAME_CHARACTER_ALIVE_CHECK {
+    
+}
+
+message GAME_CLIENT_CHARACTER_ALIVE_CHECK {
+    bool alive = 1;
+    uint64 uid = 2;
+    uint32 hp = 3;
+    uint32 mana = 4;
+    uint32 vigor = 5;
+    int32 type = 6;
+    int32 change_reason = 7;
+    uint32 rage = 8;
+}
+
+message GAME_CLIENT_SYNC_ERROR {
+    int32 result = 1;
+}
+
+message CLIENT_GAME_SYNC_ROLL {
+    _vector3 loc = 1;
+    _vector3 direction = 2;
+    _vector3 dest_loc = 3;
+    float moveSpeed = 4;
+    int32 anim_state = 5;
+}
+
+message GAME_CLIENT_SYNC_ROLL {
+    int32 result = 1;
+    _vector3 loc = 2;
+    _vector3 direction = 3;
+    _vector3 dest_loc = 4;
+    float moveSpeed = 5;
+    uint64 server_time_ms = 6;
+    int32 anim_state = 7;
+}
+
+message GAME_CLIENT_NTF_SYNC_NPC_GUILD_INFO {
+    uint64 uid = 1;
+    _guild_simple_info owner_guild_info = 2;
+    int32 guild_camp_kind = 3;
+}
+
+message GAME_CLIENT_NTF_SYNC_OBJECT_GUILD_INFO {
+    uint64 uid = 1;
+    _guild_simple_info owner_guild_info = 2;
+    int32 guild_camp_kind = 3;
+}
+
+message CLIENT_GAME_ERROR_STATE {
+    int32 state_type = 1;
+    int64 param01 = 2;
+    int64 param02 = 3;
+}
+
+message CLIENT_GAME_REQUEST_APPEAR_DATA {
+    int32 entity_type = 1;
+}
+
+message GAME_GATEWAY_RECV_BLOCK {
+    uint64 character_uid = 1;
+    bool block_flag = 2;
+}

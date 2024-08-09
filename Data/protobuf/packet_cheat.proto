@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _cheat_user_pos {
+    uint64 user_uid = 1;
+    int32 stage_id = 2;
+    int32 channel_id = 3;
+    _vector3 target_pos = 4;
+}
+
+message WORLD_GAME_CHEAT_REQUEST_USER_POS {
+    uint64 user_uid = 1;
+    uint64 target_user_uid = 2;
+}
+
+message GAME_WORLD_CHEAT_REQUEST_USER_POS {
+    uint64 user_uid = 1;
+    _cheat_user_pos target_user_info = 2;
+    int32 result = 3;
+}
+
+message WORLD_GAME_CHEAT_NOTIFY_USER_POS {
+    uint64 user_uid = 1;
+    _cheat_user_pos target_user_info = 2;
+    int32 result = 3;
+}
+
+message GAME_CLIENT_CHEAT_NOTIFY_USER_POS {
+    _cheat_user_pos target_user_info = 1;
+    int32 result = 2;
+}
+
+message _cheat_user_info {
+    uint64 user_uid = 1;
+    int32 user_state = 2;
+    int32 zonegroup_index = 3;
+    uint64 zone_uid = 4;
+    int32 zone_state = 5;
+    int32 stage_id = 6;
+    int32 channel_id = 7;
+}
+
+message GAME_WORLD_CHEAT_REQUEST_USER_INFO {
+    uint64 request_user_uid = 1;
+    string target_name = 2;
+}
+
+message WORLD_GAME_CHEAT_NOTIFY_USER_INFO {
+    uint64 request_user_uid = 1;
+    bool find_flag = 2;
+    _cheat_user_info target_user_info = 3;
+}
+
+message WORLD_GAME_CHEAT_CHANNEL_ZONE_INFO {
+    uint64 request_user_uid = 1;
+    int32 attach_user_count = 2;
+    int32 wait_login_user_count = 3;
+    int32 wait_warp_user_count = 4;
+    int32 waiting_enter_user_count = 5;
+    int32 waiting_register_user_count = 6;
+}
+
+message GAME_WORLD_CHEAT_CHANGE_SETTLEMENT_TIME {
+    int32 change_settlement_time = 1;
+    int32 is_local_time_use = 2;
+}
+
+message GAME_WORLD_CHEAT_TRANSFER_INFO_DELETE {
+    uint64 user_uid = 1;
+}
+
+message WEBAPI_LOG_CHEAT_MAKE {
+    int32 count = 1;
+}
+
+message AGGRO_INFO {
+    uint64 uid = 1;
+    int32 entity_type = 2;
+    int32 aggro_point = 3;
+}
+
+message CLIENT_GAME_AGGRO_INFO {
+    uint64 monster_uid = 1;
+}
+
+message GAME_CLIENT_AGGRO_INFO {
+    repeated AGGRO_INFO aggro_info = 1;
+}
+
+message WORLD_GAME_NTF_CHEAT_ACCOUNT_GRADE {
+    uint64 user_uid = 1;
+    int32 account_grade = 2;
+}
+
+message GAME_CLIENT_NTF_CHEAT_ACCOUNT_GRADE {
+    int32 account_grade = 1;
+}

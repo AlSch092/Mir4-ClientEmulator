@@ -1,0 +1,373 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+import "packet_guild_war_common.proto";
+
+message _siege_ranking_info {
+    uint64 guild_uid = 1;
+    uint64 user_uid = 2;
+    string user_name = 3;
+    int32 guild_camp_kind = 4;
+    uint32 guild_mark = 5;
+    uint32 guild_mark_edge = 6;
+    uint32 score = 7;
+    uint32 ranking = 8;
+    uint32 player_kill_score = 9;
+    uint32 occupation_score = 10;
+    uint32 monster_kill_score = 11;
+    uint32 user_status = 12;
+}
+
+message _siege_info_in_normal {
+    int64 defense_past_bidding_value = 2;
+    int64 offense_past_bidding_value = 3;
+}
+
+message _siege_info_in_auction {
+    _guild_simple_info first_candidate_guild_simple_info = 1;
+    int64 first_candidate_guild_total_combat_point = 2;
+    int64 first_candidate_bidding_value = 3;
+    _guild_simple_info second_candidate_guild_simple_info = 4;
+    int64 second_candidate_guild_total_combat_point = 5;
+    int64 second_candidate_bidding_value = 6;
+    int32 my_guild_candidate_rank = 7;
+    int64 my_guild_coin = 8;
+    int32 bidding_cooltime_remain_second = 9;
+    int64 auction_end_time = 10;
+}
+
+message _siege_battle_guilds_simple_info {
+    _guild_simple_info defense_main_guild_simple_info = 1;
+    _guild_simple_info offense_main_guild_simple_info = 2;
+}
+
+message _siege_revival_flag_info {
+    uint64 object_uid = 1;
+    int32 object_tid = 2;
+    uint64 ownner_guild_uid = 3;
+    uint64 point_ownner_guild_uid = 4;
+    uint32 cur_point = 5;
+    int32 lock_time_remain_second = 6;
+}
+
+message _siege_weapon_info {
+    int32 monster_tid = 1;
+    int32 production_remain_second = 2;
+}
+
+message _siege_board_team_user_count_info {
+    uint32 defense_user_total_count = 1;
+    uint32 defense_alliance_user_count = 2;
+    uint32 offense_user_total_count = 3;
+    uint32 offense_alliance_user_count = 4;
+}
+
+message _siege_user_point_info {
+    uint32 player_kill_score = 1;
+    uint32 occupation_score = 2;
+    uint32 monster_kill_score = 3;
+}
+
+message _siege_event_info {
+    int32 siege_tid = 1;
+    int32 siege_event_type = 2;
+    uint64 start_time = 3;
+    uint64 end_time = 4;
+}
+
+message _siege_sync_event_info {
+    int32 siege_tid = 1;
+    uint64 siege_period_start_time = 2;
+    repeated _siege_event_info siege_event_info_list = 3;
+}
+
+message GAME_WORLD_REQ_SIEGE_OCCUPY {
+    int32 siege_tid = 1;
+    uint64 win_guild_uid = 2;
+    uint64 siege_zone_uid = 3;
+}
+
+message WORLD_GAME_ACK_SIEGE_OCCUPY {
+    uint32 result = 1;
+    _siege_info siege_info = 2;
+    uint64 siege_zone_uid = 3;
+}
+
+message GAME_CLIENT_NTF_SIEGE_ZONE_ENTER_INFO {
+    _siege_info siege_info = 1;
+    _siege_battle_guilds_simple_info siege_battle_guilds_simple_info = 2;
+    int32 guild_camp_kind = 3;
+    _siege_user_point_info siege_user_point_info = 5;
+    repeated _siege_revival_flag_info siege_revival_flag_info_list = 6;
+    repeated _siege_weapon_info siege_weapon_info_list = 7;
+    repeated _guild_war_board_command_info command_info_list = 8;
+    int32 siege_run_time_minute = 9;
+    repeated uint64 defnse_alliance_guild_uid_list = 10;
+    repeated uint64 offense_alliance_guild_uid_list = 11;
+}
+
+message WORLD_CLIENT_NTF_SIEGE_BATTLE_STATUS {
+    int32 siege_tid = 1;
+    int32 siege_battle_status = 2;
+}
+
+message WORLD_GAME_NTF_PREPARE_SIEGE_BATTLE {
+    uint64 siege_zone_uid = 1;
+    _siege_info siege_info = 2;
+    _siege_battle_guilds_simple_info siege_battle_guilds_simple_info = 3;
+}
+
+message WORLD_GAME_NTF_START_SIEGE_BATTLE {
+    uint64 siege_zone_uid = 1;
+    int32 siege_tid = 2;
+}
+
+message WORLD_CLIENT_NTF_START_SIEGE_BATTLE {
+    int32 siege_tid = 1;
+}
+
+message WORLD_GAME_NTF_TIMEOUT_SIEGE_BATTLE {
+    _siege_info siege_info = 1;
+    uint64 siege_zone_uid = 2;
+}
+
+message WORLD_GAME_NTF_SIEGE_OCCUPY_CANCEL {
+    _siege_info siege_info = 1;
+    uint64 siege_zone_uid = 2;
+}
+
+message WORLD_CLIENT_NTF_RESULT_SIEGE_TO_ALL_USER {
+    _siege_info siege_info = 1;
+}
+
+message WORLD_CLIENT_NTF_SIEGE_OCCUPY_CANCEL_TO_ALL_USER {
+    int32 siege_tid = 1;
+}
+
+message WORLD_CLIENT_NTF_CANCEL_SIEGE_TO_ALL_USER {
+    _siege_info siege_info = 1;
+}
+
+message GAME_CLIENT_NTF_RESULT_SIEGE_TO_BATTLE_USER {
+    int32 win_type = 1;
+    _guild_simple_info occupation_guild_simple_info = 2;
+    repeated _siege_ranking_info rank_info_list = 3;
+    string mvp_user_name = 4;
+}
+
+message WORLD_GAME_NTF_CLOSE_SIEGE_BATTLE {
+    uint64 siege_zone_uid = 1;
+    int32 siege_tid = 2;
+}
+
+message WORLD_GAME_NTF_SIEGE_BATTLE_STOP {
+    _siege_info siege_info = 1;
+    uint64 siege_zone_uid = 2;
+}
+
+message CLIENT_WORLD_REQ_SIEGE_INFO_LIST {
+    
+}
+
+message WORLD_CLIENT_ACK_SIEGE_INFO_LIST {
+    repeated _siege_info siege_info_list = 1;
+}
+
+message WORLD_GAME_SYNC_SIEGE_INFO_IN_ZONE_GROUP {
+    _siege_info siege_info = 1;
+    int32 siege_tid = 2;
+    _guild_simple_info occupation_guild_info = 3;
+}
+
+message WORLD_GAME_SYNC_SIEGE_INFO_LIST_IN_ZONE_GROUP {
+    repeated _siege_info siege_info_list = 1;
+    repeated WORLD_GAME_SYNC_SIEGE_INFO_IN_ZONE_GROUP occupation_guild_info_list = 2;
+}
+
+message SERVER_CLIENT_NTF_NOTICE_SIEGE {
+    int32 siege_tid = 1;
+    uint32 notice_type = 2;
+    int32 value = 3;
+    uint64 guild_uid = 4;
+    string defense_guild_name = 5;
+    string offense_guild_name = 6;
+}
+
+message CLIENT_GAME_REQ_SIEGE_RANK_INFO {
+    
+}
+
+message GAME_CLIENT_ACK_SIEGE_RANK_INFO {
+    uint32 result = 1;
+    repeated _siege_ranking_info rank_info_list = 2;
+}
+
+message GAME_WORLD_NTF_SIEGE_MAIL_RANK_INFO {
+    int32 siege_tid = 1;
+    int32 win_type = 2;
+    _guild_simple_info defense_guild_simple_info = 3;
+    _guild_simple_info offense_guild_simple_info = 4;
+    repeated _siege_ranking_info rank_info_list = 5;
+    string mvp_user_name = 6;
+}
+
+message CLIENT_WORLD_REQ_SIEGE_MAIL_RANK_INFO {
+    int32 siege_tid = 1;
+}
+
+message WORLD_CLIENT_ACK_SIEGE_MAIL_RANK_INFO {
+    uint32 result = 1;
+    int32 win_type = 2;
+    _guild_simple_info defense_guild_simple_info = 3;
+    _guild_simple_info offense_guild_simple_info = 4;
+    repeated _siege_ranking_info rank_info_list = 5;
+    string mvp_user_name = 6;
+}
+
+message CLIENT_WORLD_REQ_SIEGE_AUCTION_BIDDING {
+    int32 siege_tid = 1;
+    int64 bidding_value = 2;
+}
+
+message WORLD_CLIENT_ACK_SIEGE_AUCTION_BIDDING {
+    uint32 result = 1;
+    int32 siege_tid = 2;
+    _siege_info_in_auction siege_info_in_auction = 3;
+}
+
+message WORLD_CLIENT_NTF_SIEGE_AUCTION_BIDDING {
+    int32 siege_tid = 1;
+    _siege_info_in_auction siege_info_in_auction = 2;
+    string bidding_user_name = 3;
+}
+
+message WORLD_CLIENT_NTF_SIEGE_AUCTION_CANDIDATE_STATUS {
+    int32 siege_tid = 1;
+    uint32 candidate_status = 2;
+}
+
+message GAME_CLIENT_NTF_SIEGE_BOARD_INFO {
+    int32 info_req_kind = 1;
+    bool is_modify = 2;
+    _siege_board_team_user_count_info team_user_count_info = 3;
+    repeated _guild_war_board_user_view_info user_view_info_list = 4;
+    repeated _guild_war_board_command_info command_info_list = 5;
+    _guild_war_board_watcher_ui_info watcher_ui_info = 6;
+}
+
+message GAME_CLIENT_NTF_SIEGE_POINT_INFO {
+    _siege_user_point_info siege_user_point_info = 1;
+    int32 point_acquire_type = 2;
+    int32 acquire_guild_camp_kind = 3;
+    uint64 acquire_user_uid = 4;
+    string attacker_player_name = 5;
+    string target_player_name = 6;
+    int32 target_monster_tid = 7;
+    uint64 acquire_guild_uid = 8;
+}
+
+message GAME_CLIENT_NTF_SIEGE_REVIVAL_FLAG_INFO {
+    _siege_revival_flag_info siege_revival_flag_info = 1;
+}
+
+message CLIENT_GAME_REQ_SIEGE_WEAPON_BUY {
+    int32 buy_monster_tid = 1;
+}
+
+message GAME_CLIENT_ACK_SIEGE_WEAPON_BUY {
+    uint32 result = 1;
+    int32 reproduction_remain_second = 2;
+}
+
+message GAME_CLIENT_NTF_SIEGE_WEAPON_BUY {
+    string buyer_user_name = 1;
+    int32 buy_monster_tid = 2;
+}
+
+message GAME_WORLD_NTF_SIEGE_WEAPON_BUY {
+    int32 siege_tid = 1;
+    uint64 buyer_guild_uid = 2;
+    uint64 buyer_user_uid = 3;
+    string buyer_user_name = 4;
+    repeated _cost_info use_cost_info = 5;
+}
+
+message GAME_CLIENT_NTF_SIEGE_ALLIANCE_GUILD_UID_LIST {
+    uint64 guild_uid = 1;
+    repeated uint64 alliance_guild_uid_list = 2;
+}
+
+message WORLD_GAME_NTF_GUILD_MASTER_SIEGE_WIN_BY_AUCTION_FAIL {
+    int32 siege_tid = 1;
+    uint64 guild_uid = 2;
+}
+
+message CLIENT_WORLD_REQ_SIEGE_EVENT_INFO {
+    
+}
+
+message WORLD_CLIENT_ACK_SIEGE_EVENT_INFO {
+    repeated _siege_event_info siege_event_info_list = 1;
+}
+
+message WORLD_CLIENT_NTF_SIEGE_EVENT_INFO {
+    repeated _siege_event_info siege_event_info_list = 1;
+}
+
+message WORLD_GAME_NTF_SIEGE_SYNC_EVENT_INFO_IN_ZONE_GROUP {
+    _siege_sync_event_info siege_sync_event_info = 1;
+}
+
+message WORLD_GAME_NTF_SIEGE_SYNC_EVENT_INFO_LIST_IN_ZONE_GROUP {
+    repeated _siege_sync_event_info siege_sync_event_info_list = 1;
+}
+
+message GAME_WORLD_SIEGE_EVE_EVENT_SELECT_CHEERING_TEAM {
+    int64 user_uid = 1;
+    int32 user_event_id = 2;
+    int32 select_cheering_team = 3;
+    int32 cheering_count = 4;
+}
+
+message WORLD_GAME_SIEGE_EVE_EVENT_SELECT_CHEERING_TEAM {
+    int64 user_uid = 1;
+    int32 user_event_id = 2;
+    int32 cheering_count = 3;
+    int32 select_cheering_team = 4;
+    int32 total_defense_cheering_count = 5;
+    int32 total_siege_cheering_count = 6;
+}
+
+message WORLD_GAME_SIEGE_EVE_EVENT_UPDATE_TOTAL_CHEERING_COUNT {
+    int32 total_defense_cheering_count = 1;
+    int32 total_siege_cheering_count = 2;
+    int32 is_reset_next_piriod = 3;
+}
+
+message GAME_WORLD_SIEGE_EVE_EVENT_CHECT_TOTAL_CHEERING_COUNT_RESET {
+    
+}
+
+message _siege_watcher_trace_user_info {
+    uint64 user_uid = 1;
+    int32 trace_user_status = 2;
+    _vector3 cur_pos = 3;
+}
+
+message CLIENT_GAME_REQ_SIEGE_WATCHER_TRACE_USER {
+    bool start = 1;
+    string user_name = 2;
+}
+
+message GAME_CLIENT_ACK_SIEGE_WATCHER_TRACE_USER {
+    uint32 result = 1;
+    bool start = 2;
+    string user_name = 3;
+    _siege_watcher_trace_user_info siege_watcher_trace_user_info = 4;
+}
+
+message GAME_CLIENT_NTF_SIEGE_WATCHER_TRACE_USER {
+    _siege_watcher_trace_user_info siege_watcher_trace_user_info = 1;
+}

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message CLIENT_GAME_DUEL_REQUEST {
+    int64 target_uid = 1;
+}
+
+message GAME_CLIENT_DUEL_REQUEST {
+    int32 result = 1;
+    int64 target_uid = 2;
+}
+
+message GAME_CLIENT_DUEL_REQUEST_INFO {
+    int64 request_uid = 1;
+    int64 request_ms_time = 2;
+}
+
+message CLIENT_GAME_DUEL_REQUEST_AGREE {
+    int64 request_uid = 1;
+    bool agree = 2;
+}
+
+message GAME_CLIENT_DUEL_REQUEST_AGREE {
+    int32 result = 1;
+    bool agree = 2;
+}
+
+message GAME_CLIENT_DUEL_START {
+    int64 flag_obj_uid = 1;
+    int64 target_uid = 2;
+    int64 duel_ms_time = 3;
+}
+
+message GAME_CLIENT_DUEL_END {
+    int64 winner_uid = 1;
+    int64 loser_uid = 2;
+}
+
+message CLIENT_GAME_DUEL_GIVEUP {
+    
+}
+
+message GAME_CLIENT_DUEL_UPDATE {
+    int64 flag_obj_uid = 1;
+    int64 target_uid = 2;
+}
+
+message GAME_CLIENT_DUEL_RINGOUT_TIME_START {
+    int64 user_uid = 1;
+    uint32 reason = 2;
+    int64 duel_ms_time = 3;
+}
+
+message GAME_CLIENT_DUEL_RINGOUT_TIME_END {
+    int64 user_uid = 1;
+    uint32 reason = 2;
+}

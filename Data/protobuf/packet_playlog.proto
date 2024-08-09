@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _playlog_pk_user_info {
+    int64 user_uid = 1;
+    int32 class_id = 2;
+    string nick_name = 3;
+    int32 combat_point = 4;
+}
+
+message GAME_CLIENT_PLAYLOG_PK_RESULT {
+    uint64 log_time = 1;
+    bool win_result = 2;
+    _playlog_pk_user_info target_info = 3;
+    _guild_name_ui_info target_guild_info = 4;
+    _simple_cost_info loss_cost_info = 5;
+    repeated _simple_item_info loss_item_info_list = 6;
+}

@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_GACHA_INFO {
+    
+}
+
+message GAME_CLIENT_GACHA_INFO {
+    repeated _gacha_info gacha_info_list = 1;
+}
+
+message CLIENT_GAME_GACHA_PULL {
+    uint32 gacha_type = 1;
+    uint32 gacha_pull_type = 2;
+    uint32 money_type = 3;
+    bool is_many_count = 4;
+    uint32 shop_goods_id = 5;
+    uint32 shop_goods_ver = 6;
+}
+
+message GAME_CLIENT_GACHA_PULL {
+    int32 result = 1;
+    _gacha_info gacha_info = 2;
+    repeated _cost_info costInfos = 3;
+    repeated _character_inven_item update_items = 4;
+    _stack_item_info use_item_info = 5;
+    repeated _simple_item_info gacha_items = 6;
+    uint32 gacha_pull_type = 7;
+}
+
+message GAME_CLIENT_GACHA_PULL_EVENT {
+    int32 result = 1;
+    _user_event_info event_info = 2;
+    repeated _cost_info costInfos = 3;
+    repeated _character_inven_item update_items = 4;
+    _stack_item_info use_item_info = 5;
+    repeated _simple_item_info gacha_items = 6;
+    uint32 gacha_pull_type = 7;
+}
+
+message GAME_CLIENT_BONUS_GACHA_EVENT_START {
+    repeated int32 gacha_types = 1;
+    uint64 end_time = 2;
+}
+
+message GAME_CLIENT_BONUS_GACHA_EVENT_END {
+    repeated int32 gacha_types = 1;
+}

@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_HOLY_STUFF_INFO {
+    
+}
+
+message GAME_CLIENT_HOLY_STUFF_INFO {
+    repeated _holy_stuff_info _holy_stuff_infos = 1;
+}
+
+message CLIENT_GAME_HOLY_STUFF_SLOT_LEVELUP {
+    int32 holy_stuff_id = 1;
+}
+
+message GAME_CLIENT_HOLY_STUFF_SLOT_LEVELUP {
+    int32 result = 1;
+    int32 holy_stuff_id = 2;
+    _holy_stuff_slot_info holy_stuff_slot_info = 3;
+    _cost_info cost_Infos = 4;
+    repeated _stack_item_info del_item_list = 5;
+    bool is_success = 6;
+}
+
+message CLIENT_GAME_HOLY_STUFF_GRADE_UPGRADE {
+    int32 holy_stuff_id = 1;
+}
+
+message GAME_CLIENT_HOLY_STUFF_GRADE_UPGRADE {
+    int32 result = 1;
+    int32 holy_stuff_id = 2;
+    int32 holy_stuff_grade = 3;
+    _cost_info cost_Infos = 4;
+    repeated _stack_item_info del_item_list = 5;
+}
+
+message CLIENT_GAME_HOLY_STUFF_OPEN {
+    int32 holy_stuff_id = 1;
+}
+
+message GAME_CLIENT_HOLY_STUFF_OPEN {
+    int32 result = 1;
+    int32 holy_stuff_id = 2;
+    int32 holy_stuff_grade = 3;
+}

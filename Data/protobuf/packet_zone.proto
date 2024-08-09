@@ -1,0 +1,392 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+import "packet_guild_war_sabuk.proto";
+
+message _channel_info {
+    int32 channel_index = 1;
+    int32 party_member_count = 2;
+    int32 status = 3;
+    int32 boss_tid = 4;
+}
+
+message _raid_reward_info {
+    int32 item_index = 1;
+    int32 count = 2;
+}
+
+message _user_raid_reward_info {
+    uint64 user_uid = 1;
+    repeated _raid_reward_info default_reward_info = 2;
+    repeated _raid_reward_info random_reward_info = 3;
+    uint32 reward_exp = 4;
+    uint32 reward_cost_type = 5;
+    uint32 reward_cost_value = 6;
+    string nickname = 7;
+    uint32 class_id = 8;
+    uint32 level = 9;
+    uint32 reward_guild_party_cost_type = 10;
+    uint32 reward_guild_party_cost_value = 11;
+}
+
+message _packet_s_wg_request_remove_zone {
+    uint64 zone_unique = 1;
+}
+
+message _packet_s_gw_remove_zone_result {
+    uint64 zone_unique = 1;
+    bool remove_result = 2;
+}
+
+message CLIENT_GAME_CHANNEL_MOVE {
+    uint64 user_uid = 1;
+    int32 channel_index = 2;
+}
+
+message GAME_WORLD_CHANNEL_MOVE_CHECK {
+    uint64 user_uid = 1;
+    _casting_info casting_info = 2;
+}
+
+message WORLD_GAME_CHANNEL_MOVE_CHECK {
+    uint64 user_uid = 1;
+    _casting_info casting_info = 3;
+}
+
+message _packet_game_world_channel_move {
+    uint64 user_uid = 1;
+    int32 channel_index = 2;
+    _vector3 loc = 3;
+}
+
+message WORLD_CLIENT_CHANNEL_LIST {
+    uint64 user_uid = 1;
+    int32 cur_channel_index = 2;
+    repeated _channel_info channel_info = 3;
+}
+
+message CLIENT_WORLD_CHANNEL_LIST {
+    uint64 user_uid = 1;
+}
+
+message GAME_CLIENT_ENTER_STORY_ZONE {
+    uint64 enter_user_uid = 1;
+    int32 stageid = 2;
+    _vector3 loc = 3;
+}
+
+message _packet_s_enter_phasing_zone {
+    uint64 enter_user_uid = 1;
+    int32 enter_phasing_id = 2;
+    int32 stageid = 3;
+    _vector3 loc = 4;
+}
+
+message _packet_s_leave_phasing_zone {
+    uint64 leave_user_uid = 1;
+    int32 stageid = 2;
+    _vector3 loc = 3;
+}
+
+message GAME_CLIENT_WORLD_BOSS_RAID_COUNT_DOWN {
+    int32 left_time_sec = 1;
+}
+
+message CLIENT_WORLD_INSTANCE_DUNGEON_ENTER {
+    uint64 uid = 1;
+    uint32 world_boss_raid_id = 2;
+    bool is_party = 3;
+}
+
+message WORLD_CLIENT_INSTANCE_DUNGEON_ENTER_ERROR {
+    uint64 receive_user_id = 1;
+    int32 error_id = 2;
+}
+
+message CLIENT_GAME_INSTANCE_ZONE_OUT {
+    uint64 uid = 1;
+    int32 out_stage_type = 2;
+}
+
+message GAME_CLIENT_CHANNEL_MOVE_FAIL {
+    uint64 user_uid = 1;
+    int32 error_id = 2;
+}
+
+message _packet_s_notify_stage_clear_to_world_server {
+    uint64 zone_uid = 1;
+}
+
+message GAME_CLIENT_REWARD_RECEVE_INFO {
+    repeated _raid_reward_receive_info receive_info = 1;
+}
+
+message WORLD_GAME_QRY_CREATE_ZONE_v2 {
+    int32 zonegroup_index = 1;
+    uint64 zoneUnique = 2;
+    int32 stageId = 3;
+    int32 phasing_id = 4;
+    int32 channel_index = 5;
+    _siege_info siege_info = 6;
+    uint64 hunting_squad_uid = 7;
+    repeated uint64 hunting_squad_member_list = 8;
+    _strong_point_server_info strong_point_server_info = 10;
+    _guild_war_npc_info guild_war_npc_info = 11;
+    _sanctum_server_info sanctum_server_info = 12;
+    _dark_altar_server_info dark_altar_server_info = 13;
+    _plunder_server_info plunder_server_info = 14;
+    _sabuk_zone_create_info sabuk_zone_create_info = 15;
+}
+
+message GAME_WORLD_REP_CREATE_ZONE {
+    uint32 zonegroup_index = 1;
+    int64 zoneUnique = 2;
+    int32 result = 3;
+}
+
+message GAME_CLIENT_ATTACK_NPC {
+    uint64 npc_uid = 1;
+    int32 attack_id = 2;
+    _vector3 cur_pos = 3;
+    uint64 target_uid = 4;
+    int32 target_type = 5;
+    _vector3 dest_pos = 6;
+    bool is_skill_move = 7;
+    bool is_link_attack = 8;
+    float degree = 9;
+}
+
+message WORLD_CLIENT_WAITING_ZONE {
+    uint32 stage_id = 1;
+    uint32 location_id = 2;
+    int32 warp_method = 3;
+    uint32 warp_arg = 4;
+    uint32 need_item_id = 5;
+}
+
+message CLIENT_WORLD_REGISTER_WAITING_ZONE {
+    uint64 uid = 1;
+    uint32 location_id = 2;
+    int32 warp_method = 3;
+    uint32 warp_arg = 4;
+}
+
+message CLIENT_WORLD_CANCEL_REGISTER_WAITING_ZONE {
+    uint64 uid = 1;
+    uint64 zone_uid = 2;
+}
+
+message WORLD_CLIENT_REGISTER_WAITING_ZONE_FAIL {
+    int32 error_id = 1;
+}
+
+message WORLD_CLIENT_WAITING_ZONE_INFO {
+    uint32 stage_id = 1;
+    uint32 location_id = 2;
+    uint64 zone_uid = 3;
+    int32 estimated_time = 4;
+    int32 waiting_number = 5;
+}
+
+message WORLD_CLIENT_WAITING_ZONE_ENTER_READY {
+    uint32 stage_id = 1;
+    uint32 location_id = 2;
+    uint64 zone_uid = 3;
+    int32 end_time = 4;
+}
+
+message CLIENT_WORLD_CANCEL_WAITING_ZONE_ENTER {
+    uint64 uid = 1;
+    uint64 zone_uid = 2;
+}
+
+message WORLD_CLIENT_CANCEL_ALL_WAITING_ZONE {
+    int32 error_id = 1;
+}
+
+message _packet_c_warpZone {
+    uint64 uid = 1;
+    uint64 uid_um = 2;
+    uint64 zone_unique = 3;
+}
+
+message GAME_CLIENT_WARP_START {
+    _characterInfo CharInfo = 1;
+    int32 CombatPoint = 2;
+    repeated _stat_info stat = 3;
+    uint64 zone_uid = 4;
+    bool pvp_enable = 5;
+    bool assassin_mode = 6;
+}
+
+message GAME_CLIENT_MONSTER_STRING {
+    int32 first_string_id = 1;
+    int32 second_string_id = 2;
+}
+
+message GAME_CLIENT_DEBUG_FORCE_SYNC_MONSTER {
+    uint64 monster_uid = 1;
+    _vector3 loc = 2;
+}
+
+message GAME_CLIENT_DEBUG_FORCE_SYNC_USER {
+    _vector3 loc = 1;
+    int32 prevBlockId = 2;
+    int32 currBlockId = 3;
+}
+
+message GAME_CLIENT_CHANGE_FEATURE {
+    uint64 uid = 1;
+    int32 weapon_id = 2;
+    int32 costume_id = 3;
+    int32 weapon_level = 4;
+    int32 hair_color_index_id = 5;
+    int32 clothes_color_index = 6;
+    repeated _equip_costume_info equip_costume_list = 7;
+}
+
+message GAME_CLIENT_START_TIMER {
+    int64 remainingTime = 1;
+    int32 timer_index = 2;
+}
+
+message GAME_CLIENT_NOTIFY_STAGE_CLEAR {
+    repeated _raid_reward_info default_reward_info = 1;
+    repeated _raid_reward_info random_reward_info = 2;
+    uint32 raid_id = 3;
+    uint32 sequence_id = 4;
+    repeated _user_raid_reward_info user_reward_info = 5;
+    uint32 end_time = 6;
+    uint32 gain_point = 7;
+}
+
+message GAME_CLIENT_NOTIFY_STAGE_CLEAR_UPDATE_ITEM {
+    repeated _character_inven_item update_items = 1;
+}
+
+message GAME_CLIENT_NOTIFY_STAGE_FAIL {
+    uint32 fail_result = 1;
+    uint32 sequence_id = 2;
+    uint32 raid_id = 3;
+    uint32 die_count = 4;
+    int32 boss_id = 5;
+    repeated _cost_info costInfos = 6;
+    repeated _character_inven_item dropitems = 7;
+    int32 boss_type = 8;
+    uint32 gain_point = 9;
+    int32 wave_num = 10;
+}
+
+message CLIENT_GAME_MAP_WAYPOINT_OPEN {
+    int32 waypoint_id = 1;
+}
+
+message GAME_CLIENT_MAP_WAYPOINT_OPEN {
+    int32 result = 1;
+    int32 waypoint_id = 2;
+}
+
+message GAME_CLIENT_CHANNEL_INFO {
+    int32 cur_channel_index = 1;
+}
+
+message WORLD_GATEWAY_NOTIFY_REMOVE_ZONE {
+    uint64 zone_unique = 1;
+}
+
+message CLIENT_GAME_ENTER_OCCUPATION_BATTLE_FIELD {
+    uint32 occupation_id = 1;
+}
+
+message GAME_WORLD_ENTER_OCCUPATION_BATTLE_FIELD {
+    uint32 occupation_id = 1;
+    uint64 user_uid = 2;
+    uint32 warp_method = 3;
+}
+
+message UserDropReceiveInfo {
+    uint64 receive_user_uid = 1;
+    repeated _simple_item_info item_receive_info = 2;
+}
+
+message GAME_CLIENT_MEMBER_ITEM_DROP_RECEIVE_LIST {
+    repeated UserDropReceiveInfo drop_receive_info_list = 1;
+}
+
+message CLIENT_GAME_REQUEST_MEMBER_DROP_RECEIVE_LIST {
+    
+}
+
+message GAME_WORLD_STAGE_FAIL {
+    uint64 zone_unique = 1;
+}
+
+message CLIENT_GAME_ENTER_PLUNDER_BATTLE_FIELD {
+    uint32 plunder_tid = 1;
+}
+
+message GAME_WORLD_ENTER_PLUNDER_BATTLE_FIELD {
+    uint32 plunder_tid = 1;
+    uint64 user_uid = 2;
+    uint32 warp_method = 3;
+}
+
+message stage_mon_gen_info {
+    int32 stage_mon_gen_id = 1;
+    int64 despawn_time = 2;
+}
+
+message GAME_CLIENT_STAGE_MON_GEN_LIST {
+    repeated stage_mon_gen_info info_list = 2;
+    repeated int32 stage_mon_gen_id_list = 1;
+}
+
+message GAME_CLIENT_STAGE_MON_GEN_ADD {
+    repeated stage_mon_gen_info info_list = 2;
+    repeated int32 stage_mon_gen_id_list = 1;
+}
+
+message GAME_CLIENT_STAGE_MON_GEN_DEL {
+    repeated int32 stage_mon_gen_id_list = 1;
+}
+
+message GAME_CLIENT_MONSTER_SYSTEM_MESSAGE {
+    int32 first_string_id = 1;
+}
+
+message GAME_CLIENT_MONSTER_STRING_2 {
+    int32 first_string_id = 1;
+    string second_string = 2;
+}
+
+message CLIENT_GAME_ENTER_SABUK_BATTLE_FIELD {
+    uint32 sabuk_round_tid = 1;
+}
+
+message GAME_WORLD_ENTER_SABUK_BATTLE_FIELD {
+    uint32 sabuk_round_tid = 1;
+    uint64 user_uid = 2;
+    uint32 warp_method = 3;
+}
+
+message GAME_CLIENT_ZONE_MONSTER_ATTACKER_LIST {
+    uint64 zone_uid = 1;
+    uint32 zone_tid = 2;
+    uint64 monster_uid = 3;
+    uint64 monster_guild_uid = 4;
+    repeated uint64 attacker_uid = 5;
+}
+
+message GAME_CLIENT_ZONE_MONSTER_ATTACKER_ADD {
+    uint64 monster_uid = 1;
+    uint64 monster_guild_uid = 2;
+    uint64 attacker_uid = 3;
+}
+
+message GAME_CLIENT_ZONE_MONSTER_ATTACKER_DEL {
+    uint64 monster_uid = 1;
+    uint64 monster_guild_uid = 2;
+    repeated uint64 attacker_uid = 3;
+}

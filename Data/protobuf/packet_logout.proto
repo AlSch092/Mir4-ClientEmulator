@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message WORLD_GAME_REQUEST_DICONNECT_USER {
+    uint64 uid = 1;
+    uint32 error_id = 2;
+    uint32 reason = 3;
+}
+
+message GAME_WORLD_CMD_LOGOUT_USER {
+    uint64 uid = 1;
+}
+
+message WORLD_GATEWAY_REQUEST_DICONNECT_USER {
+    uint64 uid = 1;
+    uint32 error_id = 2;
+    uint32 reason = 3;
+    uint64 account_uid = 4;
+    string auth_key = 5;
+}
+
+message CLIENT_GAME_REQUEST_LOGOUT {
+    uint32 request_type = 1;
+}
+
+message GAME_CLIENT_SUCCESS_LOGOUT {
+    uint32 request_type = 1;
+}
+
+message GAME_CLIENT_LOGOUT_CANCEL {
+    uint32 cancel_reason = 1;
+}
+
+message GAME_WORLD_REQUEST_LOGOUT {
+    uint32 request_type = 1;
+}
+
+message WORLD_LOBBY_DICONNECT_USER {
+    int32 reason = 1;
+}

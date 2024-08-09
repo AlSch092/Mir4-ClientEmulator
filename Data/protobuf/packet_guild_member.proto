@@ -1,0 +1,486 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _guild_member_join_info {
+    uint64 user_uid = 1;
+    string nickname = 2;
+    uint32 level = 3;
+    uint32 class_id = 4;
+    uint32 combat_point = 5;
+    uint64 req_time = 6;
+    uint64 fame_point = 7;
+    uint32 rank = 8;
+    uint32 fame_level = 9;
+    string profile = 10;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_LIST {
+    uint64 guild_uid = 1;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_LIST {
+    uint32 result = 1;
+    uint64 guild_uid = 2;
+    int32 position_group_id = 3;
+    repeated _guild_member_info member_list = 4;
+    bool is_full_member_list = 5;
+}
+
+message WORLD_GAME_GUILD_MEMBER_ADD {
+    uint64 guild_uid = 1;
+    _guild_member_info_server_sync member_info = 2;
+    uint32 member_count = 3;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_ADD {
+    _guild_member_info member = 1;
+    uint32 member_count = 2;
+}
+
+message WORLD_GAME_GUILD_MEMBER_DEL {
+    uint64 guild_uid = 1;
+    uint64 del_uid = 3;
+    uint32 member_count = 4;
+    bool is_kick = 5;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_DEL {
+    uint32 del_reason = 1;
+    uint64 del_uid = 2;
+    uint32 member_count = 3;
+    string del_user_name = 4;
+    bool is_leave = 5;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_LEAVE {
+    
+}
+
+message GAME_WORLD_GUILD_MEMBER_LEAVE {
+    uint32 start_world_id = 1;
+}
+
+message WORLD_GAME_GUILD_MEMBER_LEAVE {
+    uint32 result = 1;
+    uint64 user_uid = 2;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_LEAVE {
+    uint32 result = 1;
+}
+
+message GAME_CLIENT_GUILD_MEMBER_LEAVE_FIELD_BROADCAST {
+    uint64 uid = 1;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_KICK {
+    uint64 target_uid = 1;
+}
+
+message GAME_WORLD_GUILD_MEMBER_KICK {
+    uint64 target_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_MEMBER_KICK {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 target_uid = 3;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_KICK {
+    uint32 result = 1;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_KICK_NOTIFY_TO_TARGET {
+    
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_JOIN_REQUEST_LIST {
+    
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_JOIN_REQUEST_LIST {
+    uint32 result = 1;
+    repeated _guild_member_join_info invite_list = 2;
+    repeated _guild_member_join_info applicant_list = 3;
+    uint32 max_invite_count = 4;
+    uint32 max_applicant_count = 5;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_INVITE_LIST {
+    
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_INVITE_LIST {
+    uint32 result = 1;
+    repeated _guild_member_join_info invite_list = 2;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_JOIN_APPLICANT_LIST {
+    
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_JOIN_APPLICANT_LIST {
+    uint32 result = 1;
+    repeated _guild_member_join_info applicant_list = 2;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_JOIN_APPLICANT {
+    uint64 guild_uid = 1;
+}
+
+message GAME_WORLD_GUILD_MEMBER_JOIN_APPLICANT {
+    uint64 guild_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_MEMBER_JOIN_APPLICANT {
+    int32 result = 1;
+    uint64 guild_uid = 2;
+    uint64 user_uid = 3;
+    bool is_free_join = 4;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_JOIN_APPLICANT {
+    uint32 result = 1;
+    uint64 guild_uid = 2;
+    bool is_free_join = 3;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_JOIN_APPLICANT_CANCEL {
+    uint64 guild_uid = 1;
+}
+
+message GAME_WORLD_GUILD_MEMBER_JOIN_APPLICANT_CANCEL {
+    uint64 guild_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_MEMBER_JOIN_APPLICANT_CANCEL {
+    int32 result = 1;
+    uint64 guild_uid = 2;
+    uint64 user_uid = 3;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_JOIN_APPLICANT_CANCEL {
+    uint32 result = 1;
+    uint64 guild_uid = 2;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_JOIN_APPLICANT_AGREE {
+    uint64 target_uid = 1;
+    bool agree = 2;
+}
+
+message GAME_WORLD_GUILD_MEMBER_JOIN_APPLICANT_AGREE {
+    uint64 user_uid = 1;
+    uint64 target_uid = 2;
+    bool agree = 3;
+    string profile = 4;
+    uint32 level = 5;
+    int64 logout_time = 6;
+    int32 combat_point = 7;
+    uint32 start_world_id = 8;
+}
+
+message WORLD_GAME_GUILD_MEMBER_JOIN_APPLICANT_AGREE {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 target_user_uid = 3;
+    bool agree = 4;
+    uint64 guild_uid = 5;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_JOIN_APPLICANT_AGREE {
+    int32 result = 1;
+    uint64 target_uid = 2;
+    bool agree = 3;
+    uint64 guild_uid = 4;
+}
+
+message GAME_CLIENT_GUILD_MEMBER_JOIN_INVITE_ADD_NOTIFY {
+    _guild_member_join_info invite_info = 1;
+}
+
+message GAME_CLIENT_GUILD_MEMBER_JOIN_INVITE_DEL_NOTIFY {
+    uint64 del_user_uid = 1;
+}
+
+message GAME_CLIENT_GUILD_MEMBER_JOIN_APPLICANT_ADD_NOTIFY {
+    _guild_member_join_info applicant_info = 1;
+}
+
+message CLIENT_GAME_RECOMMEND_MEMBER_INVITE_LIST {
+    
+}
+
+message GAME_CLIENT_RECOMMEND_MEMBER_INVITE_LIST {
+    repeated _friend_request_info recommend_list = 1;
+}
+
+message GAME_WORLD_RECOMMEND_MEMBER_INVITE_LIST {
+    uint32 start_world_id = 1;
+}
+
+message WORLD_GAME_RECOMMEND_MEMBER_INVITE_LIST {
+    repeated uint64 recommend_user_list = 1;
+    uint64 user_uid = 2;
+}
+
+message CLIENT_WORLD_GUILD_INVITE_ME_LIST {
+    
+}
+
+message WORLD_CLIENT_GUILD_INVITE_ME_LIST {
+    uint32 result = 1;
+    repeated _guild_info guild_list = 2;
+    repeated int64 req_time = 3;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_INVITE {
+    uint64 target_uid = 1;
+}
+
+message GAME_WORLD_GUILD_MEMBER_INVITE {
+    uint64 target_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_MEMBER_INVITE {
+    uint32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    uint64 target_user_uid = 4;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_INVITE {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_INVITE_RESULT {
+    uint32 result = 1;
+    uint64 target_uid = 2;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_INVITE_AGREE {
+    uint64 guild_uid = 1;
+    bool agree = 2;
+}
+
+message GAME_WORLD_GUILD_MEMBER_INVITE_AGREE {
+    uint64 guild_uid = 1;
+    bool agree = 2;
+    uint32 start_world_id = 3;
+}
+
+message WORLD_GAME_GUILD_MEMBER_INVITE_AGREE {
+    uint32 result = 1;
+    bool agree = 2;
+    uint64 guild_uid = 3;
+    uint64 user_uid = 4;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_INVITE_AGREE {
+    uint32 result = 1;
+    bool agree = 2;
+    uint64 guild_uid = 3;
+    uint64 target_user_uid = 4;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_INVITE_AGREE_NOTIFY_TO_MEMBER {
+    uint64 guild_uid = 1;
+    uint64 target_user_uid = 2;
+    bool agree = 3;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_INVITE_CANCEL {
+    uint64 target_uid = 1;
+}
+
+message GAME_WORLD_GUILD_MEMBER_INVITE_CANCEL {
+    uint64 target_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_MEMBER_INVITE_CANCEL {
+    uint32 result = 1;
+    uint64 user_uid = 2;
+    uint64 target_user_uid = 3;
+    uint64 guild_uid = 4;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_INVITE_CANCEL {
+    uint32 result = 1;
+    uint64 target_uid = 2;
+    uint64 guild_uid = 3;
+}
+
+message GAME_CLIENT_GUILD_MEMBER_JOIN_NOTIFY_TO_TARGET {
+    
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_SETTING_INFO {
+    uint64 target_uid = 1;
+}
+
+message _guild_member_setting_grade_info {
+    uint32 grade = 1;
+    uint32 member_count = 2;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_SETTING_INFO {
+    int32 result = 1;
+    uint64 target_uid = 3;
+    string name = 4;
+    string custom_title = 5;
+    int32 class_index = 6;
+    uint32 level = 7;
+    int32 power_point = 8;
+    uint32 member_grade = 9;
+    string profile = 10;
+    uint64 partner_member_uid = 11;
+    string partner_member_name = 12;
+    int64 logout_time = 13;
+    uint32 locate = 14;
+    uint32 max_grade2_member_count = 20;
+    repeated _guild_member_setting_grade_info grade_info = 21;
+    repeated _guild_member_authority auth_list = 22;
+    uint32 position_group_id = 23;
+    uint32 position_num = 24;
+    repeated uint32 can_change_position = 25;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_GRADE_SET {
+    uint64 target_member_uid = 1;
+    uint32 target_grade = 2;
+}
+
+message GAME_WORLD_GUILD_MEMBER_GRADE_SET {
+    uint64 target_member_uid = 1;
+    uint32 target_grade = 2;
+    uint32 start_world_id = 3;
+}
+
+message WORLD_GAME_GUILD_MEMBER_GRADE_SET {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    uint64 target_member_uid = 4;
+    uint32 target_grade = 5;
+    uint32 target_old_grade = 6;
+    uint64 old_master_uid = 7;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_GRADE_SET {
+    int32 result = 1;
+    uint64 target_member_uid = 2;
+    uint32 target_grade = 3;
+    string target_member_name = 4;
+    uint64 old_master_uid = 6;
+    uint32 old_master_grade = 7;
+    repeated _guild_member_setting_grade_info member_setting_grade_info = 9;
+    uint32 position_group_id = 10;
+    uint32 position_num = 11;
+    uint32 old_master_position_num = 12;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_GRADE_SET_TO_TARGET {
+    uint64 target_member_uid = 1;
+    uint32 target_grade = 2;
+    repeated _guild_member_authority auth_list = 3;
+}
+
+message CLIENT_WORLD_GUILD_PARTNER_MEMBET_SET {
+    uint64 target_partner_member_uid = 1;
+}
+
+message GAME_WORLD_GUILD_PARTNER_MEMBET_SET {
+    uint64 target_partner_member_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_PARTNER_MEMBET_SET {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 target_partner_member_uid = 3;
+}
+
+message WORLD_CLIENT_GUILD_PARTNER_MEMBET_SET {
+    int32 result = 1;
+    uint64 target_partner_member_uid = 2;
+}
+
+message GAME_CLIENT_GUILD_PARTNER_MEMBET_INFO {
+    _guild_member_partner_info partner_member_info = 2;
+    uint64 delete_partner_member_uid = 3;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_POSITION_SET {
+    uint64 target_member_uid = 1;
+    uint32 target_position_num = 2;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_POSITION_SET {
+    int32 result = 1;
+    uint64 target_member_uid = 2;
+    uint32 target_position_num = 3;
+    uint32 target_old_position_num = 4;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_AUTHORITY_SET {
+    uint64 target_user_uid = 1;
+    repeated _guild_member_authority authority_info_list = 2;
+}
+
+message GAME_WORLD_GUILD_MEMBER_AUTHORITY_SET {
+    uint64 target_user_uid = 1;
+    repeated _guild_member_authority authority_info_list = 2;
+    uint32 start_world_id = 3;
+}
+
+message WORLD_GAME_GUILD_MEMBER_AUTHORITY_SET {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 target_user_uid = 3;
+    repeated _guild_member_authority authority_info_list = 4;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_AUTHORITY_SET {
+    int32 result = 1;
+    uint64 target_user_uid = 2;
+    repeated _guild_member_authority authority_info_list = 3;
+}
+
+message GAME_CLIENT_GUILD_MEMBER_AUTHORITY_SET {
+    uint64 target_user_uid = 2;
+    repeated _guild_member_authority authority_info_list = 3;
+}
+
+message CLIENT_WORLD_GUILD_MEMBER_CUSTOM_TITLE_SET {
+    uint64 target_uid = 1;
+    string custom_title = 2;
+}
+
+message GAME_WORLD_GUILD_MEMBER_CUSTOM_TITLE_SET {
+    uint64 target_uid = 1;
+    string custom_title = 2;
+    uint32 start_world_id = 3;
+}
+
+message WORLD_GAME_GUILD_MEMBER_CUSTOM_TITLE_SET {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 target_uid = 3;
+    string custom_title = 4;
+}
+
+message WORLD_CLIENT_GUILD_MEMBER_CUSTOM_TITLE_SET {
+    int32 result = 1;
+    uint64 target_uid = 2;
+    string custom_title = 3;
+}

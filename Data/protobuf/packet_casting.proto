@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_START_CASTING {
+    uint64 casting_user_uid = 1;
+    int32 casting_type = 2;
+    uint64 casting_target_uid = 3;
+    uint32 casting_sub_type = 4;
+    uint32 casting_exec_type = 5;
+    bool is_auto_casting = 6;
+}
+
+message GAME_CLIENT_START_CASTING {
+    uint64 casting_user_uid = 1;
+    int32 casting_target_type = 2;
+    uint64 casting_target_uid = 3;
+    int32 casting_time = 4;
+    int32 casting_type = 5;
+    bool is_auto_casting = 6;
+    int32 casting_sub_type = 7;
+    _vector3 position = 8;
+    bool steal_protected = 9;
+}
+
+message GAME_CLIENT_CASTING_FAIL {
+    uint64 casting_user_uid = 1;
+    int32 fail_reason = 2;
+    int32 casting_type = 3;
+    uint64 casting_target_uid = 4;
+    uint64 fail_reason_arg = 5;
+    uint64 use_user_uid = 6;
+}
+
+message GAME_CLIENT_CASTING_SUCCESS {
+    uint64 uid = 1;
+    int32 casting_type = 2;
+    uint64 casting_target_uid = 3;
+    int32 casting_success_value = 4;
+    bool is_auto_casting = 5;
+    int32 casting_sub_type = 6;
+}
+
+message GAME_CLIENT_CANCEL_CASTING {
+    uint64 casting_user_uid = 1;
+    int32 casting_type = 2;
+    int32 cancel_reason = 3;
+}
+
+message GAME_CLIENT_END_CASTING {
+    uint64 casting_user_uid = 1;
+    int32 casting_type = 2;
+    bool is_auto_casting = 3;
+}
+
+message CLIENT_GAME_CANCEL_CASTING {
+    
+}
+
+message GAME_CLIENT_CHANGE_CASTING_TIME {
+    int32 casting_target_type = 1;
+    uint64 casting_target_uid = 2;
+    int32 casting_time = 3;
+}

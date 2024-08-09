@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_CHARACTER_PHASE_CREATE {
+    int32 phase_class = 1;
+    repeated customize_info customize_list = 2;
+    bool is_use_item = 3;
+}
+
+message GAME_CLIENT_CHARACTER_PHASE_CREATE {
+    int32 result = 1;
+    int32 phase_class = 2;
+    repeated _cost_info costInfo = 3;
+}
+
+message CLIENT_GAME_CHARACTER_PHASE {
+    int32 phase_class = 1;
+}
+
+message GAME_CLIENT_CHARACTER_PHASE {
+    int32 result = 1;
+    int32 phase_class = 2;
+}
+
+message GAME_WORLD_CHARACTER_PHASE {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    int32 phase_class = 3;
+}
+
+message CLIENT_GAME_CHARACTER_PHASE_INFO {
+    
+}
+
+message GAME_CLIENT_CHARACTER_PHASE_INFO {
+    int32 origin_class = 1;
+    repeated _character_phase_info open_phase_info = 2;
+    int64 update_phase_time = 3;
+}

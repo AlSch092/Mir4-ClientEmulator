@@ -1,0 +1,122 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_PET_LIST {
+    
+}
+
+message GAME_CLIENT_PET_LIST {
+    int32 current_pet_deck = 1;
+    repeated _pet_deck_info pet_deck_list = 2;
+    repeated _pet_info pet_info_list = 3;
+}
+
+message CLIENT_GAME_PET_UNLOCK {
+    int32 open_pet_tid = 1;
+}
+
+message GAME_CLIENT_PET_UNLOCK {
+    int32 result = 1;
+    _pet_info pet_info = 2;
+    repeated _stack_item_info del_item_list = 3;
+}
+
+message CLIENT_GAME_PET_SET_DECK {
+    int32 deck_id = 1;
+    int32 slot_id = 2;
+    int32 pet_tid = 3;
+}
+
+message GAME_CLIENT_PET_SET_DECK {
+    int32 result = 1;
+    int32 deck_id = 2;
+    int32 slot_id = 3;
+    int32 pet_tid = 4;
+}
+
+message CLIENT_GAME_PET_DEL_DECK {
+    int32 deck_id = 1;
+    int32 slot_id = 2;
+}
+
+message GAME_CLIENT_PET_DEL_DECK {
+    int32 result = 1;
+    int32 deck_id = 2;
+    int32 slot_id = 3;
+}
+
+message CLIENT_GAME_PET_EQUIP_ITEM {
+    int32 pet_tid = 1;
+    int32 slot_id = 2;
+    uint64 item_uid = 3;
+}
+
+message GAME_CLIENT_PET_EQUIP_ITEM {
+    int32 result = 1;
+    int32 pet_tid = 2;
+    int32 slot_id = 3;
+    uint64 item_uid = 4;
+    uint64 del_item_uid = 5;
+}
+
+message CLIENT_GAME_PET_UNEQUIP_ITEM {
+    int32 pet_tid = 1;
+    int32 slot_id = 2;
+    uint64 item_uid = 3;
+}
+
+message GAME_CLIENT_PET_UNEQUIP_ITEM {
+    int32 result = 1;
+    int32 pet_tid = 2;
+    int32 slot_id = 3;
+}
+
+message GAME_CLIENT_PET_LEADER_CHANGE {
+    int64 user_uid = 1;
+    int32 pet_tid = 2;
+}
+
+message CLIENT_GAME_PET_DECK_CHANGE {
+    int32 deck_id = 1;
+}
+
+message GAME_CLIENT_PET_DECK_CHANGE {
+    int32 result = 1;
+    int32 deck_id = 2;
+}
+
+message CLIENT_GAME_PET_UPGRADE {
+    int32 pet_tid = 1;
+}
+
+message GAME_CLIENT_PET_UPGRADE {
+    int32 result = 1;
+    int32 pet_tid = 2;
+    int32 pte_grade = 3;
+    repeated _stack_item_info del_item = 4;
+    repeated _cost_info costinfo = 5;
+    int32 upgrade_result = 6;
+}
+
+message CLIENT_GAME_PET_ITEM_TRANCE {
+    int32 pet_tid = 1;
+    int32 slot_id = 2;
+    uint64 trance_item_uid = 3;
+    uint64 material_itemuid = 4;
+    bool use_item_add_rate = 5;
+}
+
+message GAME_CLIENT_PET_ITEM_TRANCE {
+    uint32 result = 1;
+    uint32 trance_result = 2;
+    _character_inven_item trance_iteminfo = 3;
+    repeated _cost_info cost_info = 4;
+    repeated _stack_item_info material_items = 5;
+    repeated _character_inven_item break_pieces_items = 6;
+    uint64 break_item_uid = 7;
+    int32 pet_tid = 8;
+    int32 slot_id = 9;
+}

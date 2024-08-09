@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message _block_user_info {
+    uint64 block_user_uid = 1;
+    string block_user_name = 2;
+    string block_user_profile = 3;
+}
+
+message CLIENT_CHATTING_BLOCK_LIST {
+    
+}
+
+message CHATTING_CLIENT_BLOCK_LIST_START {
+    
+}
+
+message CHATTING_CLIENT_BLOCK_LIST {
+    repeated _block_user_info block_user_list = 1;
+}
+
+message CHATTING_CLIENT_BLOCK_LIST_END {
+    
+}
+
+message CLIENT_CHATTING_ADD_BLOCK {
+    string block_user_name = 1;
+}
+
+message CHATTING_CLIENT_ADD_BLOCK {
+    _block_user_info block_user_info = 1;
+    uint32 result = 2;
+}
+
+message CLIENT_CHATTING_CANCEL_BLOCK {
+    uint64 block_user_uid = 1;
+}
+
+message CHATTING_CLIENT_CANCEL_BLOCK {
+    uint64 block_user_uid = 1;
+    uint32 result = 2;
+}

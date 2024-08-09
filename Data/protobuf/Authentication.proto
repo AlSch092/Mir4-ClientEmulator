@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package Network.Protocol.Authentication;
+
+import "AuthenticationTypes.proto";
+
+message ServerInfo {
+    int32 Index = 1;
+    int32 State = 2;
+    string Name = 3;
+    string Ip = 4;
+    int32 Port = 5;
+}
+
+message ClientServerAuthLogin {
+    Packet.Type Packet = 1;
+    Sdk.Type Sdk = 2;
+    Os.Type Os = 3;
+    string Device = 4;
+    string AccountId = 5;
+    string Version = 6;
+    string PushId = 7;
+}
+
+message ServerClientAuthLogin {
+    ErrorCode.Type Error = 1;
+    uint64 Uid = 2;
+    string AccessToken = 3;
+    repeated ServerInfo ServerList = 4;
+}

@@ -1,0 +1,276 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+import "info_item.proto";
+
+message _trade_register_data {
+    uint64 trade_uid = 1;
+    uint64 item_uid = 2;
+    int32 state = 3;
+    uint32 item_tid = 4;
+    uint32 smelting_level = 5;
+    int32 statck_count = 6;
+    int64 end_time = 7;
+    _cost_info cost_info = 8;
+    int64 calculate_value = 9;
+    int32 trance_step = 10;
+    int32 xdraco_trade_state = 11;
+    int32 collectable = 12;
+    int32 refine_step = 13;
+}
+
+message _trade_purchase_data {
+    uint64 trade_uid = 1;
+    uint64 item_uid = 2;
+    uint32 item_tid = 3;
+    int32 statck_count = 4;
+    uint32 smelting_level = 5;
+    _cost_info cost_info = 6;
+    int32 decrease_sell_tax = 7;
+    int32 trance_step = 8;
+    int32 xdraco_trade_state = 9;
+    int32 collectable = 10;
+    int32 refine_step = 11;
+}
+
+message _trade_calculate_info {
+    uint64 trade_uid = 1;
+    uint64 item_uid = 2;
+    uint32 item_tid = 3;
+    int32 statck_count = 4;
+    uint32 smelting_level = 5;
+    _cost_info cost_info = 7;
+    int64 calculate_value = 8;
+    int32 trance_step = 9;
+    int32 xdraco_trade_state = 10;
+    int32 collectable = 11;
+    int32 refine_step = 12;
+}
+
+message _trade_item_detail {
+    uint64 trade_uid = 1;
+    uint64 item_uid = 2;
+    uint32 item_tid = 3;
+    uint32 smelting_level = 4;
+    int32 stack_count = 5;
+    repeated ItemOptionInfo random_option_list = 6;
+    int32 trance_step = 7;
+    int32 xdraco_trade_state = 8;
+    int32 acquisition_path = 9;
+    int32 acquisition_path_value = 10;
+    int64 acquisition_path_create_time = 11;
+    string serial_number = 12;
+    int32 collectable = 13;
+    string limited = 14;
+    int32 refine_step = 15;
+}
+
+message _trade_sales_data {
+    uint32 item_tid = 1;
+    _cost_info minimum_cost = 2;
+    int32 list_count = 3;
+    float oneitem_minimum_cost = 4;
+}
+
+message _trade_sales_detail_data {
+    _trade_item_detail trade_item_data = 1;
+    _cost_info cost_info = 2;
+    int64 end_time = 3;
+}
+
+message CLIENT_GAME_REGISTER_TRADE_ITEM {
+    uint64 item_uid = 1;
+    int32 stack_count = 2;
+    _cost_info cost_info = 3;
+}
+
+message GAME_CLIENT_REGISTER_TRADE_ITEM {
+    int32 result = 1;
+    _stack_item_info del_item_info = 2;
+    repeated _cost_info commission_cost_info = 3;
+}
+
+message GAME_TRADE_REGISTER_TRADE_ITEM_NOTIFY {
+    uint64 trade_uid = 1;
+}
+
+message CLIENT_GAME_REGISTER_CANCEL {
+    repeated uint64 trade_uid_list = 1;
+}
+
+message GAME_CLIENT_REGISTER_CANCEL {
+    int32 result = 1;
+}
+
+message GAME_CLIENT_REGISTER_CANCEL_ITEM_DATA {
+    repeated _character_inven_item purchase_item = 1;
+}
+
+message GAME_TRADE_REGISTER_CANCEL_REQUEST {
+    repeated uint64 trade_uid_list = 1;
+}
+
+message TRADE_GAME_REGISTER_CANCEL_REQUEST {
+    int32 result = 1;
+    repeated _trade_purchase_data cancel_list = 2;
+}
+
+message GAME_TRADE_REGISTER_CANCEL_NOTIFY {
+    int32 result = 1;
+    repeated uint64 trade_uid_list = 2;
+}
+
+message TRADE_GAME_REGISTER_TRADE_ITEM_END {
+    
+}
+
+message GAME_CLIENT_REGISTER_TRADE_ITEM_END {
+    
+}
+
+message CLIENT_GAME_PURCHASE_TRADE_ITEM {
+    uint64 trade_uid = 1;
+}
+
+message GAME_CLIENT_PURCHASE_TRADE_ITEM {
+    int32 result = 1;
+    repeated _cost_info purchase_cost_info = 2;
+}
+
+message GAME_CLIENT_PUCHASE_TRADE_ITEM_DATA {
+    repeated _character_inven_item purchase_item = 1;
+}
+
+message GAME_TRADE_REQUEST_PURCHASE_TRADE_ITEM_DATA {
+    uint64 trade_uid = 1;
+}
+
+message TRADE_GAME_REQUEST_PURCHASE_TRADE_ITEM_DATA {
+    int32 result = 1;
+    _trade_purchase_data purchase_data = 2;
+}
+
+message GAME_TRADE_PURCHASE_TRADE_ITEM_RESULT {
+    int32 result = 1;
+    uint64 trade_uid = 2;
+    int64 calc_cost_value = 3;
+}
+
+message TRADE_WORLD_PURCHASE_NOTIFY {
+    uint64 character_uid = 1;
+    uint64 trade_uid = 2;
+}
+
+message WORLD_GAME_PURCHASE_NOTIFY {
+    uint64 character_uid = 1;
+    uint64 trade_uid = 2;
+}
+
+message GAME_CLIENT_PURCHASE_NOTIFY {
+    uint64 trade_uid = 1;
+}
+
+message CLIENT_GAME_CALCULATE_TRADE_ITEM {
+    repeated uint64 trade_uid_list = 1;
+}
+
+message GAME_CLIENT_CALCULATE_TRADE_ITEM {
+    int32 result = 1;
+    repeated _cost_info cost_list = 2;
+}
+
+message GAME_TRADE_REQUEST_CALCULATE_TRADE_ITEM {
+    repeated uint64 trade_uid_list = 1;
+}
+
+message TRADE_GAME_REQUEST_CALCULATE_TRADE_ITEM {
+    int32 result = 1;
+    repeated _trade_calculate_info calculate_cost_list = 2;
+}
+
+message GAME_TRADE_CALCULATE_RESULT_TRADE_ITEM {
+    int32 result = 1;
+    repeated uint64 trade_uid_list = 2;
+}
+
+message CLIENT_TRADE_SEARCH_BOOKMARK_LIST {
+    repeated int32 bookmark_item_list = 1;
+    int32 smelting_min = 2;
+    int32 smelting_max = 3;
+}
+
+message TRADE_CLIENT_SEARCH_BOOKMARK_LIST {
+    repeated _trade_sales_data sales_list = 1;
+}
+
+message CLIENT_TRADE_SEARCH_SALES_LIST {
+    int32 trade_category = 1;
+    int32 smelting_min = 2;
+    int32 smelting_max = 3;
+}
+
+message TRADE_CLIENT_SEARCH_SALES_LIST {
+    repeated _trade_sales_data sales_list = 1;
+}
+
+message TRADE_CLIENT_SEARCH_SALES_LIST_END {
+    
+}
+
+message CLIENT_TRADE_SEARCH_SALES_DETAIL_LIST {
+    uint32 item_tid = 1;
+    int32 smelting_min = 2;
+    int32 smelting_max = 3;
+}
+
+message TRADE_CLIENT_SEARCH_SALES_DETAIL_LIST {
+    repeated _trade_sales_detail_data sales_detail_list = 1;
+}
+
+message TRADE_CLIENT_SEARCH_SALES_DETAIL_LIST_END {
+    
+}
+
+message CLIENT_TRADE_REGISTER_LIST {
+    
+}
+
+message TRADE_CLIENT_REGISTER_LIST {
+    repeated _trade_register_data register_list = 1;
+}
+
+message CLIENT_TRADE_REGISTER_DETAIL_INFO {
+    uint64 trade_uid = 1;
+}
+
+message TRADE_CLIENT_REGISTER_DETAIL_INFO {
+    _trade_item_detail trade_item_info = 1;
+}
+
+message CLIENT_TRADE_CALCULATE_LOG_LIST {
+    
+}
+
+message TRADE_CLIENT_CALCULATE_LIST {
+    repeated _trade_register_data calculate_log_list = 1;
+}
+
+message CLIENT_TRADE_PURCHASE_LOG_LIST {
+    
+}
+
+message TRADE_CLIENT_PURCHASE_LOG_LIST {
+    repeated _trade_register_data purchase_log_list = 1;
+}
+
+message CLIENT_TRADE_AVERAGE_PRICE {
+    uint32 item_tid = 1;
+}
+
+message TRADE_CLIENT_AVERAGE_PRICE {
+    uint32 item_tid = 1;
+    int32 cost_type = 2;
+    float cost_value = 3;
+}

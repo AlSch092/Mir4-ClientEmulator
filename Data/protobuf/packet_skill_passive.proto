@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_SKILL_PASSIVE_GROUP_LIST {
+    uint64 uid = 1;
+}
+
+message GAME_CLIENT_SKILL_PASSIVE_GROUP_LIST {
+    repeated _skill_passive_group group_infos = 1;
+}
+
+message CLIENT_GAME_SKILL_PASSIVE_LIST {
+    uint64 uid = 1;
+}
+
+message GAME_CLIENT_SKILL_PASSIVE_LIST {
+    repeated _passive_skill_info passive_infos = 1;
+}

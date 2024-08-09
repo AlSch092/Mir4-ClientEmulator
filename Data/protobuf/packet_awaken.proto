@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message CLIENT_GAME_UPDATE_AWAKEN {
+    uint64 uid = 1;
+}
+
+message GAME_CLIENT_UPDATE_AWAKEN {
+    int32 open_awaken_grade = 1;
+}

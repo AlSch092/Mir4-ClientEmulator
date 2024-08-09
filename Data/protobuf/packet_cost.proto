@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message GAME_CLIENT_COST_INFO {
+    repeated _cost_info costInfo = 1;
+    repeated _time_ticket_info time_ticket_info = 2;
+}

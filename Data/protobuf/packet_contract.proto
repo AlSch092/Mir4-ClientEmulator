@@ -1,0 +1,393 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_GET_CONTRACTADDRESS {
+    
+}
+
+message CLIENT_LOBBY_GET_CONTRACTADDRESS {
+    uint64 account_uid = 1;
+}
+
+message GAME_CLIENT_GET_CONTRACTADDRESS {
+    string draco_address = 1;
+    string character_address = 2;
+    string nft_character_url = 3;
+    string hydra_address = 4;
+    string mirage_address = 5;
+    string wemixdollar_address = 6;
+}
+
+message LOBBY_CLIENT_GET_CONTRACTADDRESS {
+    string draco_address = 1;
+    string character_address = 2;
+    string nft_character_url = 3;
+    string hydra_address = 4;
+    string mirage_address = 5;
+    string wemixdollar_address = 6;
+}
+
+message CLIENT_GAME_DRACO_BALANCEOF {
+    string user_address = 1;
+}
+
+message GAME_CLIENT_DRACO_BALANCEOF {
+    uint32 balanceof = 1;
+    uint64 accum_darksteel = 2;
+    uint32 draco_smelting_count = 3;
+    uint64 draco_smelting_update_time = 4;
+}
+
+message CLIENT_GAME_DRACO_EXCHANGE {
+    int32 exchange_type = 1;
+    string user_address = 2;
+    string nonce = 3;
+    string access_token = 4;
+    uint32 amount = 5;
+}
+
+message GAME_CLIENT_DRACO_EXCHANGE_RESULT {
+    int32 exchange_type = 1;
+    int32 transaction_state = 2;
+    int32 result = 3;
+    string tx_result = 4;
+}
+
+message CLIENT_GAME_CHARACTER_MINT {
+    string user_address = 1;
+    string nonce = 2;
+    string access_token = 3;
+    string token_uri = 4;
+}
+
+message CLIENT_GAME_REGISTER_USER_ADDRESS {
+    string user_address = 1;
+    string access_token = 2;
+}
+
+message GAME_CLIENT_REGISTER_USER_ADDRESS {
+    int32 result = 1;
+    string user_address = 2;
+}
+
+message GAME_WORLD_REGISTER_USER_ADDRESS {
+    uint64 user_uid = 1;
+    string user_address = 2;
+    string access_token = 3;
+}
+
+message WORLD_GAME_REGISTER_USER_ADDRESS {
+    uint64 user_uid = 1;
+    int32 result = 2;
+    string user_address = 3;
+}
+
+message CLIENT_LOBBY_REGISTER_USER_ADDRESS {
+    uint64 account_uid = 1;
+    string user_address = 2;
+    string access_token = 3;
+}
+
+message LOBBY_CLIENT_REGISTER_USER_ADDRESS {
+    int32 result = 1;
+    string user_address = 2;
+}
+
+message CLIENT_GAME_CHARACTER_SEAL {
+    string user_address = 1;
+    string nonce = 2;
+    string user_sig = 3;
+    uint64 token_id = 4;
+}
+
+message CLIENT_LOBBY_CHARACTER_UNSEAL {
+    string user_address = 1;
+    string nonce = 2;
+    string user_sig = 3;
+    uint64 token_id = 4;
+    uint64 account_uid = 5;
+}
+
+message GAME_CLIENT_CHARACTER_NFT_RESULT {
+    int32 exchange_type = 1;
+    int32 transaction_state = 2;
+    int32 result = 3;
+    uint64 token_id = 4;
+}
+
+message CLIENT_GAME_GET_DARKSTEEL_DAILY_SUM {
+    
+}
+
+message GAME_CLIENT_GET_DARKSTEEL_DAILY_SUM {
+    uint64 accum_darksteel = 1;
+    uint64 smelting_cost = 2;
+}
+
+message CLIENT_GAME_GET_CHARACTER_SEAL_INFO {
+    
+}
+
+message GAME_CLIENT_GET_CHARACTER_SEAL_INFO {
+    uint64 server_prev_change_time = 1;
+    uint64 last_character_seal_time = 2;
+}
+
+message LOBBY_CLIENT_CHARACTER_NFT_RESULT {
+    int32 exchange_type = 1;
+    int32 transaction_state = 2;
+    int32 result = 3;
+    uint64 token_id = 4;
+}
+
+message CLIENT_GAME_DARKSTEEL_MINIMUMRESERVE {
+    
+}
+
+message GAME_CLIENT_DARKSTEEL_MINIMUMRESERVE {
+    int32 minimum_reserve = 1;
+}
+
+message WORLDLINK_WORLD_CHARACTER_SEAL {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    _contract_transaction_info contract_transaction_info = 4;
+    _characterInfo_mint characterInfo_mint = 5;
+}
+
+message GAME_WORLDLINK_CHARACTER_SEAL_CANCEL {
+    uint64 account_uid = 1;
+    uint64 token_id = 2;
+    int32 world_id = 3;
+}
+
+message GAME_BLOCKCHAIN_CHARACTER_MINT {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    _contract_transaction_info contract_transaction_info = 3;
+    _characterInfo_mint characterInfo_mint = 4;
+}
+
+message BLOCKCHAIN_GAME_CHARACTER_MINT {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    _contract_transaction_info contract_transaction_info = 4;
+    uint64 token_id = 5;
+    int32 status = 6;
+}
+
+message GAME_BLOCKCHAIN_CHARACTER_SEAL {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    _contract_transaction_info contract_transaction_info = 3;
+    _characterInfo_mint characterInfo_mint = 4;
+}
+
+message BLOCKCHAIN_GAME_CHARACTER_SEAL {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    _contract_transaction_info contract_transaction_info = 4;
+    int32 status = 5;
+}
+
+message GAME_SHOP_NFT_SEAL_CHECK {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 transaction_type = 3;
+    string user_address = 4;
+    string nonce = 5;
+    string access_token = 6;
+    uint64 id = 7;
+    uint64 token_id = 8;
+}
+
+message SHOP_GAME_NFT_SEAL_CHECK {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    uint32 transaction_type = 4;
+    string user_address = 5;
+    string nonce = 6;
+    string access_token = 7;
+    uint64 id = 8;
+    uint64 token_id = 9;
+}
+
+message GAME_BLOCKCHAIN_MINT_CHARACTER_INFO_UPDATE {
+    _characterInfo_mint characterInfo_mint = 1;
+}
+
+message GAME_WORLD_CHARACTER_NFT_RESULT {
+    int32 result = 1;
+    uint64 character_uid = 2;
+    uint64 token_id = 3;
+    bool is_seal = 4;
+}
+
+message WORLD_GAME_CHARACTER_NFT_RESULT {
+    int32 result = 1;
+    uint64 character_uid = 2;
+    uint64 token_id = 3;
+    bool is_seal = 4;
+}
+
+message GAME_TRADE_NFT_SEAL_CHECK {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 transaction_type = 3;
+    string user_address = 4;
+    string nonce = 5;
+    string access_token = 6;
+    uint64 id = 7;
+    uint64 token_id = 8;
+}
+
+message TRADE_GAME_NFT_SEAL_CHECK {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    uint32 transaction_type = 4;
+    string user_address = 5;
+    string nonce = 6;
+    string access_token = 7;
+    uint64 id = 8;
+    uint64 token_id = 9;
+}
+
+message CLIENT_GAME_HYDRA_EXCHANGE {
+    int32 exchange_type = 1;
+    string user_address = 2;
+    string nonce = 3;
+    string access_token = 4;
+    uint32 amount = 5;
+}
+
+message GAME_CLIENT_HYDRA_EXCHANGE_RESULT {
+    int32 exchange_type = 1;
+    int32 transaction_state = 2;
+    int32 result = 3;
+    string tx_result = 4;
+}
+
+message CLIENT_GAME_CHECK_DRACO_APPOVE {
+    string user_address = 1;
+}
+
+message GAME_CLIENT_CHECK_DRACO_APPOVE {
+    int32 result = 1;
+    string tx_hash = 2;
+}
+
+message CLIENT_GAME_DRACO_HYDRA_APPROVE {
+    string user_address = 1;
+    string signature = 2;
+}
+
+message GAME_CLIENT_DRACO_HYDRA_APPROVE {
+    int32 result = 1;
+}
+
+message CLIENT_GAME_GET_HYDRA_REFINE_FEE {
+    
+}
+
+message GAME_CLIENT_GET_HYDRA_REFINE_FEE {
+    int32 draco_fee = 1;
+    int32 septaria_fee = 2;
+    int32 darksteel_fee = 3;
+}
+
+message CLIENT_GAME_HYDRA_BALANCEOF {
+    string user_address = 1;
+}
+
+message GAME_CLIENT_HYDRA_BALANCEOF {
+    uint32 balanceof = 1;
+    int32 draco_fee = 2;
+    int32 septaria_fee = 3;
+    int32 darksteel_fee = 4;
+    int32 fee_stage = 5;
+    int32 draco_add = 6;
+    string balanceof_org = 7;
+}
+
+message CLIENT_GAME_CHECK_HYDRA_APPOVE {
+    string user_address = 1;
+}
+
+message GAME_CLIENT_CHECK_HYDRA_APPOVE {
+    int32 result = 1;
+    string tx_hash = 2;
+}
+
+message CLIENT_GAME_HYDRA_APPROVE {
+    string user_address = 1;
+    string signature = 2;
+}
+
+message GAME_CLIENT_HYDRA_APPROVE {
+    int32 result = 1;
+}
+
+message CLIENT_GAME_DRAGONSTEEL_EXCHANGE_START {
+    uint32 amount = 1;
+    string player_key = 2;
+}
+
+message GAME_CLIENT_DRAGONSTEEL_EXCHANGE_RESULT {
+    int32 result = 1;
+    int32 game_result = 2;
+}
+
+message GAME_CLIENT_DRAGONSTEEL_EXCHANGE_START {
+    int32 result = 1;
+    string pay_id = 2;
+    int32 game_result = 3;
+    int64 sign_id = 4;
+    int64 sign_amount = 5;
+}
+
+message CLIENT_GAME_DRAGONSTEEL_EXCHANGE_VERIFY {
+    string pay_id = 1;
+    string player_key = 2;
+    string purchase_token = 3;
+    uint32 amount = 4;
+}
+
+message GAME_CLIENT_DRAGONSTEEL_EXCHANGE_VERIFY {
+    int32 result = 1;
+    int64 dragonsteel_amount = 2;
+}
+
+message CLIENT_GAME_WEMIXDOLLAR_BALANCEOF {
+    string user_address = 1;
+}
+
+message GAME_CLIENT_WEMIXDOLLAR_BALANCEOF {
+    uint32 balanceof = 1;
+    string balanceof_org = 2;
+}
+
+message CLIENT_GAME_CHECK_WEMIXDOLLAR_APPROVE {
+    string user_address = 1;
+}
+
+message GAME_CLIENT_CHECK_WEMIXDOLLAR_APPROVE {
+    int32 result = 1;
+    string tx_hash = 2;
+}
+
+message CLIENT_GAME_WEMIXDOLLAR_APPROVE {
+    string user_address = 1;
+    string signature = 2;
+}
+
+message GAME_CLIENT_WEMIXDOLLAR_APPROVE {
+    int32 result = 1;
+}

@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CharacterInfoEquipSlot {
+    int32 slot_index = 1;
+    _character_inven_item item = 2;
+}
+
+message _other_user_ui_great_building_info {
+    uint32 building_id = 1;
+    int32 level = 2;
+}
+
+message _other_user_ui_holy_stuff_info {
+    uint32 phase_group_id = 1;
+    uint32 grade = 2;
+}
+
+message _other_user_ui_potential_level_info {
+    uint32 node_category = 1;
+    uint32 total_level = 2;
+}
+
+message _other_pet_info {
+    int32 tid = 1;
+    repeated _pet_equip_item_info equip_item_list = 2;
+    int32 grade = 3;
+    int32 slot_id = 4;
+}
+
+message _other_user_ui_info {
+    uint64 user_uid = 1;
+    string nickname = 2;
+    string custom_title = 3;
+    int32 class_index = 4;
+    int32 level = 5;
+    int32 combat_point = 6;
+    int32 pk_point = 7;
+    uint64 guild_uid = 9;
+    repeated CharacterInfoEquipSlot equip_slot_list = 11;
+    int32 skill_level_count = 12;
+    int32 mastery_level_count = 13;
+    int32 force_level_count = 14;
+    int32 jewel_count = 15;
+    repeated customize_info customize_list = 16;
+    repeated _equip_costume_info equip_costume_list = 17;
+    uint64 fame_rank = 18;
+    repeated fame_info fame_list = 19;
+    uint64 fame_score = 20;
+    uint32 fame_level = 21;
+    uint64 fame_level_exp = 22;
+    string profile = 23;
+    uint32 world_id = 24;
+    uint32 dominion_title_tid = 25;
+    repeated _pet_info pet_list = 26;
+    repeated _character_skill skill_list = 27;
+    repeated _force_level_info force_list = 28;
+    int32 mastery_level_limit_grade = 29;
+    bool delete_character = 30;
+    int32 closed_training_total_level = 31;
+    int32 closed_training_collect_step = 32;
+    bool trans_server = 33;
+    int32 luxury_costume_pet_id = 34;
+    int32 luxury_costume_vehicle_id = 35;
+    int32 cur_play_world_id = 36;
+    repeated _cost_info can_receive_money_limit = 37;
+    bool is_custom_title_show = 38;
+    int64 custom_title_end_time = 39;
+    repeated _other_user_ui_great_building_info great_building_info = 40;
+    uint64 daily_wonder = 41;
+    int32 current_server_pos = 42;
+    uint64 wonder = 43;
+    repeated _other_user_ui_holy_stuff_info holy_stuff_info = 44;
+    repeated _other_user_ui_potential_level_info potential_level_list = 45;
+    repeated _other_pet_info curr_pet_info_list = 46;
+}
+
+message _other_user_ui_info_guild {
+    _guild_name_ui_info guild_name_info = 1;
+    int32 guild_member_grade = 2;
+    int32 guild_level = 4;
+    string guild_custom_title = 5;
+    int32 guild_official_grade = 6;
+    bool is_sabuk_master = 7;
+}
+
+message _other_user_ui_info_rank {
+    uint32 power_ranking = 1;
+    uint32 pvp_ranking = 2;
+    uint32 guild_ranking = 3;
+    uint32 item_collection_ranking = 4;
+    uint32 level_ranking = 5;
+}
+
+message _other_user_info_etc {
+    repeated _character_guild_receive_cost_server_sync receive_cost_list = 1;
+}

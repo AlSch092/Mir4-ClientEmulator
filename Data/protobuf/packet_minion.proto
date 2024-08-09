@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message GAME_CLIENT_APPEAR_MINION {
+    int64 uid = 1;
+    int32 classid = 2;
+    int32 type = 3;
+    _vector3 loc = 4;
+    _vector3 rot = 5;
+    int32 state = 6;
+    int32 hp = 7;
+    int32 ownertype = 8;
+    int64 owneruid = 9;
+}
+
+message CLIENT_GAME_SYNCLIENT_GAME_MINION {
+    int64 uid = 1;
+    _vector3 loc = 2;
+    _vector3 rot = 3;
+    int32 state = 4;
+}
+
+message GAME_CLIENT_SYNCLIENT_GAME_MINION {
+    int64 uid = 1;
+    _vector3 loc = 2;
+    _vector3 rot = 3;
+    int32 state = 4;
+}
+
+message CLIENT_GAME_ATTACK_MINION {
+    int64 uid = 1;
+    int32 state = 2;
+    int32 skill = 3;
+    int32 attack_id = 4;
+    _vector3 loc_start = 5;
+    _vector3 loc_end = 6;
+    repeated _attack_target_info targets = 7;
+    uint32 cur_skill_step = 8;
+}
+
+message GAME_CLIENT_ATTACK_MINION {
+    int64 uid = 1;
+    int32 state = 2;
+    int32 skill = 3;
+    int32 attack_id = 4;
+    _vector3 loc_start = 5;
+    _vector3 loc_end = 6;
+    repeated _attack_target_info targets = 7;
+    uint32 cur_skill_step = 9;
+}
+
+message GAME_CLIENT_DIE_MINION {
+    int64 uid = 1;
+}

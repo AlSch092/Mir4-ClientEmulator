@@ -1,0 +1,170 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _strong_point_win_target_info {
+    uint64 monster_uid = 1;
+    uint32 cur_hp = 2;
+    _guild_simple_info occupy_guild_info = 3;
+}
+
+message _strong_point_win_target_hp_info {
+    uint64 monster_uid = 1;
+    uint32 cur_hp = 2;
+}
+
+message GAME_CLIENT_NTF_STRONG_POINT_ZONE_ENTER_INFO {
+    _strong_point_info_v2 strong_point_info = 1;
+    _strong_point_win_target_info strong_point_win_target_info = 2;
+    int64 win_target_occupy_time = 3;
+    bool is_take_over_time = 4;
+    int64 game_end_time = 5;
+    string occupy_guild_proclamation = 6;
+}
+
+message GAME_CLIENT_NTF_STRONG_POINT_WIN_TARGET_INFO {
+    _strong_point_win_target_info strong_point_win_target_info = 1;
+}
+
+message GAME_CLIENT_NTF_STRONG_POINT_WIN_TARGET_HP_INFO {
+    _strong_point_win_target_hp_info strong_point_win_target_hp_info = 1;
+}
+
+message WORLD_CLIENT_ACK_STRONG_POINT_INFO_LIST {
+    repeated _strong_point_info_v2 strong_point_info_list = 1;
+}
+
+message GAME_CLIENT_NTF_STRONG_POINT_GAME_END_INFO {
+    bool is_start_take_over = 1;
+    bool is_take_over_time = 2;
+    int64 game_end_time = 3;
+    int64 next_status_time = 4;
+}
+
+message GAME_CLIENT_NTF_GAME_END_INFO {
+    bool is_start_take_over = 1;
+    bool is_take_over_time = 2;
+    int64 game_end_time = 3;
+    int64 next_status_time = 4;
+}
+
+message WORLD_GAME_NTF_STRONG_POINT_STATUS {
+    uint64 strong_point_zone_uid = 1;
+    _strong_point_server_info strong_point_server_info = 2;
+}
+
+message WORLD_CLIENT_NTF_STRONG_POINT_STATUS {
+    int32 strong_point_tid = 1;
+    int32 strong_point_status = 2;
+}
+
+message GAME_WORLD_NTF_STRONG_POINT_WIN_TARGET_INFO {
+    int32 strong_point_tid = 1;
+    uint64 win_target_occupy_guild_uid = 2;
+    bool is_win_target_new_guild_occupy = 3;
+    uint32 win_target_cur_hp = 4;
+    bool is_take_over_time = 5;
+}
+
+message WORLD_CLIENT_NTF_STRONG_POINT_WIN_TARGET_INFO {
+    int32 strong_point_tid = 1;
+    uint64 win_target_occupy_guild_uid = 2;
+    string win_target_occupy_guild_name = 3;
+    uint32 win_target_cur_hp = 4;
+    bool is_take_over_time = 5;
+}
+
+message GAME_WORLD_REQ_STRONG_POINT_GAME_END {
+    int32 strong_point_tid = 1;
+    uint64 occupy_guild_uid = 2;
+    uint64 strong_point_zone_uid = 3;
+    uint64 mvp_user_uid = 4;
+}
+
+message WORLD_GAME_ACK_STRONG_POINT_GAME_END {
+    uint32 result = 1;
+    _strong_point_server_info strong_point_server_info = 2;
+    uint64 strong_point_zone_uid = 3;
+    int32 return_strong_point_tid = 4;
+    bool is_give_reward = 5;
+}
+
+message GAME_CLIENT_NTF_RESULT_STRONG_POINT_TO_BATTLE_USER {
+    _guild_simple_info occupation_guild_simple_info = 1;
+    string mvp_user_name = 2;
+    int32 return_strong_point_tid = 3;
+}
+
+message WORLD_CLIENT_NTF_RESULT_STRONG_POINT_TO_ALL_USER {
+    int32 strong_point_tid = 1;
+    string occupation_guild_name = 2;
+}
+
+message CLIENT_WORLD_REQ_STRONG_POINT_INFO_LIST {
+    
+}
+
+message WORLD_GAME_SYNC_STRONG_POINT_INFO_IN_ZONE_GROUP {
+    _strong_point_server_info strong_point_server_info = 1;
+    int32 strong_point_tid = 2;
+    _guild_simple_info strong_point_occupy_guild_info = 3;
+    uint64 win_target_occupy_guild_uid = 4;
+}
+
+message WORLD_GAME_SYNC_STRONG_POINT_INFO_LIST_IN_ZONE_GROUP {
+    repeated _strong_point_server_info strong_point_server_info_list = 1;
+    repeated WORLD_GAME_SYNC_STRONG_POINT_INFO_IN_ZONE_GROUP strong_point_occupy_guild_info_list = 2;
+}
+
+message SERVER_CLIENT_NTF_STRONG_POINT_NOTICE {
+    int32 strong_point_tid = 1;
+    uint32 notice_type = 2;
+    uint64 value = 3;
+    string guild_name = 4;
+}
+
+message WORLD_GAME_NTF_STRONG_POINT_OCCUPY_CANCEL {
+    uint64 strong_point_zone_uid = 1;
+}
+
+message WORLD_GAME_NTF_STRONG_POINT_WIN_TARGET_OCCUPY_CANCEL {
+    uint64 strong_point_zone_uid = 1;
+    uint64 occupy_cancel_guild_uid = 2;
+}
+
+message WORLD_CLIENT_NTF_STRONG_POINT_OCCUPY_CANCEL {
+    int32 strong_point_tid = 1;
+}
+
+message WORLD_GAME_NTF_STRONG_POINT_SERVER_INFO_CHEAT {
+    uint64 strong_point_zone_uid = 1;
+    _strong_point_server_info strong_point_server_info = 2;
+}
+
+message WORLD_GAME_NTF_STRONG_POINT_REWARD_TO_GUILD_MEMBER {
+    int32 strong_point_tid = 1;
+    uint64 user_uid = 2;
+}
+
+message GAME_CLIENT_NTF_STRONG_POINT_UNDER_WORLD_ZONE_ENTER_INFO {
+    _strong_point_info_v2 strong_point_info = 1;
+    string occupy_guild_proclamation = 2;
+}
+
+message CLIENT_WORLD_REQ_STRONG_POINT_PROCLAMATION {
+    int32 strong_point_tid = 1;
+    string occupy_guild_proclamation = 2;
+}
+
+message WORLD_CLIENT_ACK_STRONG_POINT_PROCLAMATION {
+    uint32 result = 1;
+    int32 strong_point_tid = 2;
+    string occupy_guild_proclamation = 3;
+}
+
+message WORLD_CLIENT_NTF_STRONG_POINT_PROCLAMATION {
+    int32 strong_point_tid = 1;
+    string occupy_guild_proclamation = 2;
+}

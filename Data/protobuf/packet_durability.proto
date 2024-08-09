@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message GAME_CLIENT_CHAR_DURABILITY {
+    int32 cur_durability = 1;
+    int32 max_durability = 2;
+}
+
+message ITEM_DURABILITY {
+    uint64 item_uid = 1;
+    int32 item_durability = 2;
+}
+
+message GAME_CLIENT_ITEM_DURABILITY {
+    repeated ITEM_DURABILITY item_durability = 1;
+}
+
+message CLIENT_GAME_ITEM_DURABILITY_REPAIR {
+    uint64 item_uid = 1;
+}
+
+message GAME_CLIENT_ITEM_DURABILITY_REPAIR {
+    int32 result = 1;
+    ITEM_DURABILITY item_durability = 2;
+    repeated _cost_info repair_cost_list = 3;
+    repeated _stack_item_info repair_item_list = 4;
+}
+
+message CLIENT_GAME_SICKNESS_RECOVERY_SUPPORT_REGISTER {
+    
+}
+
+message GAME_CLIENT_SICKNESS_RECOVERY_SUPPORT_REGISTER {
+    int32 result = 1;
+}
+
+message GAME_WORLD_SICKNESS_RECOVERY_SUPPORT_REGISTER {
+    int32 max_support_count = 1;
+    int32 buff_id = 2;
+    int64 spend_buff_time = 3;
+    int32 slot = 4;
+    uint32 start_world_id = 5;
+}
+
+message WORLD_GAME_SICKNESS_RECOVERY_SUPPORT_REGISTER {
+    int32 result = 1;
+    uint64 user_uid = 2;
+}
+
+message GAME_WORLD_SICKNESS_RECOVERY_SUPPORT_DELETE {
+    int32 buff_id = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_SICKNESS_RECOVERY_SUPPORT_DELETE {
+    int32 result = 1;
+    uint64 user_uid = 2;
+}
+
+message CLIENT_GAME_IMMEDIATELY_SICKNESS_RECOVERY {
+    bool recovery_type = 1;
+}
+
+message GAME_CLIENT_IMMEDIATELY_SICKNESS_RECOVERY {
+    int32 result = 1;
+    repeated _cost_info recovery_cost_list = 2;
+    repeated _stack_item_info recovery_item_list = 3;
+}
+
+message SICKNESS_GUILD_SUPPORT_INFO {
+    int64 guild_support_time = 1;
+    bool guild_support = 2;
+    int32 received_guild_support_count = 3;
+    int32 receiveable_guild_support_count = 4;
+}
+
+message CLIENT_GAME_SICKNESS_RECOVERY_INFO {
+    
+}
+
+message GAME_WORLD_SICKNESS_RECOVERY_INFO {
+    uint64 user_uid = 1;
+}
+
+message GAME_CLIENT_SICKNESS_RECOVERY_REFRESH {
+    uint32 buff_id = 1;
+    int64 left_buff_time = 2;
+    SICKNESS_GUILD_SUPPORT_INFO sickness_guild_support_info = 3;
+    uint32 reason = 4;
+    int64 support_user_uid = 5;
+}
+
+message WORLD_GAME_SICKNESS_RECOVERY_REFRESH {
+    uint64 user_uid = 1;
+    SICKNESS_GUILD_SUPPORT_INFO sickness_guild_support_info = 2;
+    uint32 reason = 3;
+    int64 support_user_uid = 4;
+}

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_DUNGEON_TICKET_INFO {
+    
+}
+
+message GAME_CLIENT_DUNGEON_TICKET_INFO {
+    repeated _dungeon_ticket_info dungeon_ticket_info_list = 1;
+}
+
+message CLIENT_GAME_DUNGEON_TICKET_CHARGE {
+    uint32 dungeon_ticket_type = 1;
+    bool item_check = 2;
+}
+
+message GAME_CLIENT_DUNGEON_TICKET_CHARGE {
+    uint32 dungeon_ticket_type = 1;
+    _dungeon_ticket_info dungeon_ticket_info = 2;
+    repeated _cost_info cost_infos = 3;
+    int32 result = 4;
+    repeated _stack_item_info del_item_list = 5;
+}
+
+message GAME_CLIENT_DUNGEON_TICKET_CHANGE_NOTIFY {
+    _dungeon_ticket_info dungeon_ticket_info = 1;
+}

@@ -1,0 +1,399 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+import "packet_guild_war_common.proto";
+
+message _sabuk_info {
+    int32 sabuk_status = 1;
+    uint64 battle_start_time = 2;
+}
+
+message _sabuk_server_info {
+    int32 sabuk_status = 1;
+    uint64 battle_start_time = 2;
+}
+
+message _sabuk_guild_info {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+    string master_name = 3;
+    uint32 guild_mark = 4;
+    uint32 guild_mark_edge = 5;
+    uint32 world_id = 6;
+}
+
+message _sabuk_r3_guild_info {
+    _sabuk_guild_info sabuk_guild_info = 1;
+    int32 r2_round_occupy_stage_tid = 2;
+}
+
+message _sabuk_user_ranking_info {
+    uint64 guild_uid = 1;
+    uint64 user_uid = 2;
+    string user_name = 3;
+    uint64 first_score_get_time = 4;
+    uint32 player_kill_score = 5;
+    uint32 occupation_score = 6;
+    uint32 monster_kill_score = 7;
+}
+
+message _sabuk_capture_monster_info {
+    int32 monster_tid = 1;
+    uint64 occupy_guild_uid = 2;
+}
+
+message _sabuk_outpost_monster_info {
+    int32 monster_tid = 1;
+    uint64 occupy_guild_uid = 2;
+}
+
+message _sabuk_buff_monster_info {
+    int32 gen_pos_id = 1;
+    int32 monster_tid = 2;
+    uint64 regen_time = 3;
+}
+
+message _sabuk_dominion_war_info {
+    int32 sabuk_round_tid = 1;
+    _sabuk_guild_info capture_occupy_guild_info = 2;
+    uint32 channel_state = 3;
+}
+
+message _sabuk_ranking_board_info {
+    _sabuk_guild_info guild_info = 1;
+    int32 guild_level = 2;
+    int64 guild_combat_point = 3;
+    int32 guild_member_count = 4;
+    int32 guild_member_max_count = 5;
+    int32 sabuk_round = 6;
+    uint32 score = 7;
+}
+
+message _sabuk_r1r2_popup_info {
+    int32 sabuk_round_tid = 1;
+    _sabuk_capture_monster_info capture_monster_info = 2;
+    _sabuk_outpost_monster_info outpost_monster_info = 3;
+}
+
+message _sabuk_r1r2_popup_stage_info {
+    int32 sabuk_round_tid = 1;
+    _sabuk_guild_info capture_occupy_guild_info = 2;
+}
+
+message _sabuk_board_user_view_info {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    bool is_guild_master = 3;
+    uint64 party_uid = 4;
+    bool is_party_leader = 5;
+    uint32 user_status = 6;
+    _vector3 cur_pos = 7;
+}
+
+message _sabuk_world_sync_guild_info {
+    uint64 guild_uid = 1;
+    int32 highest_occupy_complete_sabuk_round_tid = 2;
+    uint32 score = 3;
+}
+
+message _sabuk_gm_round_schedule_info {
+    int32 round = 1;
+    int32 start_day = 2;
+    int32 start_hour = 3;
+    int32 start_minute = 4;
+    uint64 update_time = 5;
+}
+
+message _sabuk_selected_guild_info {
+    uint64 guild_uid = 1;
+}
+
+message _sabuk_zone_create_guild_info {
+    uint64 guild_uid = 1;
+    int32 before_round_occupy_sabuk_round_tid = 2;
+}
+
+message _sabuk_zone_create_user_info {
+    uint64 user_uid = 1;
+    string user_name = 2;
+    uint64 guild_uid = 3;
+    uint64 first_score_get_time = 4;
+    int32 player_kill_score = 5;
+    int32 occupation_score = 6;
+    int32 monster_kill_score = 7;
+}
+
+message _sabuk_zone_create_capture_monster_info {
+    int32 sabuk_round_tid = 1;
+    int32 monster_tid = 2;
+    uint64 occupy_guild_uid = 3;
+    uint64 killer_user_uid = 5;
+    string killer_user_name = 6;
+    uint32 hp = 7;
+}
+
+message _sabuk_zone_create_outpost_monster_info {
+    int32 sabuk_round_tid = 1;
+    int32 monster_tid = 2;
+    uint64 occupy_guild_uid = 3;
+    uint32 hp = 4;
+    uint64 die_time = 5;
+}
+
+message _sabuk_zone_create_gate_monster_info {
+    int32 sabuk_round_tid = 1;
+    int32 monster_tid = 2;
+    uint32 hp = 3;
+}
+
+message _sabuk_zone_create_info {
+    _sabuk_server_info sabuk_server_info = 1;
+    repeated _sabuk_zone_create_guild_info guild_info_list = 2;
+    repeated _sabuk_zone_create_user_info user_info_list = 3;
+    _sabuk_zone_create_capture_monster_info capture_monster_info = 4;
+    repeated _sabuk_zone_create_outpost_monster_info outpost_monster_info_list = 5;
+    repeated _sabuk_zone_create_gate_monster_info gate_monster_info_list = 6;
+}
+
+message CLIENT_WORLD_REQ_SABUK_DOMINION_CASTLE_INFO {
+    
+}
+
+message WORLD_CLIENT_ACK_SABUK_DOMINION_CASTLE_INFO {
+    _sabuk_guild_info occupy_guild_info = 1;
+    uint64 occupy_expire_time = 2;
+    string master_profile = 3;
+    _sabuk_info sabuk_info = 4;
+}
+
+message CLIENT_WORLD_REQ_SABUK_DOMINION_WAR_INFO {
+    
+}
+
+message WORLD_CLIENT_ACK_SABUK_DOMINION_WAR_INFO {
+    _sabuk_info sabuk_info = 1;
+    repeated _sabuk_dominion_war_info sabuk_dominion_war_info_list = 2;
+}
+
+message CLIENT_WORLD_REQ_SABUK_RANKING_BOARD_INFO {
+    
+}
+
+message WORLD_CLIENT_ACK_SABUK_RANKING_BOARD_INFO {
+    repeated _sabuk_ranking_board_info sabuk_ranking_board_info_list = 1;
+    uint64 battle_period_start_time = 2;
+    uint64 battle_period_end_time = 3;
+    uint64 occupy_guild_uid = 4;
+}
+
+message CLIENT_WORLD_REQ_SABUK_R1R2_POPUP {
+    
+}
+
+message WORLD_CLIENT_ACK_SABUK_R1R2_POPUP {
+    uint32 result = 1;
+    repeated _sabuk_r1r2_popup_info sabuk_r1r2_popup_info_list = 2;
+    repeated _sabuk_r1r2_popup_stage_info sabuk_r1r2_popup_stage_info_list = 3;
+}
+
+message GAME_WORLD_NTF_SABUK_CAPTURE_MONSTER_OCCUPY {
+    uint64 sabuk_zone_uid = 1;
+    int32 sabuk_round_tid = 2;
+    int32 monster_tid = 3;
+    uint64 occupy_guild_uid = 4;
+    uint64 killer_user_uid = 5;
+    string killer_user_name = 6;
+}
+
+message WORLD_GAME_NTF_SABUK_CAPTURE_MONSTER_OCCUPY_CANCEL {
+    uint64 sabuk_zone_uid = 1;
+}
+
+message GAME_WORLD_NTF_SABUK_OUTPOST_MONSTER_INSTALL {
+    uint64 sabuk_zone_uid = 1;
+    int32 sabuk_round_tid = 2;
+    int32 monster_tid = 3;
+    uint64 occupy_guild_uid = 4;
+    uint64 user_uid = 5;
+    string user_name = 6;
+}
+
+message GAME_WORLD_NTF_SABUK_OUTPOST_MONSTER_DIE {
+    uint64 sabuk_zone_uid = 1;
+    int32 sabuk_round_tid = 2;
+    int32 monster_tid = 3;
+}
+
+message WORLD_GAME_NTF_SABUK_OUTPOST_MONSTER_DESTROY {
+    uint64 sabuk_zone_uid = 1;
+}
+
+message GAME_WORLD_NTF_SABUK_MONSTER_HP {
+    uint64 sabuk_zone_uid = 1;
+    int32 sabuk_round_tid = 2;
+    int32 monster_tid = 3;
+    uint32 hp = 4;
+}
+
+message GAME_CLIENT_NTF_SABUK_R1R2_ZONE_ENTER_INFO {
+    _sabuk_info sabuk_info = 1;
+    repeated _sabuk_guild_info sabuk_guild_info_list = 2;
+    _sabuk_capture_monster_info capture_monster_info = 3;
+    _sabuk_outpost_monster_info outpost_monster_info = 4;
+    repeated _sabuk_buff_monster_info buff_monster_info_list = 5;
+    uint64 capture_occupy_banish_time = 6;
+}
+
+message GAME_CLIENT_NTF_SABUK_R3_ZONE_ENTER_INFO {
+    _sabuk_info sabuk_info = 1;
+    repeated _sabuk_r3_guild_info sabuk_r3_guild_info_list = 2;
+    _sabuk_capture_monster_info capture_monster_info = 3;
+    repeated _sabuk_outpost_monster_info outpost_monster_info_list = 4;
+    repeated _sabuk_buff_monster_info buff_monster_info_list = 5;
+    uint64 guild_outpost_casting_possible_time = 6;
+    repeated _guild_war_board_command_info command_info_list = 7;
+    uint64 capture_occupy_banish_time = 8;
+}
+
+message WORLD_GAME_NTF_SABUK_STATUS_CHANGE {
+    uint64 sabuk_zone_uid = 1;
+    _sabuk_server_info sabuk_server_info = 2;
+    _sabuk_zone_create_info sabuk_zone_create_info = 3;
+}
+
+message WORLD_CLIENT_NTF_SABUK_INFO {
+    _sabuk_info sabuk_info = 1;
+}
+
+message WORLD_CLIENT_NTF_SABUK_R3_RESULT_TO_ALL_USER {
+    _sabuk_info sabuk_info = 1;
+    _sabuk_guild_info occupy_guild_info = 2;
+}
+
+message GAME_CLIENT_NTF_RESULT_SABUK_TO_BATTLE_USER {
+    _sabuk_guild_info occupy_guild_info = 1;
+    uint64 mvp_user_uid = 2;
+    string mvp_user_name = 3;
+    repeated _sabuk_user_ranking_info user_ranking_info_list = 4;
+    string occupy_guild_master_profile = 5;
+}
+
+message WORLD_GAME_SYNC_SABUK_INFO_IN_ZONE_GROUP {
+    _sabuk_server_info sabuk_server_info = 1;
+}
+
+message WORLD_WORLD_SYNC_SABUK_INFO {
+    bool is_init_sync_sabuk_info = 1;
+    _sabuk_server_info sabuk_server_info = 2;
+    repeated _sabuk_world_sync_guild_info sabuk_world_sync_guild_info_list = 3;
+    repeated _sabuk_gm_round_schedule_info sabuk_gm_round_schedule_info_list = 4;
+    bool is_conquer_server_disconnected_with_relay = 5;
+}
+
+message SERVER_CLIENT_NTF_SABUK_NOTICE {
+    uint32 notice_type = 1;
+    int32 monster_tid = 2;
+    int32 monster_tid_2 = 3;
+    int32 stage_tid = 4;
+    int32 stage_tid_2 = 5;
+    string guild_name = 6;
+    string user_name = 7;
+    uint32 world_id = 8;
+}
+
+message GAME_WORLD_NTF_SABUK_USER_SCORE {
+    uint64 user_uid = 1;
+    uint64 first_score_get_time = 2;
+    uint32 player_kill_score = 3;
+    uint32 occupation_score = 4;
+    uint32 monster_kill_score = 5;
+    uint32 add_score = 6;
+}
+
+message CLIENT_GAME_REQ_SABUK_RANK_INFO {
+    
+}
+
+message GAME_CLIENT_ACK_SABUK_RANK_INFO {
+    uint32 result = 1;
+    repeated _sabuk_user_ranking_info user_ranking_info_list = 2;
+}
+
+message CLIENT_GAME_REQ_SABUK_BOARD_INFO {
+    int32 info_req_kind = 1;
+}
+
+message GAME_CLIENT_ACK_SABUK_BOARD_INFO {
+    uint32 result = 1;
+}
+
+message GAME_CLIENT_NTF_SABUK_BOARD_MOVE_INFO {
+    int32 info_req_kind = 1;
+    repeated _guild_war_board_user_move_info user_move_info_list = 2;
+}
+
+message GAME_CLIENT_NTF_SABUK_BOARD_INFO {
+    int32 info_req_kind = 1;
+    bool is_modify = 2;
+    repeated _sabuk_board_user_view_info user_view_info_list = 3;
+    repeated _guild_war_board_command_info command_info_list = 4;
+}
+
+message GAME_CLIENT_NTF_SABUK_CAPTURE_MONSTER_INFO {
+    _sabuk_capture_monster_info capture_monster_info = 1;
+    string mvp_user_name = 2;
+    uint64 capture_occupy_banish_time = 3;
+}
+
+message GAME_CLIENT_NTF_SABUK_OUTPOST_MONSTER_INFO {
+    _sabuk_outpost_monster_info outpost_monster_info = 1;
+}
+
+message GAME_CLIENT_NTF_SABUK_BUFF_MONSTER_INFO {
+    _sabuk_buff_monster_info buff_monster_info = 1;
+}
+
+message GAME_CLIENT_NTF_SABUK_GUILD_OUTPOST_CASTING_POSSIBLE_TIME {
+    uint64 guild_outpost_casting_possible_time = 1;
+}
+
+message WORLD_GAME_NTF_SABUK_CAPTURE_MONSTER_OCCUPY_BY_CHEAT {
+    uint64 sabuk_zone_uid = 1;
+    uint64 occupy_guild_uid = 2;
+    uint64 killer_user_uid = 3;
+    string killer_user_name = 4;
+}
+
+message CLIENT_WORLD_REQ_SABUK_SELECTED_GUILD_INFO {
+    
+}
+
+message WORLD_CLIENT_ACK_SABUK_SELECTED_GUILD_INFO {
+    repeated _sabuk_selected_guild_info sabuk_selected_guild_info_list = 1;
+    _sabuk_info sabuk_info = 2;
+}
+
+message WORLD_CLIENT_NTF_SABUK_SELECTED_GUILD_INFO {
+    repeated _sabuk_selected_guild_info sabuk_selected_guild_info_list = 1;
+}
+
+message GAME_WORLD_NTF_SABUK_NOTICE {
+    uint64 sabuk_zone_uid = 1;
+    int32 sabuk_round_tid = 2;
+    uint32 notice_type = 3;
+    int32 monster_tid = 4;
+    uint64 guild_uid = 5;
+}
+
+message GUILD_WORLD_SABUK_GUILD_COST_REWARD {
+    uint64 guild_uid = 1;
+    int32 stage_tid = 2;
+    int32 cost_type = 3;
+    int64 cost_value = 4;
+}
+
+message RELAY_WORLD_NTF_SABUK_CONQUER_SERVER_DISCONNECTED {
+    
+}

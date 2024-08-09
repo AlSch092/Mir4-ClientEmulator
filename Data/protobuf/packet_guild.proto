@@ -1,0 +1,1540 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _guild_fame {
+    uint32 fame_type = 1;
+    int64 fame_value = 2;
+}
+
+message _guild_dungeon_clrear_reward {
+    uint32 reward_type = 1;
+    uint32 reward_type_sub = 2;
+    uint32 reward_value = 3;
+}
+
+message CLIENT_GAME_GUILD_CREATION {
+    string guild_name = 1;
+    uint32 guild_mark = 2;
+    uint32 guild_mark_edge = 3;
+}
+
+message GAME_WORLD_GUILD_CREATION {
+    _guild_name_ui_info guild_info = 1;
+}
+
+message WORLD_GAME_GUILD_CREATION {
+    uint64 uid = 1;
+    uint32 result = 2;
+    _guild_info guild_info = 3;
+}
+
+message GAME_CLIENT_GUILD_CREATION {
+    uint32 result = 1;
+    _guild_info guild_info = 2;
+    _cost_info cost_info = 3;
+    repeated _guild_member_authority auth_list = 4;
+}
+
+message GAME_WORLD_GUILD_CREATION_RESERVE {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+    uint32 guild_mark = 3;
+    uint32 guild_mark_edge = 4;
+}
+
+message WORLD_GAME_GUILD_CREATION_RESERVE {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    string guild_name = 4;
+    uint32 guild_mark = 5;
+    uint32 guild_mark_edge = 6;
+}
+
+message GAME_WORLD_GUILD_CREATION_RESERVE_CANCEL {
+    uint64 guild_uid = 1;
+}
+
+message CLIENT_WORLD_GUILD_DELETE {
+    
+}
+
+message WORLD_CLIENT_GUILD_DELETE {
+    uint32 result = 1;
+}
+
+message GAME_WORLD_GUILD_DELETE {
+    
+}
+
+message WORLD_GAME_GUILD_DELETE {
+    uint32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+}
+
+message CLIENT_WORLD_GUILD_SORT_LIST {
+    int32 sort_option_type = 1;
+    int32 sort_filter_type = 2;
+    int32 request_page = 3;
+    int32 target_world_id = 4;
+}
+
+message GAME_WORLD_GUILD_SORT_LIST {
+    int32 sort_option_type = 1;
+    int32 sort_filter_type = 2;
+    int32 request_page = 3;
+    int32 target_world_id = 4;
+    uint32 start_world_id = 5;
+}
+
+message WORLD_GAME_GUILD_SORT_LIST {
+    uint64 user_uid = 1;
+    int32 request_page = 2;
+    repeated _guild_sort_info guild_search_list = 3;
+    int32 guild_invite_count = 4;
+    int32 guild_applicant_count = 5;
+    int32 target_world_id = 6;
+}
+
+message WORLD_CLIENT_GUILD_SORT_LIST {
+    int32 request_page = 1;
+    repeated _guild_sort_info guild_search_list = 2;
+    int32 guild_invite_count = 3;
+    int32 guild_applicant_count = 4;
+    int32 target_world_id = 5;
+}
+
+message CLIENT_WORLD_GUILD_SORT_LIST_BY_FRIENDSHIP_FIRST {
+    int32 request_page = 1;
+}
+
+message WORLD_CLIENT_GUILD_SORT_LIST_BY_FRIENDSHIP_FIRST {
+    int32 result = 1;
+    int32 request_page = 2;
+    repeated _guild_sort_info guild_search_list = 3;
+}
+
+message CLIENT_WORLD_GUILD_MY_GUILD_INFO {
+    
+}
+
+message GAME_WORLD_GUILD_MY_GUILD_INFO {
+    
+}
+
+message _guild_grade_info {
+    int32 grade = 1;
+    string grade_name = 2;
+}
+
+message _guild_hostility_info {
+    uint64 guild_uid = 1;
+}
+
+message WORLD_CLIENT_GUILD_MY_GUILD_INFO {
+    uint32 result = 1;
+    _guild_info guild_data = 2;
+    repeated _guild_hostility_info hostility_list = 3;
+    repeated _guild_grade_info grade_info_list = 4;
+    repeated uint64 alliance_list = 5;
+    uint32 my_grade = 6;
+    repeated uint32 develop_can_levelup_index_list = 8;
+    repeated _cost_info guild_cost_info = 9;
+    repeated _guild_member_authority auth_list = 10;
+    repeated uint64 guild_wanted_list = 11;
+    repeated _guild_stat_info stat_list = 13;
+    _guild_member_partner_info partner_member_info = 14;
+    repeated int32 dominion_list = 15;
+    repeated _guild_develop_skill_info develop_skill_info = 16;
+    repeated uint64 except_attack_list = 17;
+    repeated _guild_command_mark command_mark_list = 18;
+    repeated uint64 alliance_appliance_recv_list = 19;
+}
+
+message CLIENT_WORLD_GUILD_MY_GUILD_UI_ETC_INFO {
+    
+}
+
+message _guild_develop_group_level {
+    int32 list_group_index = 1;
+    int32 total_level = 2;
+}
+
+message WORLD_CLIENT_GUILD_MY_GUILD_UI_ETC_INFO {
+    int32 result = 1;
+    uint64 guild_uid = 2;
+    int64 guild_exp = 3;
+    int64 total_combat_point = 4;
+    int32 rank = 5;
+    int32 occupation_id = 7;
+    uint32 tendency = 8;
+    repeated _guild_develop_group_level develop_group_level_list = 9;
+    repeated uint32 dominion_index = 10;
+    repeated _guild_develop_skill_info develop_skill_info = 12;
+    int32 recommend_id = 13;
+    int32 member_count = 14;
+    int32 member_max_count = 15;
+    string master_name = 16;
+    uint64 last_box_open_time = 17;
+    _sanctum_info sanctum_info = 18;
+    int32 sabuk_guild_title_tid = 19;
+}
+
+message CLIENT_WORLD_GUILD_OTHER_GUILD_UI_INFO {
+    uint64 guild_uid = 1;
+}
+
+message WORLD_CLIENT_GUILD_OTHER_GUILD_UI_INFO {
+    uint32 result = 1;
+    _guild_info guild_data = 2;
+    int64 guild_exp = 6;
+    int32 occupation_id = 7;
+    bool is_member_invite = 9;
+    bool is_member_applicant = 10;
+    uint32 other_guild_diplomacy_state_type = 11;
+    uint32 tendency = 12;
+    repeated _guild_develop_group_level develop_group_level_list = 13;
+    int32 remain_hostility_time = 14;
+    repeated uint32 dominion_index = 15;
+    repeated _guild_develop_skill_info develop_skill_info = 16;
+    bool is_my_guild_declare = 17;
+    _sanctum_info sanctum_info = 18;
+    bool is_except_attack = 19;
+    int32 sabuk_guild_title_tid = 20;
+}
+
+message CLIENT_WORLD_GUILD_JOIN_TYPE {
+    uint32 join_type = 1;
+}
+
+message WORLD_CLIENT_GUILD_JOIN_TYPE {
+    uint32 result = 1;
+    uint32 join_type = 2;
+}
+
+message CLIENT_WORLD_GUILD_OPTION_SET {
+    repeated _guild_option option_info = 1;
+}
+
+message GAME_WORLD_GUILD_OPTION_SET {
+    repeated _guild_option option_info = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_CLIENT_GUILD_OPTION_SET {
+    uint32 result = 1;
+    repeated _guild_option option_info = 2;
+}
+
+message WORLD_GAME_GUILD_OPTION_SET {
+    uint32 result = 1;
+    uint64 guild_uid = 2;
+    repeated _guild_option option_info = 3;
+    uint64 user_uid = 4;
+}
+
+message CLIENT_WORLD_GUILD_OPTION_LIST {
+    
+}
+
+message WORLD_CLIENT_GUILD_OPTION_LIST {
+    repeated _guild_option guild_option_list = 1;
+    uint32 result = 2;
+}
+
+message CLIENT_WORLD_GUILD_CHANGE_PR {
+    string guild_pr = 1;
+}
+
+message WORLD_CLIENT_GUILD_CHANGE_PR {
+    uint32 result = 1;
+    string guild_pr = 2;
+}
+
+message GAME_WORLD_GUILD_CHANGE_PR {
+    string guild_pr = 1;
+    uint64 user_uid = 2;
+    uint32 start_world_id = 3;
+}
+
+message WORLD_GAME_GUILD_CHANGE_PR {
+    int32 result = 1;
+    uint64 guild_uid = 2;
+    uint64 user_uid = 3;
+    string guild_pr = 4;
+}
+
+message GAME_CLIENT_GUILD_MEMBER_JOIN_APPLICANT_DEL_NOTIFY {
+    uint64 del_user_uid = 1;
+}
+
+message CLIENT_WORLD_GUILD_MY_APPLICANT_LIST {
+    
+}
+
+message GAME_WORLD_GUILD_MY_APPLICANT_LIST {
+    uint32 start_world_id = 1;
+}
+
+message WORLD_GAME_GUILD_MY_APPLICANT_LIST {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    repeated _guild_info applicant_list = 3;
+    repeated int64 applicant_req_time = 4;
+}
+
+message WORLD_CLIENT_GUILD_MY_APLLICANT_LIST {
+    int32 result = 1;
+    repeated _guild_info applicant_list = 2;
+    repeated int64 applicant_req_time = 3;
+}
+
+message CLIENT_WORLD_GUILD_HOSTILITY_MY_GUILD_UI_LIST {
+    
+}
+
+message _my_guild_hostility_ui_info {
+    _guild_name_ui_info name_ui_info = 1;
+    string master_name = 2;
+    uint32 level = 3;
+    uint32 member_count = 4;
+    uint32 max_member_count = 5;
+    int64 combat_point = 6;
+    uint32 kill_our_count = 8;
+    uint32 death_count = 9;
+    int32 remain_hostility_time = 10;
+    uint32 guild_rank = 11;
+    bool is_my_declear = 12;
+    int32 world_id = 13;
+}
+
+message WORLD_CLIENT_GUILD_HOSTILITY_MY_GUILD_UI_LIST {
+    int32 result = 1;
+    uint32 declare_max_count = 2;
+    repeated _my_guild_hostility_ui_info hostility_list = 3;
+}
+
+message CLIENT_WORLD_GUILD_HOSTILITY_ADD {
+    uint64 target_guild_uid = 1;
+}
+
+message GAME_WORLD_GUILD_HOSTILITY_ADD {
+    uint64 target_guild_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message GUILD_WORLD_GUILD_HOSTILITY_ADD {
+    uint64 user_uid = 1;
+    int32 user_world_id = 2;
+    uint64 guild_uid = 3;
+    uint64 target_guild_uid = 4;
+    int64 start_time = 5;
+    int64 end_time = 6;
+    uint32 start_world_id = 7;
+}
+
+message GUILD_WORLD_GUILD_HOSTILITY_ADD_ACK {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    int32 user_world_id = 3;
+    uint64 guild_uid = 4;
+    uint64 target_guild_uid = 5;
+    int64 start_time = 6;
+    int64 end_time = 7;
+    uint32 start_world_id = 8;
+}
+
+message WORLD_GAME_GUILD_HOSTILITY_ADD {
+    int32 result = 1;
+    uint64 target_guild_uid = 2;
+    uint64 user_uid = 3;
+    _guild_hostility_info_server_sync hostility_info = 4;
+    _guild_name_ui_info guild_name_info = 5;
+    _guild_name_ui_info target_guild_name_info = 6;
+}
+
+message WORLD_CLIENT_GUILD_HOSTILITY_ADD {
+    int32 result = 1;
+    uint64 target_guild_uid = 2;
+    int64 remain_time = 3;
+}
+
+message GAME_CLIENT_GUILD_HOSTILITY_ADD_MEMBER_BROADCAST {
+    _guild_name_ui_info target_name_ui_info = 1;
+    bool is_my_guild_declare = 2;
+}
+
+message WORLD_GAME_GUILD_HOSTILITY_KILL {
+    uint64 declare_guild_uid = 1;
+    uint64 target_guild_uid = 2;
+    int32 declare_kill_count = 3;
+    int32 target_kill_count = 4;
+}
+
+message CLIENT_WORLD_GUILD_HOSTILITY_DEL {
+    uint64 target_guild_uid = 1;
+}
+
+message GAME_WORLD_GUILD_HOSTILITY_DEL {
+    uint64 target_guild_uid = 1;
+    uint64 user_uid = 2;
+    uint32 start_world_id = 3;
+}
+
+message WORLD_GAME_GUILD_HOSTILITY_DEL {
+    uint32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    uint64 target_guild_uid = 4;
+    _guild_name_ui_info guild_name_info = 5;
+    _guild_name_ui_info target_guild_name_info = 6;
+}
+
+message GUILD_WORLD_GUILD_HOSTILITY_DEL {
+    uint64 declare_guild_uid = 1;
+    uint64 target_guild_uid = 2;
+    uint64 user_uid = 3;
+}
+
+message WORLD_CLIENT_GUILD_HOSTILITY_DEL {
+    uint32 result = 1;
+    uint64 target_guild_uid = 2;
+    _guild_name_ui_info target_name_ui_info = 3;
+}
+
+message GAME_CLIENT_GUILD_HOSTILITY_DEL_MEMBER_BROADCAST {
+    uint64 target_guild_uid = 1;
+    _guild_name_ui_info target_name_ui_info = 2;
+    uint64 declare_guild_uid = 3;
+}
+
+message GAME_WORLD_GUILD_KILL_NOTI {
+    uint64 kill_user_uid = 1;
+    uint64 die_user_uid = 2;
+    uint64 kill_user_guild_uid = 3;
+    uint64 die_user_guild_uid = 4;
+    uint32 start_world_id = 5;
+}
+
+message GUILD_WORLD_GUILD_HOSTILTY_KILL_NOTI {
+    uint64 kill_user_uid = 1;
+    uint64 die_user_uid = 2;
+    uint64 kill_user_guild_uid = 3;
+    uint64 die_user_guild_uid = 4;
+    int32 kill_guild_kill_count = 5;
+    uint32 start_world_id = 6;
+}
+
+message GAME_CLIENT_GUILD_JOIN_FIELD_BROADCAST {
+    uint64 uid = 1;
+    _guild_name_ui_info guild_info = 2;
+}
+
+message CLIENT_WORLD_GUILD_GRADE_INFO_SET {
+    uint32 grade = 1;
+    string grade_name = 2;
+}
+
+message WORLD_CLIENT_GUILD_GRADE_INFO_SET {
+    int32 result = 1;
+    string grade_name = 2;
+    uint32 grade = 3;
+}
+
+message CLIENT_WORLD_GUILD_NAME_CHANGE {
+    string guild_name = 1;
+    uint32 guild_mark = 2;
+    uint32 guild_mark_edge = 3;
+    bool is_change_type_mark = 4;
+}
+
+message GAME_WORLD_GUILD_NAME_CHANGE {
+    string guild_name = 1;
+    uint32 guild_mark = 2;
+    uint32 guild_mark_edge = 3;
+    bool is_change_type_mark = 4;
+    repeated _cost_info use_cost = 5;
+    uint32 start_world_id = 6;
+}
+
+message WORLD_GAME_GUILD_NAME_CHANGE {
+    int32 result = 1;
+    _guild_name_ui_info guild_info = 2;
+    bool is_change_type_mark = 3;
+    uint64 user_uid = 4;
+    repeated _cost_info use_cost = 5;
+}
+
+message WORLD_CLIENT_GUILD_NAME_CHANGE {
+    int32 result = 1;
+    _guild_name_ui_info guild_info = 2;
+    _cost_info costInfo = 3;
+    bool is_change_type_mark = 4;
+}
+
+message GAME_CLIENT_GUILD_NAME_CHANGE_FIELD_BROADCAST {
+    _guild_name_ui_info guild_info = 2;
+}
+
+message GAME_WORLD_GUILD_COST_INCREASE {
+    uint32 add_action_type = 1;
+    _cost_info Increase_guild_cost_info = 2;
+    int32 money_log_event_type = 3;
+    uint32 start_world_id = 4;
+}
+
+message WORLD_GAME_GUILD_COST {
+    uint64 guild_uid = 1;
+    repeated _cost_info guild_cost_info = 2;
+}
+
+message GAME_CLIENT_GUILD_COST {
+    repeated _cost_info guild_cost_info = 1;
+}
+
+message GAME_WORLD_GUILD_COST_USE_EVENT {
+    uint64 guild_uid = 1;
+    uint64 zone_id = 2;
+    int32 zone_group_id = 3;
+    int32 contents_event_type = 4;
+    int64 contents_event_value = 5;
+    repeated _cost_info use_cost_info = 6;
+    int32 money_log_event_type = 7;
+    uint64 user_uid = 8;
+    uint32 start_world_id = 9;
+}
+
+message WORLD_GAME_GUILD_COST_USE_EVENT {
+    int32 result = 1;
+    uint64 guild_uid = 2;
+    uint64 zone_id = 3;
+    int32 contents_event_type = 4;
+    int64 contents_event_value = 5;
+    repeated _cost_info use_cost_info = 6;
+}
+
+message CLIENT_GAME_GUILD_DONATION_INFO {
+    
+}
+
+message GAME_CLIENT_GUILD_DONATION_INFO {
+    repeated _character_guild_donation_info char_guild_donation_list = 1;
+}
+
+message CLIENT_GAME_GUILD_DONATION_DETAIL_INFO_LIST {
+    
+}
+
+message member_donation_detail_info {
+    uint64 user_uid = 1;
+    repeated _cost_info daily_donation_cost = 2;
+    repeated _cost_info weekly_donation_cost = 3;
+}
+
+message GAME_CLIENT_GUILD_DONATION_DETAIL_INFO_LIST {
+    int32 result = 1;
+    repeated member_donation_detail_info detail_list = 2;
+}
+
+message CLIENT_GAME_GUILD_DONATION {
+    int32 cost_type = 1;
+    int32 cost_value = 2;
+}
+
+message GAME_WORLD_GUILD_DONATION {
+    int32 cost_type = 1;
+    int32 cost_value = 2;
+    repeated _cost_info use_cost_info = 3;
+    int32 guild_give_cost_type = 4;
+    int32 guild_give_cost_value = 5;
+    _reward_cost_info user_reward_cost = 6;
+    uint32 start_world_id = 7;
+}
+
+message WORLD_GAME_GUILD_DONATION {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    int32 cost_type = 3;
+    int32 cost_value = 4;
+    repeated _cost_info use_cost_info = 5;
+    _reward_cost_info user_reward_cost = 6;
+}
+
+message GAME_CLIENT_GUILD_DONATION {
+    int32 result = 1;
+    _cost_info use_cost = 2;
+    _reward_cost_info user_reward_cost = 3;
+}
+
+message GAME_CLIENT_GUILD_DONATION_SYNC {
+    repeated _cost_info costInfo = 1;
+    _character_guild_donation_info donation_info = 2;
+}
+
+message CLIENT_GAME_GUILD_COST_GIVE {
+    uint64 target_user_uid = 1;
+    int32 cost_type = 2;
+    int32 cost_value = 3;
+}
+
+message GAME_WORLD_GUILD_COST_GIVE {
+    uint64 target_user_uid = 1;
+    int32 cost_type = 2;
+    int32 cost_value = 3;
+    uint32 start_world_id = 4;
+}
+
+message WORLD_GAME_GUILD_COST_GIVE {
+    int32 result = 1;
+    uint64 user_uid = 2;
+}
+
+message GAME_CLIENT_GUILD_COST_GIVE {
+    int32 result = 1;
+}
+
+message CLIENT_GAME_GUILD_COST_GIVE_TO_OTHER_USER {
+    repeated uint64 target_user_uid_list = 1;
+    int32 cost_type = 2;
+    int32 cost_value = 3;
+    bool is_my_guild_member = 4;
+}
+
+message GAME_WORLD_GUILD_COST_GIVE_TO_OTHER_USER {
+    repeated uint64 target_user_uid_list = 1;
+    int32 cost_type = 2;
+    int32 cost_value = 3;
+    bool is_my_guild_member = 4;
+    uint32 start_world_id = 5;
+}
+
+message _guild_cost_give_target_user_name {
+    uint64 user_uid = 1;
+    string character_name = 2;
+    _cost_info can_recv_limit = 3;
+}
+
+message WORLD_GAME_GUILD_COST_GIVE_TO_OTHER_USER {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    repeated _guild_cost_give_target_user_name target_user_list = 3;
+    repeated _guild_cost_give_target_user_name target_user_fail_list = 4;
+    bool is_my_guild_member = 5;
+    repeated _character_guild_receive_cost_by_user_uid_server_sync receive_cost_sync_info = 6;
+}
+
+message GAME_CLIENT_GUILD_COST_GIVE_TO_OTHER_USER {
+    int32 result = 1;
+    repeated _guild_cost_give_target_user_name target_user_list = 3;
+    repeated _guild_cost_give_target_user_name target_user_fail_list = 4;
+    bool is_my_guild_member = 5;
+}
+
+message CLIENT_GAME_GUILD_COST_GIVE_TO_OTHER_GUILD {
+    repeated uint64 target_guild_uid_list = 1;
+    int32 cost_type = 2;
+    int32 cost_value = 3;
+}
+
+message GAME_WORLD_GUILD_COST_GIVE_TO_OTHER_GUILD {
+    repeated uint64 target_guild_uid_list = 1;
+    int32 cost_type = 2;
+    int32 cost_value = 3;
+    uint32 start_world_id = 4;
+}
+
+message WORLD_GAME_GUILD_COST_GIVE_TO_OTHER_GUILD {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    repeated uint64 target_guild_uid_list = 3;
+    repeated uint64 target_guild_uid_fail_list = 4;
+}
+
+message GAME_CLIENT_GUILD_COST_GIVE_TO_OTHER_GUILD {
+    int32 result = 1;
+    repeated _guild_name_ui_info target_guild_list = 2;
+    repeated _guild_name_ui_info target_guild_fail_list = 3;
+}
+
+message CLIENT_GAME_GUILD_COST_EXCHANGE {
+    int32 send_cost_type = 1;
+    int32 exchange_cost_type = 2;
+    int64 cost_value = 3;
+}
+
+message GAME_WORLD_GUILD_COST_EXCHANGE {
+    int32 send_cost_type = 1;
+    int32 exchange_cost_type = 2;
+    int64 cost_value = 3;
+    uint32 start_world_id = 4;
+}
+
+message WORLD_GAME_GUILD_COST_EXCHANGE {
+    int32 result = 1;
+    uint64 user_uid = 2;
+}
+
+message GAME_CLIENT_GUILD_COST_EXCHANGE {
+    int32 result = 1;
+}
+
+message GAME_CLIENT_GUILD_LEVELUP_BROADCAST {
+    uint64 guild_uid = 1;
+    int32 guild_level = 2;
+    uint64 guild_exp = 3;
+}
+
+message WORLD_GAME_GUILD_LEVEL_SYNC {
+    uint64 guild_uid = 1;
+    int32 guild_level = 2;
+    uint64 guild_exp = 3;
+}
+
+message CLIENT_WORLD_GUILD_ALLIANCE_LIST {
+    bool is_guild_inven = 1;
+}
+
+message WORLD_CLIENT_GUILD_ALLIANCE_LIST {
+    int32 result = 1;
+    repeated _guild_info alliance_list = 2;
+    repeated _guild_info alliance_receive_applicant_list = 3;
+    repeated _guild_info alliance_applicant_list = 4;
+}
+
+message CLIENT_WORLD_GUILD_ALLIANCE_APPLICANT {
+    uint64 target_guild_uid = 1;
+}
+
+message GAME_WORLD_GUILD_ALLIANCE_APPLICANT {
+    uint64 target_guild_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message GUILD_WORLD_GUILD_ALLIANCE_APPLICANT {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    uint64 target_guild_uid = 3;
+    int32 guild_world_id = 4;
+    int32 target_guild_world_id = 5;
+}
+
+message WORLD_CLIENT_GUILD_ALLIANCE_APPLICANT {
+    int32 result = 1;
+    uint64 target_guild_uid = 2;
+}
+
+message WORLD_CLIENT_GUILD_ALLIANCE_APPLICANT_TO_TARGET {
+    uint64 applicant_guild_uid = 1;
+}
+
+message CLIENT_WORLD_GUILD_ALLIANCE_APPLICANT_AGREE {
+    uint64 target_guild_uid = 1;
+    bool is_agree = 2;
+}
+
+message GAME_WORLD_GUILD_ALLIANCE_APPLICANT_AGREE {
+    uint64 target_guild_uid = 1;
+    bool is_agree = 2;
+    uint32 start_world_id = 3;
+}
+
+message GUILD_WORLD_GUILD_ALLIANCE_APPLICANT_AGREE {
+    uint64 user_uid = 1;
+    int32 user_world_id = 2;
+    uint64 guild_uid = 3;
+    uint64 target_guild_uid = 4;
+    bool is_agree = 5;
+    uint32 start_world_id = 6;
+}
+
+message GUILD_WORLD_GUILD_ALLIANCE_APPLICANT_AGREE_ACK {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    int32 user_world_id = 3;
+    uint64 guild_uid = 4;
+    uint64 target_guild_uid = 5;
+    bool is_agree = 6;
+}
+
+message WORLD_GAME_GUILD_ALLIANCE_APPLICANT_AGREE {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 target_guild_uid = 3;
+    bool is_agree = 4;
+    uint64 applicant_guild_uid = 5;
+    uint64 applicant_recv_guild_uid = 6;
+    int32 applicant_guild_world_id = 7;
+    int32 applicant_recv_guild_world_id = 8;
+    _guild_name_ui_info applicant_guild_name_info = 9;
+    _guild_name_ui_info applicant_recv_guild_name_info = 10;
+}
+
+message WORLD_CLIENT_GUILD_ALLIANCE_APPLICANT_AGREE {
+    int32 result = 1;
+    uint64 target_guild_uid = 2;
+    bool is_agree = 3;
+}
+
+message GAME_CLIENT_GUILD_ALLIANCE_ADD_BROADCAST {
+    uint64 target_guild_uid = 1;
+    string alliance_guild_name = 2;
+    uint32 world_id = 3;
+}
+
+message CLIENT_WORLD_GUILD_ALLIANCE_APPLICANT_CANCEL {
+    uint64 target_guild_uid = 1;
+}
+
+message GAME_WORLD_GUILD_ALLIANCE_APPLICANT_CANCEL {
+    uint64 target_guild_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_ALLIANCE_APPLICANT_CANCEL {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 applicant_guild_uid = 3;
+    uint64 target_guild_uid = 4;
+}
+
+message WORLD_CLIENT_GUILD_ALLIANCE_APPLICANT_CANCEL {
+    int32 result = 1;
+    uint64 target_guild_uid = 2;
+}
+
+message GUILD_WORLD_GUILD_ALLIANCE_APPLICANT_CANCEL {
+    uint64 applicant_guild_uid = 1;
+    uint64 target_guild_uid = 2;
+}
+
+message GAME_CLIENT_GUILD_ALLIANCE_APPLICANT_DEL_NOTI {
+    uint64 applicant_guild_uid = 1;
+}
+
+message CLIENT_WORLD_GUILD_ALLIANCE_DEL {
+    uint64 target_guild_uid = 1;
+}
+
+message GAME_WORLD_GUILD_ALLIANCE_DEL {
+    uint64 target_guild_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message GUILD_WORLD_GUILD_ALLIANCE_DEL {
+    uint64 target_guild_uid = 1;
+    uint64 guild_uid = 2;
+}
+
+message WORLD_CLIENT_GUILD_ALLIANCE_DEL {
+    int32 result = 1;
+    uint64 target_guild_uid = 2;
+}
+
+message WORLD_GAME_GUILD_ALLIANCE_DEL {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    uint64 target_guild_uid = 4;
+    _guild_name_ui_info guild_name_info = 5;
+    _guild_name_ui_info target_guild_name_info = 6;
+}
+
+message GAME_CLIENT_GUILD_ALLIANCE_DEL_BROADCAST {
+    uint64 target_guild_uid = 1;
+    string alliance_guild_name = 2;
+}
+
+message WORLD_GAME_GUILD_ALLIANCE_APPLICANT {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 applicant_guild_uid = 3;
+    uint64 target_guild_uid = 4;
+    int32 applicant_guild_world_id = 5;
+    int32 target_guild_world_id = 6;
+}
+
+message CLIENT_GAME_GUILD_SUPPLY_TIME {
+    
+}
+
+message guild_supply_time {
+    uint32 index = 1;
+    int64 remain_time = 2;
+}
+
+message GAME_CLIENT_GUILD_SUPPLY_TIME {
+    repeated guild_supply_time supply_info = 1;
+}
+
+message CLIENT_GAME_GUILD_SUPPLY_GET {
+    uint32 index = 1;
+}
+
+message GAME_CLIENT_GUILD_SUPPLY_GET {
+    int32 result = 1;
+    guild_supply_time supply_info = 2;
+    repeated _character_inven_item update_item = 3;
+}
+
+message WORLD_GAME_GUILD_SUPPLY_UNLOCK {
+    uint64 guild_uid = 1;
+    repeated supply_unlock_time unlock_list = 2;
+}
+
+message GAME_CLIENT_GUILD_STAT_CHANGE {
+    repeated _guild_stat_info stat_list = 2;
+}
+
+message CLIENT_WORLD_GUILD_WANTED_LIST {
+    
+}
+
+message _guild_wanted_list_info {
+    uint64 user_uid = 1;
+    string nick_name = 2;
+    int32 class_id = 3;
+    string profile = 4;
+    uint32 level = 5;
+    uint32 fame_level = 6;
+    int32 combat_point = 7;
+    uint32 wanted_grade = 8;
+    int32 end_time = 9;
+    int32 kill_count = 10;
+    uint32 rank = 11;
+    uint32 locate = 12;
+    bool is_login = 13;
+    bool is_trans_server = 14;
+    int32 kill_count_limit = 15;
+    int32 current_server_pos = 16;
+}
+
+message WORLD_CLIENT_GUILD_WANTED_LIST {
+    int32 result = 1;
+    repeated _guild_wanted_list_info wanted_list = 2;
+    int32 wanted_max_count = 3;
+}
+
+message CLIENT_WORLD_GUILD_WANTED_ADD {
+    uint64 target_user_uid = 1;
+    uint32 wanted_grade = 2;
+    int32 kill_count_limit = 3;
+}
+
+message GAME_WORLD_GUILD_WANTED_ADD {
+    uint64 target_user_uid = 1;
+    uint32 wanted_grade = 2;
+    int32 kill_count_limit = 3;
+}
+
+message WORLD_CLIENT_GUILD_WANTED_ADD {
+    int32 result = 1;
+    uint64 target_user_uid = 2;
+    uint32 wanted_grade = 3;
+    int32 kill_count_limit = 4;
+}
+
+message WORLD_GAME_GUILD_WANTED_ADD {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    uint64 target_user_uid = 4;
+    uint32 wanted_grade = 5;
+    int64 start_time = 6;
+    int64 end_time = 7;
+    int32 kill_count_limit = 8;
+}
+
+message GAME_CLIENT_GUILD_WANTED_ADD_BROADCAST {
+    uint64 target_user_uid = 1;
+}
+
+message WORLD_GAME_GUILD_WANTED_DEL {
+    uint64 guild_uid = 1;
+    uint64 target_user_uid = 2;
+}
+
+message GAME_CLIENT_GUILD_WANTED_DEL_BROADCAST {
+    uint64 target_user_uid = 1;
+}
+
+message WORLD_GAME_GUILD_WANTED_KILL_BROADCAST {
+    uint64 guild_uid = 1;
+    uint64 target_user_uid = 2;
+    int32 kill_count = 3;
+}
+
+message GAME_WORLD_GUILD_EXP_ADD {
+    uint64 guild_uid = 1;
+    int32 add_exp = 2;
+    uint64 user_uid = 3;
+    uint32 start_world_id = 4;
+}
+
+message CLIENT_GAME_GUILD_HISTORY_LIST {
+    uint64 guild_uid = 1;
+    int32 history_group_id = 2;
+    int64 cur_page_first_history_uid = 3;
+    int64 cur_page_last_history_uid = 4;
+    int32 cur_page = 5;
+    bool is_next_page = 6;
+    int32 history_sub_group_id = 7;
+}
+
+message _guild_history_info {
+    int64 history_uid = 1;
+    int32 history_index = 2;
+    int64 history_time = 3;
+    uint64 member_uid = 4;
+    repeated _history_param param_list = 5;
+    repeated _reward_cost_info cost_info = 6;
+}
+
+message GAME_CLIENT_GUILD_HISTORY_LIST {
+    int32 result = 1;
+    uint64 guild_uid = 2;
+    int32 history_group_id = 3;
+    int32 page = 4;
+    repeated _guild_history_info history_list = 5;
+    int32 guild_shop_remaining_time = 6;
+    int32 history_sub_group_id = 7;
+}
+
+message GUILD_WORLD_GUILD_HISTORY_REQ_TO_HOME_WORLD {
+    uint64 guild_uid = 1;
+    _guild_history_info guild_history_info = 2;
+}
+
+message CLIENT_GAME_GUILD_INVEN_UI_INFO {
+    
+}
+
+message GAME_CLIENT_GUILD_INVEN_UI_INFO {
+    int32 result = 1;
+    int32 guild_shop_state = 2;
+}
+
+message GAME_WORLD_GUILD_DUNGEON_CLREAR_REWARD {
+    uint64 guild_uid = 1;
+    repeated _guild_dungeon_clrear_reward guild_reward_list = 2;
+    uint32 dungeon_id = 3;
+    uint32 dungeon_kind = 4;
+    uint64 user_uid = 5;
+}
+
+message CLIENT_GAME_GUILD_FRIENDSHIP_LIST {
+    bool is_guild_inven = 1;
+    int32 receive_money_limit_type = 2;
+}
+
+message GAME_CLIENT_GUILD_FRIENDSHIP_LIST {
+    int32 result = 1;
+    repeated _guild_friendship_info friendship_list = 2;
+}
+
+message CLIENT_GAME_EXCEPT_ATTACK_GUILD_LIST {
+    
+}
+
+message GAME_WORLD_EXCEPT_ATTACK_GUILD_LIST {
+    uint32 start_world_id = 1;
+}
+
+message WORLD_GAME_EXCEPT_ATTACK_GUILD_LIST {
+    uint64 user_uid = 1;
+    int32 result = 2;
+}
+
+message GAME_CLIENT_EXCEPT_ATTACK_GUILD_LIST {
+    repeated _guild_info alliance_list = 1;
+    repeated _guild_info except_attack_list = 2;
+}
+
+message CLIENT_GAME_ADD_EXCEPT_ATTACK_GUILD {
+    uint64 target_guild_uid = 1;
+}
+
+message GAME_WORLD_ADD_EXCEPT_ATTACK_GUILD {
+    uint64 target_guild_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_ADD_EXCEPT_ATTACK_GUILD {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    uint64 target_guild_uid = 4;
+    int32 target_world_id = 5;
+}
+
+message WORLD_WORLD_EXCEPT_ATTACK_GUILD_ETC_SET {
+    int64 guild_uid = 1;
+    uint64 target_guild_uid = 2;
+    bool is_add_except = 3;
+}
+
+message WORLD_WORLD_EXCEPT_ATTACK_GUILD_CHAT_SET {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    uint64 target_guild_uid = 3;
+    bool is_add_except = 4;
+}
+
+message GAME_CLIENT_ADD_EXCEPT_ATTACK_GUILD {
+    int32 result = 1;
+    uint64 target_guild_uid = 2;
+    int32 target_world_id = 3;
+}
+
+message CLIENT_GAME_DEL_EXCEPT_ATTACK_GUILD {
+    uint64 target_guild_uid = 1;
+}
+
+message GAME_WORLD_DEL_EXCEPT_ATTACK_GUILD {
+    uint64 target_guild_uid = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_DEL_EXCEPT_ATTACK_GUILD {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    repeated uint64 target_guild_uid_list = 4;
+}
+
+message WORLD_WORLD_DEL_EXCEPT_ATTACK_GUILD_REQUEST {
+    uint64 guild_uid = 1;
+    uint64 target_guild_uid = 2;
+}
+
+message GAME_CLIENT_DEL_EXCEPT_ATTACK_GUILD {
+    int32 result = 1;
+    repeated uint64 target_guild_uid_list = 2;
+}
+
+message GAME_WORLD_GUILD_INDEX_INSERT {
+    uint64 character_uid = 1;
+    string guild_name = 2;
+    uint32 guild_mark = 3;
+    uint32 guild_mark_edge = 4;
+}
+
+message WORLD_GAME_GUILD_INDEX_INSERT {
+    int32 result = 1;
+    string guild_name = 2;
+    uint64 guild_uid = 3;
+    uint64 character_uid = 4;
+    uint32 guild_mark = 5;
+    uint32 guild_mark_edge = 6;
+}
+
+message GAME_WORLD_GUILD_INDEX_UPDATE {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+}
+
+message WORLD_GAME_GUILD_INDEX_UPDATE {
+    int32 result = 1;
+}
+
+message GAME_WORLD_GUILD_INDEX_DELETE {
+    uint64 guild_uid = 1;
+}
+
+message WORLD_GAME_GUILD_INDEX_DELETE {
+    int32 result = 1;
+}
+
+message CLIENT_GAME_GUILD_COMMAND_MARK_SET {
+    int32 command_mark_idx = 1;
+    uint64 target_uid = 2;
+}
+
+message GAME_WORLD_GUILD_COMMAND_MARK_SET {
+    int32 command_mark_idx = 1;
+    uint64 target_uid = 2;
+    string target_name = 3;
+    uint32 target_world_id = 4;
+    uint32 start_world_id = 5;
+}
+
+message WORLD_GAME_GUILD_COMMAND_MARK_SET {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    int32 command_mark_idx = 4;
+    int32 del_command_mark_idx = 5;
+    uint64 target_uid = 6;
+    int32 target_world_id = 7;
+    string target_name = 8;
+}
+
+message GAME_CLIENT_GUILD_COMMAND_MARK_SET {
+    int32 result = 1;
+    uint64 guild_uid = 2;
+    int32 command_mark_idx = 3;
+    int32 del_command_mark_idx = 4;
+    uint64 target_uid = 5;
+    string target_name = 6;
+}
+
+message CLIENT_GAME_TRANSLTAE_TEXT {
+    uint64 user_uid = 1;
+    uint64 target_guild_uid = 2;
+    int32 contents_index = 3;
+    int32 lanaguageIdx = 4;
+}
+
+message GAME_WORLD_TRANSLATE_TEXT {
+    uint64 user_uid = 1;
+    uint64 target_guild_uid = 2;
+    int32 contents_index = 3;
+    int32 lanaguageIdx = 4;
+}
+
+message WORLD_GAME_TRANSLATE_TEXT {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    int32 contents_index = 4;
+    int32 lanaguageIdx = 5;
+    string translateText = 6;
+}
+
+message GAME_CLIENT_TRANSLATE_TEXT {
+    int32 result = 1;
+    uint64 guild_uid = 2;
+    int32 contents_index = 3;
+    int32 lanaguageIdx = 4;
+    string translateText = 5;
+}
+
+message CLIENT_GAME_SAVE_TRANSLTE_TEXT {
+    uint64 user_uid = 1;
+    uint64 target_guild_uid = 2;
+    int32 contents_index = 3;
+    int32 lanaguageIdx = 4;
+    string translateText = 5;
+}
+
+message GAME_WORLD_SAVE_TRANSLATE_TEXT {
+    uint64 user_uid = 1;
+    uint64 target_guild_uid = 2;
+    int32 contents_index = 3;
+    int32 lanaguageIdx = 4;
+    string translateText = 5;
+}
+
+message WORLD_GAME_SAVE_TRANSLTE_TEXT {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 target_guild_uid = 3;
+    int32 contents_index = 4;
+    int32 lanaguageIdx = 5;
+}
+
+message GAME_CLIENT_SAVE_TRANSLATE_TEXT {
+    int32 result = 1;
+    uint64 target_guild_uid = 2;
+    int32 contents_index = 3;
+    int32 lanaguageIdx = 4;
+}
+
+message WORLD_GAME_GUILD_GIVE_TO_USER_LIMIT_SETTING_INFO {
+    repeated _cost_info guild_give_limit = 1;
+}
+
+message WORLD_GAME_GUILD_GIVE_TO_USER_LIMIT_NOTIFY {
+    int64 user_uid = 1;
+    repeated _character_guild_receive_cost_server_sync receive_info = 2;
+}
+
+message _current_guild_mission_list {
+    int32 mission_idx = 1;
+}
+
+message _complete_guild_mission_group_list {
+    int32 group_idx = 1;
+    int32 summon_count = 2;
+}
+
+message _guild_member_current_mission_info {
+    uint64 user_uid = 1;
+    string member_name = 2;
+    uint32 memeber_level = 3;
+    uint32 class_id = 4;
+    int64 combat_point = 5;
+    uint64 mission_point = 6;
+}
+
+message WORLD_GAME_SYNC_GUILD_COOP_MISSION {
+    uint64 guild_uid = 1;
+    int32 current_group_idx = 2;
+    int32 current_mission_point = 3;
+    bool is_current_summon_stat = 4;
+    repeated _current_guild_mission_list currnet_guild_mission_list = 5;
+    repeated _complete_guild_mission_group_list complete_guild_mission_group_list = 6;
+}
+
+message GAME_WORLD_GUILD_COOP_MISSION_DECREASE_SUMMON_BOSS {
+    uint64 guild_uid = 1;
+    int32 target_group_id = 2;
+    int32 decrease_summon_count = 3;
+}
+
+message GAME_WORLD_GUILD_COOP_MISSION_LIST {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+}
+
+message WORLD_GAME_GUILD_COOP_MISSION_LIST {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    int32 current_group_idx = 3;
+    uint64 current_mission_point = 4;
+    repeated _current_guild_mission_list currnet_guild_mission_list = 5;
+    repeated _complete_guild_mission_group_list complete_guild_mission_group_list = 6;
+}
+
+message CLIENT_WORLD_GUILD_COOP_MISSION_LIST {
+    uint64 guild_uid = 1;
+}
+
+message WORLD_CLIENT_GUILD_COOP_MISSION_LIST {
+    uint64 guild_uid = 1;
+    int32 current_group_idx = 2;
+    uint64 current_mission_point = 3;
+    repeated _current_guild_mission_list currnet_guild_mission_list = 4;
+    repeated _complete_guild_mission_group_list complete_guild_mission_group_list = 5;
+}
+
+message GAME_WORLD_GUILD_COOP_MISSION_COMPLETE {
+    uint64 guild_uid = 1;
+    int32 complete_group_id = 2;
+    int32 complete_mission_id = 3;
+}
+
+message GAME_WORLD_GUILD_COOP_MISSION_DESTROY_SUMMON_BOSS {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    int32 target_group_id = 3;
+    int32 history_type = 4;
+}
+
+message CLIENT_WORLD_GUILD_COOP_MISSION_MEMBER_POPUP {
+    uint64 guild_uid = 1;
+}
+
+message WORLD_CLIENT_GUILD_COOP_MISSION_MEMBER_POPUP {
+    uint64 guild_uid = 1;
+    repeated _guild_member_current_mission_info guild_member_list = 2;
+}
+
+message GAME_WORLD_GUILD_COOP_MISSION_MEMBER_POPUP {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+}
+
+message WORLD_CLIENT_GUILD_COOP_MISSION_CHANGED_MISSION {
+    uint64 guild_uid = 1;
+}
+
+message _painting_guild_trade_data {
+    uint64 painting_guild_trade_uid = 1;
+    uint64 reg_char_uid = 2;
+    uint32 reg_item_id = 3;
+    uint32 reg_item_count = 4;
+    uint32 exchange_item_id = 5;
+    uint32 exchange_item_count = 6;
+    bool complete = 7;
+}
+
+message CLIENT_GAME_PAINTING_GUILD_TRADE_DATA_LIST {
+    
+}
+
+message GAME_CLIENT_PAINTING_GUILD_TRADE_DATA_LIST {
+    int32 result = 1;
+    repeated _painting_guild_trade_data painting_guild_trade_data_list = 2;
+}
+
+message CLIENT_GAME_PAINTING_GUILD_TRADE_REG {
+    uint64 reg_item_uid = 1;
+    uint32 reg_item_count = 2;
+    uint32 exchange_item_id = 3;
+    uint32 exchange_item_count = 4;
+}
+
+message GAME_CLIENT_PAINTING_GUILD_TRADE_REG {
+    int32 result = 1;
+    repeated _stack_item_info update_stack_items = 2;
+}
+
+message CLIENT_GAME_PAINTING_GUILD_TRADE_CANCEL {
+    uint64 painting_guild_trade_uid = 1;
+}
+
+message GAME_CLIENT_PAINTING_GUILD_TRADE_CANCEL {
+    int32 result = 1;
+    repeated _character_inven_item update_items = 2;
+}
+
+message CLIENT_GAME_PAINTING_GUILD_TRADE_EXCHANGE {
+    uint64 painting_guild_trade_uid = 1;
+    uint64 exchange_item_uid = 2;
+    uint32 exchange_item_count = 3;
+}
+
+message GAME_CLIENT_PAINTING_GUILD_TRADE_EXCHANGE {
+    int32 result = 1;
+    repeated _stack_item_info update_stack_items = 2;
+    repeated _character_inven_item update_items = 3;
+    repeated _simple_item_info reward_update_items = 4;
+}
+
+message CLIENT_GAME_PAINTING_GUILD_TRADE_EXCHANGE_COMPLETE {
+    uint64 painting_guild_trade_uid = 1;
+}
+
+message GAME_CLIENT_PAINTING_GUILD_TRADE_EXCHANGE_COMPLETE {
+    int32 result = 1;
+    repeated _character_inven_item update_items = 2;
+    repeated _simple_item_info reward_update_items = 3;
+}
+
+message GAME_WORLD_PAINTING_GUILD_TRADE_DATA_LIST {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+}
+
+message WORLD_GAME_PAINTING_GUILD_TRADE_DATA_LIST {
+    int32 result = 1;
+    repeated _painting_guild_trade_data painting_guild_trade_data_list = 2;
+}
+
+message GAME_WORLD_PAINTING_GUILD_TRADE_REG_CHECK {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    uint64 reg_item_uid = 3;
+    uint32 reg_item_count = 4;
+    uint32 exchange_item_id = 5;
+    uint32 exchange_item_count = 6;
+}
+
+message WORLD_GAME_PAINTING_GUILD_TRADE_REG_CHECK {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 reg_item_uid = 3;
+    uint32 reg_item_count = 4;
+    uint32 exchange_item_id = 5;
+    uint32 exchange_item_count = 6;
+}
+
+message GAME_WORLD_PAINTING_GUILD_TRADE_REG {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    uint32 reg_item_id = 3;
+    uint32 reg_item_count = 4;
+    uint32 exchange_item_id = 5;
+    uint32 exchange_item_count = 6;
+    int64 reg_time = 7;
+    uint64 painting_guild_trade_uid = 8;
+}
+
+message WORLD_GAME_PAINTING_GUILD_TRADE_REG {
+    int32 result = 1;
+    repeated _stack_item_info update_stack_items = 2;
+    _painting_guild_trade_data painting_guild_trade_data = 3;
+    uint64 painting_guild_trade_uid = 4;
+}
+
+message GAME_WORLD_PAINTING_GUILD_TRADE_CANCEL {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    uint64 painting_guild_trade_uid = 3;
+}
+
+message WORLD_GAME_PAINTING_GUILD_TRADE_CANCEL {
+    int32 result = 1;
+    uint64 painting_guild_trade_uid = 2;
+    uint32 reg_item_id = 3;
+    uint32 reg_item_count = 4;
+}
+
+message GAME_WORLD_PAINTING_GUILD_TRADE_EXCHANGE {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    uint64 painting_guild_trade_uid = 3;
+    uint64 exchange_item_uid = 4;
+    uint32 exchange_item_count = 5;
+    uint32 exchange_item_id = 6;
+}
+
+message WORLD_GAME_PAINTING_GUILD_TRADE_EXCHANGE {
+    int32 result = 1;
+    uint32 reg_item_id = 3;
+    uint32 reg_item_count = 4;
+    uint64 exchange_item_uid = 5;
+    uint32 exchange_item_count = 6;
+    uint32 exchange_item_id = 7;
+    uint64 painting_guild_trade_uid = 8;
+}
+
+message GAME_WORLD_PAINTING_GUILD_TRADE_EXCHANGE_COMPLETE {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    uint64 painting_guild_trade_uid = 3;
+}
+
+message WORLD_GAME_PAINTING_GUILD_TRADE_EXCHANGE_COMPLETE {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    uint32 reg_item_id = 4;
+    uint32 reg_item_count = 5;
+    uint32 exchange_item_id = 6;
+    uint32 exchange_item_count = 7;
+    uint64 painting_guild_trade_uid = 8;
+    int64 reg_time = 9;
+}
+
+message WORLD_GAME_PAINTING_TRADE_ALARAM {
+    int32 result = 1;
+}
+
+message GAME_CLIENT_PAINTING_TRADE_ALARAM {
+    int32 result = 1;
+}
+
+message GAME_WORLD_GET_PAINTING_GUILD_POINT {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    uint32 point_type = 3;
+    uint32 point_value = 4;
+}
+
+message WORLD_GAME_GET_PAINTING_GUILD_POINT {
+    uint64 guild_uid = 1;
+    uint32 point_type = 2;
+    uint32 point_value = 3;
+}
+
+message GAME_WORLD_PAINTING_GUILD_TRADE_EXCHANGE_ROLLBACK {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    uint64 painting_guild_trade_uid = 3;
+}
+
+message GAME_WORLD_PAINTING_GUILD_TRADE_EXCHANGE_COMPLETE_ROLLBACK {
+    uint64 painting_guild_trade_uid = 1;
+    uint64 guild_uid = 2;
+    uint64 user_uid = 3;
+    uint32 reg_item_id = 4;
+    uint32 reg_item_count = 5;
+    uint32 exchange_item_id = 6;
+    uint32 exchange_item_count = 7;
+    int64 reg_time = 8;
+}

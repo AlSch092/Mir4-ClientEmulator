@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_CHANGE_ROOM_IN_MAGIC_SQUARE {
+    
+}
+
+message GAME_WORLD_CHANGE_ROOM_IN_MAGIC_SQUARE {
+    uint32 magic_square_id = 1;
+    uint32 location_id = 2;
+}
+
+message CLIENT_GAME_LEAVE_MAGIC_SQUARE {
+    
+}
+
+message GAME_WORLD_LEAVE_MAGIC_SQUARE {
+    uint32 cur_zone_unique = 1;
+}
+
+message CLIENT_GAME_ENTER_MAGIC_SQUARE {
+    uint32 magic_square_id = 1;
+}
+
+message GAME_WORLD_ENTER_MAGIC_SQUARE {
+    uint32 magic_square_id = 1;
+    uint32 enter_location_id = 2;
+}
+
+message GAME_WORLD_REQUEST_MAGIC_SQURE_EXIT_TIME {
+    
+}
+
+message WORLD_GAME_NOTIFY_MAGIC_SQUARE_EXIT_TIME {
+    uint64 request_user_uid = 1;
+    uint64 exit_time = 2;
+}
+
+message GAME_CLIENT_MAGIC_SQUARE_TIME {
+    uint64 exit_time = 1;
+    uint64 warp_available_time = 2;
+}
+
+message GAME_CLIENT_FAIL_MAGIC_SQUARE_ROOM_CHANGE {
+    uint32 fail_reason = 1;
+}
+
+message CLIENT_GAME_MAGIC_SQUARE_TIME_EXTEND {
+    
+}
+
+message GAME_CLIENT_MAGIC_SQUARE_TIME_EXTEND {
+    int32 result = 1;
+    uint64 exit_time = 2;
+    _dungeon_ticket_info dungeon_ticket_info = 3;
+}
+
+message GAME_WORLD_MAGIC_SQUARE_TIME_EXTEND {
+    
+}
+
+message WORLD_GAME_MAGIC_SQUARE_TIME_EXTEND {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 exit_time = 3;
+}

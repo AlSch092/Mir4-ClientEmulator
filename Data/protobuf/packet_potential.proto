@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_POTENTIAL_UPGRADE {
+    uint32 potential_id = 1;
+}
+
+message GAME_CLIENT_POTENTIAL_UPGRADE {
+    int32 result = 1;
+    _potential_info potential_info = 2;
+    bool is_levelup_fail = 3;
+    repeated _cost_info cost_info = 4;
+    repeated _stack_item_info update_items = 5;
+}
+
+message GAME_CLIENT_POTENTIAL_UPGRADE_NOTI {
+    string nickname = 1;
+    int32 potential_id = 2;
+    int32 level_id = 3;
+}

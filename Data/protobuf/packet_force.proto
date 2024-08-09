@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_FORCE_LEARN {
+    int32 force_id = 1;
+}
+
+message GAME_CLIENT_FORCE_LEARN {
+    int32 result = 1;
+    _force_info data = 2;
+    repeated _stack_item_info del_item_list = 3;
+}
+
+message GAME_CLIENT_FORCE_UPDATE {
+    int32 update_state = 1;
+    _force_info data = 2;
+}
+
+message CLIENT_GAME_FORCE_BLOOD_UPGRADE {
+    int32 force_id = 1;
+    int32 blood_slot_id = 2;
+}
+
+message GAME_CLIENT_FORCE_BLOOD_UPGRADE {
+    int32 result = 1;
+    _force_blood_info data = 2;
+    _cost_info cost_info = 3;
+    repeated _force_info slump_force_list = 4;
+    repeated _stack_item_info del_item_list = 5;
+}
+
+message CLIENT_GAME_FORCE_CURE {
+    
+}
+
+message GAME_CLIENT_FORCE_CURE {
+    int32 result = 1;
+    repeated _stack_item_info del_item_list = 2;
+    repeated _force_info update_force_list = 3;
+}
+
+message CLIENT_GAME_FORCE_UPGRADE {
+    int32 force_id = 1;
+}
+
+message GAME_CLIENT_FORCE_UPGRADE {
+    int32 result = 1;
+    _force_info data = 2;
+    repeated _stack_item_info del_item_list = 3;
+    repeated _cost_info cost_info = 4;
+}
+
+message CLIENT_GAME_FORCE_UPGRADE_APPLY {
+    int32 force_id = 1;
+    int32 apply_type = 2;
+}
+
+message GAME_CLIENT_FORCE_UPGRADE_APPLY {
+    int32 result = 1;
+    _force_info data = 2;
+    repeated _stack_item_info del_item_list = 3;
+}
+
+message GAME_CLIENT_FORCE_SLUMP_TIME_UPDATE {
+    int32 update_state = 1;
+    int32 slump_time = 2;
+    int32 reflow_time = 3;
+}

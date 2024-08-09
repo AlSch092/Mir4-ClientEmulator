@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_UPGRADE_MASTERY {
+    uint64 uid = 1;
+    uint32 slot_number = 3;
+}
+
+message GAME_CLIENT_UPGRADE_MASTERY {
+    uint32 result = 1;
+    _cost_info costInfo = 3;
+    repeated _stack_item_info update_items = 4;
+    uint32 slot_number = 5;
+    uint32 mastery_level = 7;
+    bool is_success = 8;
+}
+
+message CLIENT_GAME_UPGRADE_MASTERY_LEVEL_LIMIT {
+    
+}
+
+message GAME_CLIENT_UPGRADE_MASTERY_LEVEL_LIMIT {
+    uint32 result = 1;
+    uint32 level_limit_grade = 2;
+    _cost_info cost_info = 3;
+    repeated _stack_item_info update_items = 4;
+}

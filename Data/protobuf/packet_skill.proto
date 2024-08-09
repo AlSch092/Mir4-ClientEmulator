@@ -1,0 +1,222 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _target_info {
+    int32 target_type = 1;
+    uint64 target_uid = 2;
+    uint32 target_sub_id = 3;
+}
+
+message _monster_parts_info {
+    uint64 monster_uid = 1;
+    uint32 parts_id = 2;
+}
+
+message _struck_info {
+    int32 target_type = 1;
+    uint64 target_uid = 2;
+    uint32 target_sub_id = 3;
+    _vector3 loc = 4;
+    int32 damage = 5;
+    int32 hp = 6;
+    int32 crowd = 7;
+    int32 cctime_ms = 8;
+    uint32 attacker_cur_skill_step = 9;
+    int32 damage_type = 10;
+    bool critical = 11;
+    bool smite = 12;
+    int32 shield_damage = 13;
+    int32 damage_absorb = 14;
+    int32 cur_damage_absorb = 15;
+}
+
+message CLIENT_GAME_ATTACK {
+    int32 state = 1;
+    int32 skill = 2;
+    int32 attack_id = 3;
+    _vector3 loc_start = 4;
+    _vector3 loc_end = 5;
+    repeated _attack_target_info targets = 6;
+    _vector3 attack_direction_vector = 7;
+    uint32 cur_skill_step = 8;
+    repeated _monster_parts_info target_monster_parts_list = 9;
+}
+
+message GAME_CLIENT_ATTACK {
+    uint64 uid = 1;
+    int32 state = 2;
+    int32 skill = 3;
+    int32 attack_id = 4;
+    _vector3 loc_start = 5;
+    _vector3 loc_end = 6;
+    repeated _attack_target_info targets = 7;
+    uint32 cur_skill_step = 8;
+    _vector3 direction = 9;
+    int32 cool_time = 10;
+}
+
+message CLIENT_GAME_ATTACK_CHAIN {
+    int32 state = 1;
+    int32 skill = 2;
+    int32 attack_id = 3;
+    _vector3 loc_start = 4;
+    _vector3 loc_end = 5;
+    _vector3 attack_direction_vector = 6;
+    uint32 cur_skill_step = 7;
+    repeated _target_info target_list = 8;
+}
+
+message GAME_CLIENT_ATTACK_CHAIN {
+    uint64 uid = 1;
+    int32 state = 2;
+    int32 skill = 3;
+    int32 attack_id = 4;
+    _vector3 loc_start = 5;
+    _vector3 loc_end = 6;
+    uint32 cur_skill_step = 7;
+    _vector3 direction = 8;
+    repeated _target_info target_list = 9;
+    int32 cool_time = 10;
+}
+
+message CLIENT_GAME_ATTACK_CANCEL {
+    int32 attack_id = 1;
+}
+
+message CLIENT_GAME_ATTACK_IN_PHASING {
+    int32 attacker_type = 1;
+    uint64 attacker = 2;
+    int32 skill = 3;
+    int32 attack_id = 4;
+    repeated _phasing_target_info targets = 5;
+}
+
+message GAME_CLIENT_STRUCK_IN_PHASING {
+    int32 skillid = 1;
+    int32 attacker_type = 2;
+    uint64 attacker = 3;
+    repeated _phasing_target_damage damages = 4;
+}
+
+message GAME_CLIENT_STRUCK {
+    int32 type = 1;
+    uint64 uid = 2;
+    int32 skillid = 3;
+    int32 attacker_type = 4;
+    uint64 attacker = 5;
+    _vector3 loc = 6;
+    int32 damage = 7;
+    int32 hp = 8;
+    int32 crowd = 9;
+    int32 cctime_ms = 10;
+    uint32 attacker_cur_skill_step = 11;
+    int32 damage_type = 12;
+    bool critical = 13;
+    bool smite = 14;
+    int32 shield_damage = 15;
+    int32 damage_absorb = 16;
+    int32 cur_damage_absorb = 17;
+    int64 server_time_ms = 18;
+}
+
+message GAME_CLIENT_STRUCK_CHAIN {
+    int32 attack_id = 1;
+    int32 attacker_type = 2;
+    uint64 attacker = 3;
+    repeated _struck_info struck_info_list = 4;
+    int64 server_time_ms = 5;
+}
+
+message GAME_CLIENT_MONSTER_PARTS_STRUCK {
+    uint64 monster_uid = 1;
+    uint32 parts_id = 2;
+    int32 skill_id = 3;
+    int32 attacker_type = 4;
+    uint64 attacker_uid = 5;
+}
+
+message CLIENT_GAME_LEARN_SKILL {
+    uint64 uid = 1;
+    int32 skillindex = 2;
+}
+
+message GAME_CLIENT_LEARN_SKILL {
+    int32 skillindex = 1;
+    _stack_item_info del_item_info = 2;
+}
+
+message CLIENT_GAME_LEVEL_UP_SKILL {
+    uint64 uid = 1;
+    int32 skillindex = 2;
+}
+
+message GAME_CLIENT_LEVEL_UP_SKILL {
+    int32 skillindex = 1;
+    repeated _cost_info costinfo = 2;
+    _stack_item_info del_item_info = 3;
+    repeated _stack_item_info del_item_list = 4;
+}
+
+message CLIENT_GAME_ENTER_INVINCIBLE_STATE {
+    uint64 uid = 1;
+}
+
+message CLIENT_GAME_LEAVE_INVINCIBLE_STATE {
+    uint64 uid = 1;
+}
+
+message GAME_CLIENT_SKILL_ERROR {
+    int32 result = 1;
+    int32 skill_id = 2;
+}
+
+message CLIENT_GAME_SKILL_DECK_SLOT_SET {
+    int32 deckId = 1;
+    int32 slotId = 2;
+    int32 skillId = 3;
+}
+
+message GAME_CLIENT_SKILL_DECK_SLOT_SET {
+    int32 result = 1;
+    _character_skill_deck deck = 2;
+}
+
+message CLIENT_GAME_SKILL_DECK_SLOT_DEL {
+    int32 deckId = 1;
+    int32 slotId = 2;
+}
+
+message GAME_CLIENT_SKILL_DECK_SLOT_DEL {
+    int32 result = 1;
+    int32 deckId = 2;
+    int32 slotId = 3;
+}
+
+message CLIENT_GAME_SKILL_DECK_CHANGE {
+    int32 deckId = 1;
+}
+
+message GAME_CLIENT_SKILL_DECK_CHANGE {
+    int32 result = 1;
+    int32 deckId = 2;
+}
+
+message _skill_cool_time {
+    int32 skill_index = 1;
+    int32 fall_cool_time = 2;
+}
+
+message GAME_CLIENT_SKILL_COOL_TIME_FALL {
+    repeated _skill_cool_time data_list = 1;
+}
+
+message GAME_CLIENT_SKILL_NOT_EXIST_TARGET_LIST {
+    repeated _attack_target_info targets = 1;
+}
+
+message CLIENT_GAME_SKILL_NON_TARGET_GUILD_LIST {
+    repeated uint64 guild_uid_list = 1;
+}

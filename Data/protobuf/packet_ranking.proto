@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_RANKING_INFO {
+    uint32 rankingtype = 1;
+    uint32 request_character_info = 2;
+}
+
+message GAME_CLIENT_RANKING_INFO {
+    uint32 result = 1;
+    uint32 rankingtype = 2;
+    uint32 myrank = 3;
+    repeated uint32 ranking_schedule_id = 4;
+    uint32 current_ranking_value = 5;
+    uint32 current_value = 6;
+}
+
+message GAME_CLIENT_CHARACTER_RANKING_INFO {
+    repeated _ranking_info ranking_info = 1;
+}
+
+message GAME_CLIENT_GUILD_RANKING_INFO {
+    repeated _guild_ranking_info guild_ranking_info = 1;
+}
+
+message WORLD_GAME_CALCULATE_RANKING {
+    uint32 calculatation_state = 1;
+    uint32 pk_season_end = 2;
+    uint32 pk_season_start = 3;
+    uint32 portrait_event_state = 4;
+}
+
+message GAME_CLIENT_CALCULATE_RANKING {
+    uint32 calculatation_state = 1;
+    uint32 reset_pk_score = 2;
+}
+
+message GAME_WORLD_GET_RANKING_REWARD {
+    uint64 characteruid = 1;
+    uint32 rankingtype = 2;
+    uint32 weeklyreward = 3;
+    uint32 seasonreward = 4;
+    uint32 dailyreward = 5;
+}
+
+message WORLD_GAME_GET_RANKING_REWARD {
+    uint64 characteruid = 1;
+    uint32 rankingtype = 2;
+    uint32 weeklyreward = 3;
+    uint32 seasonreward = 4;
+    uint32 dailyreward = 5;
+}
+
+message GAME_WORLD_FINISHED_LOAD_RANKING_INFO {
+    uint32 pk_season_end = 1;
+    uint32 pk_season_start = 2;
+    uint32 weekly_settlement = 3;
+}
+
+message WORLD_GAME_FINISHED_LOAD_RANKING_INFO {
+    uint32 pk_season_end = 1;
+    uint32 pk_season_start = 2;
+    uint32 weekly_settlement = 3;
+}
+
+message WORLD_GAME_FINISHED_RANKING_SETTLEMENT {
+    uint32 is_local_time_use = 1;
+}
+
+message WORLD_GAME_RANKING_LOAD {
+    uint32 pk_season_end = 1;
+    uint32 weekly_settlement = 2;
+    uint32 server_start = 3;
+}
+
+message CLIENT_GAME_GET_RANKING_REWARD {
+    uint32 rankingtype = 1;
+}
+
+message GAME_CLIENT_GET_RANKING_REWARD {
+    uint32 result = 1;
+    uint32 rankingtype = 2;
+    repeated _cost_info cost_info = 3;
+    repeated _character_inven_item item_info = 4;
+    repeated _cost_info reward_cost_info = 5;
+    repeated _simple_item_info reward_item_info = 6;
+}
+
+message GAME_CLIENT_RANKING_REWARD_NOTIFICATION {
+    uint32 rankingtype = 1;
+    uint32 reward_available = 2;
+}
+
+message CLIENT_GAME_RANKING_FOR_MY_INFO {
+    
+}
+
+message GAME_CLIENT_RANKING_FOR_MY_INFO {
+    uint32 result = 1;
+    uint32 level = 2;
+    uint32 combat_point = 3;
+    uint32 item_collection = 4;
+    uint32 guild = 5;
+}

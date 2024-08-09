@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message GAME_CLIENT_NTF_DARK_ALTAR_ZONE_ENTER_INFO {
+    _dark_altar_info dark_altar_info = 1;
+    uint64 altar_monster_uid = 2;
+}
+
+message CLIENT_WORLD_REQ_DARK_ALTAR_INFO_LIST {
+    
+}
+
+message WORLD_CLIENT_ACK_DARK_ALTAR_INFO_LIST {
+    repeated _dark_altar_info dark_altar_info_list = 1;
+}
+
+message WORLD_GAME_NTF_DARK_ALTAR_SERVER_INFO {
+    uint64 dark_altar_zone_uid = 1;
+    _dark_altar_server_info dark_altar_server_info = 2;
+}
+
+message WORLD_GAME_NTF_DARK_ALTAR_MONSTER_INFO_TO_UNDER_WORLD_ZONE {
+    uint64 under_world_zone_uid = 1;
+    _dark_altar_server_info dark_altar_server_info = 2;
+}
+
+message WORLD_CLIENT_NTF_DARK_ALTAR_INFO_TO_ALL_USER {
+    _dark_altar_info dark_altar_info = 1;
+}
+
+message GAME_WORLD_NTF_DARK_ALTAR_MONSTER_DIE {
+    int32 dark_altar_tid = 1;
+    uint64 dark_altar_zone_uid = 2;
+    uint64 mvp_user_uid = 3;
+    string mvp_user_name = 4;
+}
+
+message GAME_CLIENT_NTF_RESULT_DARK_ALTAR_TO_BATTLE_USER {
+    int32 dark_altar_tid = 1;
+    string mvp_user_name = 2;
+}
+
+message WORLD_GAME_SYNC_DARK_ALTAR_INFO_IN_ZONE_GROUP {
+    _dark_altar_server_info dark_altar_server_info = 1;
+}
+
+message WORLD_GAME_SYNC_DARK_ALTAR_INFO_LIST_IN_ZONE_GROUP {
+    repeated _dark_altar_server_info dark_altar_server_info_list = 1;
+}
+
+message SERVER_CLIENT_NTF_DARK_ALTAR_NOTICE {
+    int32 dark_altar_tid = 1;
+    int32 notice_type = 2;
+    int64 value = 3;
+}
+
+message GAME_CLIENT_NTF_DARK_ALTAR_UNDER_WORLD_ZONE_ENTER_INFO {
+    _dark_altar_info dark_altar_info = 1;
+}
+
+message GAME_CLIENT_NTF_DARK_ALTAR_CHEAT_ATTACK {
+    bool is_attackable = 1;
+}
+
+message GAME_WORLD_NTF_DARK_ALTAR_ATTACK {
+    int32 dark_altar_tid = 1;
+    int32 notice_type = 2;
+}

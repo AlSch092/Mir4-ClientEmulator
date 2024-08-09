@@ -1,0 +1,102 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _sanctum_monster_info {
+    uint64 monster_uid = 1;
+    _guild_simple_info occupy_guild_info = 2;
+}
+
+message WORLD_GAME_SYNC_SANCTUM_INFO_IN_ZONE_GROUP {
+    _sanctum_server_info sanctum_server_info = 1;
+}
+
+message WORLD_GAME_SYNC_SANCTUM_INFO_LIST_IN_ZONE_GROUP {
+    repeated _sanctum_server_info sanctum_server_info_list = 1;
+}
+
+message CLIENT_WORLD_REQ_SANCTUM_INFO_LIST {
+    
+}
+
+message WORLD_CLIENT_ACK_SANCTUM_INFO_LIST {
+    repeated _sanctum_info sanctum_info_list = 1;
+}
+
+message GAME_CLIENT_NTF_SANCTUM_ZONE_ENTER_INFO {
+    _sanctum_monster_info sanctum_monster_info = 1;
+}
+
+message GAME_CLIENT_NTF_SANCTUM_MONSTER_INFO {
+    _sanctum_monster_info sanctum_monster_info = 1;
+}
+
+message GAME_WORLD_REQ_SANCTUM_OCCUPY {
+    int32 sanctum_stage_tid = 1;
+    uint64 sanctum_zone_uid = 2;
+    uint64 occupy_guild_uid = 3;
+    uint64 mvp_user_uid = 4;
+}
+
+message WORLD_GAME_ACK_SANCTUM_OCCUPY {
+    uint32 result = 1;
+    _sanctum_server_info sanctum_server_info = 2;
+    uint64 sanctum_zone_uid = 3;
+}
+
+message WORLD_CLIENT_NTF_SANCTUM_OCCUPY_TO_ALL_USER {
+    _sanctum_info sanctum_info = 1;
+}
+
+message GAME_WORLD_NTF_SANCTUM_MONSTER_ATTACKED {
+    int32 sanctum_stage_tid = 1;
+    uint64 sanctum_zone_uid = 2;
+}
+
+message GAME_WORLD_NTF_SANCTUM_MONSTER_KILLED {
+    int32 sanctum_stage_tid = 1;
+    uint64 sanctum_zone_uid = 2;
+    uint64 killer_guild_uid = 3;
+    uint64 killer_user_uid = 4;
+}
+
+message WORLD_CLIENT_NTF_SANCTUM_MONSTER_KILLED_TO_ALL_USER {
+    _sanctum_info sanctum_info = 1;
+}
+
+message WORLD_GAME_NTF_SANCTUM_OCCUPY_RETURN {
+    _sanctum_server_info sanctum_server_info = 1;
+    uint64 sanctum_zone_uid = 2;
+}
+
+message WORLD_CLIENT_NTF_SANCTUM_OCCUPY_RETURN_TO_ALL_USER {
+    _sanctum_info sanctum_info = 1;
+}
+
+message WORLD_GAME_NTF_SANCTUM_LIFE_TIMEOUT {
+    _sanctum_server_info sanctum_server_info = 1;
+    uint64 sanctum_zone_uid = 2;
+}
+
+message WORLD_CLIENT_NTF_SANCTUM_LIFE_TIMEOUT_TO_ALL_USER {
+    _sanctum_info sanctum_info = 1;
+}
+
+message WORLD_GAME_NTF_SANCTUM_STATUS {
+    _sanctum_server_info sanctum_server_info = 1;
+    uint64 sanctum_zone_uid = 2;
+}
+
+message WORLD_CLIENT_NTF_SANCTUM_STATUS_TO_ALL_USER {
+    int32 sanctum_stage_tid = 1;
+    uint32 sanctum_status = 2;
+}
+
+message SERVER_CLIENT_NTF_SANCTUM_NOTICE {
+    int32 sanctum_stage_tid = 1;
+    uint32 notice_type = 2;
+    string guild_name = 3;
+    string user_name = 4;
+}

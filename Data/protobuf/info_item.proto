@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message ItemOptionInfo {
+    uint32 index = 1;
+    uint32 value = 2;
+    uint32 slot = 3;
+}
+
+message ItemJewelInfo {
+    uint32 slot = 1;
+    uint32 item_index = 2;
+}

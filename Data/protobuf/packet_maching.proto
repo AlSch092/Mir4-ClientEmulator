@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message CLIENT_WORLD_MACHING_REQ {
+    uint64 uid = 1;
+    uint32 raid_index = 2;
+}

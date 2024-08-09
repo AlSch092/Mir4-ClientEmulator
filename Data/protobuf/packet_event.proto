@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_USER_EVENT_INFO {
+    
+}
+
+message GAME_CLIENT_USER_EVENT_INFO {
+    int32 daily_first_access = 1;
+    repeated _user_event_info event_info_list = 2;
+}
+
+message GAME_CLIENT_START_EVENT {
+    int32 event_id = 1;
+}
+
+message GAME_CLIENT_END_EVENT {
+    int32 event_id = 1;
+}
+
+message CLIENT_GAME_EVENT_PROGRESS {
+    int32 event_id = 1;
+    int32 event_step_number = 2;
+}
+
+message GAME_CLIENT_EVENT_PROGRESS {
+    int32 result = 1;
+    _user_event_info event_info = 2;
+    repeated _cost_info cost_info = 3;
+    repeated _character_inven_item item_info = 4;
+    repeated _cost_info reward_cost_info = 5;
+    repeated _simple_item_info reward_item_info = 6;
+}
+
+message CLIENT_GAME_UNATTENDED_STEP_ATTENDED_PROGRESS {
+    int32 event_id = 1;
+    int32 event_step_number = 2;
+}
+
+message GAME_CLIENT_UNATTENDED_STEP_ATTENDED_PROGRESS {
+    int32 result = 1;
+    _user_event_info event_info = 2;
+    repeated _cost_info cost_info = 3;
+    repeated _character_inven_item item_info = 4;
+    repeated _cost_info reward_cost_info = 5;
+    repeated _simple_item_info reward_item_info = 6;
+}
+
+message GAME_CLIENT_GOAL_ACHIEVEMENT_EVENT_NEXT_STEP_STATE {
+    int32 event_id = 1;
+    int32 reward_available = 2;
+}
+
+message WORLD_GAME_ENTER_NPC_SHOW_SCHEDULE {
+    int32 schedule_id = 1;
+}
+
+message WORLD_GAME_EXIT_NPC_SHOW_SCHEDULE {
+    int32 schedule_id = 1;
+}
+
+message benediction_data {
+    bool used = 1;
+    int32 incense_type = 2;
+    int32 benediction_tid = 3;
+}
+
+message CLIENT_GAME_BENEDICTION_EVENT_DATA {
+    int32 user_event_tid = 1;
+}
+
+message GAME_CLIENT_BENEDICTION_EVENT_DATA {
+    int32 result = 1;
+    repeated benediction_data benediction_list = 2;
+}
+
+message CLIENT_GAME_BENEDICTION_EVENT_SELECT {
+    int32 user_event_tid = 1;
+    int32 benediction_tid = 2;
+}
+
+message GAME_CLIENT_BENEDICTION_EVENT_SELECT {
+    int32 result = 1;
+    benediction_data event_data = 2;
+    _stack_item_info delete_item = 3;
+    repeated _character_inven_item update_items = 4;
+}
+
+message WORLD_GAME_CHANGE_EVENT_TIME {
+    int32 event_id = 1;
+    string start_time = 2;
+    string end_time = 3;
+    int32 change_type = 4;
+}
+
+message CLIENT_GAME_SIEGE_EVE_EVENT_DATA {
+    int32 user_event_id = 1;
+}
+
+message GAME_CLIENT_SIEGE_EVE_EVENT_DATA {
+    int32 result = 1;
+    int32 user_event_id = 2;
+    int32 event_item_count = 3;
+    int32 total_defense_cheering_count = 4;
+    int32 total_siege_cheering_count = 5;
+    int32 cheering_count = 6;
+    int32 cheering_event_state = 7;
+}
+
+message CLIENT_GAME_SIEGE_EVE_EVENT_SELECT_CHEERING_TEAM {
+    int32 user_event_id = 1;
+    int32 select_cheering_team = 2;
+    int32 cheering_count = 3;
+}
+
+message GAME_CLIENT_SIEGE_EVE_EVENT_SELECT_CHEERING_TEAM {
+    int32 result = 1;
+    int32 user_event_id = 2;
+    repeated _stack_item_info delete_item = 3;
+    int32 cheering_count = 4;
+    repeated _simple_item_info reward_item_info = 5;
+    int32 total_defense_cheering_count = 6;
+    int32 total_siege_cheering_count = 7;
+    repeated _character_inven_item change_item_info = 8;
+}
+
+message CLIENT_GAME_PAINTING_EVENT_PROCESS {
+    int32 user_event_id = 1;
+}
+
+message GAME_CLIENT_PAINTING_EVENT_PROCESS {
+    int32 result = 1;
+    _user_event_info event_info = 2;
+    repeated _stack_item_info delete_item = 3;
+    repeated _simple_item_info reward_item_info = 4;
+    repeated _character_inven_item change_item_info = 5;
+}

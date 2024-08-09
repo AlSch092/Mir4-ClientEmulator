@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package MirMobile.Redis;
+
+import "info_common.proto";
+
+message buff_list {
+    repeated _buff_info list = 1;
+}
+
+message character_data {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    string nick_name = 3;
+    int32 class = 4;
+    int32 level = 5;
+    _characterInfo character_info = 6;
+    uint32 escape_stage_id = 7;
+    _vector3 escape_loc = 8;
+    uint32 awaken_grade = 9;
+    int32 action_point_last_update_time_sec = 10;
+    bool observer_mode = 11;
+    string custom_title = 12;
+    uint32 play_time = 13;
+}
+
+message costume_list {
+    uint32 equip_costume_index = 1;
+    repeated _costume_info list = 2;
+}
+
+message equip_list {
+    repeated _character_equip_item list = 1;
+}
+
+message inven_list {
+    int32 use_count = 1;
+    int32 max_count = 2;
+    int32 buy_count = 3;
+    repeated _character_inven_item list = 4;
+}
+
+message mastery_list {
+    repeated _character_mastery_slot list = 1;
+}
+
+message skill_list {
+    repeated _character_skill active_skill_list = 1;
+    repeated _character_skill_deck active_skill_deck_list = 2;
+    repeated _passive_skill_info passive_skill_list = 3;
+    repeated _skill_passive_group passive_skill_group_list = 4;
+}
+
+message treasure_list {
+    repeated uint32 treasure_id_list = 1;
+}
+
+message tutorial_list {
+    repeated uint32 tutorial_group_id_list = 1;
+}
+
+message vehicle_list {
+    uint32 equip_group = 1;
+    int32 equip_time = 2;
+    repeated _vehicle_info list = 3;
+}
+
+message waypoint_list {
+    repeated uint32 list = 1;
+}
+
+message mainquest_data {
+    int32 index = 1;
+    int32 state = 2;
+    int32 count = 3;
+    int32 mission_state = 4;
+}
+
+message subquest_data {
+    int32 index = 1;
+    int32 state = 2;
+    int32 count = 3;
+}
+
+message quest_list {
+    mainquest_data main_quest = 1;
+    repeated subquest_data sub_quest_list = 2;
+    repeated int32 end_subquest_list = 3;
+    repeated int32 active_subquest_list = 4;
+}
+
+message quest_daily_list {
+    repeated subquest_data quest_list = 1;
+}

@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_GUILD_GIFT_LIST {
+    uint32 gift_tap_type = 1;
+}
+
+message GAME_CLIENT_GUILD_GIFT_LIST_START {
+    uint32 gift_tap_type = 1;
+}
+
+message GAME_CLIENT_GUILD_GIFT_LIST {
+    uint32 gift_tap_type = 1;
+    repeated _guild_gift_info guild_gift_list = 2;
+}
+
+message GAME_CLIENT_GUILD_GIFT_LIST_END {
+    uint32 gift_tap_type = 1;
+}
+
+message CLIENT_GAME_GUILD_GIFT_OPEN {
+    uint32 gift_tap_type = 1;
+    uint64 gift_uid = 2;
+}
+
+message GAME_CLIENT_GUILD_GIFT_OPEN {
+    _guild_gift_info guild_gift_info = 1;
+    repeated _character_inven_item update_items = 2;
+    int32 result = 3;
+    repeated _cost_info costInfos = 4;
+}
+
+message GAME_WORLD_GUILD_GIFT_OPEN {
+    uint32 gift_id = 1;
+}
+
+message WORLD_GAME_GUILD_GIFT_OPEN {
+    uint64 uid = 1;
+    uint64 guild_uid = 2;
+    _guild_gift_box_info guild_gift_box_info = 3;
+}
+
+message WORLD_CLIENT_GUILD_GIFT_OPEN {
+    uint64 uid = 1;
+    uint64 guild_uid = 2;
+    _guild_gift_box_info guild_gift_box_info = 3;
+}
+
+message CLIENT_GAME_OPEN_GUILD_GIFT_DELETE {
+    uint32 gift_tap_type = 1;
+}
+
+message GAME_CLIENT_OPEN_GUILD_GIFT_DELETE {
+    uint32 gift_tap_type = 1;
+    repeated uint64 delete_gift_list = 2;
+}
+
+message CLIENT_GAME_GUILD_KEY_BOX_OPEN {
+    
+}
+
+message GAME_CLIENT_GUILD_KEY_BOX_OPEN {
+    repeated _cost_info costInfos = 1;
+    repeated _character_inven_item update_items = 2;
+    uint64 last_box_open_time = 3;
+    repeated _guild_gift_gain_info guild_gift_gain_info = 4;
+}
+
+message GAME_WORLD_REWARD_GUILD_GIFT {
+    uint64 guild_uid = 1;
+    uint32 gift_id = 2;
+    uint64 send_character_uid = 3;
+    uint32 start_world_id = 4;
+}
+
+message WORLD_GAME_REWARD_GUILD_GIFT {
+    uint64 uid = 1;
+    uint64 gift_uid = 2;
+    uint32 gift_id = 3;
+    uint32 gift_tap_type = 4;
+    uint64 send_character_uid = 5;
+    string send_character_name = 6;
+    uint64 recv_date = 7;
+}
+
+message GAME_CLIENT_REWARD_GUILD_GIFT {
+    _guild_gift_info guild_gift_info = 1;
+}
+
+message CLIENT_GAME_GUILD_GIFT_OPEN_ALL {
+    uint32 gift_tap_type = 1;
+}
+
+message GAME_CLIENT_GUILD_GIFT_OPEN_ALL_START {
+    uint32 gift_tap_type = 1;
+}
+
+message GAME_CLIENT_GUILD_GIFT_OPEN_ALL {
+    uint32 gift_tap_type = 1;
+    repeated _guild_gift_info guild_gift_infos = 2;
+    repeated _character_inven_item update_items = 3;
+    repeated _cost_info costInfos = 4;
+}
+
+message GAME_CLIENT_GUILD_GIFT_OPEN_ALL_END {
+    uint32 gift_tap_type = 1;
+    int32 result = 2;
+}

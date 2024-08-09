@@ -1,0 +1,257 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_QUEST_ACTION {
+    int32 quest_index = 1;
+    int32 action = 2;
+    int32 flag = 3;
+}
+
+message GAME_CLIENT_UPDATE_QUEST {
+    int32 quest_index = 1;
+    int32 state = 2;
+}
+
+message CLIENT_GAME_START_QUEST {
+    uint64 uid = 1;
+    int32 QuestIndex = 2;
+}
+
+message GAME_CLIENT_START_QUEST {
+    int32 result = 1;
+    _character_quest questinfo = 2;
+}
+
+message CLIENT_GAME_END_QUEST {
+    uint64 uid = 1;
+    int32 QuestIndex = 2;
+}
+
+message GAME_CLIENT_END_QUEST {
+    int32 result = 1;
+    int32 endquestindex = 2;
+    int32 currentLevel = 3;
+    repeated _cost_info costInfos = 4;
+    repeated _character_inven_item rewardItem = 5;
+    repeated _character_quest questinfos = 6;
+    uint64 exp = 7;
+    int32 quest_type = 8;
+}
+
+message CLIENT_GAME_COMPLETE_QUEST {
+    int32 QuestIndex = 1;
+    int32 quest_type = 2;
+}
+
+message GAME_CLIENT_COMPLETE_QUEST {
+    int32 QuestIndex = 1;
+    int32 quest_type = 2;
+}
+
+message GAME_CLIENT_CHANGE_QUEST_COUNTER {
+    int32 quest_index = 1;
+    int32 count = 2;
+    int32 quest_type = 3;
+}
+
+message GAME_CLIENT_DELETE_QUEST {
+    uint64 uid = 1;
+    int32 delete_quest_id = 2;
+}
+
+message GAME_CLIENT_FAILED_QUEST {
+    int32 quest_index = 1;
+}
+
+message CLIENT_GAME_FAILED_QUEST_CONFIRM {
+    int32 quest_index = 1;
+}
+
+message GAME_CLIENT_ADD_SUBQUEST {
+    int32 quest_index = 1;
+    int32 tracker = 2;
+}
+
+message CLIENT_GAME_ACCEPT_SUBQUEST {
+    int32 quest_index = 1;
+    int32 quest_type = 2;
+}
+
+message CLIENT_GAME_COMMIT_SUBQUEST {
+    int32 quest_index = 1;
+    int32 quest_type = 2;
+}
+
+message GAME_CLIENT_COMMIT_SUBQUEST {
+    int32 quest_index = 1;
+    int32 result = 2;
+    int32 state = 3;
+}
+
+message CLIENT_GAME_CANCEL_SUBQUEST {
+    int32 quest_index = 1;
+}
+
+message GAME_CLIENT_CANCEL_SUBQUEST {
+    int32 quest_index = 1;
+    int32 result = 2;
+}
+
+message CLIENT_GAME_START_PHASING_QUEST {
+    int32 quest_index = 1;
+}
+
+message CLIENT_GAME_END_PHASING_QUEST {
+    int32 quest_index = 1;
+    _vector3 pos = 2;
+    int32 flag = 3;
+    int32 success = 4;
+}
+
+message GAME_CLIENT_RESET_REPEAT_QUEST {
+    repeated int32 quest_indexs = 1;
+}
+
+message CLIENT_GAME_REWARD_DAILYHOMEWORK_PLUSREWARD {
+    int32 count = 1;
+}
+
+message GAME_CLIENT_REWARD_DAILYHOMEWORK_PLUSREWARD {
+    int32 result = 1;
+    repeated _cost_info costInfos = 2;
+    int32 count = 3;
+    repeated _character_inven_item rewardItem = 4;
+}
+
+message CLIENT_GAME_COMPLETEALL_DAILYHOMEWORK {
+    
+}
+
+message GAME_CLIENT_COMPLETEALL_DAILYHOMEWORK {
+    int32 result = 1;
+    repeated int32 endquestindexs = 2;
+    repeated _cost_info costInfos = 3;
+    repeated _character_inven_item rewardItems = 4;
+}
+
+message GAME_CLIENT_ADD_RELATION_QUEST {
+    int32 quest_index = 1;
+}
+
+message GAME_CLIENT_QUEST_ACTION_RESULT {
+    int32 quest_index = 1;
+    int32 result = 2;
+}
+
+message GAME_CLIENT_ENDQUEST_RELATION {
+    int32 index = 1;
+    int32 state = 2;
+    int32 currentLevel = 3;
+    repeated _cost_info costInfos = 4;
+    repeated _character_inven_item rewardItem = 5;
+    uint64 exp = 6;
+    int32 result = 7;
+}
+
+message CLIENT_GAME_START_QUEST_CINEMATIC {
+    int32 quest_index = 1;
+    int32 cinematic_type = 2;
+    int32 cinematic_id = 3;
+}
+
+message CLIENT_GAME_END_QUEST_CINEMATIC {
+    int32 quest_index = 1;
+}
+
+message CLIENT_GAME_QUEST_NPC_TALK {
+    int32 quest_index = 1;
+}
+
+message GAME_CLIENT_QUEST_NPC_TALK {
+    int32 quest_index = 1;
+    int32 result = 2;
+}
+
+message GAME_CLIENT_ADD_QUEST_REQUEST {
+    int32 quest_index = 1;
+    int32 state = 2;
+    int32 seq = 3;
+}
+
+message GAME_CLIENT_ENDQUEST_REQUEST {
+    int32 index = 1;
+    int32 state = 2;
+    int32 currentLevel = 3;
+    repeated _cost_info costInfos = 4;
+    repeated _character_inven_item rewardItem = 5;
+    uint64 exp = 6;
+    int32 result = 7;
+}
+
+message GAME_CLIENT_ADD_QUEST_COOPERATION {
+    int32 quest_index = 1;
+    int32 state = 2;
+}
+
+message GAME_CLIENT_ENDQUEST_COOPERATION {
+    int32 index = 1;
+    int32 state = 2;
+    repeated _cost_info costInfos = 3;
+    repeated _character_inven_item rewardItem = 4;
+    int32 clearcnt = 5;
+    int32 weekclearcnt = 6;
+    int32 guild_point = 7;
+    int32 result = 8;
+}
+
+message GAME_CLIENT_ENDQUEST_GUILD_DAILY_MISSION {
+    int32 index = 1;
+    int32 state = 2;
+    int32 currentLevel = 3;
+    repeated _cost_info costInfos = 4;
+    repeated _character_inven_item rewardItem = 5;
+    uint64 exp = 6;
+    int32 clearcnt = 7;
+    int32 result = 8;
+}
+
+message CLIENT_GAME_ENDQUEST_RELATION_PLUSREWARD {
+    int32 reward_index = 1;
+}
+
+message GAME_CLIENT_ENDQUEST_RELATION_PLUSREWARD {
+    int32 index = 1;
+    int32 state = 2;
+    int32 currentLevel = 3;
+    repeated _cost_info costInfos = 4;
+    repeated _character_inven_item rewardItem = 5;
+    uint64 exp = 6;
+    int32 result = 7;
+}
+
+message CLIENT_GAME_QUEST_TRACKER {
+    int32 quest_index = 1;
+    int32 action = 2;
+    int32 flag = 3;
+}
+
+message GAME_CLIENT_QUEST_TRACKER {
+    int32 quest_index = 1;
+    int32 result = 2;
+}
+
+message CLIENT_GAME_ENDQUEST_GUILD_DAILY_ALL_MISSION {
+    
+}
+
+message GAME_CLIENT_ENDQUEST_GUILD_DAILY_ALL_MISSION {
+    repeated int32 indexs = 1;
+    repeated int32 states = 2;
+    repeated _cost_info costInfos = 3;
+    repeated _character_inven_item rewardItem = 4;
+    repeated int32 clearcnts = 5;
+    int32 result = 6;
+}

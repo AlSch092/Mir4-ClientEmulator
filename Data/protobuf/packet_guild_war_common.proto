@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _guild_war_board_user_view_info {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    bool is_guild_master = 3;
+    uint64 party_uid = 4;
+    bool is_party_leader = 5;
+    uint32 user_status = 6;
+    _vector3 cur_pos = 7;
+    int32 guild_camp_kind = 8;
+}
+
+message _guild_war_board_user_move_info {
+    uint64 user_uid = 1;
+    _vector3 cur_pos = 2;
+}
+
+message _guild_war_board_command_info {
+    int32 command_mark_tid = 1;
+    _vector3 target_pos = 2;
+    string message = 3;
+}
+
+message _guild_war_board_class_info {
+    int32 user_class = 1;
+    int32 defense_user_count = 2;
+    int32 offense_user_count = 3;
+}
+
+message _guild_war_board_watcher_ui_info {
+    uint64 defense_combat_point = 1;
+    uint64 offense_combat_point = 2;
+    repeated _guild_war_board_class_info guild_war_board_class_info_list = 3;
+}
+
+message CLIENT_GAME_REQ_GUILD_WAR_BOARD_INFO {
+    int32 info_req_kind = 1;
+}
+
+message GAME_CLIENT_ACK_GUILD_WAR_BOARD_INFO {
+    uint32 result = 1;
+}
+
+message GAME_CLIENT_NTF_GUILD_WAR_BOARD_MOVE_INFO {
+    int32 info_req_kind = 1;
+    repeated _guild_war_board_user_move_info user_move_info_list = 2;
+}
+
+message CLIENT_GAME_REQ_GUILD_WAR_COMMAND {
+    int32 command_update_kind = 1;
+    _guild_war_board_command_info command_info = 2;
+}
+
+message GAME_CLIENT_ACK_GUILD_WAR_COMMAND {
+    uint32 result = 1;
+    int32 command_update_kind = 2;
+    _guild_war_board_command_info command_info = 3;
+}
+
+message GAME_CLIENT_NTF_GUILD_WAR_COMMAND {
+    int32 command_update_kind = 1;
+    _guild_war_board_command_info command_info = 2;
+}

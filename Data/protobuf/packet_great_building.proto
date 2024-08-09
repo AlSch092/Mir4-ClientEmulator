@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_GREAT_BUILDING_INFO {
+    
+}
+
+message GAME_CLIENT_GREAT_BUILDING_INFO {
+    uint32 result = 1;
+    repeated _great_building_info great_building_info = 2;
+}
+
+message CLIENT_GAME_OPEN_BUILDING {
+    uint32 building_uid = 1;
+}
+
+message GAME_CLIENT_OPEN_BUILDING {
+    uint32 result = 1;
+    uint32 building_uid = 2;
+}
+
+message CLIENT_GAME_UPGRADE_BUILDING_REQUEST {
+    uint32 building_uid = 1;
+}
+
+message GAME_CLIENT_UPGRADE_BUILDING_REQUEST {
+    uint32 result = 1;
+    uint32 building_uid = 2;
+    uint64 upgrade_remain_time = 3;
+    repeated _cost_info cost_info = 4;
+    repeated _stack_item_info del_item_list = 5;
+}
+
+message GAME_CLIENT_UPGRADE_BUILDING_COMPLETE {
+    uint32 building_uid = 1;
+}
+
+message CLIENT_GAME_UPGRADE_BUILDING_REQUEST_COMPLETE {
+    uint32 building_uid = 1;
+}
+
+message GAME_CLIENT_UPGRADE_BUILDING_REQUEST_COMPLETE {
+    uint32 result = 1;
+    uint32 building_uid = 2;
+    uint32 result_level = 3;
+}
+
+message CLIENT_GAME_UPGRADE_ACCELERATION {
+    uint32 building_uid = 1;
+    uint32 use_item_id = 2;
+    uint32 point_value = 3;
+}
+
+message GAME_CLIENT_UPGRADE_ACCELERATION {
+    uint32 result = 1;
+    uint32 building_uid = 2;
+    uint64 remain_time = 3;
+    _stack_item_info del_item = 4;
+    repeated _cost_info update_cost_info = 5;
+}
+
+message WORLD_GAME_BUILDING_UPGRADE_SUPPORT_NOTICE {
+    uint64 user_uid = 1;
+    repeated upgrade_building_notice_game_data building_data_list = 2;
+}
+
+message CLIENT_GAME_HARVEST_PRODUCTS_FROM_BUILDING {
+    uint32 building_id = 1;
+}
+
+message GAME_CLIENT_HARVEST_PRODUCTS_FROM_BUILDING {
+    uint32 result = 1;
+    uint32 building_id = 2;
+    uint32 gain_type = 3;
+    uint32 reward_id = 4;
+    uint32 reward_count = 5;
+    uint64 last_harvest_time = 6;
+    repeated _character_inven_item update_item = 7;
+    repeated _cost_info update_cost_info = 8;
+}
+
+message GAME_CLIENT_PRODUCTION_NOTIFICATION {
+    uint32 building_id = 1;
+    uint32 gain_type = 2;
+    uint32 reward_id = 3;
+    uint32 reward_count = 4;
+    uint64 last_harvest_time = 5;
+}

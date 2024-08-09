@@ -1,0 +1,1660 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message GAME_CLIENT_ERROR {
+    int32 error = 1;
+}
+
+message GAME_CLIENT_SYSTEM_ERROR {
+    int32 error_type = 1;
+    int32 error_code = 2;
+    string error_message = 3;
+}
+
+message _fake_reward_info {
+    int32 id = 1;
+    int32 count = 2;
+}
+
+message CLIENT_GAME_FAKE_REWARD {
+    uint32 id = 1;
+}
+
+message GAME_CLIENT_FAKE_REWARD {
+    repeated _fake_reward_info fake_info = 1;
+}
+
+message SERVER_GATEWAY_ERROR {
+    uint64 account_uid = 1;
+    uint64 char_uid = 2;
+    int32 error_id = 3;
+    bool is_disconnect_user = 4;
+}
+
+message SERVER_GATEWAY_USER_KICK {
+    uint64 account_uid = 1;
+}
+
+message GAME_CLIENT_SYSTEM_MESSAGE {
+    int32 title_sting_id = 1;
+    int32 message_string_id = 2;
+    repeated string message_arg = 3;
+}
+
+message LOG_SERVER_MESSAGE {
+    uint32 ServerType = 1;
+    uint32 ServerIndex = 2;
+    uint32 WorldUID = 3;
+}
+
+message LOG_USER_INFO {
+    uint64 AccountUID = 1;
+    uint64 CharacterUID = 2;
+    string CharacterName = 3;
+    uint32 CharacterClass = 4;
+    uint32 Lev = 5;
+}
+
+message LOG_MESSAGE {
+    uint32 Type = 1;
+    string Time = 2;
+    LOG_SERVER_MESSAGE Server = 3;
+    LOG_DATA_MESSAGE Data = 4;
+}
+
+message LOG_DATA_MESSAGE {
+    LOG_USER_INFO user_log = 1;
+    LOG_ACCOUNTUID log_accountuid = 2;
+    LOG_ACCOUNTNAME log_accountname = 3;
+    LOG_CHARACTERUID log_characteruid = 4;
+    LOG_DEVICEID log_deviceid = 5;
+    LOG_WORLDNAME log_worldname = 6;
+    LOG_CONCURRENTUSERS log_concurrentusers = 7;
+    LOG_WAITTINGUSERS log_waittingusers = 8;
+    LOG_SERVERTYPE log_servertype = 9;
+    LOG_OSTYPE log_ostype = 10;
+    LOG_IPADDRESS log_ipaddress = 11;
+    LOG_CHARACTERNAME log_charactername = 12;
+    LOG_CHARACTERCLASS log_characterclass = 13;
+    LOG_LEV log_lev = 14;
+    LOG_COMBATPOINT log_combatpoint = 15;
+    LOG_STAGEIDX log_stageidx = 16;
+    LOG_LOCX log_locx = 17;
+    LOG_LOCY log_locy = 18;
+    LOG_LOCZ log_locz = 19;
+    LOG_CHAR_VAL_ID log_char_val_id = 20;
+    LOG_CHAR_VAL_APPLY log_char_val_apply = 21;
+    LOG_CHAR_VAL_TOTAL log_char_val_total = 22;
+    LOG_ADJUSTMENT log_adjustment = 23;
+    LOG_TOTALVALUE log_totalvalue = 24;
+    LOG_ADJUSTMENTEXP log_adjustmentexp = 25;
+    LOG_TOTALEXP log_totalexp = 26;
+    LOG_ACTIVESKILLIDX log_activeskillidx = 27;
+    LOG_GUILDUID log_guilduid = 28;
+    LOG_GUILDNAME log_guildname = 29;
+    LOG_GUILDLEV log_guildlev = 30;
+    LOG_ISCHANGEDSYMBOL log_ischangedsymbol = 31;
+    LOG_GUILDMASTERUID log_guildmasteruid = 32;
+    LOG_GUILDMEMBERGRADE log_guildmembergrade = 33;
+    LOG_GUILDMASTERNAME log_guildmastername = 34;
+    LOG_PREGUILDNAME log_preguildname = 35;
+    LOG_DEVELOPIDX log_developidx = 36;
+    LOG_DEVELOPLEV log_developlev = 37;
+    LOG_MONEYIDX log_moneyidx = 38;
+    LOG_EVENTTYPE log_eventtype = 39;
+    LOG_ITEMIDX log_itemidx = 40;
+    LOG_ITEMUID log_itemuid = 41;
+    LOG_ITEM_MAIN log_item_main = 42;
+    LOG_ITEM_SUB log_item_sub = 43;
+    LOG_ITEM_GRADE log_item_grade = 44;
+    LOG_ITEM_NUM log_item_num = 45;
+    LOG_ITEM_SMELTING_LV log_item_smelting_lv = 46;
+    LOG_ITEM_REINFORCE_LV log_item_reinforce_lv = 47;
+    LOG_ITEM_REINFORCE_EXP log_item_reinforce_exp = 48;
+    LOG_INVENUSE log_invenuse = 49;
+    LOG_INVENTOTAL log_inventotal = 50;
+    LOG_TARGET_ITEMIDX log_target_itemidx = 51;
+    LOG_TARGET_ITEMUID log_target_itemuid = 52;
+    LOG_INITEMIDX log_initemidx = 53;
+    LOG_INITEMUID log_initemuid = 54;
+    LOG_INITEM_MAIN log_initem_main = 55;
+    LOG_INITEM_SUB log_initem_sub = 56;
+    LOG_INITEM_GRADE log_initem_grade = 57;
+    LOG_INITEM_NUM log_initem_num = 58;
+    LOG_INITEM_SMELTING_LV log_initem_smelting_lv = 59;
+    LOG_INITEM_REINFORCE_LV log_initem_reinforce_lv = 60;
+    LOG_INITEM_REINFORCE_EXP log_initem_reinforce_exp = 61;
+    LOG_CURRENCY_TYPE log_currency_type = 62;
+    LOG_CURRENCY_VAL log_currency_val = 63;
+    LOG_SRC_SMELTING_LV log_src_smelting_lv = 64;
+    LOG_SRC_REINFORCE_LV log_src_reinforce_lv = 65;
+    LOG_OPTION_TYPE log_option_type = 66;
+    LOG_OPTION_VAL log_option_val = 67;
+    LOG_SLOTIDX log_slotidx = 68;
+    LOG_BEFORELEV log_beforelev = 69;
+    LOG_APPLYLEV log_applylev = 70;
+    LOG_AFTERLEV log_afterlev = 71;
+    LOG_TARGET_ACCOUNTUID log_target_accountuid = 72;
+    LOG_TARGET_DEVICEID log_target_deviceid = 73;
+    LOG_TARGETUID log_targetuid = 74;
+    LOG_TARGETNAME log_targetname = 75;
+    LOG_TARGET_CHAR_JOB log_target_char_job = 76;
+    LOG_TARGET_CHAR_LV log_target_char_lv = 77;
+    LOG_TARGET_CHAR_BATTLE_POWER log_target_char_battle_power = 78;
+    LOG_TARGET_CHAR_EXP log_target_char_exp = 79;
+    LOG_PREV_SYMBOL log_prev_symbol = 80;
+    LOG_AFTER_SYMBOL log_after_symbol = 81;
+    LOG_PREV_BACKGROUND log_prev_background = 82;
+    LOG_AFTER_BACKGROUND log_after_background = 83;
+    LOG_TARGETGUILD_UID log_targetguild_uid = 84;
+    LOG_TARGETGUILD_NAME log_targetguild_name = 85;
+    LOG_TARGETGUILD_LV log_targetguild_lv = 86;
+    LOG_TARGETGUILD_SYMBOL log_targetguild_symbol = 87;
+    LOG_TARGETGUILD_MASTER_ID log_targetguild_master_id = 88;
+    LOG_TARGETGUILD_MASTER_NAME log_targetguild_master_name = 89;
+    LOG_TARGETMEMBERGRADE log_targetmembergrade = 90;
+    LOG_PARTYUID log_partyuid = 91;
+    LOG_PARTYTYPE log_partytype = 92;
+    LOG_LEADERID log_leaderid = 93;
+    LOG_LEADERNAME log_leadername = 94;
+    LOG_TICKET_VAL_ID log_ticket_val_id = 95;
+    LOG_TICKET_VAL_APPLY log_ticket_val_apply = 96;
+    LOG_TICKET_VAL_TOTAL log_ticket_val_total = 97;
+    LOG_BATTLE_POWER log_battle_power = 98;
+    LOG_PLAYTIME log_playtime = 99;
+    LOG_MONSTERIDX log_monsteridx = 100;
+    LOG_MONSTER_GRADE log_monster_grade = 101;
+    LOG_QUESTIDX log_questidx = 102;
+    LOG_QUESTTYPE log_questtype = 103;
+    LOG_QUEST_VALUE log_quest_value = 104;
+    LOG_QUESTCOMPLETE log_questcomplete = 105;
+    LOG_QUESTTOTAL log_questtotal = 106;
+    LOG_BATTLEPASSMISSIONIDX log_battlepassmissionidx = 107;
+    LOG_BATTLEPASSGRADE log_battlepassgrade = 108;
+    LOG_TREASURE_UID log_treasure_uid = 109;
+    LOG_TREASURE_ID log_treasure_id = 110;
+    LOG_TREASURE_APPLY log_treasure_apply = 111;
+    LOG_TREASURE_TOTAL log_treasure_total = 112;
+    LOG_COLLECTIONID log_collectionid = 113;
+    LOG_REGITEMIDX log_regitemidx = 114;
+    LOG_REGITEMUID log_regitemuid = 115;
+    LOG_VEHICLEUID log_vehicleuid = 116;
+    LOG_VEHICLEIDX log_vehicleidx = 117;
+    LOG_MAILUID log_mailuid = 118;
+    LOG_MAILTYPEIDX log_mailtypeidx = 119;
+    LOG_ISEXPIRED log_isexpired = 120;
+    LOG_MAILTITLE log_mailtitle = 121;
+    LOG_COUPON_UID log_coupon_uid = 122;
+    LOG_COUPON_CODE log_coupon_code = 123;
+    LOG_APPLY log_apply = 124;
+    LOG_PRODUCT_MARKET log_product_market = 125;
+    LOG_PRODUCT_UID log_product_uid = 126;
+    LOG_PRODUCT_NAME log_product_name = 127;
+    LOG_RECEIPT log_receipt = 128;
+    LOG_PURCHASEAMOUNT log_purchaseamount = 129;
+    LOG_PRODUCTIDX log_productidx = 130;
+    LOG_VAL log_val = 131;
+    LOG_MONSTER_UID log_monster_uid = 132;
+    LOG_MONSTER_NAME log_monster_name = 133;
+    LOG_TRADEUID log_tradeuid = 134;
+    LOG_MONEYADJUSTMENT log_moneyadjustment = 135;
+    LOG_MONEYTOTALVALUE log_moneytotalvalue = 136;
+    LOG_TARGETTYPE log_targettype = 137;
+    LOG_ISCRITICAL log_iscritical = 138;
+    LOG_ISDEFENCED log_isdefenced = 139;
+    LOG_ISEVADED log_isevaded = 140;
+    LOG_TOTALDEMAGE log_totaldemage = 141;
+    LOG_HEALTYPE log_healtype = 142;
+    LOG_CASTERUID log_casteruid = 143;
+    LOG_TOTALHEAL log_totalheal = 144;
+    LOG_DECKID log_deckid = 145;
+    LOG_SLOTID log_slotid = 146;
+    LOG_PETID log_petid = 147;
+    LOG_PETGRADE log_petgrade = 148;
+    LOG_SKILLTIME log_skilltime = 149;
+    LOG_SKILLID log_skillid = 150;
+    LOG_EXPEDITIONIDX log_expeditionidx = 151;
+    LOG_EXPEDITIONCOUNT log_expeditioncount = 152;
+    LOG_GIFTLEV log_giftlev = 153;
+    LOG_ADJUSTMENTGIFTEXP log_adjustmentgiftexp = 154;
+    LOG_TOTALGIFTEXP log_totalgiftexp = 155;
+    LOG_STATIDX log_statidx = 156;
+    LOG_GACHAIDX log_gachaidx = 157;
+    LOG_CHEATCMD log_cheatcmd = 158;
+    LOG_DELITEMS log_delitems = 159;
+    LOG_ADDITEMS log_additems = 160;
+    LOG_SMELTINGITEM log_smeltingitem = 161;
+    LOG_CHANGEOPTIONITEM log_changeoptionitem = 162;
+    LOG_TRADEITEMS log_tradeitems = 163;
+    LOG_BATTLEATTACKBUFFS log_battleattackbuffs = 164;
+    LOG_BATTLETARGETBUFFS log_battletargetbuffs = 165;
+    LOG_BATTLECASTERBUFFS log_battlecasterbuffs = 166;
+    LOG_BATTLEACTIVESKILLS log_battleactiveskills = 167;
+    LOG_BATTLESTATUSEFFECTS log_battlestatuseffects = 168;
+    LOG_MAILITEM log_mailitem = 169;
+    LOG_MONEYS log_moneys = 170;
+    LOG_STRONGPOINTTID log_strongpointtid = 171;
+    LOG_MILEAGE log_mileage = 172;
+    LOG_STORETYPE log_storetype = 173;
+    LOG_GOODSIDX log_goodsidx = 174;
+    LOG_BUILDINGID log_buildingid = 175;
+    LOG_BUILDINGLEVEL log_buildinglevel = 176;
+    LOG_UPGRADEACCELTIME log_upgradeacceltime = 177;
+    LOG_SUPPORTDATAS log_supportdata = 178;
+    LOG_GUILDGIFTLEV log_guildgiftlev = 180;
+    LOG_GIFTEXP log_giftexp = 181;
+    LOG_SLOT log_slot = 182;
+    LOG_TICKETTYPE log_tickettype = 183;
+    LOG_TICKETCOUNT log_ticketcount = 184;
+    LOG_TICKETMAX log_ticketmax = 185;
+    LOG_TICKETBUYCOUNT log_ticketbuycount = 186;
+    LOG_DUNGEONIDX log_dungeonidx = 187;
+    LOG_MATERIALS log_materials = 189;
+    LOG_MAILPRESETID log_mailpresetid = 190;
+    LOG_MAILARGS log_mailargs = 191;
+    LOG_FAILPOINTTYPE log_failpointtype = 192;
+    LOG_ADJUSTMENTFAILPOINT log_adjustmentfailpoint = 193;
+    LOG_TOTALFAILPOINT log_totalfailpoint = 194;
+    LOG_WANTEDUID log_wanteduid = 195;
+    LOG_COMPOSE_ADDITEMS log_compose_additems = 196;
+    LOG_COMPOSE_MATERIALS log_compose_materials = 197;
+    LOG_NEWCHARACTERNAME log_newcharactername = 198;
+    LOG_GIFTID log_giftid = 199;
+    LOG_GIFTUID log_giftuid = 200;
+    LOG_GIFTTAPTYPE log_gifttaptype = 201;
+    LOG_SENDCHARACTERUID log_sendcharacteruid = 202;
+    LOG_SENDCHARACTERNAME log_sendcharactername = 203;
+    LOG_GAINGIFTTYPE log_gaingifttype = 204;
+    LOG_GAINGIFTSUBTYPE log_gaingiftsubtype = 205;
+    LOG_GAINGIFTVALUE log_gaingiftvalue = 206;
+    LOG_DOMINIONID log_dominionid = 207;
+    LOG_SIEGETID log_siegetid = 208;
+    LOG_SIEGEAUCTIONTYPE log_siegeauctiontype = 209;
+    LOG_GUILDCAMPKIND log_guildcampkind = 210;
+    LOG_PETLEVEL log_petlevel = 211;
+    LOG_TRAININGSTATUSID log_trainingstatusid = 212;
+    LOG_TRAININGLEVEL log_traininglevel = 213;
+    LOG_CRITICALFAILRESULT log_criticalfailresult = 214;
+    LOG_ISALLIANCE log_isalliance = 215;
+    LOG_SUCCESS log_success = 216;
+    LOG_STARTTIME log_starttime = 217;
+    LOG_PURCHASEMONEYS log_purchasemoneys = 218;
+    LOG_BOSSMONSTERKILLCOUNT log_bossmonsterkillcount = 219;
+    LOG_STARTWORLDID log_startworldid = 220;
+    LOG_TARGETWORLDID log_targetworldid = 221;
+    LOG_ADJUSTMENTPKPOINT log_adjustmentpkpoint = 222;
+    LOG_PKPOINT log_pkpoint = 223;
+    LOG_ADJUSTMENTBONUSPOINT log_adjustmentbonuspoint = 224;
+    LOG_TOTALBONUSPOINT log_totalbonuspoint = 225;
+    LOG_ADJUSTMENTBONUSCOUNT log_adjustmentbonuscount = 226;
+    LOG_TOTALBONUSCOUNT log_totalbonuscount = 227;
+    LOG_USERAGENT log_useragent = 228;
+    LOG_OPENCHACTERCLASS log_opencharacterclass = 229;
+    LOG_CHANGECHACTERCLASS log_changecharacterclass = 230;
+    LOG_CHARACTERCLASSLIST log_characterclasslist = 231;
+    LOG_IS_LEVEL_DOWN log_isleveldown = 232;
+    LOG_BONUSCOUNT log_bonuscount = 233;
+    LOG_SUCCESSCOUNT log_successcount = 234;
+    LOG_FAILCOUNT log_failcount = 235;
+    LOG_TRYMAKECOUNT log_trymakecount = 236;
+    LOG_MAKECOUNT log_makecount = 237;
+    LOG_WORLDMAKECOUNT log_worldmakecount = 238;
+    LOG_WEMIXID log_wemixid = 239;
+    LOG_DERBY log_derby = 240;
+    LOG_ISSUED log_issued = 241;
+    LOG_OBJECTGATHERTYPE log_objectgathertype = 242;
+    LOG_OBJECTPOSID log_objectposid = 243;
+    LOG_TARGET_ITEMCOUNT log_target_itemcount = 244;
+    LOG_DEPARTURESTAGEIDX log_departurestageidx = 245;
+    LOG_ARRIVALSTAGEIDX log_arrivalstageidx = 246;
+    LOG_POINT_ADJUSTMENT log_pointadjustment = 247;
+    LOG_POINT_TOTAL_VALUE log_pointtotalvalue = 248;
+    LOG_TOKEN_ID log_tokenid = 249;
+    LOG_EVENTIDX log_eventidx = 250;
+    LOG_CALCULATEADJUSTMENT log_calculateadjustment = 251;
+    LOG_BUYTRYCHARACTERUID log_buytrycharacteruid = 252;
+    LOG_DRACO_FEE log_dracofee = 253;
+    LOG_SEPTARIA_UID log_septariauid = 254;
+    LOG_SEPTARIA_FEE log_septariafee = 255;
+    LOG_PLAYERKEY log_playerkey = 256;
+    LOG_AUTHTOKENID log_authtokenid = 257;
+    LOG_BEFORECOMBATPOINT log_beforecombatpoint = 258;
+    LOG_GUILD_COMBATPOINT log_guild_combatpoint = 259;
+    LOG_TARGETGUILD_COMBATPOINT log_targetguild_combatpoint = 260;
+    LOG_REFININGSTAGE log_refiningstage = 261;
+    LOG_SPECIALEFFECT log_specialeffect = 262;
+    LOG_STEALCHARACTERUID log_stealcharacteruid = 263;
+    LOG_STEALCHARACTERNAME log_stealcharactername = 264;
+    LOG_MARKET_RECEIPT log_marketreceipt = 265;
+    LOG_VIEW_COUNT log_viewcount = 266;
+    LOG_DOMINION_BUFF_ID log_dominion_buff_id = 267;
+    LOG_DARKALTARID log_darkaltarid = 268;
+    LOG_PRODUCTINFOS log_productinfolist = 269;
+    LOG_CASHBAGINFOS log_cashbaginfolist = 270;
+    LOG_PLUNDERTID LOG_PLUNDERTID = 271;
+    LOG_OBJECTID LOG_OBJECTID = 272;
+    LOG_REWARDVALUE LOG_REWARDVALUE = 273;
+    LOG_TOTAL_DARKSTEELTEX LOG_TOTAL_DARKSTEELTEX = 274;
+    LOG_CURRENT_DARKSTEELTEX LOG_CURRENT_DARKSTEELTEX = 275;
+    LOG_SUM_DARKSTEELTEX LOG_SUM_DARKSTEELTEX = 276;
+    LOG_DAILYDEDUCTION_DARKSTEELTEX LOG_DAILYDEDUCTION_DARKSTEELTEX = 277;
+    LOG_REMAINDEDUCTION_DARKSTEELTEX LOG_REMAINDEDUCTION_DARKSTEELTEX = 278;
+    LOG_RESULT log_result = 279;
+    LOG_HOLYSTUFFID log_holystuffid = 280;
+    LOG_HOLYSTUFFGRADE log_holystuffgrade = 281;
+    LOG_HOLYSTUFFLEVEL log_holystufflevel = 282;
+    LOG_GROWTHSTATUSSLOTNUMBER log_growthstatusslotnumber = 283;
+    LOG_REWARDITEMIDX log_rewarditemidx = 284;
+    LOG_REWARDITEMCOUNT log_rewarditemcount = 285;
+    LOG_SUMMONCOUNT log_summoncount = 286;
+    LOG_GROUPID log_groupid = 287;
+    LOG_CURRENTFREERESTORE log_currentfreerestore = 288;
+    LOG_MAXFREERESTORE log_maxfreerestore = 289;
+    LOG_RESETRESULTCOUNT log_resetresultcount = 290;
+    LOG_SABUKTAXRATE log_sabuktaxrate = 291;
+    LOG_SABUKTAXRATEBEFORE log_sabuktaxratebefore = 292;
+    LOG_SABUKTAXRATEAFTER log_sabuktaxrateafter = 293;
+    LOG_SABUK_ROUNDTID log_sabuk_roundtid = 294;
+    LOG_UNSEALING_ACCELERATE_INFOS log_unsealing_accelerate_list = 295;
+    LOG_SMELTINGITEM log_refineitem = 296;
+    LOG_CHANGEMONEYS log_changemoneys = 297;
+    LOG_RECEIPT2 log_receipt2 = 298;
+    LOG_RECEIVER_UID log_receiver_uid = 299;
+    LOG_RECEIVER_NAME log_receiver_name = 300;
+    LOG_POTENTIALID log_potentialid = 301;
+    LOG_POTENTIALRESULT log_potentialresult = 302;
+    LOG_POTENTIALLEV log_potentiallev = 303;
+    LOG_POTENTIALRESULT_LEV log_potentialresult_lev = 304;
+}
+
+message LOG_ACCOUNTUID {
+    uint64 AccountUID = 1;
+}
+
+message LOG_ACCOUNTNAME {
+    string AccountName = 1;
+}
+
+message LOG_CHARACTERUID {
+    uint64 CharacterUID = 1;
+}
+
+message LOG_DEVICEID {
+    string DeviceID = 1;
+}
+
+message LOG_WORLDNAME {
+    string WorldName = 1;
+}
+
+message LOG_DOMINIONID {
+    int32 DominionID = 1;
+}
+
+message LOG_DOMINION_BUFF_ID {
+    int32 Dominion_Buff_ID = 1;
+}
+
+message LOG_CONCURRENTUSERS {
+    uint32 ConcurrentUsers = 1;
+}
+
+message LOG_WAITTINGUSERS {
+    uint32 WaittingUsers = 1;
+}
+
+message LOG_SERVERTYPE {
+    uint32 ServerType = 1;
+}
+
+message LOG_OSTYPE {
+    uint32 OSType = 1;
+}
+
+message LOG_IPADDRESS {
+    string IpAddress = 1;
+}
+
+message LOG_CHARACTERNAME {
+    string CharacterName = 1;
+}
+
+message LOG_CHARACTERCLASS {
+    uint32 CharacterClass = 1;
+}
+
+message LOG_LEV {
+    uint32 Lev = 1;
+}
+
+message LOG_COMBATPOINT {
+    uint32 CombatPoint = 1;
+}
+
+message LOG_STAGEIDX {
+    uint32 StageIdx = 1;
+}
+
+message LOG_GOODSIDX {
+    uint32 GoodsIdx = 1;
+}
+
+message LOG_LOCX {
+    float LocX = 1;
+}
+
+message LOG_LOCY {
+    float LocY = 1;
+}
+
+message LOG_LOCZ {
+    float LocZ = 1;
+}
+
+message LOG_CHAR_VAL_ID {
+    uint64 Char_Val_id = 1;
+}
+
+message LOG_CHAR_VAL_APPLY {
+    int64 Char_Val_apply = 1;
+}
+
+message LOG_CHAR_VAL_TOTAL {
+    int64 Char_Val_total = 1;
+}
+
+message LOG_ADJUSTMENT {
+    int64 Adjustment = 1;
+}
+
+message LOG_TOTALVALUE {
+    uint64 TotalValue = 1;
+}
+
+message LOG_ADJUSTMENTEXP {
+    int64 AdjustmentExp = 1;
+}
+
+message LOG_TOTALEXP {
+    int64 TotalExp = 1;
+}
+
+message LOG_ACTIVESKILLIDX {
+    uint32 ActiveSkillIdx = 1;
+}
+
+message LOG_GUILDUID {
+    uint64 GuildUID = 1;
+}
+
+message LOG_GUILDNAME {
+    string GuildName = 1;
+}
+
+message LOG_GUILD_COMBATPOINT {
+    int64 Guild_CombatPoint = 1;
+}
+
+message LOG_GUILDLEV {
+    uint32 GuildLev = 1;
+}
+
+message LOG_ISCHANGEDSYMBOL {
+    bool IsChangedSymbol = 1;
+}
+
+message LOG_GUILDMASTERUID {
+    uint64 GuildMasterUID = 1;
+}
+
+message LOG_GUILDMEMBERGRADE {
+    uint32 GuildMemberGrade = 1;
+}
+
+message LOG_GUILDMASTERNAME {
+    string GuildMasterName = 1;
+}
+
+message LOG_PREGUILDNAME {
+    string PreGuildName = 1;
+}
+
+message LOG_DEVELOPIDX {
+    int32 DevelopIdx = 1;
+}
+
+message LOG_DEVELOPLEV {
+    uint32 DevelopLev = 1;
+}
+
+message LOG_IS_LEVEL_DOWN {
+    bool IsLevelDown = 1;
+}
+
+message LOG_MONEYIDX {
+    uint32 MoneyIdx = 1;
+}
+
+message LOG_EVENTTYPE {
+    uint32 EventType = 1;
+}
+
+message LOG_ITEMIDX {
+    uint32 ItemIdx = 1;
+}
+
+message LOG_ITEMUID {
+    uint64 ItemUID = 1;
+}
+
+message LOG_ITEM_MAIN {
+    uint32 Item_Main = 1;
+}
+
+message LOG_ITEM_SUB {
+    uint32 Item_Sub = 1;
+}
+
+message LOG_ITEM_GRADE {
+    uint32 Item_Grade = 1;
+}
+
+message LOG_ITEM_NUM {
+    int32 Item_Num = 1;
+}
+
+message LOG_ITEM_SMELTING_LV {
+    uint32 Item_Smelting_lv = 1;
+}
+
+message LOG_ITEM_REINFORCE_LV {
+    uint32 Item_Reinforce_lv = 1;
+}
+
+message LOG_ITEM_REINFORCE_EXP {
+    uint32 Item_Reinforce_exp = 1;
+}
+
+message LOG_INVENUSE {
+    uint32 InvenUse = 1;
+}
+
+message LOG_INVENTOTAL {
+    uint32 InvenTotal = 1;
+}
+
+message LOG_TARGET_ITEMIDX {
+    uint32 Target_ItemIdx = 1;
+}
+
+message LOG_TARGET_ITEMUID {
+    uint64 Target_ItemUID = 1;
+}
+
+message LOG_INITEMIDX {
+    uint32 InItemIdx = 1;
+}
+
+message LOG_INITEMUID {
+    uint64 InItemUID = 1;
+}
+
+message LOG_INITEM_MAIN {
+    uint32 InItem_Main = 1;
+}
+
+message LOG_INITEM_SUB {
+    uint32 InItem_Sub = 1;
+}
+
+message LOG_INITEM_GRADE {
+    uint32 InItem_Grade = 1;
+}
+
+message LOG_INITEM_NUM {
+    int32 InItem_Num = 1;
+}
+
+message LOG_INITEM_SMELTING_LV {
+    uint32 InItem_Smelting_lv = 1;
+}
+
+message LOG_INITEM_REINFORCE_LV {
+    uint32 InItem_Reinforce_lv = 1;
+}
+
+message LOG_INITEM_REINFORCE_EXP {
+    uint32 InItem_Reinforce_exp = 1;
+}
+
+message LOG_CURRENCY_TYPE {
+    uint32 Currency_type = 1;
+}
+
+message LOG_CURRENCY_VAL {
+    int64 Currency_val = 1;
+}
+
+message LOG_SRC_SMELTING_LV {
+    uint32 src_smelting_lv = 1;
+}
+
+message LOG_SRC_REINFORCE_LV {
+    uint32 src_reinforce_lv = 1;
+}
+
+message LOG_OPTION_TYPE {
+    uint32 Option_type = 1;
+}
+
+message LOG_OPTION_VAL {
+    int32 Option_val = 1;
+}
+
+message LOG_SLOTIDX {
+    int32 SlotIdx = 1;
+}
+
+message LOG_BEFORELEV {
+    uint32 beforeLev = 1;
+}
+
+message LOG_APPLYLEV {
+    uint32 applyLev = 1;
+}
+
+message LOG_AFTERLEV {
+    uint32 afterLev = 1;
+}
+
+message LOG_TARGET_ACCOUNTUID {
+    uint64 Target_AccountUID = 1;
+}
+
+message LOG_TARGET_DEVICEID {
+    string Target_DeviceID = 1;
+}
+
+message LOG_TARGETUID {
+    uint64 TargetUID = 1;
+}
+
+message LOG_TARGETNAME {
+    string TargetName = 1;
+}
+
+message LOG_TARGET_CHAR_JOB {
+    uint32 Target_Char_Job = 1;
+}
+
+message LOG_TARGET_CHAR_LV {
+    uint32 Target_Char_Lv = 1;
+}
+
+message LOG_TARGET_CHAR_BATTLE_POWER {
+    uint32 Target_Char_battle_power = 1;
+}
+
+message LOG_TARGET_CHAR_EXP {
+    uint32 Target_Char_exp = 1;
+}
+
+message LOG_PREV_SYMBOL {
+    uint32 prev_symbol = 1;
+}
+
+message LOG_AFTER_SYMBOL {
+    uint32 after_symbol = 1;
+}
+
+message LOG_PREV_BACKGROUND {
+    uint32 prev_background = 1;
+}
+
+message LOG_AFTER_BACKGROUND {
+    uint32 after_background = 1;
+}
+
+message LOG_TARGETGUILD_UID {
+    uint64 TargetGuild_uid = 1;
+}
+
+message LOG_TARGETGUILD_NAME {
+    string TargetGuild_name = 1;
+}
+
+message LOG_TARGETGUILD_LV {
+    uint32 TargetGuild_lv = 1;
+}
+
+message LOG_TARGETGUILD_SYMBOL {
+    uint32 TargetGuild_symbol = 1;
+}
+
+message LOG_TARGETGUILD_MASTER_ID {
+    uint64 TargetGuild_master_id = 1;
+}
+
+message LOG_TARGETGUILD_MASTER_NAME {
+    string TargetGuild_master_name = 1;
+}
+
+message LOG_TARGETGUILD_COMBATPOINT {
+    int64 TargetGuild_CombatPoint = 1;
+}
+
+message LOG_TARGETMEMBERGRADE {
+    uint32 TargetMemberGrade = 1;
+}
+
+message LOG_PARTYUID {
+    uint64 PartyUID = 1;
+}
+
+message LOG_PARTYTYPE {
+    uint32 PartyType = 1;
+}
+
+message LOG_LEADERID {
+    uint64 LeaderID = 1;
+}
+
+message LOG_LEADERNAME {
+    string LeaderName = 1;
+}
+
+message LOG_TICKET_VAL_ID {
+    uint32 Ticket_Val_id = 1;
+}
+
+message LOG_TICKET_VAL_APPLY {
+    uint32 Ticket_Val_apply = 1;
+}
+
+message LOG_TICKET_VAL_TOTAL {
+    uint32 Ticket_Val_total = 1;
+}
+
+message LOG_BATTLE_POWER {
+    uint32 battle_power = 1;
+}
+
+message LOG_PLAYTIME {
+    uint32 playTime = 1;
+}
+
+message LOG_MONSTERIDX {
+    uint32 MonsterIdx = 1;
+}
+
+message LOG_MONSTER_GRADE {
+    uint32 Monster_grade = 1;
+}
+
+message LOG_QUESTIDX {
+    uint32 QuestIdx = 1;
+}
+
+message LOG_QUESTTYPE {
+    uint32 QuestType = 1;
+}
+
+message LOG_QUEST_VALUE {
+    uint32 Quest_value = 1;
+}
+
+message LOG_QUESTCOMPLETE {
+    uint32 QuestComplete = 1;
+}
+
+message LOG_QUESTTOTAL {
+    uint32 QuestTotal = 1;
+}
+
+message LOG_BATTLEPASSMISSIONIDX {
+    uint32 BattlePassMissionIdx = 1;
+}
+
+message LOG_BATTLEPASSGRADE {
+    uint32 BattlePassGrade = 1;
+}
+
+message LOG_TREASURE_UID {
+    uint64 Treasure_uid = 1;
+}
+
+message LOG_TREASURE_ID {
+    uint32 Treasure_id = 1;
+}
+
+message LOG_TREASURE_APPLY {
+    uint32 Treasure_apply = 1;
+}
+
+message LOG_TREASURE_TOTAL {
+    uint32 Treasure_total = 1;
+}
+
+message LOG_COLLECTIONID {
+    uint32 CollectionId = 1;
+}
+
+message LOG_REGITEMIDX {
+    uint32 RegItemIdx = 1;
+}
+
+message LOG_REGITEMUID {
+    uint64 RegItemUID = 1;
+}
+
+message LOG_VEHICLEUID {
+    uint64 VehicleUID = 1;
+}
+
+message LOG_VEHICLEIDX {
+    uint32 VehicleIdx = 1;
+}
+
+message LOG_MAILUID {
+    uint64 MailUID = 1;
+}
+
+message LOG_MAILTYPEIDX {
+    uint32 MailTypeIdx = 1;
+}
+
+message LOG_ISEXPIRED {
+    bool IsExpired = 1;
+}
+
+message LOG_MAILTITLE {
+    string MailTitle = 1;
+}
+
+message LOG_COUPON_UID {
+    uint32 Coupon_uid = 1;
+}
+
+message LOG_COUPON_CODE {
+    string Coupon_code = 1;
+}
+
+message LOG_APPLY {
+    uint32 apply = 1;
+}
+
+message LOG_PRODUCT_MARKET {
+    uint32 Product_market = 1;
+}
+
+message LOG_PRODUCT_UID {
+    string Product_uid = 1;
+}
+
+message LOG_PRODUCT_NAME {
+    string Product_name = 1;
+}
+
+message LOG_RECEIPT {
+    string receipt = 1;
+}
+
+message LOG_RECEIPT2 {
+    uint32 receipt2 = 1;
+}
+
+message LOG_RECEIVER_NAME {
+    string receiver_name = 1;
+}
+
+message LOG_RECEIVER_UID {
+    uint64 receiver_uid = 1;
+}
+
+message LOG_PURCHASEAMOUNT {
+    uint64 PurchaseAmount = 1;
+}
+
+message LOG_PRODUCTIDX {
+    uint32 ProductIdx = 1;
+}
+
+message LOG_VAL {
+    uint64 val = 1;
+}
+
+message LOG_MONSTER_UID {
+    uint64 Monster_UID = 1;
+}
+
+message LOG_MONSTER_NAME {
+    string Monster_Name = 1;
+}
+
+message LOG_TRADEUID {
+    uint64 TradeUID = 1;
+}
+
+message LOG_MONEYADJUSTMENT {
+    int64 MoneyAdjustment = 1;
+}
+
+message LOG_MONEYTOTALVALUE {
+    int64 MoneyTotalValue = 1;
+}
+
+message LOG_TARGETTYPE {
+    uint32 TargetType = 1;
+}
+
+message LOG_ISCRITICAL {
+    bool IsCritical = 1;
+}
+
+message LOG_ISDEFENCED {
+    bool IsDefenced = 1;
+}
+
+message LOG_ISEVADED {
+    bool IsEvaded = 1;
+}
+
+message LOG_TOTALDEMAGE {
+    uint64 TotalDemage = 1;
+}
+
+message LOG_HEALTYPE {
+    uint32 HealType = 1;
+}
+
+message LOG_CASTERUID {
+    uint64 CasterUID = 1;
+}
+
+message LOG_TOTALHEAL {
+    uint64 TotalHeal = 1;
+}
+
+message LOG_DECKID {
+    int32 DeckId = 1;
+}
+
+message LOG_SLOTID {
+    int32 SlotId = 1;
+}
+
+message LOG_PETID {
+    int32 PetId = 1;
+}
+
+message LOG_PETGRADE {
+    int32 PetGrade = 1;
+}
+
+message LOG_SKILLTIME {
+    uint64 SkillTime = 1;
+}
+
+message LOG_SKILLID {
+    int32 SkillID = 1;
+}
+
+message LOG_EXPEDITIONIDX {
+    int32 ExpeditionIdx = 1;
+}
+
+message LOG_EXPEDITIONCOUNT {
+    int32 ExpeditionCount = 1;
+}
+
+message LOG_GIFTLEV {
+    int32 GiftLev = 1;
+}
+
+message LOG_ADJUSTMENTGIFTEXP {
+    int32 AdjustmentGiftEXP = 1;
+}
+
+message LOG_TOTALGIFTEXP {
+    int32 TotalGiftExp = 1;
+}
+
+message LOG_STATIDX {
+    uint32 StatIdx = 1;
+}
+
+message LOG_GACHAIDX {
+    uint32 GachaIdx = 1;
+}
+
+message LOG_CHEATCMD {
+    string CheatCmd = 1;
+}
+
+message LOG_ITEM {
+    uint32 ItemIdx = 1;
+    uint64 ItemUID = 2;
+    int32 Adjustment = 3;
+    int32 TotalValue = 4;
+    int32 XdracoTag = 5;
+}
+
+message LOG_DELITEMS {
+    repeated LOG_ITEM Items = 1;
+}
+
+message LOG_ADDITEMS {
+    repeated LOG_ITEM Items = 1;
+}
+
+message LOG_OPTIONS {
+    uint32 OptionIdx = 1;
+    uint64 OptionValue = 2;
+}
+
+message LOG_CHANGEOPTIONITEM {
+    repeated LOG_OPTIONITEMS OptionItems = 1;
+}
+
+message LOG_SMELTINGITEMS {
+    uint32 ItemIdx = 1;
+    uint64 ItemUID = 2;
+    int32 Adjustment = 3;
+    uint32 SmeltingLv = 4;
+}
+
+message LOG_TRADEITEMS {
+    repeated LOG_SMELTINGITEMS SmeltingItems = 1;
+}
+
+message LOG_BUFF {
+    uint32 BuffType = 1;
+    uint32 BuffIdx = 2;
+}
+
+message LOG_BATTLEATTACKBUFFS {
+    repeated LOG_BUFF BattleAttackBuffs = 1;
+}
+
+message LOG_BATTLETARGETBUFFS {
+    repeated LOG_BUFF BattleTargetBuffs = 1;
+}
+
+message LOG_BATTLECASTERBUFFS {
+    repeated LOG_BUFF BattleCasterBuffs = 1;
+}
+
+message LOG_ACTIVESKILL {
+    uint32 SkillIdx = 1;
+    uint32 SkillLev = 2;
+    uint32 AttackIdx = 3;
+}
+
+message LOG_BATTLEACTIVESKILLS {
+    LOG_ACTIVESKILL BattleActiveSkills = 1;
+}
+
+message LOG_STATUSEFFECT {
+    repeated int32 EffectIdx = 1;
+}
+
+message LOG_BATTLESTATUSEFFECTS {
+    LOG_STATUSEFFECT BattleStatusEffects = 1;
+}
+
+message LOG_MAILITEM {
+    repeated LOG_ITEM Items = 1;
+}
+
+message LOG_MAILMONEY {
+    uint32 MoneyIdx = 1;
+    uint32 MoneyAdjustment = 2;
+}
+
+message LOG_MONEYS {
+    repeated LOG_MAILMONEY Moneys = 1;
+}
+
+message LOG_OPTIONITEMS {
+    uint32 ItemIdx = 1;
+    uint64 ItemUID = 2;
+    int32 Adjustment = 3;
+    int32 TotalValue = 4;
+    repeated LOG_OPTIONS Options = 5;
+}
+
+message LOG_SMELTINGITEM {
+    repeated LOG_OPTIONITEMS OptionItems = 1;
+}
+
+message LOG_STRONGPOINTTID {
+    int32 StrongPointTid = 1;
+}
+
+message LOG_MILEAGE {
+    uint64 Mileage = 1;
+}
+
+message LOG_STORETYPE {
+    string StoreType = 1;
+}
+
+message LOG_BUILDINGID {
+    int32 BuildingId = 1;
+}
+
+message LOG_BUILDINGLEVEL {
+    int32 BuildingLevel = 1;
+}
+
+message LOG_UPGRADEACCELTIME {
+    int32 UpgradeAccelTime = 1;
+}
+
+message LOG_SUPPORTDATA {
+    int64 SupportCharacterUID = 1;
+    int32 SupportType = 2;
+    int32 SupportSlot = 3;
+    int32 SupportIdx = 4;
+    int32 SupportCount = 5;
+    int32 MaxSupportCount = 6;
+}
+
+message LOG_SUPPORTDATAS {
+    repeated LOG_SUPPORTDATA SupportData = 1;
+}
+
+message LOG_GUILDGIFTLEV {
+    int32 GuildGiftLev = 1;
+}
+
+message LOG_GIFTEXP {
+    int32 GiftExp = 1;
+}
+
+message LOG_SLOT {
+    int32 Slot = 1;
+}
+
+message LOG_TICKETTYPE {
+    int32 TicketType = 1;
+}
+
+message LOG_TICKETCOUNT {
+    int32 TicketCount = 1;
+}
+
+message LOG_TICKETMAX {
+    int32 TicketMax = 1;
+}
+
+message LOG_TICKETBUYCOUNT {
+    int32 TicketBuyCount = 1;
+}
+
+message LOG_DUNGEONIDX {
+    int32 DungeonIdx = 1;
+}
+
+message LOG_MATERIAL {
+    uint32 ItemIdx = 1;
+    uint64 ItemUID = 2;
+    int32 Adjustment = 3;
+}
+
+message LOG_MATERIALS {
+    repeated LOG_MATERIAL Materials = 1;
+}
+
+message LOG_MAILPRESETID {
+    uint32 MailPresetID = 1;
+}
+
+message LOG_MAILARGS {
+    string MailArgs = 1;
+}
+
+message LOG_FAILPOINTTYPE {
+    int32 FailPointType = 1;
+}
+
+message LOG_ADJUSTMENTFAILPOINT {
+    int32 AdjustmentFailPoint = 1;
+}
+
+message LOG_TOTALFAILPOINT {
+    int32 TotalFailPoint = 1;
+}
+
+message LOG_WANTEDUID {
+    int64 WantedUid = 1;
+}
+
+message LOG_COMPOSE_ADDITEMS {
+    repeated LOG_ITEM Items = 1;
+}
+
+message LOG_COMPOSE_MATERIALS {
+    repeated LOG_MATERIAL Materials = 1;
+}
+
+message LOG_NEWCHARACTERNAME {
+    string NewCharacterName = 1;
+}
+
+message LOG_GIFTID {
+    int32 GiftId = 1;
+}
+
+message LOG_GIFTUID {
+    int64 GiftUID = 1;
+}
+
+message LOG_GIFTTAPTYPE {
+    int32 GiftTapType = 1;
+}
+
+message LOG_SENDCHARACTERUID {
+    int64 SendCharacterUID = 1;
+}
+
+message LOG_SENDCHARACTERNAME {
+    string SendCharacterName = 1;
+}
+
+message LOG_GAINGIFTTYPE {
+    int32 GainGiftType = 1;
+}
+
+message LOG_GAINGIFTSUBTYPE {
+    int32 GainGiftSubType = 1;
+}
+
+message LOG_GAINGIFTVALUE {
+    int32 GainGiftValue = 1;
+}
+
+message LOG_SIEGETID {
+    int32 SiegeTid = 1;
+}
+
+message LOG_SIEGEAUCTIONTYPE {
+    int32 siegeauctiontype = 1;
+}
+
+message LOG_GUILDCAMPKIND {
+    int32 GuildCampKind = 1;
+}
+
+message LOG_PETLEVEL {
+    int32 PetLevel = 1;
+}
+
+message LOG_TRAININGSTATUSID {
+    int32 TrainingStatusId = 1;
+}
+
+message LOG_TRAININGLEVEL {
+    int32 TrainingLevel = 1;
+}
+
+message LOG_CRITICALFAILRESULT {
+    int32 CriticalFailResult = 1;
+}
+
+message LOG_ISALLIANCE {
+    bool IsAlliance = 1;
+}
+
+message LOG_PURCHASEMONEY {
+    uint32 MoneyIdx = 1;
+    uint64 PurchaseAmount = 2;
+    int64 MoneyTotalValue = 3;
+}
+
+message LOG_PURCHASEMONEYS {
+    repeated LOG_PURCHASEMONEY purchaseMoneys = 1;
+}
+
+message LOG_CHANGEMONEY {
+    uint32 MoneyIdx = 1;
+    uint64 ChangeAmount = 2;
+    int64 MoneyTotalValue = 3;
+}
+
+message LOG_CHANGEMONEYS {
+    repeated LOG_CHANGEMONEY changesMoneys = 1;
+}
+
+message LOG_SUCCESS {
+    int32 Success = 1;
+}
+
+message LOG_STARTTIME {
+    string StartTime = 1;
+}
+
+message LOG_BOSSMONSTERKILLCOUNT {
+    int32 BossMonsterKillCount = 1;
+}
+
+message LOG_STARTWORLDID {
+    int32 StartWorldID = 1;
+}
+
+message LOG_TARGETWORLDID {
+    int32 TargetWorldID = 1;
+}
+
+message LOG_ADJUSTMENTPKPOINT {
+    int32 AdjustmentPKPoint = 1;
+}
+
+message LOG_PKPOINT {
+    int32 PKPoint = 1;
+}
+
+message LOG_ADJUSTMENTBONUSPOINT {
+    int32 AdjustmentBonusPoint = 1;
+}
+
+message LOG_TOTALBONUSPOINT {
+    int32 TotalBonusPoint = 1;
+}
+
+message LOG_ADJUSTMENTBONUSCOUNT {
+    int32 AdjustmentBonusCount = 1;
+}
+
+message LOG_TOTALBONUSCOUNT {
+    int32 TotalBonusCount = 1;
+}
+
+message LOG_USERAGENT {
+    int32 UserAgent = 1;
+}
+
+message LOG_OPENCHACTERCLASS {
+    int32 OpenCharacterClass = 1;
+}
+
+message LOG_CHANGECHACTERCLASS {
+    int32 ChangeCharacterClass = 1;
+}
+
+message LOG_CHARACTERCLASSLIST {
+    repeated LOG_OPENCHACTERCLASS CharacterClassList = 1;
+}
+
+message LOG_BONUSCOUNT {
+    int32 BonusCount = 1;
+}
+
+message LOG_SUCCESSCOUNT {
+    int32 SuccessCount = 1;
+}
+
+message LOG_FAILCOUNT {
+    int32 FailCount = 1;
+}
+
+message LOG_TRYMAKECOUNT {
+    int32 TryMakeCount = 1;
+}
+
+message LOG_MAKECOUNT {
+    int32 MakeCount = 1;
+}
+
+message LOG_WORLDMAKECOUNT {
+    int32 WorldMakeCount = 1;
+}
+
+message LOG_WEMIXID {
+    string WemixID = 1;
+}
+
+message LOG_DERBY {
+    int64 Derby = 1;
+}
+
+message LOG_ISSUED {
+    int64 Issued = 1;
+}
+
+message LOG_OBJECTGATHERTYPE {
+    int32 ObjectGatherType = 1;
+}
+
+message LOG_OBJECTPOSID {
+    int32 ObjectPosID = 1;
+}
+
+message LOG_DEPARTURESTAGEIDX {
+    int32 DepartureStageIdx = 1;
+}
+
+message LOG_ARRIVALSTAGEIDX {
+    int32 ArrivalStageIdx = 1;
+}
+
+message LOG_TARGET_ITEMCOUNT {
+    uint32 Target_ItemCount = 1;
+}
+
+message LOG_POINT_ADJUSTMENT {
+    int32 PointAdjustment = 1;
+}
+
+message LOG_POINT_TOTAL_VALUE {
+    int32 PointTotalValue = 1;
+}
+
+message LOG_VIEW_COUNT {
+    int32 ViewCount = 1;
+}
+
+message LOG_TOKEN_ID {
+    uint64 TokenID = 1;
+}
+
+message LOG_EVENTIDX {
+    uint64 EventIdx = 1;
+}
+
+message LOG_CALCULATEADJUSTMENT {
+    uint64 CalculateAdjustment = 1;
+}
+
+message LOG_BUYTRYCHARACTERUID {
+    uint64 BuyTryCharacterUID = 1;
+}
+
+message LOG_DRACO_FEE {
+    int32 Dracofee = 1;
+}
+
+message LOG_SEPTARIA_FEE {
+    int32 Septariafee = 1;
+}
+
+message LOG_SEPTARIA_UID {
+    uint64 SeptariaUID = 1;
+}
+
+message LOG_PLAYERKEY {
+    string playerkey = 1;
+}
+
+message LOG_AUTHTOKENID {
+    string authtokenid = 1;
+}
+
+message LOG_BEFORECOMBATPOINT {
+    uint32 BeforeCombatPoint = 1;
+}
+
+message LOG_REFININGSTAGE {
+    int32 RefiningStage = 1;
+}
+
+message LOG_SPECIALEFFECT {
+    int32 SpecialEffect = 1;
+}
+
+message LOG_STEALCHARACTERUID {
+    int64 StealCharacterUID = 1;
+}
+
+message LOG_STEALCHARACTERNAME {
+    string StealCharacterName = 1;
+}
+
+message LOG_MARKET_RECEIPT {
+    string MarketReceipt = 1;
+}
+
+message LOG_DARKALTARID {
+    uint32 DarkAltarId = 1;
+}
+
+message LOG_PRODUCTINFO {
+    uint32 ProductIdx = 1;
+    int32 ProductCount = 2;
+}
+
+message LOG_PRODUCTINFOS {
+    repeated LOG_PRODUCTINFO ProductInfos = 1;
+}
+
+message LOG_CASHBAGINFO {
+    uint32 ProductIdx = 1;
+    int32 ProductDivisionNumber = 2;
+    string receipt = 3;
+}
+
+message LOG_CASHBAGINFOS {
+    repeated LOG_CASHBAGINFO CashBagInfos = 1;
+}
+
+message LOG_PLUNDERTID {
+    int32 PlunderTid = 1;
+}
+
+message LOG_OBJECTID {
+    int32 ObjecTid = 1;
+}
+
+message LOG_REWARDVALUE {
+    int64 RewardValue = 1;
+}
+
+message LOG_TOTAL_DARKSTEELTEX {
+    int64 Total_DarksteelTex = 1;
+}
+
+message LOG_CURRENT_DARKSTEELTEX {
+    int64 Current_DarksteelTex = 1;
+}
+
+message LOG_SUM_DARKSTEELTEX {
+    int64 Sum_DarksteelTex = 1;
+}
+
+message LOG_DAILYDEDUCTION_DARKSTEELTEX {
+    int64 DailyDeduction_DarkSteelTex = 1;
+}
+
+message LOG_REMAINDEDUCTION_DARKSTEELTEX {
+    int64 RemainDeduction_DarkSteelTex = 1;
+}
+
+message LOG_RESULT {
+    int32 Result = 1;
+}
+
+message LOG_HOLYSTUFFID {
+    int32 HolyStuffId = 1;
+}
+
+message LOG_HOLYSTUFFGRADE {
+    int32 HolyStuffGrade = 1;
+}
+
+message LOG_HOLYSTUFFLEVEL {
+    int32 HolyStuffLevel = 1;
+}
+
+message LOG_GROWTHSTATUSSLOTNUMBER {
+    int32 GrowthStatusSlotNumber = 1;
+}
+
+message LOG_REWARDITEMIDX {
+    uint32 RewardItemIdx = 1;
+}
+
+message LOG_REWARDITEMCOUNT {
+    int32 RewardItemCount = 1;
+}
+
+message LOG_SUMMONCOUNT {
+    int32 SummonCount = 1;
+}
+
+message LOG_GROUPID {
+    int32 GroupID = 1;
+}
+
+message LOG_CURRENTFREERESTORE {
+    int32 CurrentFreeRestore = 1;
+}
+
+message LOG_MAXFREERESTORE {
+    int32 MaxFreeRestore = 1;
+}
+
+message LOG_SABUK_ROUNDTID {
+    int32 Sabuk_RoundTID = 1;
+}
+
+message LOG_RESETRESULTCOUNT {
+    int32 ResetResultCount = 1;
+}
+
+message LOG_SABUKTAXRATE {
+    int32 SabukTaxRate = 1;
+}
+
+message LOG_SABUKTAXRATEBEFORE {
+    int32 SabukTaxRateBefore = 1;
+}
+
+message LOG_SABUKTAXRATEAFTER {
+    int32 SabukTaxRateAfter = 1;
+}
+
+message LOG_UNSEALING_ACCELERATE_INFO {
+    int32 Slot = 1;
+    int32 AccelerateTimeMin = 2;
+}
+
+message LOG_UNSEALING_ACCELERATE_INFOS {
+    repeated LOG_UNSEALING_ACCELERATE_INFO UnsealingAccelerateInfos = 1;
+}
+
+message LOG_POTENTIALID {
+    int32 potentialid = 1;
+}
+
+message LOG_POTENTIALRESULT {
+    bool potentialresult = 1;
+}
+
+message LOG_POTENTIALLEV {
+    int32 potentiallev = 1;
+}
+
+message LOG_POTENTIALRESULT_LEV {
+    int32 potentialresult_lev = 1;
+}

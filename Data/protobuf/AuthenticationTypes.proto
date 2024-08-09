@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package Network.Protocol.Authentication;
+
+message Packet {
+    enum Type {
+        None = 0;
+        AuthenticationLogin = 20000;
+    }
+}
+
+message Sdk {
+    enum Type {
+        None = 0;
+        Pc = 1;
+        Google = 2;
+        Facebook = 3;
+        Gamecenter = 4;
+        Naver = 5;
+        Kakao = 6;
+        Guest = 7;
+    }
+}
+
+message Os {
+    enum Type {
+        None = 0;
+        Android = 1;
+        Ios = 2;
+        Editor = 3;
+        Windows = 4;
+    }
+}
+
+message ErrorCode {
+    enum Type {
+        None = 0;
+        Success = 1;
+        Unauthorized = 101;
+        AccountIdEmpty = 102;
+        AccountBlock = 103;
+        Mysql = 201;
+        Redis = 301;
+        System = 901;
+    }
+}

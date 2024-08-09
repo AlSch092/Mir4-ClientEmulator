@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message CLIENT_GAME_BOSS_SPAWN_LIST {
+    
+}
+
+message GAME_CLIENT_BOSS_SPAWN_LIST {
+    int32 result = 1;
+    repeated uint32 boss_tid_list = 2;
+}
+
+message GAME_CLIENT_BOSS_SPAWN {
+    uint32 boss_tid = 1;
+}
+
+message GAME_CLIENT_BOSS_DESPAWN {
+    uint32 boss_tid = 1;
+}

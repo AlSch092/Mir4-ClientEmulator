@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_CHARACTER_BATTLE_PASS_CLEAR {
+    uint64 user_uid = 1;
+    bool is_direct = 2;
+    repeated uint32 request_battle_pass_id_list = 3;
+}
+
+message GAME_CLIENT_SYNC_CLEAR_BATTLE_PASS {
+    uint32 battle_pass_id = 1;
+    uint32 total_mission_point = 2;
+}
+
+message GAME_CLIENT_CLEAR_BATTLE_PASS_LIST_RESULT {
+    bool success_all = 1;
+    repeated uint32 battle_pass_id_list = 2;
+    repeated _cost_info cost_info_list = 3;
+    uint32 error_id = 4;
+    uint32 error_reason_battle_pass_id = 5;
+    repeated _character_battle_pass_complete_info character_battle_pass_complete_list = 6;
+}
+
+message GAME_CLIENT_SYNC_EVENT_DATA {
+    repeated _character_event_data_info event_data_list = 1;
+}
+
+message CLIENT_GAME_CHARACTER_BATTLE_PASS_REWARD {
+    uint64 user_uid = 1;
+    repeated uint32 reward_type = 2;
+    repeated uint32 request_battle_pass_id_list = 3;
+}
+
+message GAME_CLIENT_SYNC_REWARD_BATTLE_PASS {
+    uint32 battle_pass_id = 1;
+    repeated _cost_info cost_info_list = 2;
+    repeated _character_inven_item reward_item_list = 3;
+    uint64 battle_pass_info_uid = 4;
+}
+
+message GAME_CLIENT_REWARD_BATTLE_PASS_LIST_RESULT {
+    bool success_all = 1;
+    repeated uint32 battle_pass_id_list = 2;
+    uint32 error_id = 3;
+    uint32 error_reason_battle_pass_id = 4;
+    _user_event_info event_info = 5;
+}
+
+message CLIENT_GAME_CHARACTER_BATTLE_PASS_TICKET {
+    
+}
+
+message GAME_CLIENT_CHARACTER_BATTLE_PASS_TICKET {
+    uint64 character_battle_pass = 1;
+    uint64 character_battle_pass2 = 2;
+    repeated _character_battle_pass_date character_battle_pass_date_list = 3;
+}
+
+message WORLD_GAME_API_UPDATE_BATTLEPASS {
+    uint64 user_uid = 1;
+    uint64 account_uid = 2;
+    uint32 category = 3;
+}
+
+message CLIENT_GAME_CHARACTER_BATTLE_PASS_BUY_TICKET_ITEM {
+    uint64 user_uid = 1;
+    uint32 battle_pass_info_uid = 2;
+    uint32 purchase_number = 3;
+}
+
+message GAME_CLIENT_CHARACTER_BATTLE_PASS_BUY_TICKET_ITEM {
+    uint32 error_id = 1;
+    repeated _stack_item_info del_item_list = 2;
+    repeated _character_battle_pass_date character_battle_pass_date_list = 3;
+}

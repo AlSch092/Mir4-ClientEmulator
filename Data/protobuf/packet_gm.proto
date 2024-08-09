@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message WORLD_ALLSERVER_GM_CONTENTS_LOCK {
+    repeated _gm_contents_lock lock_list = 1;
+}
+
+message WORLD_ALLSERVER_GM_GEN_TIME {
+    repeated _gm_gen_time gen_time_list = 1;
+}
+
+message WORLD_ALLSERVER_GM_CONTROL_LIST {
+    repeated _gm_contents_lock lock_list = 1;
+    repeated _gm_gen_time gen_time_list = 2;
+}
+
+message WORLD_GAME_CHECK_ZONE_GROUP {
+    
+}
+
+message WORLD_GAME_CHECK_ZONE {
+    int64 zone_uid = 1;
+}
+
+message WORLD_GAME_GM_OBSERVER {
+    int64 user_uid = 1;
+    bool observer = 2;
+}
+
+message WORLD_GAME_GM_MONSTER_GEN {
+    int64 zone_uid = 1;
+    int64 gen_id = 2;
+}
+
+message WORLD_GAME_GM_SPEED_HACK_REGULATION {
+    int32 regulation = 1;
+}
+
+message WORLD_GAME_GM_HACK_REGULATION {
+    int32 hack_type = 1;
+    int32 regulation = 2;
+}
+
+message world_buff_info {
+    bool running = 1;
+    int32 buff_tid = 2;
+    int64 start_time = 3;
+    int64 end_time = 4;
+    int32 world_buff_tid = 5;
+}
+
+message WORLD_GAME_GM_WORLD_BUFF_ON {
+    bool on_off = 1;
+}
+
+message WORLD_GAME_GM_WORLD_BUFF_INFO {
+    bool is_add = 1;
+    repeated world_buff_info world_buff_list = 2;
+}
+
+message WORLD_GAME_GM_WORLD_BUFF_INFO_ADD {
+    repeated world_buff_info world_buff_list = 1;
+}
+
+message WORLD_GAME_GM_WORLD_BUFF_INFO_DEL {
+    repeated int32 buff_tid_list = 1;
+}
+
+message WORLD_GAME_GM_WORLD_BUFF_START {
+    int32 buff_tid = 1;
+    int64 end_time = 2;
+}
+
+message WORLD_GAME_GM_WORLD_BUFF_END {
+    int32 buff_tid = 1;
+}
+
+message WORLD_GAME_GM_TRADE_ACCOUNT_LOCK {
+    int32 account_lock = 1;
+    repeated uint64 account_list = 2;
+}
+
+message WORLD_GAME_GM_SERVER_LOCK {
+    int32 lock_type = 1;
+    int32 is_lock = 2;
+}
+
+message WORLD_GAME_GM_CAPTCHA_REAUTH_DATA {
+    int32 reauth_on_off = 1;
+    int32 reauth_term_min = 2;
+    int32 reauth_level = 3;
+}

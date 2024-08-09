@@ -1,0 +1,314 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message WORLD_INFO {
+    int32 index = 1;
+    int32 state = 2;
+    string name = 3;
+    string ip = 4;
+    int32 port = 5;
+    int32 recommend_server = 6;
+    int32 new_server = 7;
+    int32 user_connect = 8;
+    int32 character_create = 9;
+    uint32 congestion = 10;
+    int32 non_pk_server = 11;
+    int32 nft_server = 12;
+    int32 nft_block = 13;
+}
+
+message WORLD_INFO_2 {
+    int32 index = 1;
+    int32 state = 2;
+    string name = 3;
+    string ip = 4;
+    int32 port = 5;
+    int32 recommend_server = 6;
+    int32 new_server = 7;
+    int32 user_connect = 8;
+    int32 character_create = 9;
+    uint32 congestion = 10;
+}
+
+message _front_character_info {
+    int32 world_id = 1;
+    int32 class_id = 2;
+    string name = 3;
+    int32 level = 4;
+}
+
+message _front_world_character_info {
+    int32 world_id = 1;
+    int32 class_id = 2;
+    string name = 3;
+    int32 level = 4;
+    uint64 last_login_date = 5;
+}
+
+message CLIENT_FRONT_AUTH_CUSTOM_TOKEN {
+    string custom_id = 1;
+}
+
+message FRONT_CLIENT_AUTH_CUSTOM_TOKEN {
+    int32 result = 1;
+    string custom_token = 2;
+    string custom_id = 3;
+}
+
+message CLIENT_FRONT_AUTH_LOGIN {
+    int32 sdk_type = 1;
+    int32 os_type = 2;
+    string device = 3;
+    string auth_user_id = 4;
+    string email = 7;
+    string id_token = 5;
+    string version = 6;
+}
+
+message CLIENT_FRONT_SERVER_INFO {
+    
+}
+
+message FRONT_CLIENT_SERVER_INFO {
+    int32 result = 1;
+    repeated WORLD_INFO_2 world_list = 2;
+}
+
+message FRONT_CLIENT_SERVER_INFO_V3 {
+    int32 result = 1;
+    repeated WORLD_INFO world_list = 2;
+}
+
+message CLIENT_FRONT_WORLD_CHARACTER_INFO {
+    uint64 account_uid = 1;
+}
+
+message FRONT_CLIENT_WORLD_CHARACTER_INFO {
+    repeated _front_world_character_info character_info = 1;
+}
+
+message FRONT_CLIENT_AUTH_LOGIN_V3 {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    string email = 3;
+    repeated WORLD_INFO world_list = 4;
+}
+
+message FRONT_CLIENT_AUTH_LOGIN_2 {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    string email = 3;
+    repeated WORLD_INFO_2 world_list = 4;
+}
+
+message FRONT_FIREBASE_ID_TOKEN {
+    string auth_user_id = 1;
+    string email = 2;
+    string id_token = 3;
+    int32 sdk_type = 4;
+}
+
+message FIREBASE_FRONT_ID_TOKEN {
+    int32 result = 1;
+    string email = 2;
+    int32 sdk_type = 3;
+}
+
+message FRONT_WORLD_GATEWAY_INFO {
+    uint32 auth_user_uid = 1;
+}
+
+message WORLD_FRONT_GATEWAY_INFO {
+    uint32 auth_user_uid = 1;
+    string ip = 2;
+    int32 port = 3;
+}
+
+message CLIENT_FRONT_AUTH_LOGIN_TEST {
+    string email = 1;
+}
+
+message CLIENT_FRONT_AUTH_SERVICE_LOGIN {
+    string player_key = 1;
+    string token_id = 2;
+}
+
+message FIREBASE_FRONT_AUTH_SERVICE_LOGIN_RESULT {
+    int32 result = 1;
+    string player_key = 2;
+    string sdk_type = 3;
+}
+
+message FRONT_CLIENT_AUTH_SERVICE_LOGIN {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    string player_key = 3;
+    repeated WORLD_INFO world_list = 4;
+    bool create_account = 5;
+}
+
+message CLIENT_FRONT_SERVICE_AUTH {
+    string player_key = 1;
+    string token_id = 2;
+    int32 os_type = 3;
+    string device = 4;
+    int32 store_type = 5;
+}
+
+message FRONT_CLIENT_SERVICE_AUTH_ERROR {
+    int32 result = 1;
+}
+
+message FIREBASE_FRONT_SERVICE_AUTH {
+    int32 result = 1;
+    string player_key = 2;
+    string sdk_type = 3;
+}
+
+message FRONT_CLIENT_SERVICE_AUTH_V3 {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    string player_key = 3;
+    bool create_account = 4;
+    repeated WORLD_INFO world_list = 5;
+}
+
+message FRONT_CLIENT_SERVICE_AUTH_2 {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    string player_key = 3;
+    bool create_account = 4;
+    repeated WORLD_INFO_2 world_list = 5;
+}
+
+message CLIENT_FRONT_SELECT_WORLD {
+    uint32 world_id = 1;
+}
+
+message FRONT_MANAGER_SELECT_WORLD_WAITING_INFO {
+    uint32 user_socket_id = 1;
+    uint64 user_uid = 2;
+    uint32 world_id = 3;
+    uint32 user_admin = 4;
+    int32 os_type = 5;
+}
+
+message MANAGER_WORLD_SELECT_WORLD_WAITING_INFO {
+    uint64 user_uid = 1;
+    uint32 user_socket_id = 2;
+    uint32 front_socket_id = 3;
+}
+
+message WORLD_MANAGER_SELECT_WORLD_WAITING_INFO {
+    uint64 user_uid = 1;
+    uint32 user_socket_id = 2;
+    uint32 front_socket_id = 3;
+    uint32 world_id = 4;
+    uint32 waiting_count = 5;
+    int32 error_id = 6;
+}
+
+message MANAGER_FRONT_SELECT_WORLD_WAITING_INFO {
+    uint32 user_socket_id = 1;
+    uint32 world_id = 2;
+    uint32 waiting_count = 3;
+    string gateway_ip = 4;
+    uint32 gateway_port = 5;
+    int32 error_id = 6;
+    uint64 user_uid = 7;
+    string auth_key = 8;
+}
+
+message FRONT_CLIENT_SELECT_WORLD_WAITING_INFO {
+    uint32 world_id = 1;
+    uint32 waiting_count = 2;
+    string auth_key = 3;
+}
+
+message CLIENT_FRONT_CANCEL_WAITING_INFO {
+    
+}
+
+message FRONT_MANAGER_CANCEL_WAITING_INFO {
+    uint32 world_id = 1;
+    uint64 user_uid = 2;
+}
+
+message MANAGER_WORLD_CANCEL_WAITING_INFO {
+    uint64 user_uid = 1;
+}
+
+message FRONT_WORLD_SELECT_WORLD {
+    uint32 world_id = 1;
+    uint64 user_uid = 2;
+    string user_id = 3;
+    string device = 4;
+    int32 os_type = 5;
+    string sdk_type = 6;
+    string user_ip = 7;
+}
+
+message WORLD_FRONT_SELECT_WORLD {
+    int32 result = 1;
+    uint64 user_socket_id = 2;
+    uint32 world_id = 3;
+    string ip = 4;
+    int32 port = 5;
+    uint64 account_uid = 6;
+    string auth_key = 7;
+    int32 front_socket_index = 8;
+}
+
+message FRONT_CLIENT_SELECT_WORLD {
+    int32 result = 1;
+    uint32 world_id = 2;
+    string ip = 3;
+    int32 port = 4;
+    string auth_key = 5;
+}
+
+message CLIENT_FRONT_CHARACTER_INFO {
+    
+}
+
+message FRONT_CLIENT_CHARACTER_INFO {
+    repeated _front_character_info info_list = 1;
+}
+
+message MANAGER_WORLD_REQUEST_DUPILICATION_CHECK {
+    uint64 account_uid = 1;
+}
+
+message WORLD_LOBBY_DUPLICATION_CHECK {
+    uint64 account_uid = 1;
+}
+
+message MANAGER_WORLD_AUTH_KEY {
+    uint64 account_uid = 1;
+    string auth_key = 2;
+    int32 os_type = 3;
+    int32 front_socket_index = 4;
+    int32 user_socket_id = 5;
+}
+
+message CLIENT_FRONT_WORLD_AND_CHARACTER_INFO {
+    uint64 account_uid = 1;
+}
+
+message FRONT_CLIENT_WORLD_AND_CHARACTER_INFO {
+    uint64 account_uid = 1;
+    int32 time_region = 2;
+    repeated WORLD_INFO world_list = 3;
+    repeated _front_world_character_info character_list = 4;
+}
+
+message MANAGER_RELAY_REQUEST_DUPILICATION_CHECK {
+    uint64 account_uid = 1;
+    uint32 world_id = 2;
+}
+
+message WORLD_MANAGER_REQUEST_DUPILICATION_CHECK {
+    uint64 account_uid = 1;
+    uint32 world_id = 2;
+}

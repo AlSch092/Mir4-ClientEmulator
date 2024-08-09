@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_CHARACTER_EVENT_PASS_MISSION_CLEAR {
+    uint64 user_uid = 1;
+    repeated uint32 request_event_pass_id_list = 2;
+}
+
+message GAME_CLIENT_SYNC_CLEAR_EVENT_PASS {
+    uint32 event_pass_id = 1;
+    uint32 total_mission_point = 2;
+}
+
+message GAME_CLIENT_EVENT_PASS_MISSION_CLEAR_LIST_RESULT {
+    bool success_all = 1;
+    repeated uint32 event_pass_id_list = 2;
+    repeated _cost_info cost_info_list = 3;
+    uint32 error_id = 4;
+    uint32 error_reason_event_pass_id = 5;
+    repeated _character_event_pass_mission_complete_info character_event_pass_complete_list = 6;
+}
+
+message GAME_CLIENT_SYNC_EVENT_PASS_DATA {
+    repeated _character_event_pass_data_info event_pass_data_list = 1;
+}
+
+message CLIENT_GAME_CHARACTER_EVENT_PASS_REWARD {
+    uint64 user_uid = 1;
+    repeated uint32 reward_type = 2;
+    repeated uint32 request_event_pass_id_list = 3;
+}
+
+message GAME_CLIENT_SYNC_REWARD_EVENT_PASS {
+    uint32 event_pass_id = 1;
+    repeated _cost_info cost_info_list = 2;
+    repeated _character_inven_item reward_item_list = 3;
+    uint64 user_event_id = 4;
+}
+
+message GAME_CLIENT_REWARD_EVENT_PASS_LIST_RESULT {
+    bool success_all = 1;
+    repeated uint32 event_pass_id_list = 2;
+    uint32 error_id = 3;
+    uint32 error_reason_event_pass_id = 4;
+    _user_event_info event_info = 5;
+}
+
+message CLIENT_GAME_CHARACTER_EVENT_PASS_TICKET {
+    
+}
+
+message GAME_CLIENT_CHARACTER_EVENT_PASS_TICKET {
+    uint64 character_event_pass = 1;
+    uint64 character_event_pass2 = 2;
+    repeated _character_event_pass_date character_event_pass_date_list = 3;
+}
+
+message WORLD_GAME_API_UPDATE_EVENTPASS {
+    uint64 user_uid = 1;
+    uint64 account_uid = 2;
+    uint32 category = 3;
+}
+
+message CLIENT_GAME_CHARACTER_EVENT_PASS_BUY_TICKET_MONEY {
+    uint64 user_uid = 1;
+    uint32 event_pass_info_uid = 2;
+    uint32 purchase_number = 3;
+}
+
+message GAME_CLIENT_CHARACTER_EVENT_PASS_BUY_TICKET_MONEY {
+    uint32 error_id = 1;
+    repeated _cost_info cost_info_list = 2;
+    repeated _character_event_pass_date character_event_pass_date_list = 3;
+}

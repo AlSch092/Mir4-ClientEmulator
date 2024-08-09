@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message _black_dragon_dungeon_ui_info {
+    uint32 dungeon_id = 1;
+    bool is_lock = 2;
+    int32 round_info = 3;
+}
+
+message CLIENT_GAME_BLACKDRAGON_DUNGEON_INFO {
+    
+}
+
+message GAME_CLIENT_BLACKDRAGON_DUNGEON_INFO {
+    repeated _black_dragon_dungeon_ui_info dungeon_info = 1;
+    int32 conquer_round_info = 2;
+}
+
+message CLIENT_GAME_ENTER_BLACKDRAGON_DUNGEON {
+    uint32 enter_dungeon_id = 1;
+}
+
+message GAME_WORLD_ENTER_BLACKDRAGON_DUNGEON {
+    uint32 enter_dungeon_id = 1;
+}
+
+message CLIENT_GAME_LEAVE_BLACKDRAGON_DUNGEON {
+    
+}
+
+message GAME_WORLD_LEAVE_BLACKDRAGON_DUNGEON {
+    
+}

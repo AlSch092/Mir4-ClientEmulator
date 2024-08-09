@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_EQUIP_COSTUME {
+    uint64 uid = 1;
+    uint32 equip_costume_id = 2;
+}
+
+message GAME_CLIENT_EQUIP_COSTUME {
+    uint32 result = 1;
+    uint32 parts = 2;
+    uint32 equip_costume_id = 3;
+    uint32 un_equip_costume_id = 4;
+}
+
+message CLIENT_GAME_UNEQUIP_COSTUME {
+    uint64 uid = 1;
+    uint32 un_equip_costume_id = 2;
+}
+
+message GAME_CLIENT_UNEQUIP_COSTUME {
+    uint32 result = 1;
+    uint32 parts = 2;
+    uint32 un_equip_costume_id = 3;
+}
+
+message CLIENT_GAME_PURCHASE_COSTUME {
+    _costume_info purchase_costume_info = 1;
+}
+
+message GAME_CLIENT_PURCHASE_COSTUME {
+    uint32 result = 1;
+    _costume_info purchase_costume_info = 2;
+    repeated _cost_info costInfo = 3;
+    repeated _stack_item_info update_items = 4;
+}
+
+message CLIENT_GAME_HIDE_COSTUME {
+    uint64 uid = 1;
+    uint32 parts = 2;
+    bool is_hide = 3;
+}
+
+message GAME_CLIENT_HIDE_COSTUME {
+    uint32 result = 1;
+    uint32 parts = 2;
+    bool is_hide = 3;
+}
+
+message CLIENT_GAME_CHANGE_COSTUME_COLOR {
+    _costume_info change_costume_info = 1;
+}
+
+message GAME_CLIENT_CHANGE_COSTUME_COLOR {
+    uint32 result = 1;
+    _costume_info change_costume_info = 2;
+    repeated _cost_info costInfo = 3;
+    repeated _stack_item_info update_items = 4;
+}
+
+message CLIENT_GAME_EQUIP_LUXURY_COSTUME {
+    uint64 equip_item_uid = 1;
+}
+
+message GAME_CLIENT_EQUIP_LUXURY_COSTUME {
+    uint32 result = 1;
+    uint32 luxury_parts = 2;
+    uint64 equip_item_uid = 3;
+    uint64 un_equip_item_uid = 4;
+}
+
+message CLIENT_GAME_UNEQUIP_LUXURY_COSTUME {
+    uint64 un_equip_item_uid = 1;
+}
+
+message GAME_CLIENT_UNEQUIP_LUXURY_COSTUME {
+    uint32 result = 1;
+    uint32 luxury_parts = 2;
+    uint64 un_equip_item_uid = 3;
+}
+
+message CLIENT_GAME_HIDE_LUXURY_COSTUME {
+    _luxury_costume_hide_info hide_info = 1;
+}
+
+message GAME_CLIENT_HIDE_LUXURY_COSTUME {
+    uint32 result = 1;
+    _luxury_costume_hide_info hide_info = 2;
+}

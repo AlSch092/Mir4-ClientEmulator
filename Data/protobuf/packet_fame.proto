@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_FAME_LIST {
+    
+}
+
+message GAME_CLIENT_FAME_LIST {
+    repeated fame_info fame_list = 1;
+}
+
+message GAME_CLIENT_FAME_RANK {
+    uint64 rank = 1;
+    uint64 score = 2;
+    uint32 level = 3;
+    uint64 level_exp = 4;
+}
+
+message GAME_CLIENT_FAME_DATA {
+    uint64 add_score = 1;
+    fame_info fame_data = 2;
+    uint32 level = 3;
+    uint64 level_exp = 4;
+}

@@ -1,0 +1,206 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_ITEM_STORAGE_LIST {
+    
+}
+
+message GAME_CLIENT_ITEM_STORAGE_LIST_START {
+    uint32 storage_size = 1;
+}
+
+message GAME_CLIENT_ITEM_STORAGE_LIST {
+    uint32 storage_size = 1;
+    repeated _character_inven_item storage_items = 2;
+}
+
+message GAME_CLIENT_ITEM_STORAGE_LIST_END {
+    uint32 storage_size = 1;
+    uint64 hold_random_option_item_uid = 2;
+}
+
+message CLIENT_GAME_ITEM_STORAGE_SAVE {
+    _stack_item_info save_item = 1;
+}
+
+message GAME_CLIENT_ITEM_STORAGE_SAVE {
+    _character_inven_item update_storage_item = 1;
+    _character_inven_item update_inven_item = 2;
+    uint64 delete_item_uid = 3;
+    uint32 result = 4;
+}
+
+message CLIENT_GAME_ITEM_STORAGE_TAKE_OUT {
+    _stack_item_info take_out_item = 1;
+}
+
+message GAME_CLIENT_ITEM_STORAGE_TAKE_OUT {
+    _character_inven_item update_storage_item = 1;
+    _character_inven_item update_inven_item = 2;
+    uint64 delete_item_uid = 3;
+    uint32 result = 4;
+}
+
+message CLIENT_GAME_ITEM_STORAGE_EXTEND {
+    uint32 extend_count = 1;
+}
+
+message GAME_CLIENT_ITEM_STORAGE_EXTEND {
+    uint32 result = 1;
+    uint32 extend_count = 2;
+    repeated _cost_info costInfos = 3;
+    uint32 storage_count = 4;
+}
+
+message CLIENT_SHOP_XDRACO_STORAGE_LIST {
+    
+}
+
+message SHOP_CLIENT_XDRACO_STORAGE_LIST_START {
+    uint32 storage_size = 1;
+}
+
+message SHOP_CLIENT_XDRACO_STORAGE_LIST {
+    uint32 storage_size = 1;
+    repeated _character_inven_item storage_items = 2;
+}
+
+message SHOP_CLIENT_XDRACO_STORAGE_LIST_END {
+    uint32 storage_size = 1;
+}
+
+message CLIENT_GAME_ITEM_XDRACO_STORAGE_SAVE {
+    _stack_item_info save_item = 1;
+}
+
+message GAME_SHOP_ITEM_XDRACO_STORAGE_SAVE {
+    uint32 region_id = 1;
+    uint32 world_id = 2;
+    uint64 account_uid = 3;
+    _character_inven_item update_storage_item = 4;
+    repeated _cost_info costInfos = 5;
+}
+
+message GAME_SHOP_ITEM_XDRACO_STORAGE_SAVE_PRE_CHECK {
+    uint32 result = 1;
+    uint64 try_item_uid = 2;
+}
+
+message SHOP_GAME_ITEM_XDRACO_STORAGE_SAVE_PRE_CHECK {
+    uint32 result = 1;
+    uint32 seal_storage_size = 2;
+    uint64 try_item_uid = 3;
+    repeated _cost_info costInfos = 4;
+}
+
+message SHOP_GAME_ITEM_XDRACO_STORAGE_SAVE {
+    uint32 result = 1;
+    _character_inven_item update_storage_item = 2;
+}
+
+message GAME_CLIENT_ITEM_XDRACO_STORAGE_SAVE {
+    _character_inven_item update_storage_item = 1;
+    _character_inven_item update_inven_item = 2;
+    uint64 delete_item_uid = 3;
+    repeated _cost_info costInfos = 4;
+    uint32 result = 5;
+}
+
+message CLIENT_GAME_ITEM_XDRACO_STORAGE_TAKE_OUT {
+    _stack_item_info take_out_item = 1;
+}
+
+message GAME_SHOP_ITEM_XDRACO_STORAGE_TAKE_OUT {
+    uint32 region_id = 1;
+    uint32 world_id = 2;
+    uint64 account_uid = 3;
+    uint64 take_out_item_uid = 4;
+}
+
+message SHOP_GAME_ITEM_XDRACO_STORAGE_TAKE_OUT {
+    uint32 result = 1;
+    _character_inven_item update_storage_item = 2;
+}
+
+message GAME_CLIENT_ITEM_XDRACO_STORAGE_TAKE_OUT {
+    _character_inven_item update_storage_item = 1;
+    _character_inven_item update_inven_item = 2;
+    uint64 delete_item_uid = 3;
+    uint32 result = 4;
+}
+
+message SHOP_WORLD_DEBUG_CHAT_MSG {
+    uint64 character_uid = 1;
+    string msg = 2;
+}
+
+message WORLD_GAME_DEBUG_CHAT_MSG {
+    uint64 character_uid = 1;
+    string msg = 2;
+}
+
+message CLIENT_GAME_XDRACO_STORAGE_ITEM_LOCK_CHECK {
+    uint64 character_uid = 1;
+}
+
+message GAME_CLIENT_XDRACO_STORAGE_ITEM_LOCK_CHECK {
+    int32 result = 1;
+}
+
+message GAME_SHOP_XDRACO_STORAGE_ITEM_LOCK_CHECK {
+    uint64 character_uid = 1;
+}
+
+message SHOP_GAME_XDRACO_STORAGE_ITEM_LOCK_CHECK {
+    int32 result = 1;
+}
+
+message SHOP_WORLD_DSP_MAIL {
+    uint64 character_uid = 1;
+    uint32 item_id = 2;
+    uint32 item_count = 3;
+    uint32 region_id = 4;
+    uint32 world_id = 5;
+    uint32 mail_sub_type = 6;
+}
+
+message XDRACO_SHOP_LOCK_ITEM {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint64 item_uid = 3;
+    bool is_lock = 4;
+    uint32 item_idx = 5;
+}
+
+message XDRACO_SHOP_TRADE_RECEIVER_CHAR_ITEM {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint64 item_uid = 3;
+    uint32 item_idx = 4;
+}
+
+message XDRACO_SHOP_TRADE_SENDER_CHAR_ITEM {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint64 item_uid = 3;
+    uint32 item_idx = 4;
+}
+
+message XDRACO_SHOP_HOLDER_UPDOWN {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint64 item_uid = 3;
+    bool is_upload = 4;
+    uint32 item_idx = 5;
+}
+
+message XDRACO_SHOP_WEBINVEN_UPDOWN {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint64 item_uid = 3;
+    bool is_upload = 4;
+    uint32 item_idx = 5;
+}

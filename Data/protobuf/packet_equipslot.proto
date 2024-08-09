@@ -1,0 +1,158 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message CLIENT_GAME_EQUIP_ITEM {
+    uint64 UID = 1;
+    int32 position = 2;
+    uint64 ItemUID = 3;
+}
+
+message GAME_CLIENT_EQUIP_ITEM {
+    int32 result = 1;
+    int32 position = 2;
+    uint64 equipItemUID = 3;
+    uint64 unequipItemUID = 4;
+}
+
+message CLIENT_GAME_UNEQUIP_ITEM {
+    int32 equip_slot = 1;
+}
+
+message GAME_CLIENT_UNEQUIP_ITEM {
+    int32 result = 1;
+    int32 equip_slot = 2;
+    uint64 unequip_item_uid = 3;
+}
+
+message CLIENT_GAME_EQUIP_MAGIC_STONE {
+    int32 equip_slot = 1;
+    uint64 equip_item_uid = 2;
+}
+
+message GAME_CLIENT_EQUIP_MAGIC_STONE {
+    int32 result = 1;
+    int32 equip_slot = 2;
+    uint64 equip_item_uid = 3;
+    uint64 unequip_item_uid = 4;
+}
+
+message CLIENT_GAME_UNEQUIP_MAGIC_STONE {
+    int32 equip_slot = 1;
+}
+
+message GAME_CLIENT_UNEQUIP_MAGIC_STONE {
+    int32 result = 1;
+    int32 equip_slot = 2;
+    uint64 unequip_item_uid = 3;
+}
+
+message MAGIC_STONE_SLOT_INFO {
+    int32 equip_slot = 1;
+    uint64 equip_item_uid = 2;
+}
+
+message MAGIC_STONE_DECK_INFO {
+    int32 deck_index = 1;
+    repeated MAGIC_STONE_SLOT_INFO slot_info = 2;
+}
+
+message CLIENT_GAME_MAGIC_STONE_DECK_LIST {
+    
+}
+
+message GAME_CLIENT_MAGIC_STONE_DECK_LIST {
+    int32 active_deck_index = 1;
+    repeated MAGIC_STONE_DECK_INFO deck_info = 2;
+}
+
+message CLIENT_GAME_MAGIC_STONE_DECK_SET {
+    int32 deck_index = 1;
+    int32 equip_slot = 2;
+    uint64 equip_item_uid = 3;
+}
+
+message GAME_CLIENT_MAGIC_STONE_DECK_SET {
+    int32 result = 1;
+    int32 deck_index = 2;
+    int32 equip_slot = 3;
+    uint64 equip_item_uid = 4;
+    uint64 unequip_item_uid = 5;
+}
+
+message CLIENT_GAME_MAGIC_STONE_DECK_DEL {
+    int32 deck_index = 1;
+    int32 unequip_slot = 2;
+    uint64 unequip_item_uid = 3;
+}
+
+message GAME_CLIENT_MAGIC_STONE_DECK_DEL {
+    int32 result = 1;
+    int32 deck_index = 2;
+    int32 unequip_slot = 3;
+    uint64 unequip_item_uid = 4;
+}
+
+message CLIENT_GAME_MAGIC_STONE_DECK_ENABLE {
+    int32 deck_index = 1;
+}
+
+message GAME_CLIENT_MAGIC_STONE_DECK_ENABLE {
+    int32 result = 1;
+    int32 deck_index = 2;
+}
+
+message _mystical_piece_slot_info {
+    int32 equip_slot = 1;
+    uint64 equip_item_uid = 2;
+}
+
+message _mystical_piece_deck_info {
+    int32 deck_index = 1;
+    repeated _mystical_piece_slot_info slot_info = 2;
+}
+
+message CLIENT_GAME_MYSTICAL_PIECE_DECK_LIST {
+    
+}
+
+message GAME_CLIENT_MYSTICAL_PIECE_DECK_LIST {
+    int32 active_deck_index = 1;
+    repeated _mystical_piece_deck_info deck_info = 2;
+}
+
+message CLIENT_GAME_MYSTICAL_PIECE_DECK_SET {
+    int32 deck_index = 1;
+    int32 equip_slot = 2;
+    uint64 equip_item_uid = 3;
+}
+
+message GAME_CLIENT_MYSTICAL_PIECE_DECK_SET {
+    int32 result = 1;
+    int32 deck_index = 2;
+    int32 equip_slot = 3;
+    uint64 equip_item_uid = 4;
+    uint64 unequip_item_uid = 5;
+}
+
+message CLIENT_GAME_MYSTICAL_PIECE_DECK_DEL {
+    int32 deck_index = 1;
+    int32 unequip_slot = 2;
+    uint64 unequip_item_uid = 3;
+}
+
+message GAME_CLIENT_MYSTICAL_PIECE_DECK_DEL {
+    int32 result = 1;
+    int32 deck_index = 2;
+    int32 unequip_slot = 3;
+    uint64 unequip_item_uid = 4;
+}
+
+message CLIENT_GAME_MYSTICAL_PIECE_DECK_ENABLE {
+    int32 deck_index = 1;
+}
+
+message GAME_CLIENT_MYSTICAL_PIECE_DECK_ENABLE {
+    int32 result = 1;
+    int32 deck_index = 2;
+}

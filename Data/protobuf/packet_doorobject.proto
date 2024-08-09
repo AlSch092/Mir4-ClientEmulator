@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message _door_object_sync_info {
+    int32 doorobject_id = 1;
+    bool is_open = 2;
+}
+
+message GAME_CLIENT_SYNC_DOOR_OBJECT_STATE_IN_ZONE {
+    repeated _door_object_sync_info doorobject_sync_info = 1;
+}
+
+message GAME_CLIENT_CHANGE_DOOR_OBJECT_STATE {
+    _door_object_sync_info change_doorobject_info = 1;
+}

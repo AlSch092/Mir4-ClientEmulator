@@ -1,0 +1,716 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+import "packet_guild_war_siege.proto";
+
+message _dominion_wanted_info_server {
+    uint32 dominion_pk_tid = 1;
+    uint64 target_uid = 2;
+    int64 wanted_start_time = 3;
+    int64 wanted_end_time = 4;
+}
+
+message _dominion_wanted_info {
+    uint32 dominion_pk_tid = 1;
+    uint64 target_uid = 2;
+    string nickname = 3;
+    int32 class = 4;
+    int64 combatpoint = 5;
+    _guild_name_ui_info guildinfo = 6;
+    bool is_online = 7;
+    int64 wanted_end_time = 8;
+}
+
+message _dark_altar_state {
+    uint32 dark_altar_id = 1;
+    bool is_destruction = 2;
+}
+
+message CLIENT_WORLD_GET_DOMINION_TAX_INFO {
+    int32 dominion_tid = 1;
+}
+
+message WORLD_CLIENT_GET_DOMINION_TAX_INFO {
+    int32 dominion_tid = 1;
+    repeated _dominion_tax_info dominion_tax_info_list = 2;
+}
+
+message GAME_WORLD_UPDATE_DOMINION_TAX {
+    int32 dominion_tid = 1;
+    int32 money_type = 2;
+    int32 tax_log_type = 3;
+    int32 tax_log_kind = 4;
+    int64 update_value = 5;
+}
+
+message CLIENT_WORLD_REQ_DOMINION_STRONG_POINT_INFO {
+    int32 strong_point_tid = 1;
+}
+
+message WORLD_CLIENT_ACK_DOMINION_STRONG_POINT_INFO {
+    _strong_point_info_v2 strong_point_info = 1;
+    uint32 win_target_cur_hp = 2;
+    bool is_appear_boss = 3;
+    uint64 black_iron_value = 4;
+    uint32 zone_user_count = 5;
+    uint64 win_target_occupy_guild_uid = 6;
+    string win_target_occupy_guild_name = 7;
+    bool is_take_over_time = 8;
+    uint32 channel_state = 9;
+    repeated _cost_info dominion_storage_cost = 10;
+    int64 guild_npc_shop_remain_black_iron = 11;
+    string occupy_guild_proclamation = 12;
+    repeated int32 event_buff_id_list = 13;
+    _dark_altar_info dark_altar_info = 14;
+}
+
+message GAME_WORLD_UPDATE_APPEAR_BOSS_MONSTER {
+    int32 strong_point_tid = 1;
+    bool is_appear_boss = 2;
+}
+
+message GAME_WORLD_UPDATE_BLACK_IRON_INFO {
+    int32 dominion_tid = 1;
+    int32 black_lron_value = 2;
+}
+
+message CLIENT_WORLD_REQ_DOMINION_SIEGE_INFO {
+    int32 siege_tid = 1;
+}
+
+message _dominion_siege_battle_guilds_info {
+    _guild_simple_info defense_guild_simple_info = 1;
+    int64 defense_guild_total_combat_point = 2;
+    _guild_simple_info offense_guild_simple_info = 3;
+    int64 offense_guild_total_combat_point = 4;
+}
+
+message WORLD_CLIENT_ACK_DOMINION_SIEGE_INFO {
+    _siege_info siege_info = 1;
+    int64 guild_total_combat_point = 2;
+    _siege_info_in_normal siege_info_in_normal = 4;
+    _siege_info_in_auction siege_info_in_auction = 5;
+    _dominion_siege_battle_guilds_info siege_battle_guilds_info = 6;
+    int32 siege_run_time_minute = 7;
+    uint64 siege_occupy_time = 8;
+}
+
+message CLIENT_WORLD_GET_DOMINION_INFO {
+    
+}
+
+message WORLD_CLIENT_GET_DOMINION_INFO {
+    repeated _dominion_info dominion_info_list = 1;
+}
+
+message CLIENT_WORLD_DOMINION_TAX_RATE_CHANGE {
+    int32 dominion_tid = 1;
+    int32 change_rate = 2;
+    int32 change_money_type = 3;
+}
+
+message WORLD_CLIENT_DOMINION_TAX_RATE_CHANGE {
+    int32 dominion_tid = 1;
+    int32 change_rate = 2;
+    int32 change_money_type = 3;
+    int32 result = 4;
+}
+
+message WORLD_CLIENT_DOMINION_TAX_RATE_CHANGE_NOTIFY {
+    _dominion_info dominion_info = 1;
+}
+
+message CLIENT_WORLD_DOMINION_TAX_WITHDRAWAL {
+    int32 dominion_tid = 1;
+    int64 withdrawal_gold = 2;
+    int64 withdrawal_coin = 3;
+}
+
+message WORLD_CLIENT_DOMINION_TAX_WITHDRAWAL {
+    int32 dominion_tid = 1;
+    int64 withdrawal_gold = 2;
+    int64 withdrawal_coin = 3;
+    repeated _dominion_tax_info dominion_tax_info_list = 4;
+    int32 result = 5;
+}
+
+message CLIENT_WORLD_DOMINION_IMPERIAL_ORDER {
+    int32 dominion_buff_id = 1;
+}
+
+message WORLD_CLIENT_DOMINION_IMPERIAL_ORDER {
+    int32 dominion_buff_id = 1;
+    int32 result = 2;
+    int32 imperial_order_count = 3;
+}
+
+message WORLD_GAME_DOMINION_IMPERIAL_ORDER {
+    int32 dominion_id = 1;
+    int32 dominion_buff_id = 2;
+    int64 dominion_buff_end_time = 3;
+}
+
+message CLIENT_WORLD_DOMINION_PRIZE {
+    uint32 dominion_id = 1;
+    uint32 prize_tid = 2;
+    string target_name = 3;
+    uint64 target_user_uid = 4;
+}
+
+message WORLD_CLIENT_DOMINION_PRIZE {
+    uint32 dominion_id = 1;
+    uint32 prize_tid = 2;
+    string target_name = 3;
+    repeated _dominion_prize_info dominion_prize_list = 4;
+    int32 result = 5;
+}
+
+message WORLD_GAME_SYNC_DOMINION_INFO {
+    _dominion_info dominion_info = 1;
+}
+
+message WORLD_GAME_SYNC_DOMINION_INFO_LIST {
+    repeated _dominion_info dominion_info_list = 1;
+    repeated _dominion_wanted_info_server dominion_wanted_info_list = 2;
+    uint64 before_daily_black_iron = 3;
+    uint64 last_daily_black_iron_update_time = 4;
+}
+
+message CLIENT_WORLD_DOMINION_TITLE_LIST {
+    int32 dominion_tid = 1;
+}
+
+message WORLD_CLIENT_DOMINION_TITLE_LIST {
+    int32 dominion_tid = 1;
+    repeated _dominion_title_info _dominion_title_list = 2;
+}
+
+message CLIENT_WORLD_DOMINION_GIVE_TITLE {
+    int32 dominion_tid = 1;
+    int32 title_tid = 2;
+    uint64 target_user_uid = 3;
+    string target_user_name = 4;
+    bool is_give = 5;
+}
+
+message WORLD_CLIENT_DOMINION_GIVE_TITLE {
+    int32 dominion_tid = 1;
+    int32 title_tid = 3;
+    uint64 target_user_uid = 4;
+    string target_user_name = 5;
+    string target_user_profile = 6;
+    bool is_give = 7;
+    int32 result = 8;
+}
+
+message WORLD_CLIENT_DOMINION_GIVE_TITLE_TARGET_NOTIFY {
+    int32 dominion_tid = 1;
+    uint64 target_user_uid = 2;
+    int32 title_tid = 3;
+    bool is_give = 4;
+    uint64 guild_uid = 5;
+}
+
+message WORLD_CLIENT_DOMINION_GIVE_TITLE_NOTIFY {
+    int32 title_tid = 1;
+    uint64 target_user_uid = 2;
+    string target_user_name = 3;
+}
+
+message WORLD_CLIENT_DOMINION_IMPERIAL_ORDER_NOTIFY {
+    int32 dominion_id = 1;
+    int32 dominion_buff_id = 2;
+    uint64 master_uid = 3;
+    string master_name = 4;
+}
+
+message WORLD_CLIENT_DOMINION_PRIZE_NOTIFY {
+    uint32 dominion_tid = 1;
+    uint32 prize_tid = 2;
+    string target_name = 3;
+    uint64 send_user_uid = 4;
+}
+
+message CLIENT_GAME_DOMINION_WANTED_LIST {
+    
+}
+
+message GAME_CLIENT_DOMINION_WANTED_LIST_START {
+    
+}
+
+message GAME_CLIENT_DOMINION_WANTED_LIST {
+    repeated _dominion_wanted_info wanted_list = 1;
+}
+
+message GAME_CLIENT_DOMINION_WANTED_LIST_END {
+    
+}
+
+message CLIENT_WORLD_DOMINION_WANTED_ADD {
+    uint64 target_user_uid = 1;
+    uint32 dominion_pk_tid = 2;
+    string target_user_name = 3;
+}
+
+message WORLD_CLIENT_DOMINION_WANTED_ADD {
+    int32 result = 1;
+    uint64 target_user_uid = 2;
+    uint32 dominion_pk_tid = 3;
+    _dominion_wanted_info_server dominion_pk_info = 4;
+}
+
+message WORLD_GAME_SYNC_DOMINION_WANTED_INFO {
+    uint64 target_user_uid = 1;
+    uint32 dominion_pk_tid = 2;
+    uint32 state_type = 3;
+    _dominion_wanted_info_server dominion_pk_info = 4;
+}
+
+message GAME_WORLD_DOMINION_WANTED_PK {
+    uint64 attacker_user_uid = 1;
+    uint64 target_user_uid = 2;
+}
+
+message CLIENT_WORLD_DOMINION_WANTED_CANCEL {
+    uint64 target_user_uid = 1;
+}
+
+message WORLD_CLIENT_DOMINION_WANTED_CANCEL {
+    int32 result = 1;
+    uint64 target_user_uid = 2;
+}
+
+message CLIENT_WORLD_DOMINION_HISTORY_LIST {
+    uint32 dominion_tid = 1;
+    uint64 end_history_uid = 2;
+}
+
+message WORLD_CLIENT_DOMINION_HISTORY_LIST_START {
+    uint32 dominion_tid = 1;
+    uint64 end_history_uid = 2;
+}
+
+message WORLD_CLIENT_DOMINION_HISTORY_LIST {
+    uint32 dominion_tid = 1;
+    repeated _dominion_history_info history_list = 2;
+    uint64 end_history_uid = 3;
+}
+
+message WORLD_CLIENT_DOMINION_HISTORY_LIST_END {
+    uint32 dominion_tid = 1;
+    uint64 end_history_uid = 2;
+}
+
+message WORLD_GAME_SYNC_DOMINION_COST {
+    int32 dominion_tid = 1;
+    repeated _cost_info guild_cost_info = 2;
+}
+
+message WORLD_GAME_SYNC_DOMINION_COST_GIVE_COUNT {
+    int32 dominion_tid = 1;
+    repeated _cost_info guild_cost_info = 2;
+}
+
+message CLIENT_GAME_DOMINION_STORAGE_INFO {
+    int32 dominion_tid = 1;
+}
+
+message GAME_WORLD_DOMINION_STORAGE_INFO {
+    int32 dominion_tid = 1;
+}
+
+message WORLD_GAME_DOMINION_STORAGE_INFO {
+    int32 result = 1;
+    int64 user_uid = 2;
+    int32 dominion_tid = 3;
+    int64 tex_remain_time = 4;
+    repeated _cost_info storage_tax_income = 5;
+    repeated _cost_info storage_use_cost = 6;
+    int64 black_iron_plunder_count = 7;
+    int64 black_iron_plunder_repayment_count = 8;
+    repeated _sabuk_taxrate_info sabuk_taxrate_infos = 9;
+}
+
+message GAME_CLIENT_DOMINION_STORAGE_INFO {
+    int32 result = 1;
+    int32 dominion_tid = 2;
+    repeated _cost_info storage_cost_info = 4;
+    repeated _cost_info storage_cost_info_max = 5;
+    repeated _cost_info storage_guild_give_cost_info = 6;
+    int64 tex_remain_time = 7;
+    repeated _cost_info storage_tax_income = 8;
+    int32 npc_shop_state = 9;
+    int64 npc_shop_remain_close_time = 10;
+    int64 npc_shop_income_gold = 12;
+    int64 npc_shop_black_iron_remain_count = 13;
+    repeated _cost_info storage_use_cost = 14;
+    int64 black_iron_plunder_count = 15;
+    int64 black_iron_plunder_repayment_count = 16;
+    repeated _dark_altar_state dark_altar_state_list = 17;
+    repeated _sabuk_taxrate_info sabuk_taxrate_infos = 18;
+}
+
+message CLIENT_GAME_DOMINION_STORAGE_HISTORY {
+    int32 dominion_tid = 1;
+    int32 history_group_id = 2;
+    int32 history_sub_group_id = 3;
+    int64 cur_page_first_history_uid = 4;
+    int64 cur_page_last_history_uid = 5;
+    int32 cur_page = 6;
+    bool is_next_page = 7;
+}
+
+message _dominion_storage_history_info {
+    int64 history_uid = 1;
+    int32 history_index = 2;
+    int64 history_time = 3;
+    uint64 member_uid = 4;
+    string member_name = 5;
+    string member_profile = 6;
+    repeated _history_param param_list = 7;
+    repeated _reward_cost_info cost_info = 8;
+}
+
+message GAME_CLIENT_DOMINION_STORAGE_HISTORY {
+    int32 result = 1;
+    int32 dominion_tid = 2;
+    int32 history_group_id = 3;
+    int32 history_sub_group_id = 4;
+    int32 page = 5;
+    repeated _dominion_storage_history_info history_list = 6;
+}
+
+message _dominion_storage_give_guild_info {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+    string guild_master_name = 3;
+    int64 total_combat_point = 4;
+    int64 remain_storage_cost_value = 5;
+}
+
+message CLIENT_GAME_DOMINION_STORAGE_COST_GIVE_TO_GUILD_INFO {
+    int32 dominion_tid = 1;
+    uint64 target_guild_uid = 2;
+    int32 cost_type = 3;
+}
+
+message GAME_CLIENT_DOMINION_STORAGE_COST_GIVE_TO_GUILD_INFO {
+    int32 result = 1;
+    int32 dominion_tid = 2;
+    _cost_info storage_cost_info = 4;
+    int64 storage_cost_info_max = 5;
+    _dominion_storage_give_guild_info target_guild_info = 6;
+}
+
+message CLIENT_GAME_DOMINION_STORAGE_COST_GIVE_TO_GUILD {
+    int32 dominion_tid = 1;
+    uint64 target_guild_uid = 2;
+    _cost_info cost_info = 3;
+}
+
+message GAME_WORLD_DOMINION_STORAGE_COST_GIVE_TO_GUILD {
+    int32 dominion_tid = 1;
+    uint64 target_guild_uid = 2;
+    _cost_info cost_info = 3;
+}
+
+message WORLD_GAME_DOMINION_STORAGE_COST_GIVE_TO_GUILD {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    int32 dominion_tid = 3;
+    uint64 target_guild_uid = 4;
+    _cost_info remain_cost_info = 5;
+}
+
+message GAME_CLIENT_DOMINION_STORAGE_COST_GIVE_TO_GUILD {
+    int32 result = 1;
+    int32 dominion_tid = 2;
+    uint64 target_guild_uid = 3;
+    _cost_info remain_cost_info = 4;
+}
+
+message CLIENT_GAME_DOMINION_STORAGE_COST_GIVE_TO_USER {
+    int32 dominion_tid = 1;
+    repeated uint64 target_user_uid_list = 2;
+    _cost_info cost_info = 3;
+}
+
+message GAME_WORLD_DOMINION_STORAGE_COST_GIVE_TO_USER {
+    int32 dominion_tid = 1;
+    repeated uint64 target_user_uid_list = 2;
+    _cost_info cost_info = 3;
+}
+
+message _dominion_cost_give_target_user_name {
+    uint64 user_uid = 1;
+    string character_name = 2;
+    _cost_info can_recv_limit = 3;
+}
+
+message WORLD_GAME_DOMINION_STORAGE_COST_GIVE_TO_USER {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    int32 dominion_tid = 3;
+    repeated _dominion_cost_give_target_user_name target_user_list = 4;
+    repeated _dominion_cost_give_target_user_name target_user_fail_list = 5;
+    _cost_info remain_cost_info = 6;
+    repeated _character_guild_receive_cost_by_user_uid_server_sync receive_cost_sync_info = 7;
+}
+
+message GAME_CLIENT_DOMINION_STORAGE_COST_GIVE_TO_USER {
+    int32 result = 1;
+    int32 dominion_tid = 2;
+    repeated _dominion_cost_give_target_user_name target_user_list = 3;
+    repeated _dominion_cost_give_target_user_name target_user_fail_list = 4;
+    _cost_info remain_cost_info = 5;
+}
+
+message CLIENT_GAME_DOMINION_STORAGE_COST_TAKE_OUT {
+    int32 dominion_tid = 1;
+    _cost_info cost_info = 2;
+}
+
+message GAME_WORLD_DOMINION_STORAGE_COST_TAKE_OUT {
+    int32 dominion_tid = 1;
+    _cost_info cost_info = 2;
+}
+
+message WORLD_GAME_DOMINION_STORAGE_COST_TAKE_OUT {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    int32 dominion_tid = 3;
+    _cost_info remain_cost_info = 4;
+}
+
+message GAME_CLIENT_DOMINION_STORAGE_COST_TAKE_OUT {
+    int32 result = 1;
+    int32 dominion_tid = 2;
+    _cost_info remain_cost_info = 3;
+}
+
+message CLIENT_WORLD_DOMINION_GIVE_OFFICIAL_GRADE {
+    int32 dominion_tid = 1;
+    int32 official_tid = 2;
+    uint64 target_user_uid = 3;
+    string target_user_name = 4;
+}
+
+message WORLD_CLIENT_DOMINION_GIVE_OFFICIAL_GRADE {
+    int32 dominion_tid = 1;
+    int32 official_tid = 2;
+    uint64 target_user_uid = 3;
+    int32 result = 4;
+}
+
+message WORLD_GAME_DOMINION_GIVE_OFFICIAL_GRADE_TARGET_NOTIFY {
+    int32 dominion_tid = 1;
+    uint64 target_user_uid = 2;
+    int32 official_tid = 3;
+    uint64 before_official_user_uid = 4;
+    uint64 guild_uid = 5;
+    bool is_sabuk_master = 6;
+    bool is_sabuk_master_change = 7;
+}
+
+message WORLD_CLIENT_DOMINION_GIVE_OFFICIAL_GRADE_TARGET_NOTIFY {
+    int32 dominion_tid = 1;
+    uint64 target_user_uid = 2;
+    int32 official_tid = 3;
+    bool is_give = 4;
+    bool is_sabuk_master = 5;
+    bool is_sabuk_master_change = 6;
+}
+
+message WORLD_CLIENT_DOMINION_CHANGE_OFFICIAL_GRADE_NOTIFY {
+    int32 dominion_tid = 1;
+    uint64 character_uid = 2;
+    string character_name = 3;
+    string character_profile = 4;
+    int32 official_tid = 5;
+    bool is_new = 6;
+    uint64 guild_uid = 7;
+    string guild_name = 8;
+    bool is_sabuk_master = 9;
+    bool is_sabuk_master_change = 10;
+}
+
+message GAME_CLIENT_DOMINION_OFFICIAL_GRADE_FIELD_BROADCAST {
+    int32 dominion_tid = 1;
+    uint64 character_uid = 2;
+    int32 official_tid = 3;
+    bool is_sabuk_master = 4;
+}
+
+message WORLD_GAME_SYNC_DAILY_BLACK_IRON_INFO {
+    uint64 before_daily_black_iron = 1;
+    uint64 last_daily_black_iron_update_time = 2;
+}
+
+message CLIENT_WORLD_GET_DOMINION_SABUK_TAXRATE_INFO {
+    
+}
+
+message WORLD_CLIENT_GET_DOMINION_SABUK_TAXRATE_INFO {
+    repeated _dominion_sabuk_taxrate_info dominion_sabuk_taxrate_info_list = 1;
+}
+
+message CLIENT_WORLD_GET_DOMINION_SABUK_IMPERIAL_ORDER_INFO {
+    
+}
+
+message WORLD_CLIENT_GET_DOMINION_SABUK_IMPERIAL_ORDER_INFO {
+    repeated _dominion_sabuk_imperialorder_info dominion_sabuk_imperialorder_info_list = 1;
+}
+
+message CLIENT_WORLD_GET_DOMINION_SABUK_GUILD_TITLE_INFO {
+    
+}
+
+message WORLD_CLIENT_GET_DOMINION_SABUK_GUILD_TITLE_INFO {
+    repeated _dominion_sabuk_guild_title_info dominion_sabuk_guild_title_info_list = 1;
+}
+
+message CLIENT_WORLD_DOMINION_SABUK_TAXRATE_CHANGE {
+    repeated _dominion_sabuk_taxrate_info change_taxrate_info_list = 1;
+    int32 money_type = 2;
+}
+
+message WORLD_CLIENT_DOMINION_SABUK_TAXRATE_CHANGE {
+    repeated _dominion_sabuk_taxrate_info change_taxrate_info_list = 1;
+    int32 result = 2;
+}
+
+message RELAY_WORLD_DOMINION_SABUK_TAXRATE_CHANGE_NOTIFY {
+    repeated _dominion_sabuk_taxrate_info change_taxrate_info_list = 1;
+}
+
+message CLIENT_WORLD_DOMINION_SABUK_IMPERIAL_ORDER_CHANGE {
+    uint32 target_world_id = 1;
+    uint32 dominion_buff_id = 2;
+    bool is_give = 3;
+}
+
+message WORLD_CLIENT_DOMINION_SABUK_IMPERIAL_ORDER_CHANGE {
+    uint32 target_world_id = 1;
+    _dominion_sabuk_imperialorder_info dominion_sabuk_imperialorder_info = 2;
+    int32 imperial_order_count = 3;
+    bool is_give = 4;
+    int32 result = 5;
+    uint32 dominion_buff_id = 6;
+}
+
+message RELAY_WORLD_DOMINION_SABUK_IMPERIAL_ORDER_CHANGE_NOTIFY {
+    uint32 target_world_id = 1;
+    int32 dominion_buff_id = 2;
+    int64 dominion_buff_end_time = 3;
+    bool is_give = 4;
+}
+
+message CLIENT_WORLD_DOMINION_SABUK_GUILD_TITLE_CHANGE {
+    int32 title_id = 1;
+    uint32 world_id = 2;
+    uint64 title_guild_id = 3;
+}
+
+message WORLD_CLIENT_DOMINION_SABUK_GUILD_TITLE_CHANGE {
+    _dominion_sabuk_guild_title_info dominion_sabuk_guild_title_info = 1;
+    int32 reset_title_id = 2;
+    int32 result = 3;
+}
+
+message GAME_CLIENT_DOMINION_SABUK_GUILD_TITLE_CHANGE {
+    int32 title_id = 1;
+    bool is_give = 2;
+}
+
+message RELAY_WORLD_DOMINION_SABUK_GUILD_TITLE_CHANGE_NOTIFY {
+    int32 title_id = 1;
+    uint32 world_id = 2;
+    uint64 title_guild_id = 3;
+    bool is_give = 4;
+}
+
+message WORLD_CLIENT_DOMINION_SABUK_GIVE_TITLE_NOTIFY {
+    int32 title_tid = 1;
+    uint64 target_guild_uid = 2;
+    string target_guild_name = 3;
+    uint32 world_id = 4;
+}
+
+message WORLD_GAME_SYNC_DOMINION_INFO_FOR_SABUK {
+    _dominion_info dominion_sabuk_info = 1;
+    repeated _dominion_sabuk_taxrate_info dominion_sabuk_taxrate_info_list = 2;
+    repeated _dominion_sabuk_imperialorder_info dominion_sabuk_imperialorder_list = 3;
+    repeated _dominion_sabuk_guild_title_info dominion_sabuk_guild_title_list = 4;
+    bool is_new_dominion_guild = 5;
+    uint64 before_sabuk_guild_uid = 6;
+}
+
+message WORLD_CLIENT_DOMINION_SABUK_IMPERIAL_ORDER_NOTIFY {
+    int32 world_id = 1;
+    int32 dominion_buff_id = 2;
+    uint64 sabuk_master_uid = 3;
+    string sabuk_master_name = 4;
+    bool is_give = 5;
+}
+
+message RELAY_WORLD_DOMINION_SABUK_TAX_UPDATE_CHANGE {
+    uint32 world_id = 1;
+    int32 money_type = 2;
+    int64 tax_value = 3;
+    int32 active_log_type = 4;
+    int32 tax_log_type = 5;
+}
+
+message RELAY_WORLD_DOMINION_SABUK_TAX_UPDATE_CHANGE_NOITFY {
+    uint32 world_id = 1;
+    int32 money_type = 2;
+    int64 tax_value = 3;
+    int32 active_log_type = 4;
+    int32 tax_log_type = 5;
+    uint64 current_value = 6;
+}
+
+message CLIENT_WORLD_GET_DOMINION_INFO_BY_ID {
+    int32 dominion_tid = 1;
+}
+
+message WORLD_CLIENT_GET_DOMINION_INFO_BY_ID {
+    _dominion_info dominion_info = 1;
+    uint64 sabuk_occupy_expire_time = 2;
+}
+
+message RELAY_WORLD_DOMINION_SABUK_HISTORY_NOTIFY {
+    _dominion_history_info new_history = 1;
+    uint64 del_log_uid = 2;
+}
+
+message RELAY_WORLD_DOMINION_CHANGE_BICHEON_GUILD {
+    int32 dominion_tid = 1;
+    uint32 world_id = 2;
+    uint64 guild_uid = 3;
+}
+
+message RELAY_WORLD_DOMINION_BICHEON_TAX_INTERVAL {
+    uint32 world_id = 1;
+    uint64 gold_tax = 2;
+    uint64 black_iron_tax = 3;
+}
+
+message RELAY_WORLD_DOMINION_BICHEON_TAX_INTERVAL_NOTIFY {
+    repeated _dominion_sabuk_bicheon_tax_interval bicheon_tax_interval_list = 1;
+}
+
+message WORLD_COMMUNITY_CHANGE_SABUK_GUILD {
+    uint32 world_id = 1;
+    uint64 guild_uid = 2;
+}
+
+message RELAY_WORLD_DOMINION_PRIZE_NOTIFY {
+    uint32 dominion_id = 1;
+    int32 prize_grade = 2;
+    int32 prize_count = 3;
+}

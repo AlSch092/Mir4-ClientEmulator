@@ -1,0 +1,560 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _total_party_info {
+    _party_info party_info = 1;
+    repeated _party_member_info party_member_infos = 2;
+}
+
+message _party_member_sync_info {
+    uint64 member_uid = 1;
+    uint32 hp = 2;
+    uint32 mana = 3;
+    uint32 vigor = 4;
+    _vector3 pos = 5;
+    uint32 max_hp = 6;
+    uint32 max_mana = 7;
+    uint32 max_vigor = 8;
+    uint32 cur_damage_absorb = 9;
+    bool alive = 10;
+    _refuse_info refuse_buff_info = 11;
+}
+
+message _recommend_party_member_info {
+    uint64 member_uid = 1;
+    int32 member_class = 2;
+    int32 level = 3;
+    string nickname = 4;
+    int32 combatpoint = 5;
+    string guild_name = 6;
+    uint32 guild_mark = 7;
+    uint32 guild_mark_edge = 8;
+    uint64 guild_uid = 9;
+}
+
+message _party_alarm_info {
+    uint32 target_stage_type = 1;
+    uint64 last_party_uid = 2;
+    bool is_new_alarm = 3;
+    bool is_guild_party = 4;
+}
+
+message CLIENT_GAME_CREATE_PARTY_REQUEST {
+    uint64 uid = 1;
+    _party_attribute create_party_attribute = 2;
+    string password = 3;
+}
+
+message GAME_WORLD_CREATE_PARTY_REQUEST {
+    uint64 uid = 1;
+    _party_attribute create_party_attribute = 2;
+    string password = 3;
+    int32 dungeon_auto_start = 4;
+}
+
+message WORLD_GAME_CREATE_PARTY_REPLY {
+    uint64 uid = 1;
+    uint64 party_uid = 2;
+    _total_party_info total_party_info = 3;
+    bool is_send_to_client = 4;
+}
+
+message GAME_CLIENT_NOTIFY_CREATE_PARTY {
+    uint64 party_uid = 1;
+    _total_party_info total_party_info = 2;
+}
+
+message CLIENT_GAME_PARTY_INVITE {
+    uint64 request_user_uid = 1;
+    uint64 invite_user_uid = 2;
+    bool is_all_invite = 3;
+}
+
+message GAME_CLIENT_PARTY_INVITE_REQUEST {
+    uint64 invite_user_uid = 1;
+    uint64 request_user_uid = 2;
+    string request_user_name = 3;
+    uint64 request_party_uid = 4;
+    uint32 request_user_level = 5;
+    uint32 request_user_class = 6;
+    int32 request_user_combatpoint = 7;
+    string request_user_guild_name = 8;
+    uint32 request_user_guild_mark = 9;
+    uint32 request_user_guild_mark_edge = 10;
+    uint64 request_user_guild_uid = 11;
+    uint32 party_stage_type = 12;
+    uint32 party_target_stage_index = 13;
+    uint64 invite_end_time = 14;
+    bool is_dungeon_party = 15;
+    bool is_invite_all = 16;
+    uint32 party_number_type = 17;
+    bool request_user_assassin_mode = 18;
+}
+
+message GAME_WORLD_PARTY_INVITE_RESULT {
+    uint64 request_user_uid = 1;
+    uint64 invite_user_uid = 2;
+    int32 fail_reason = 3;
+}
+
+message CLIENT_GAME_PARTY_INVITE_REPLY {
+    uint64 reply_user_uid = 1;
+    uint64 request_user_uid = 2;
+    uint64 request_party_uid = 3;
+    bool request_result = 4;
+}
+
+message GAME_WORLD_PARTY_INVITE_REPLY {
+    uint64 reply_user_uid = 1;
+    uint64 request_user_uid = 2;
+    uint64 request_party_uid = 3;
+    bool request_result = 4;
+    int32 dungeon_auto_start = 5;
+    bool assassin_mode = 6;
+}
+
+message GAME_CLIENT_PARTY_MEMBER_ENTER {
+    uint64 receive_user_uid = 1;
+    uint64 join_party_uid = 2;
+    _party_member_info enter_party_member_info = 3;
+}
+
+message GAME_CLIENT_PARTY_JOIN {
+    uint64 join_user_uid = 1;
+    uint64 join_party_uid = 2;
+    _total_party_info total_party_info = 3;
+}
+
+message GAME_CLIENT_PARTY_INFO {
+    uint64 receive_user_uid = 1;
+    uint64 party_uid = 2;
+    _total_party_info total_party_info = 3;
+}
+
+message CLIENT_GAME_REQUEST_PARTY_LEAVE {
+    uint64 leave_user_uid = 1;
+    uint64 leave_party_uid = 2;
+}
+
+message CLIENT_GAME_REQUEST_PARTY_MEMBER_KICK {
+    uint64 request_user_uid = 1;
+    uint64 kick_user_uid = 2;
+    uint64 request_party_uid = 3;
+}
+
+message GAME_CLIENT_NOTIFY_PARTY_MEMBER_LEAVE {
+    uint64 receive_user_uid = 1;
+    uint64 leave_user_uid = 2;
+    uint64 leave_party_uid = 3;
+    int32 leave_reason = 4;
+    bool change_party_leader = 5;
+    uint64 next_party_leader_uid = 6;
+    int32 dungeon_auto_start = 7;
+}
+
+message GAME_CLIENT_PARTY_MEMBER_LEAVE_RESULT {
+    uint64 leave_user_uid = 1;
+    int32 leave_reason = 2;
+}
+
+message GAME_CLIENT_PARTY_ERROR {
+    uint64 receive_user_uid = 1;
+    int32 party_error_id = 2;
+}
+
+message GAME_WORLD_REQUEST_PARTY_INFO {
+    uint64 request_user_uid = 1;
+}
+
+message GAME_CLIENT_NOTIFY_PARTY_MEMBER_LOGINOUT {
+    uint64 receive_user_uid = 1;
+    uint64 user_uid = 2;
+    bool log_in = 3;
+}
+
+message GAME_CLIENT_NOTIFY_PARTY_INVITE_REFUSE {
+    uint64 receive_user_uid = 1;
+    uint64 refuse_user_uid = 2;
+    string refuse_user_name = 3;
+    int32 error_id = 4;
+}
+
+message GAME_CLIENT_NOTIFY_PARTYMEMBER_INFO_UPDATE {
+    uint64 receive_user_uid = 1;
+    int32 stageid = 2;
+    int64 update_partymember_id = 3;
+    int32 channel_index = 4;
+    int32 Level = 5;
+    int32 combat_point = 6;
+    bool alive = 7;
+    _refuse_info refuse_buff_info = 8;
+}
+
+message GAME_CLIENT_SYNC_PARTY_MEMBER_INFO_IN_STAGE {
+    uint64 receive_user_uid = 1;
+    repeated _party_member_sync_info party_member_sync_info = 2;
+}
+
+message WORLD_GAME_REQUEST_START_PARTY_VOTE {
+    uint64 vote_user_uid = 1;
+    uint64 vote_start_user_uid = 2;
+    int32 vote_type = 3;
+    uint64 vote_arg = 4;
+    uint64 default_vote_user_uid = 5;
+}
+
+message GAME_WORLD_START_PARTY_VOTE_ERROR {
+    uint64 vote_start_user_uid = 2;
+    uint64 vote_user_uid = 1;
+    uint32 error_id = 3;
+}
+
+message GAME_CLIENT_START_PARTY_VOTE {
+    uint64 receive_user_uid = 1;
+    int32 vote_type = 2;
+    uint64 vote_arg = 3;
+}
+
+message CLIENT_GAME_PARTY_VOTE_RESULT {
+    uint64 vote_user_uid = 1;
+    bool vote_result = 2;
+}
+
+message GAME_CLIENT_PARTY_MEMBER_VOTE_RESULT {
+    uint64 receive_user_uid = 1;
+    uint64 vote_user_uid = 2;
+    bool vote_result = 3;
+}
+
+message GAME_CLIENT_VOTE_RESULT {
+    uint64 receive_user_uid = 1;
+    uint64 vote_party_uid = 2;
+    bool vote_result = 3;
+}
+
+message CLIENT_GAME_CHANGE_PARTY_LEADER {
+    uint64 request_user_uid = 1;
+    uint64 request_party_uid = 2;
+    uint64 next_leader_uid = 3;
+}
+
+message GAME_CLIENT_CHANGE_PARTY_LEADER_RESULT {
+    uint64 receive_user_uid = 1;
+    uint64 next_leader_uid = 2;
+    uint64 before_leader_uid = 3;
+    bool before_leader_is_ready = 4;
+    int32 dungeon_auto_start = 5;
+}
+
+message GAME_CLIENT_NOTIFY_PARTY_MEMBER_ALIVE {
+    uint64 receive_user_uid = 1;
+    uint64 user_uid = 2;
+    bool alive = 3;
+    _refuse_info refuse_buff_info = 4;
+}
+
+message CLIENT_GAME_REQUEST_RECOMMEND_PARTY_MEMBER_LIST {
+    uint64 uid = 1;
+}
+
+message GAME_CLIENT_RECOMMEND_PARTY_MEMBER_LIST {
+    uint64 receive_user_uid = 1;
+    repeated _recommend_party_member_info recommend_user_list = 2;
+}
+
+message CLIENT_GAME_CHANGE_FREE_ENTER_PARTY {
+    uint64 request_user_uid = 1;
+    uint64 party_uid = 2;
+    bool free_enter_party = 3;
+}
+
+message GAME_CLIENT_NOTIFY_CHANGE_FREE_ENTER_PARTY {
+    uint64 receive_user_uid = 1;
+    uint64 party_uid = 2;
+    bool free_enter_party = 3;
+}
+
+message CLIENT_GAME_REQUEST_CALL_PARTY_MEMBER {
+    uint64 request_user_uid = 1;
+    uint64 party_uid = 2;
+}
+
+message GAME_CLIENT_REQUEST_CALL_PARTY_MEMBER {
+    uint64 request_user_uid = 1;
+    uint64 party_uid = 2;
+    int32 leader_stage_id = 3;
+    _vector3 leader_position = 4;
+}
+
+message GAME_CLIENT_CALL_PARTY_MEMBER_TO_LEADER_POSITION {
+    uint64 receive_user_uid = 1;
+    int32 leader_stage_id = 2;
+    _vector3 leader_position = 3;
+}
+
+message CLIENT_GAME_REFUSE_MEMBER_CALL {
+    uint64 refuse_user_uid = 1;
+    uint64 party_uid = 2;
+}
+
+message GAME_CLIENT_NOTIFY_REFUSE_MEMBER_CALL {
+    uint64 receive_user_uid = 1;
+    uint64 refuse_user_uid = 2;
+}
+
+message CLIENT_GAME_REQUEST_PARTY_USER_POSITION {
+    uint64 target_user_uid = 1;
+    uint64 party_uid = 2;
+}
+
+message GAME_CLIENT_REQUEST_PARTY_USER_POSITION_GAME_SERVER {
+    uint64 target_user_uid = 1;
+    uint64 request_user_uid = 2;
+    uint64 party_uid = 3;
+}
+
+message GAME_CLIENT_REQUEST_PARTY_USER_POSITION_RESULT {
+    uint64 target_user_uid = 1;
+    uint64 request_user_uid = 2;
+    uint64 party_uid = 3;
+    int32 target_stage_id = 4;
+    _vector3 target_position = 5;
+}
+
+message CLIENT_WORLD_FIND_PARTY_LIST {
+    uint64 uid = 1;
+    uint32 party_stage_type = 2;
+    uint32 start_search_level = 3;
+    uint32 end_search_level = 4;
+    bool is_guild_party = 5;
+}
+
+message WORLD_CLIENT_FIND_PARTY_LIST_START {
+    uint32 party_stage_type = 1;
+    bool is_guild_party = 2;
+    uint32 normal_party_count = 3;
+    uint32 party_dungeon_count = 4;
+    uint32 boss_dungeon_count = 5;
+    uint32 guild_party_count = 6;
+    uint32 hell_dungeon_count = 7;
+}
+
+message WORLD_CLIENT_FIND_PARTY_LIST {
+    repeated _total_party_info find_party_list = 1;
+    uint32 party_stage_type = 2;
+    bool is_guild_party = 3;
+}
+
+message WORLD_CLIENT_FIND_PARTY_LIST_END {
+    uint32 party_stage_type = 1;
+    bool is_guild_party = 2;
+}
+
+message CLIENT_WORLD_CHANGE_PARTY_ATTRIBUTE {
+    uint64 request_user_uid = 1;
+    uint64 party_uid = 2;
+    _party_attribute change_party_attribute = 3;
+}
+
+message WORLD_CLIENT_CHANGE_PARTY_ATTRIBUTE {
+    uint64 receive_user_uid = 1;
+    uint64 party_uid = 2;
+    _party_attribute change_party_attribute = 3;
+}
+
+message CLIENT_GAME_REQUEST_PARTY_ENTER {
+    uint64 request_user = 1;
+    uint64 request_party_uid = 2;
+    uint32 party_stage_type = 3;
+    uint32 party_target_stage_index = 4;
+    string password = 5;
+    bool is_chatting_invite = 6;
+}
+
+message GAME_WORLD_REQUEST_PARTY_ENTER {
+    uint64 request_user = 1;
+    uint64 request_party_uid = 2;
+    string password = 3;
+    bool is_chatting_invite = 4;
+    int32 dungeon_auto_start = 5;
+}
+
+message WORLD_CLIENT_REQUEST_PARTY_ENTER_AGREE {
+    uint64 receive_user_uid = 1;
+    uint64 request_user_uid = 2;
+    string request_user_name = 3;
+    uint32 request_user_level = 4;
+    uint32 request_user_class = 5;
+    uint64 request_enter_party_uid = 6;
+    int32 request_user_combatpoint = 7;
+    string request_user_guild_name = 8;
+    uint32 request_user_guild_mark = 9;
+    uint32 request_user_guild_mark_edge = 10;
+    uint64 request_user_guild_uid = 11;
+}
+
+message CLIENT_WORLD_REPLY_PARTY_ENTER_AGREE {
+    uint64 reply_user_uid = 1;
+    uint64 request_user_uid = 2;
+    uint64 request_enter_party_uid = 3;
+    bool request_result = 4;
+}
+
+message CLIENT_WORLD_REMOVE_PARTY {
+    uint64 request_user_uid = 1;
+    uint64 request_party_uid = 2;
+}
+
+message WORLD_GAME_NOTIFY_CHANGE_PARTY_ATTRIBUTE {
+    uint64 receive_user_uid = 1;
+    uint64 party_uid = 2;
+    _party_attribute party_attribute = 3;
+}
+
+message WORLD_CLIENT_PARTY_VOTE_CANCEL {
+    uint64 error_user_uid = 1;
+    uint32 error_id = 2;
+}
+
+message GAME_WORLD_SYNC_PARTY_MEMBER_INFO {
+    _party_member_sync_info member_sync_info = 1;
+}
+
+message WORLD_CLIENT_SYNC_PARTY_MEMBER_INFO {
+    _party_member_sync_info member_sync_info = 1;
+}
+
+message GAME_CLIENT_PARTY_MEMBER_ITEM_DROP {
+    uint64 member_uid = 1;
+    repeated _simple_item_info member_drop_item_list = 2;
+}
+
+message WORLD_CLIENT_PARTY_MEMBER_CHANGE_GUILD_NAME {
+    uint64 member_uid = 1;
+    string guild_name = 2;
+}
+
+message CLIENT_WORLD_WARP_PARTY_USER_MAGIC_SQUARE_ROOM {
+    uint64 target_uid = 1;
+}
+
+message CLIENT_WORLD_CHANGE_MEMBER_SLOT_CLASS {
+    uint64 request_user_uid = 1;
+    uint64 party_uid = 2;
+    uint32 slot_number = 3;
+    uint32 change_slot_class = 4;
+}
+
+message WORLD_CLIENT_NOTIFY_CHANGE_MEMBER_SLOT_CLASS {
+    uint64 receive_user_uid = 1;
+    uint64 party_uid = 2;
+    uint32 slot_number = 3;
+    uint32 change_slot_class = 4;
+}
+
+message CLIENT_WORLD_PARTY_CHANGE_READY {
+    bool is_ready = 1;
+    uint64 party_uid = 2;
+}
+
+message WORLD_CLIENT_PARTY_NOTIFY_CHANGE_READY {
+    uint64 change_user_uid = 1;
+    bool is_ready = 2;
+}
+
+message CLIENT_GAME_PARTY_INSTANCE_DUNGEON_ENTER {
+    uint64 uid = 1;
+    uint32 world_boss_raid_id = 2;
+}
+
+message GAME_WORLD_PARTY_INSTANCE_DUNGEON_ENTER {
+    uint64 uid = 1;
+    uint32 world_boss_raid_id = 2;
+}
+
+message CLIENT_WORLD_PARTY_ADVERTISING {
+    
+}
+
+message CLIENT_WORLD_PARTY_SEARCH {
+    uint64 target_party_uid = 1;
+}
+
+message WORLD_CLIENT_PARTY_SEARCH {
+    uint64 target_party_uid = 1;
+    _total_party_info total_party_info = 2;
+    bool is_exist = 3;
+}
+
+message CLIENT_WORLD_SET_PARTY_ALARM {
+    uint32 target_stage_type = 1;
+    bool is_on = 2;
+    bool is_guild = 3;
+}
+
+message WORLD_CLIENT_SET_PARTY_ALARM {
+    uint32 target_stage_type = 1;
+    bool is_on = 2;
+    bool is_guild = 3;
+}
+
+message CLIENT_WORLD_GET_PARTY_ALARM {
+    
+}
+
+message WORLD_CLIENT_GET_PARTY_ALARM {
+    repeated _party_alarm_info party_alarm_info = 1;
+}
+
+message WORLD_CLIENT_NOTIFY_PARTY_DUNGEON_START {
+    uint32 dungeon_start_time = 1;
+}
+
+message CLIENT_WORLD_GET_PARTY_INFO {
+    
+}
+
+message CLIENT_WORLD_PARTY_TARGET_MONSTER {
+    uint32 target_entity_type = 1;
+    uint64 target_monster_uid = 2;
+}
+
+message WORLD_CLIENT_PARTY_TARGET_MONSTER_NOTIFY {
+    uint32 target_entity_type = 1;
+    uint64 target_uid = 2;
+    uint64 target_zone_uid = 3;
+    uint64 target_stage_id = 4;
+}
+
+message CLIENT_GAME_PARTY_INVITE_ALL {
+    uint32 invite_type = 1;
+}
+
+message GAME_WORLD_PARTY_UPDATE_ALIVE {
+    uint64 user_uid = 1;
+    bool alive = 2;
+    _refuse_info refuse_buff_info = 3;
+}
+
+message CLIENT_WORLD_PARTY_INVITE_CHATTING {
+    uint32 chat_type = 1;
+    uint64 target_uid = 2;
+}
+
+message WORLD_CLIENT_PARTY_INVITE_CHATTING {
+    uint32 result = 1;
+    uint32 chat_type = 2;
+    uint64 target_uid = 3;
+}
+
+message GAME_WORLD_PARTY_CHANGE_DUNGEON_AUTO_START {
+    int32 dungeon_auto_start = 1;
+}
+
+message GAME_CLIENT_PARTY_CHANGE_DUNGEON_AUTO_START {
+    uint64 user_uid = 1;
+    int32 dungeon_auto_start = 2;
+}

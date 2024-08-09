@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_GUILD_EXPEDITION_CREATE {
+    uint32 guild_expedission_id = 1;
+}
+
+message GAME_CLIENT_GUILD_EXPEDITION_CREATE {
+    int32 result = 1;
+    uint32 guild_expedission_id = 2;
+}
+
+message GAME_WORLD_GUILD_EXPEDITION_CREATE {
+    uint64 user_uid = 1;
+    uint32 guild_expedission_id = 2;
+}
+
+message WORLD_GAME_GUILD_EXPEDITION_CREATE {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint32 guild_expedission_id = 3;
+    uint64 zone_uid = 4;
+    uint64 guild_uid = 5;
+}
+
+message GAME_CLIENT_GUILD_EXPEDITION_FAIL {
+    int32 result = 1;
+}
+
+message CLIENT_WORLD_GUILD_EXPEDITION_LIST {
+    int32 expedition_type = 1;
+}
+
+message WORLD_CLIENT_GUILD_EXPEDITION_LIST {
+    repeated _guild_expedition_list guild_expedition_list = 1;
+    int32 guild_expedission_ticket = 2;
+    int32 guild_expedission_max_ticket = 3;
+}
+
+message CLIENT_WORLD_GUILD_EXPEDITION_DETAIL {
+    uint32 guild_expedission_id = 1;
+}
+
+message GAME_WORLD_GUILD_EXPEDITION_DETAIL {
+    uint32 guild_expedission_id = 1;
+    int32 contribute_reward = 2;
+}
+
+message WORLD_CLIENT_GUILD_EXPEDITION_DETAIL {
+    uint32 guild_expedission_id = 1;
+    int32 event_state = 2;
+    int32 user_count = 3;
+    int32 max_user_count = 4;
+    int64 remaining_time = 5;
+    int32 summon_count = 7;
+    int32 contribute_reward = 8;
+}
+
+message GAME_WORLD_GUILD_EXPEDITION_ENTER {
+    uint64 user_uid = 1;
+    int32 expedition_type = 2;
+}
+
+message WORLD_GAME_GUILD_EXPEDITION_ENTER {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint32 guild_expedission_id = 3;
+    uint64 zone_uid = 4;
+}
+
+message GAME_WORLD_GUILD_EXPEDITION_STAGE_CLEAR {
+    uint32 guild_expedission_id = 1;
+    uint64 zone_uid = 2;
+    uint64 guild_uid = 3;
+}
+
+message WORLD_GAME_GUILD_EXPEDITION_STAGE_CLEAR {
+    uint32 guild_expedission_id = 1;
+    uint64 zone_uid = 2;
+    uint64 guild_uid = 3;
+}
+
+message GAME_WORLD_USER_EXPEDISSION_TICKET {
+    uint64 user_uid = 1;
+    uint32 guild_expedission_ticket = 2;
+}
+
+message WORLD_CLIENT_EXPEDISSION_REGISTER_NOTICE {
+    uint32 guild_expedission_id = 1;
+}
+
+message WORLD_GAME_GUILD_EXPEDITION_SUMMON_SYNC {
+    uint32 guild_expedission_id = 1;
+    uint32 summon_count = 2;
+    uint64 guild_uid = 3;
+    int64 create_date = 4;
+    int64 reset_date = 5;
+}
+
+message WORLD_GAME_USER_GUILD_EXPEDITION_RESET {
+    uint64 user_uid = 1;
+    uint32 guild_expedission_id = 2;
+}
+
+message GAME_WORLD_GUILD_EXPEDITION_FAIL {
+    uint64 guild_uid = 1;
+    uint32 guild_expedission_id = 2;
+    uint64 zone_uid = 3;
+}

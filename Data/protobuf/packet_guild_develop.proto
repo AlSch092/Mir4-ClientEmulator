@@ -1,0 +1,241 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message guild_dev_simple_info {
+    int32 index = 1;
+    int32 level = 2;
+    int32 exp = 3;
+    bool is_lock = 4;
+    bool is_skill_start = 5;
+}
+
+message WORLD_CLIENT_GUILD_DEVELOP_LEVEL_DATA {
+    repeated guild_dev_simple_info develop_list = 1;
+}
+
+message CLIENT_WORLD_GUILD_DEVELOP_LIST {
+    int32 list_id = 1;
+}
+
+message WORLD_CLIENT_GUILD_DEVELOP_LIST {
+    int32 result = 1;
+    int32 list_id = 2;
+    repeated guild_dev_simple_info develop_list = 3;
+    int32 recommend_index = 4;
+}
+
+message CLIENT_WORLD_GUILD_DEVELOP_DETAIL {
+    int32 index = 1;
+}
+
+message WORLD_GAME_GUILD_DEVELOP_DETAIL {
+    uint64 user_uid = 1;
+    int32 index = 2;
+}
+
+message WORLD_CLIENT_GUILD_DEVELOP_DETAIL {
+    int32 result = 1;
+    int32 index = 2;
+    int32 level = 3;
+    int32 exp = 4;
+    bool is_level_up_start = 5;
+    int32 levelup_remain_time = 6;
+    int32 levelup_max_time = 7;
+    repeated _cost_info guild_cost_info = 9;
+    bool is_clear_expedition = 10;
+    bool is_skill_start = 11;
+    int64 skill_remain_time = 12;
+    int32 skill_point = 13;
+}
+
+message CLIENT_WORLD_GUILD_DEVELOP_RECOMMEND {
+    int32 index = 1;
+    bool is_recommend = 2;
+}
+
+message GAME_WORLD_GUILD_DEVELOP_RECOMMEND {
+    int32 index = 1;
+    bool is_recommend = 2;
+    uint32 start_world_id = 3;
+}
+
+message WORLD_CLIENT_GUILD_DEVELOP_RECOMMEND {
+    int32 result = 1;
+    int32 index = 2;
+    bool is_recommend = 3;
+}
+
+message WORLD_GAME_GUILD_DEVELOP_RECOMMEND {
+    int32 result = 1;
+    int64 user_uid = 2;
+    int64 guild_uid = 3;
+    int32 index = 4;
+    bool is_recommend = 5;
+}
+
+message GAME_CLIENT_GUILD_DEVELOP_RECOMMEND_NOTIFY {
+    int32 recommend_id = 1;
+    bool is_recommend = 2;
+}
+
+message CLIENT_WORLD_GUILD_DEVELOP_LEVELUP_START {
+    int32 index = 1;
+}
+
+message GAME_WORLD_GUILD_DEVELOP_LEVELUP_START {
+    int32 index = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_CLIENT_GUILD_DEVELOP_LEVELUP_START {
+    int32 result = 1;
+    int32 index = 2;
+    int32 remain_time = 3;
+    int32 max_time = 4;
+    int32 develop_level = 5;
+}
+
+message WORLD_GAME_GUILD_DEVELOP_LEVELUP_START {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    int32 index = 4;
+    int64 start_time = 5;
+    int64 end_time = 6;
+    int32 develop_level = 7;
+}
+
+message CLIENT_WORLD_GUILD_DEVELOP_LEVELUP_COMPLETE {
+    int32 index = 1;
+}
+
+message WORLD_CLIENT_GUILD_DEVELOP_LEVELUP_COMPLETE {
+    int32 result = 1;
+    int32 index = 2;
+    int32 level = 3;
+    int32 levelup_reward_guild_exp = 4;
+}
+
+message WORLD_CLIENT_GUILD_DEVELOP_LEVELUP_FAIL {
+    uint32 index = 1;
+    int32 level = 2;
+    int32 exp = 3;
+}
+
+message GAME_CLIENT_GUILD_DEVELOP_LEVELUP_COMPLETE {
+    int32 index = 1;
+    int32 level = 2;
+}
+
+message CLIENT_WORLD_GUILD_DEVELOP_DONATION {
+    int32 index = 1;
+}
+
+message GAME_WORLD_GUILD_DEVELOP_DONATION {
+    int32 index = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_DEVELOP_DONATION {
+    uint64 user_uid = 1;
+    uint64 guild_uid = 2;
+    int32 index = 3;
+    uint32 develop_level = 4;
+    int32 skill_point = 5;
+}
+
+message GAME_WORLD_GUILD_DEVELOP_DONATION_RESULT {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    int32 index = 4;
+    bool is_happy_bonus = 6;
+    int32 reward_develop_exp = 8;
+    repeated _cost_info user_reward_cost_info_list = 9;
+    int32 skill_point = 10;
+    uint32 start_world_id = 11;
+}
+
+message GAME_CLIENT_GUILD_DEVELOP_DONATION_RESULT {
+    _cost_info user_use_cost_info = 1;
+    repeated _cost_info user_reward_cost_info_list = 2;
+    repeated _time_ticket_info time_ticket_info = 3;
+    int32 skill_point = 4;
+}
+
+message WORLD_CLIENT_GUILD_DEVELOP_DONATION_RESULT {
+    int32 result = 1;
+    int32 index = 2;
+    bool is_happy_bonus = 3;
+    int32 reward_develop_exp = 6;
+    int32 result_develop_exp = 7;
+    repeated _cost_info user_reward_cost_info_list = 8;
+    int32 skill_point = 9;
+}
+
+message WORLD_GAME_GUILD_DEVELOP_DONATION_RESULT {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    int32 index = 3;
+    bool is_happy_bonus = 4;
+    int32 reward_develop_exp = 6;
+    int32 result_develop_exp = 7;
+    repeated _cost_info user_reward_cost_info_list = 8;
+    int32 skill_point = 9;
+}
+
+message WORLD_GAME_GUILD_DEVELOP_SERVER_SYNC {
+    uint64 guild_uid = 1;
+    int32 index = 2;
+    int32 level = 3;
+    int32 exp = 4;
+    bool is_recommand = 5;
+    bool is_skill_start = 6;
+    int64 skill_start_time = 7;
+    int64 skill_end_time = 8;
+    int32 skill_point = 9;
+}
+
+message CLIENT_GAME_GUILD_DEVELOP_SKILL_START {
+    int32 index = 1;
+}
+
+message GAME_WORLD_GUILD_DEVELOP_SKILL_START {
+    int32 index = 1;
+    uint32 start_world_id = 2;
+}
+
+message WORLD_GAME_GUILD_DEVELOP_SKILL_START {
+    int32 result = 1;
+    int32 index = 2;
+    uint64 guild_uid = 3;
+    int64 skill_start_time = 4;
+    int64 skill_end_time = 5;
+    uint64 user_uid = 6;
+}
+
+message GAME_CLIENT_GUILD_DEVELOP_SKILL_START {
+    int32 result = 1;
+    int32 index = 2;
+    int64 skill_remaining_time = 3;
+}
+
+message WORLD_GAME_GUILD_DEVELOP_SKILL_END {
+    int32 index = 1;
+    uint64 guild_uid = 2;
+}
+
+message GAME_CLIENT_GUILD_DEVELOP_SKILL_END {
+    int32 index = 2;
+}
+
+message GAME_CLIENT_NOTIFY_GUILD_DEVELOP_SKILL_START {
+    int32 index = 1;
+}
+
+message GAME_CLIENT_NOTIFY_GUILD_DEVELOP_UNLOCK_SKILL {
+    int32 index = 1;
+}

@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message GAME_CLIENT_NOTIFY_ITEM_GAIN {
+    int32 gain_type = 1;
+    string user_name = 2;
+    int32 item_tid = 3;
+    int32 second_value = 4;
+    int32 xdraco_state = 5;
+    int32 world_id = 6;
+}
+
+message CLIENT_GAME_REQUEST_NOTIFY_ITEM_GAIN {
+    int32 item_tid = 1;
+}
+
+message WORLD_GAME_NOTIFY_CONTETNS_LOCK {
+    uint64 user_uid = 1;
+    int32 result = 2;
+    int32 contents_type = 3;
+    int32 contetns_value = 4;
+}
+
+message GAME_CLIENT_NOTIFY_CONTETNS_LOCK {
+    int32 result = 1;
+    int32 contents_type = 2;
+    int32 contetns_value = 3;
+    bool kick_zone = 4;
+}
+
+message CLIENT_GAME_CONTENTS_LOCK_LIST {
+    
+}
+
+message GAME_CLIENT_CONTENTS_LOCK_LIST {
+    repeated _gm_contents_lock lock_list = 1;
+}
+
+message GAME_CLIENT_CONTENTS_LOCK_CHANGE {
+    repeated _gm_contents_lock lock_list = 1;
+}
+
+message GAME_CLIENT_NOTIFY_CHANGE_DATE {
+    
+}
+
+message GAME_CLIENT_NOTIFY_TIMELINE_GEN {
+    repeated int32 timeline_tid = 1;
+}
+
+message GAME_CLIENT_NOTIFY_TIMELINE_GEN_ANOTHER_WORLD {
+    repeated int32 timeline_tid = 1;
+}
+
+message GAME_CLIENT_NOTIFY_GAIN_INFO {
+    int32 gain_type = 1;
+    uint32 string_tid = 2;
+    string user_name = 3;
+    uint32 gain_tid = 4;
+    uint32 stage_tid = 5;
+}
+
+message SERVER_SERVER_GUILD_NOTIFY_GAIN_INFO {
+    uint64 guild_uid = 1;
+    int32 gain_type = 2;
+    uint32 string_tid = 3;
+    string user_name = 4;
+    uint32 gain_tid = 5;
+    uint32 stage_tid = 6;
+}
+
+message LOBBY_CLIENT_NOTIFY_CONTENTS_LOCK {
+    uint64 user_uid = 1;
+    int32 result = 2;
+    int32 contents_type = 3;
+    int32 contetns_value = 4;
+}
+
+message CLIENT_LOBBY_CONTENTS_LOCK_LIST {
+    
+}
+
+message LOBBY_CLIENT_CONTENTS_LOCK_LIST {
+    repeated _gm_contents_lock lock_list = 1;
+}
+
+message LOBBY_CLIENT_CONTENTS_LOCK_CHANGE {
+    repeated _gm_contents_lock lock_list = 1;
+}
+
+message GAME_CLIENT_NOTIFY_CAPTCHA_REAUTH_CHANGE {
+    int32 reauth_term_min = 1;
+    int32 reauth_level = 2;
+}

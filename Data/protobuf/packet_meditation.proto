@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message CLIENT_GAME_MEDITATION_RESERVE {
+    uint64 uid = 1;
+}
+
+message GAME_CLIENT_MEDITATION_RESERVE {
+    int32 groupId = 1;
+    int32 slotId = 2;
+}
+
+message GAME_CLIENT_MEDITATION_END {
+    uint64 uid = 1;
+}
+
+message GAME_CLIENT_MEDITATION_ADD_ENERGYPOINT {
+    int32 addEnergyPoint = 1;
+}

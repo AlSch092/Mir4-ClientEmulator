@@ -1,0 +1,137 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _plunder_trap_info {
+    int32 monster_tid = 1;
+    int32 production_remain_second = 2;
+}
+
+message GAME_WORLD_NTF_PLUNDER_REWARD_BOX_OPENED {
+    int32 plunder_tid = 1;
+    uint64 plunder_zone_uid = 2;
+    uint64 opened_user_uid = 3;
+    int64 battle_tax_plunder_value = 4;
+    int64 added_battle_tax_plunder_value = 5;
+}
+
+message GAME_CLIENT_NTF_PLUNDER_ZONE_ENTER_INFO {
+    _plunder_info plunder_info = 1;
+    int32 guild_camp_kind = 2;
+    int64 black_iron_plunder_total_count = 3;
+    repeated _plunder_trap_info plunder_trap_info_list = 4;
+    int32 plunder_run_time_minute = 5;
+}
+
+message WORLD_GAME_NTF_PLUNDER_SERVER_INFO {
+    _plunder_server_info plunder_server_info = 1;
+    uint64 plunder_zone_uid = 2;
+}
+
+message WORLD_GAME_NTF_PLUNDER_PREPARE_START {
+    _plunder_server_info plunder_server_info = 1;
+    uint64 plunder_zone_uid = 2;
+}
+
+message WORLD_GAME_NTF_PLUNDER_BATTLE_START {
+    _plunder_server_info plunder_server_info = 1;
+    uint64 plunder_zone_uid = 2;
+}
+
+message WORLD_GAME_NTF_PLUNDER_BATTLE_END_TIMEOUT {
+    _plunder_server_info plunder_server_info = 1;
+    uint64 plunder_zone_uid = 2;
+}
+
+message WORLD_GAME_NTF_PLUNDER_BATTLE_END_OCCUPY_CHANGE {
+    _plunder_server_info plunder_server_info = 1;
+    uint64 plunder_zone_uid = 2;
+}
+
+message GAME_CLIENT_NTF_PLUNDER_END_TO_BATTLE_USER {
+    int32 battle_end_type = 1;
+}
+
+message WORLD_GAME_NTF_PLUNDER_LOCK_START_GM_TOOL {
+    _plunder_server_info plunder_server_info = 1;
+    uint64 plunder_zone_uid = 2;
+    bool is_battle_end = 3;
+}
+
+message WORLD_GAME_NTF_PLUNDER_LOCK_STOP_GM_TOOL {
+    _plunder_server_info plunder_server_info = 1;
+    uint64 plunder_zone_uid = 2;
+}
+
+message CLIENT_WORLD_REQ_PLUNDER_INFO {
+    int32 plunder_tid = 2;
+}
+
+message WORLD_CLIENT_ACK_PLUNDER_INFO {
+    _plunder_info plunder_info = 1;
+    int64 black_iron_plunder_count = 2;
+    int64 black_iron_plunder_repayment_count = 3;
+    int32 plunder_run_time_minute = 4;
+    int32 battle_npc_status = 5;
+    uint32 channel_state = 6;
+    int64 black_iron_plunder_total_count = 7;
+}
+
+message WORLD_GAME_SYNC_PLUNDER_INFO_IN_ZONE_GROUP {
+    _plunder_server_info plunder_server_info = 1;
+}
+
+message WORLD_GAME_SYNC_PLUNDER_INFO_LIST_IN_ZONE_GROUP {
+    repeated _plunder_server_info plunder_server_info_list = 1;
+}
+
+message SERVER_CLIENT_NTF_NOTICE_PLUNDER {
+    int32 plunder_tid = 1;
+    uint32 notice_type = 2;
+    int32 monster_tid = 3;
+    string user_name = 4;
+}
+
+message GAME_CLIENT_NTF_PLUNDER_MONEY_INFO {
+    int64 black_iron_plunder_total_count = 1;
+}
+
+message CLIENT_GAME_REQ_PLUNDER_TRAP_BUY {
+    int32 buy_monster_tid = 1;
+}
+
+message GAME_CLIENT_ACK_PLUNDER_TRAP_BUY {
+    uint32 result = 1;
+    int32 trap_possible_remain_second = 2;
+    int32 reproduction_remain_second = 3;
+}
+
+message GAME_CLIENT_NTF_PLUNDER_TRAP_BUY {
+    string buyer_user_name = 1;
+    int32 buy_monster_tid = 2;
+}
+
+message GAME_WORLD_NTF_PLUNDER_TRAP_BUY {
+    int32 plunder_tid = 1;
+    uint64 buyer_guild_uid = 2;
+    uint64 buyer_user_uid = 3;
+    string buyer_user_name = 4;
+    repeated _cost_info use_cost_info = 5;
+}
+
+message GAME_WORLD_NTF_PLUNDER_MONSTER_EVENT {
+    int32 plunder_tid = 1;
+    int32 monster_tid = 2;
+    uint32 notice_type = 3;
+}
+
+message WORLD_CLIENT_NTF_PLUNDER_BATTLE_NPC_STATUS {
+    int32 plunder_tid = 1;
+    int32 battle_npc_status = 2;
+}
+
+message WORLD_CLIENT_NTF_PLUNDER_INFO {
+    _plunder_info plunder_info = 1;
+}

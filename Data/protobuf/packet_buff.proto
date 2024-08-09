@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message GAME_CLIENT_ATTACH_BUFF {
+    int32 type = 1;
+    uint64 uid = 2;
+    _buff_info attach_buff_info = 3;
+    _buff_special_effect_info special_effect_info = 4;
+}
+
+message GAME_CLIENT_DETACH_BUFF {
+    int32 type = 1;
+    uint64 uid = 2;
+    int32 buff_id = 3;
+}
+
+message GAME_CLIENT_BUFF_LIST {
+    int32 type = 1;
+    uint64 uid = 2;
+    repeated _buff_info buff_list = 3;
+}
+
+message CLIENT_GAME_BUFF_LIST {
+    uint64 user_uid = 1;
+}
+
+message GAME_CLIENT_ATTACH_SPECIAL_EFFECT {
+    int32 type = 1;
+    uint64 uid = 2;
+    repeated _buff_special_effect_info special_effect_info = 3;
+}
+
+message GAME_CLIENT_DETACH_SPECIAL_EFFECT {
+    int32 type = 1;
+    uint64 uid = 2;
+    repeated _buff_special_effect_info special_effect_info = 3;
+}
+
+message GAME_CLIENT_BUFF_ATTACK {
+    int32 entity_type = 1;
+    uint64 entity_uid = 2;
+    int32 buff_attack_id = 3;
+}
+
+message GAME_CLIENT_BUFF_ATTACK_STRUCK {
+    int32 target_type = 1;
+    uint64 target_uid = 2;
+    int32 attacker_type = 3;
+    uint64 attacker_uid = 4;
+    int32 buff_attack_id = 5;
+    int32 damage_type = 6;
+    int32 damage = 7;
+    int32 shield_damage = 8;
+    int32 hp = 9;
+    int32 cc_type = 10;
+    int32 cc_time_ms = 11;
+    _vector3 loc = 12;
+    int64 server_time_ms = 13;
+}
+
+message GAME_CLIENT_BUFF_CHANGE_TIME {
+    int32 buff_id = 1;
+    int32 buff_left_time = 2;
+}
+
+message GAME_WORLD_WORLDBUFF_APPLY {
+    int32 world_buff_tid = 1;
+    bool is_apply = 2;
+}

@@ -1,0 +1,173 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_GUILD_NPC_SHOP_INFO {
+    
+}
+
+message GAME_CLIENT_GUILD_NPC_SHOP_INFO {
+    int32 result = 1;
+    int32 sell_guild_cost_type = 2;
+    int32 sell_guild_cost_count = 3;
+    int32 sell_guild_cost_remain_count = 4;
+    int32 sell_price = 5;
+    _cost_info income_cost = 6;
+    int64 remain_time = 7;
+    int32 guild_shop_state = 8;
+}
+
+message CLIENT_GAME_GUILD_NPC_SHOP_OPEN {
+    int32 sell_count = 1;
+    int32 sell_price = 2;
+}
+
+message GAME_WORLD_GUILD_NPC_SHOP_OPEN {
+    int32 sell_count = 1;
+    int32 sell_price = 2;
+}
+
+message WORLD_GAME_GUILD_NPC_SHOP_OPEN {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    int32 sell_cost_type = 4;
+    int32 sell_count = 5;
+    int32 sell_price = 6;
+    int64 open_time = 7;
+    int64 close_time = 8;
+    int32 dominion_tid = 9;
+}
+
+message GAME_CLIENT_GUILD_NPC_SHOP_OPEN {
+    int32 result = 1;
+}
+
+message CLIENT_GAME_GUILD_NPC_SHOP_CLOSE {
+    
+}
+
+message GAME_WORLD_GUILD_NPC_SHOP_CLOSE {
+    int64 guild_uid = 1;
+    int32 close_reason = 2;
+}
+
+message WORLD_GAME_GUILD_NPC_SHOP_CLOSE {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+    bool is_complate_takeout = 4;
+}
+
+message GAME_CLIENT_GUILD_NPC_SHOP_CLOSE {
+    int32 result = 1;
+}
+
+message GAME_WORLD_GUILD_NPC_SHOP_BUY {
+    uint64 npc_shop_guild_uid = 1;
+    uint32 shop_id = 2;
+    uint32 goods_id = 3;
+    uint32 goods_count = 4;
+    int32 sell_guild_cost_type = 5;
+    int32 sell_guild_cost_count = 6;
+    int32 add_income_guild_cost_type = 7;
+    int64 add_income_guild_cost_count = 8;
+}
+
+message WORLD_GAME_GUILD_NPC_SHOP_BUY {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 npc_shop_guild_uid = 3;
+    uint32 shop_id = 4;
+    uint32 goods_id = 5;
+    uint32 goods_count = 6;
+}
+
+message CLIENT_GAME_GUILD_NPC_SHOP_RE_OPEN {
+    
+}
+
+message GAME_WORLD_GUILD_NPC_SHOP_RE_OPEN {
+    
+}
+
+message WORLD_GAME_GUILD_NPC_SHOP_RE_OPEN {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+}
+
+message GAME_CLIENT_GUILD_NPC_SHOP_RE_OPEN {
+    int32 result = 1;
+}
+
+message CLIENT_GAME_GUILD_NPC_SHOP_TAKE_OUT {
+    
+}
+
+message GAME_WORLD_GUILD_NPC_SHOP_TAKE_OUT {
+    
+}
+
+message WORLD_GAME_GUILD_NPC_SHOP_TAKE_OUT {
+    int32 result = 1;
+    uint64 user_uid = 2;
+    uint64 guild_uid = 3;
+}
+
+message GAME_CLIENT_GUILD_NPC_SHOP_TAKE_OUT {
+    int32 result = 1;
+}
+
+message GAME_WORLD_GUILD_NPC_SHOP_STOP {
+    uint64 guild_uid = 1;
+}
+
+message WORLD_GAME_GUILD_NPC_SHOP_STOP {
+    uint64 guild_uid = 1;
+}
+
+message WORLD_GAME_GUILD_NPC_SHOP_REMAIN_COUNT_SYNC {
+    uint64 guild_uid = 1;
+    int32 cost_type = 2;
+    int32 cost_remain_count = 3;
+    int32 income_cost_type = 4;
+    int64 income_cost_value = 5;
+    repeated _cost_info income_cost = 6;
+}
+
+message GAME_WORLD_GUILD_NPC_SHOP_OPEN_INFO_SYNC_REQ {
+    
+}
+
+message WORLD_GAME_GUILD_NPC_SHOP_OPEN_INFO_SYNC {
+    uint64 guild_uid = 1;
+    int64 close_time = 2;
+    int64 last_open_time = 3;
+    bool is_not_first_open = 5;
+    bool cheat_force_open_time = 6;
+}
+
+message GAME_CLIENT_GUILD_NPC_SHOP_NOTIFY_BROADCAST {
+    int32 dominion_index = 1;
+    int32 guild_shop_state = 2;
+    bool is_reopen = 3;
+}
+
+message GAME_CLIENT_GUILD_NPC_SHOP_TAKE_OUT_NOTIFY {
+    bool is_need_take_out = 1;
+}
+
+message GAME_CLIENT_GUILD_NPC_SHOP_MEMBER_NOTIFY {
+    bool is_can_open = 1;
+}
+
+message WORLD_GUILD_GUILD_NPC_SHOP_OPEN_INFO_SYNC {
+    uint64 guild_uid = 1;
+    int64 close_time = 2;
+    int64 last_open_time = 3;
+    bool is_not_first_open = 5;
+    bool cheat_force_open_time = 6;
+}

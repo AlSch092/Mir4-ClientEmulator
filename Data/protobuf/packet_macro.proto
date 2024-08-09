@@ -1,0 +1,120 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+import "packet_warp.proto";
+
+message GAME_MACRO_USER_CHANGE_MACRO {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 action_state = 3;
+    uint64 target_uid = 4;
+    int32 target_object_id = 5;
+}
+
+message MACRO_GAME_PASSIVE_SKILL_LIST {
+    uint64 character_uid = 1;
+}
+
+message GAME_MACRO_PASSIVE_SKILL_LIST {
+    uint64 character_uid = 1;
+    repeated _passive_skill_info passive_list = 2;
+}
+
+message GAME_MACRO_COMMAND {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 stage_id = 3;
+    _vector3 loc = 4;
+    repeated string command_list = 5;
+}
+
+message MACRO_LOBBY_CREATE_COPY {
+    uint64 account_uid = 1;
+    string target_char_name = 2;
+    string new_char_name = 3;
+}
+
+message GAME_MACRO_MONSTER_KILL_INFO {
+    int32 monster_tid = 1;
+}
+
+message MACRO_LUA_MAS_STATUS {
+    uint32 world_id = 1;
+    uint32 server_index = 2;
+    int64 last_tick_time = 3;
+    uint32 user_count = 4;
+}
+
+message MACRO_LUA_DISCONNECT_USER {
+    uint32 reason = 1;
+}
+
+message GAME_MACRO_ADD_USER {
+    uint64 character_uid = 1;
+    int32 gameserver_index = 2;
+    int32 gameserver_zonegroup_index = 3;
+    string init_action = 4;
+    repeated string parameters = 5;
+}
+
+message GAME_CLIENT_TRY_CHANGE_MACRO {
+    int32 result = 2;
+}
+
+message GATEWAY_WORLD_USER_CHANGE_MACRO {
+    uint64 uid = 1;
+}
+
+message WORLD_MACRO_DISCONNECT_USER {
+    int32 reason = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    uint64 zone_unique = 4;
+    uint32 enter_server_index = 5;
+}
+
+message MACRO_WORLD_DISCONNECT_USER_RESULT {
+    int32 result = 1;
+    uint64 account_uid = 2;
+}
+
+message WORLD_MACRO_CONNECT_USER {
+    int32 reason = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    uint64 zone_unique = 4;
+    uint32 leave_server_index = 5;
+    uint32 class_id = 6;
+    string nickname = 7;
+}
+
+message MACRO_WORLD_CONNECT_USER_RESULT {
+    int32 result = 1;
+    uint64 account_uid = 2;
+}
+
+message MACRO_GAME_WARP_READY {
+    uint64 warp_user_uid = 1;
+    uint64 warp_zone_unique = 2;
+    int32 warp_zonegroup_index = 3;
+    warp_info warp_info = 4;
+    _characterInfo char_info = 5;
+    int32 gameserver_index = 6;
+    int32 gameserver_zonegroup_index = 7;
+    int32 gatewayserver_index = 8;
+    uint64 depature_zone_uid = 9;
+}
+
+message GAME_MACRO_WARP_READY {
+    uint64 warp_user_uid = 1;
+    uint64 warp_zone_unique = 2;
+    int32 warp_zonegroup_index = 3;
+    warp_info warp_info = 4;
+    _characterInfo char_info = 5;
+    int32 gameserver_index = 6;
+    int32 gameserver_zonegroup_index = 7;
+    int32 gatewayserver_index = 8;
+    uint64 depature_zone_uid = 9;
+}

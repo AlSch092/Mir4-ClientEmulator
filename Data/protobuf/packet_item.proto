@@ -1,0 +1,797 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_item.proto";
+import "info_common.proto";
+
+message _in_equip_jewel_info {
+    uint32 jewel_slot = 1;
+    uint64 jewel_itemuid = 2;
+}
+
+message _out_equip_jewel_info {
+    uint32 jewel_slot = 1;
+    uint32 jewel_itemindex = 2;
+}
+
+message _drop_stackitem_info {
+    uint64 itemuid = 1;
+    int32 itemcount = 2;
+}
+
+message CLIENT_GAME_SELL_INVEN_ITEM {
+    uint64 uid = 1;
+    repeated _stack_item_info sell_items = 2;
+}
+
+message GAME_CLIENT_SELL_INVEN_ITEM {
+    _cost_info costInfo = 1;
+    _cost_info sellinfo = 2;
+    repeated _stack_item_info update_items = 3;
+}
+
+message CLIENT_GAME_SELL_INVEN_ITEM_STACK {
+    uint64 uid = 1;
+    uint64 itemuid = 2;
+    int32 sellcount = 3;
+}
+
+message GAME_CLIENT_SELL_INVEN_ITEM_STACK {
+    _cost_info costInfo = 1;
+    _cost_info sellinfo = 2;
+    repeated _stack_item_info update_items = 3;
+}
+
+message CLIENT_GAME_BREAK_ITEM {
+    uint64 uid = 1;
+    repeated uint64 itemuids = 2;
+}
+
+message GAME_CLIENT_BREAK_ITEM {
+    repeated uint64 delitemuids = 1;
+    repeated _simple_item_info rewarditems = 2;
+    repeated _character_inven_item breakitems = 3;
+}
+
+message CLIENT_GAME_SMELTING_ITEM {
+    uint64 uid = 1;
+    uint64 smelting_itemuid = 2;
+    repeated _stack_item_info material_item_list = 3;
+    bool is_add_probability = 4;
+}
+
+message GAME_CLIENT_SMELTING_ITEM {
+    uint32 result = 1;
+    uint32 smelting_result = 2;
+    _character_inven_item smelting_iteminfo = 3;
+    repeated _cost_info costinfo = 4;
+    repeated _stack_item_info material_items = 5;
+    uint64 break_item_uid = 6;
+}
+
+message _smelting_item {
+    uint64 smelting_itemuid = 2;
+    repeated _stack_item_info material_item_list = 3;
+}
+
+message CLIENT_GAME_SMELTING_ITEM_MULTI {
+    uint64 uid = 1;
+    repeated _smelting_item smeting_item_list = 2;
+}
+
+message GAME_CLIENT_SMELTING_ITEM_MULTI {
+    uint32 result = 1;
+    repeated uint32 smelting_result = 2;
+    repeated _character_inven_item smelting_iteminfo = 3;
+    repeated _cost_info costinfo = 4;
+    repeated _stack_item_info material_items = 5;
+    repeated uint64 break_item_uid = 6;
+}
+
+message CLIENT_GAME_UPGRADE_ITEM {
+    uint64 uid = 1;
+    uint64 upgrade_itemuid = 2;
+}
+
+message GAME_CLIENT_UPGRADE_ITEM {
+    uint32 result = 1;
+    _character_inven_item upgrade_info = 2;
+    _cost_info costinfo = 3;
+    repeated _stack_item_info del_item_info = 4;
+}
+
+message CLIENT_GAME_BUY_INVEN {
+    uint64 uid = 1;
+    int32 buyCount = 2;
+}
+
+message GAME_CLIENT_BUY_INVEN {
+    int32 buyCount = 1;
+    int32 MaxInvenCount = 2;
+    repeated _cost_info costinfo = 3;
+}
+
+message _packet_c_useitem {
+    uint64 uid = 1;
+}
+
+message CLIENT_GAME_USE_ITEM {
+    uint64 use_item_uid = 1;
+    int32 use_item_count = 2;
+    bool is_inven_use = 3;
+}
+
+message GAME_CLIENT_FAILED_TO_USE_ITEM {
+    uint64 use_item_uid = 1;
+}
+
+message GAME_CLIENT_CHANGE_HP {
+    uint64 uid = 1;
+    int32 hp = 2;
+}
+
+message GAME_CLIENT_OPEN_BOX {
+    repeated _cost_info costInfos = 1;
+    repeated _simple_item_info rewarditems = 2;
+    repeated _character_inven_item openboxitems = 3;
+}
+
+message GAME_CLIENT_DROP_ITEM {
+    repeated _cost_info costInfos = 1;
+    repeated _character_inven_item dropitems = 2;
+    uint32 drop_type = 3;
+    _vector3 drop_pos = 4;
+    repeated _time_ticket_info time_ticket_info = 5;
+    uint32 drop_entity_type = 6;
+    uint64 drop_entity_uid = 7;
+    uint32 drop_entity_tid = 8;
+}
+
+message GAME_CLIENT_CHANGE_ITEM_STACK {
+    _stack_item_info item_info = 1;
+    bool is_inven_use = 2;
+}
+
+message CLIENT_GAME_MAKE_ITEM {
+    uint64 uid = 1;
+    int32 makeitem_index = 2;
+    int32 makeitem_count = 3;
+}
+
+message GAME_CLIENT_MAKE_ITEM {
+    int32 result = 1;
+    repeated int32 make_result = 2;
+    repeated _cost_info costInfo = 3;
+    repeated _stack_item_info update_stack_items = 4;
+    repeated _character_inven_item update_items = 5;
+    int32 makeitem_index = 6;
+    int32 makeitem_count = 7;
+    repeated _reward fail_reward_list = 8;
+    repeated _reward_cost fail_reward_cost_list = 9;
+    repeated uint32 fail_reward_cost_max_info = 10;
+}
+
+message CLIENT_GAME_MAKE_ITEM_XDRACO {
+    uint64 uid = 1;
+    int32 makeitem_index = 2;
+    int32 makeitem_count = 3;
+}
+
+message GAME_CLIENT_MAKE_ITEM_XDRACO {
+    int32 result = 1;
+    repeated int32 make_result = 2;
+    repeated _cost_info costInfo = 3;
+    repeated _stack_item_info update_stack_items = 4;
+    repeated _character_inven_item update_items = 5;
+    int32 makeitem_index = 6;
+    int32 makeitem_count = 7;
+}
+
+message item_make_material_data {
+    int32 material_slot = 1;
+    bool is_stack_item = 2;
+    int64 item_uid = 3;
+}
+
+message CLIENT_GAME_SPECIAL_MAKE_ITEM {
+    uint32 makeitem_index = 1;
+    repeated item_make_material_data material_item_data = 2;
+}
+
+message GAME_CLIENT_SPECIAL_MAKE_ITEM {
+    int32 result = 1;
+    repeated _cost_info costInfo = 2;
+    repeated _stack_item_info del_items = 3;
+    _character_inven_item make_item = 4;
+    repeated _character_inven_item update_items = 5;
+    int32 makeitem_index = 6;
+    int32 make_result = 7;
+}
+
+message CLIENT_GAME_TRANSCENDENCE_ITEM {
+    uint64 uid = 1;
+    uint64 transcendence_item_uid = 2;
+    uint64 material_itemuid = 3;
+}
+
+message GAME_CLIENT_TRANSCENDENCE_ITEM {
+    uint64 del_itemuid = 1;
+    _cost_info costInfo = 2;
+    _character_inven_item update_item = 3;
+}
+
+message CLIENT_GAME_EQUIP_JEWEL {
+    uint64 uid = 1;
+    uint64 item_uid = 2;
+    repeated _in_equip_jewel_info equip_jewel_slots = 3;
+}
+
+message GAME_CLIENT_EQUIP_JEWEL {
+    uint32 result = 1;
+    uint64 item_uid = 2;
+    repeated _out_equip_jewel_info equip_jewel_slots = 3;
+    repeated _stack_item_info update_items = 4;
+}
+
+message CLIENT_GAME_SWAP_JEWEL {
+    uint64 item_uid = 1;
+    _in_equip_jewel_info swap_jewel_slot = 2;
+}
+
+message GAME_CLIENT_SWAP_JEWEL {
+    uint32 result = 1;
+    uint64 item_uid = 2;
+    repeated _out_equip_jewel_info equip_jewel_slot = 3;
+    repeated _stack_item_info del_item = 4;
+    repeated _character_inven_item update_item = 5;
+}
+
+message CLIENT_GAME_UPGRADE_JEWEL {
+    uint64 item_uid = 1;
+    int32 jewel_slot = 2;
+    uint64 jewel_itemuid = 3;
+    repeated _stack_item_info material_jewel_item = 4;
+    bool is_auto = 5;
+}
+
+message GAME_CLIENT_UPGRADE_JEWEL_EQUIP_SLOT {
+    uint32 result = 1;
+    uint64 item_uid = 2;
+    uint32 jewel_slot = 3;
+    uint32 jewel_itemindex = 4;
+    uint32 before_jewel_itemindex = 5;
+    _cost_info costInfo = 6;
+    repeated _stack_item_info update_items = 7;
+    bool is_success = 8;
+}
+
+message GAME_CLIENT_JEWEL_UPGRADE_INVEN {
+    uint32 result = 1;
+    _cost_info costInfo = 2;
+    _character_inven_item upgrade_item = 3;
+    repeated _stack_item_info update_items = 4;
+    bool is_success = 5;
+    bool is_auto = 6;
+}
+
+message CLIENT_GAME_EXTRACTION_JEWEL {
+    uint64 uid = 1;
+    uint64 item_uid = 2;
+    uint32 jewel_slot = 3;
+}
+
+message GAME_CLIENT_EXTRACTION_JEWEL {
+    uint32 result = 1;
+    uint64 item_uid = 2;
+    uint32 jewel_slot = 3;
+    _cost_info costInfo = 4;
+    _character_inven_item update_items = 5;
+}
+
+message CLIENT_GAME_EXTRACTION_JEWEL_new {
+    uint64 uid = 1;
+    uint64 item_uid = 2;
+    repeated uint32 jewel_slots = 3;
+    uint32 client_link_type = 4;
+}
+
+message GAME_CLIENT_EXTRACTION_JEWEL_new {
+    uint32 result = 1;
+    uint64 item_uid = 2;
+    repeated uint32 jewel_slots = 3;
+    _cost_info cost_info = 4;
+    repeated _character_inven_item update_items = 5;
+    uint32 client_link_type = 6;
+}
+
+message CLIENT_GAME_JEWEL_COMPOSE {
+    repeated _stack_item_info meterials = 1;
+    bool is_auto = 2;
+}
+
+message GAME_CLIENT_JEWEL_COMPOSE {
+    uint32 result = 1;
+    int32 compose_result = 2;
+    repeated _cost_info cost_info = 4;
+    repeated _stack_item_info update_item = 5;
+    repeated _character_inven_item reward_item = 6;
+    bool is_auto = 7;
+}
+
+message CLIENT_GAME_TRANSFER_ITEM {
+    uint64 uid = 1;
+    uint64 target_item_uid = 2;
+    uint64 material_item_uid = 3;
+}
+
+message GAME_CLIENT_TRANSFER_ITEM {
+    uint32 result = 1;
+    _cost_info costInfo = 2;
+    _character_inven_item target_item = 3;
+    uint64 del_material_item_uid = 4;
+}
+
+message GAME_CLIENT_TRANSFER_ITEM_new {
+    uint32 result = 1;
+    _cost_info costInfo = 2;
+    _character_inven_item target_item = 3;
+    uint64 del_material_item_uid = 4;
+    uint32 target_item_equip_slot = 5;
+    repeated _character_inven_item extraction_jewel_item_list = 6;
+    _character_inven_item material_item = 7;
+}
+
+message CLIENT_GAME_GET_CHANGE_OPTION {
+    uint64 uid = 1;
+}
+
+message GAME_CLIENT_GET_CHANGE_OPTION {
+    uint32 result = 1;
+    uint64 item_uid = 2;
+    repeated ItemOptionInfo random_option_list = 3;
+    bool is_special = 4;
+}
+
+message CLIENT_GAME_CHANGE_OPTION_ITEM {
+    uint64 uid = 1;
+    uint64 item_uid = 2;
+    bool is_special = 3;
+}
+
+message GAME_CLIENT_CHANGE_OPTION_ITEM {
+    uint32 result = 1;
+    repeated _cost_info costInfo = 2;
+    repeated ItemOptionInfo random_option_list = 3;
+    repeated _stack_item_info del_item_list = 4;
+    bool is_special = 5;
+}
+
+message CLIENT_GAME_DECIDE_CHANGE_OPTION {
+    uint64 uid = 1;
+    uint64 item_uid = 2;
+    bool is_new_option = 3;
+    bool is_special = 4;
+}
+
+message GAME_CLIENT_DECIDE_CHANGE_OPTION {
+    uint32 result = 1;
+    _character_inven_item target_item = 3;
+}
+
+message GAME_CLIENT_PACKAGE_ITEM {
+    uint32 result = 1;
+    _stack_item_info delete_item = 2;
+    repeated _cost_info cost_infos = 3;
+    repeated _character_inven_item update_items = 4;
+}
+
+message GAME_CLIENT_RANDOM_BOX_ITEM {
+    uint32 result = 1;
+    _stack_item_info delete_item = 2;
+    repeated _reward_cost_info reward_cost_infos = 3;
+    repeated _simple_item_info reward_item_index = 4;
+    repeated _cost_info cost_infos = 5;
+    repeated _character_inven_item update_items = 6;
+}
+
+message GAME_CLIENT_PACKAGE_ITEM_START {
+    uint32 result = 1;
+    uint32 use_packet_item_count = 2;
+    _stack_item_info delete_item = 3;
+    repeated _cost_info cost_infos = 4;
+    uint32 stop_result = 5;
+    repeated _dungeon_ticket_info dungeon_ticket_info = 6;
+}
+
+message GAME_CLIENT_PACKAGE_ITEM_DATA {
+    repeated _character_inven_item update_items = 1;
+}
+
+message GAME_CLIENT_PACKAGE_ITEM_END {
+    
+}
+
+message GAME_CLIENT_RANDOM_BOX_ITEM_START {
+    uint32 result = 1;
+    _stack_item_info delete_item = 2;
+    repeated _reward_cost_info reward_cost_infos = 3;
+    repeated _simple_item_info reward_item_index = 4;
+    repeated _cost_info cost_infos = 5;
+    uint32 stop_result = 6;
+    repeated _dungeon_ticket_info dungeon_ticket_info = 7;
+}
+
+message GAME_CLIENT_RANDOM_BOX_ITEM_DATA {
+    repeated _character_inven_item update_items = 1;
+}
+
+message GAME_CLIENT_RANDOM_BOX_ITEM_END {
+    
+}
+
+message CLIENT_GAME_EXCHANGE_ITEM {
+    uint64 uid = 1;
+    int32 makeitem_index = 2;
+    int32 makeitem_count = 3;
+}
+
+message GAME_CLIENT_EXCHANGE_ITEM {
+    int32 result = 1;
+    repeated int32 make_result = 2;
+    repeated _cost_info costInfo = 3;
+    repeated _stack_item_info update_stack_items = 4;
+    repeated _character_inven_item update_items = 5;
+    int32 makeitem_index = 6;
+    int32 makeitem_count = 7;
+}
+
+message _compse_data {
+    repeated _stack_item_info compse_material_list = 1;
+}
+
+message _compose_result_data {
+    int32 compse_result = 2;
+    _simple_item_info compse_item_data = 3;
+    int32 add_fail_point = 4;
+    _compose_fail_data current_fail_data = 5;
+    _simple_item_info_ex_xdraco compose_item_data_ex_xdraco = 6;
+}
+
+message CLIENT_GAME_ITEM_COMPOSE {
+    repeated _compse_data material_list = 1;
+}
+
+message GAME_CLIENT_ITEM_COMPOSE {
+    int32 result = 1;
+    repeated _compose_result_data compse_result_data = 2;
+    repeated _stack_item_info update_stack_items = 3;
+    repeated _character_inven_item update_items = 4;
+    repeated _cost_info update_cost_infos = 5;
+}
+
+message CLIENT_GAME_ITEM_COMPOSE_POINT_REWARD {
+    repeated int32 fail_type_list = 1;
+}
+
+message GAME_CLIENT_ITEM_COMPOSE_POINT_REWARD {
+    int32 result = 1;
+    repeated _compose_result_data compse_result_data = 2;
+    repeated _stack_item_info update_stack_items = 3;
+    repeated _character_inven_item update_items = 4;
+}
+
+message GAME_CLIENT_USE_COMPOSE_POINT {
+    int32 result = 1;
+    repeated _compose_result_data compse_result_data = 2;
+    repeated _stack_item_info update_stack_items = 3;
+}
+
+message CLIENT_GAME_ITEM_COLLECTION_REGISTER {
+    int32 collection_id = 1;
+    int32 collection_slot = 2;
+    int64 resigter_item_uid = 3;
+}
+
+message GAME_CLIENT_ITEM_COLLECTION_REGISTER {
+    int32 result = 1;
+    int32 collection_id = 2;
+    bool is_complate = 3;
+    _item_collection_info collection_info = 4;
+    repeated _stack_item_info update_stack_items = 5;
+}
+
+message WORLD_GAME_ITEM_COLLECTION_DEL_ALL {
+    repeated int32 del_collection_id = 1;
+}
+
+message _period_equip_info {
+    uint64 item_uid = 1;
+    int32 equip_type = 2;
+    uint64 equip_object_uid = 3;
+    int32 equip_slot = 4;
+}
+
+message GAME_CLIENT_DELETE_PERIOD_ITEM {
+    repeated _period_equip_info del_period_item_equip_info_list = 1;
+    repeated _stack_item_info del_period_item_list = 2;
+}
+
+message CLIENT_GAME_CHANGE_ITEM_LOCK {
+    uint64 item_uid = 1;
+    bool is_lock = 2;
+}
+
+message GAME_CLIENT_CHANGE_ITEM_LOCK {
+    int32 result = 1;
+    uint64 item_uid = 2;
+    bool is_lock = 3;
+}
+
+message CLIENT_GAME_ITEM_RANDOM_EXCHANGE {
+    _stack_item_info material_info = 1;
+}
+
+message GAME_CLIENT_ITEM_RANDOM_EXCHANGE {
+    int32 result = 1;
+    _simple_item_info exchange_info = 2;
+    repeated _cost_info costInfo = 3;
+    repeated _stack_item_info update_stack_items = 4;
+    repeated _character_inven_item update_items = 5;
+}
+
+message CLIENT_GAME_ITEM_SPECIAL_EXCHANGE {
+    _stack_item_info material_info = 1;
+    int32 select_item_index = 2;
+}
+
+message GAME_CLIENT_ITEM_SPECIAL_EXCHANGE {
+    int32 result = 1;
+    _simple_item_info exchange_info = 2;
+    repeated _cost_info costInfo = 3;
+    repeated _stack_item_info update_stack_items = 4;
+    repeated _character_inven_item update_items = 5;
+}
+
+message CLIENT_GAME_MAGICSTONE_TRANCE_ITEM {
+    uint64 trance_itemuid = 1;
+    uint64 material_itemuid = 2;
+    bool use_item_add_rate = 3;
+}
+
+message GAME_CLIENT_MAGICSTONE_TRANCE_ITEM {
+    uint32 result = 1;
+    uint32 trance_result = 2;
+    _character_inven_item trance_iteminfo = 3;
+    repeated _cost_info cost_info = 4;
+    repeated _stack_item_info material_items = 5;
+    repeated _character_inven_item break_pieces_items = 6;
+    uint64 break_item_uid = 7;
+    repeated int32 del_deck_solt_list = 8;
+}
+
+message CLIENT_GAME_ITEM_COOLTIME {
+    
+}
+
+message GAME_CLIENT_ITEM_COOLTIME {
+    repeated _item_cooltime_data cooltime_list = 1;
+}
+
+message GAME_CLIENT_INVEN_EXTEND {
+    uint32 result = 1;
+    int32 buy_count = 2;
+    int32 max_inven_count = 3;
+    repeated _cost_info costinfo = 4;
+    repeated _stack_item_info del_items = 5;
+}
+
+message GAME_CLIENT_USE_SERVER_EXPEDITION_CHARGE_LIFE {
+    int32 result = 1;
+    int32 life_count = 2;
+    repeated _stack_item_info update_stack_items = 3;
+}
+
+message _make_item_agency_info {
+    int32 makeitem_index = 1;
+    int32 makeitem_make_count = 2;
+    int32 makeitem_try_make_count = 3;
+    int32 makeitem_world_make_count = 4;
+}
+
+message CLIENT_GAME_MAKE_ITEM_AGENCY_INFOS {
+    uint64 uid = 1;
+}
+
+message GAME_WORLD_MAKE_ITEM_AGENCY_INFOS {
+    uint64 uid = 1;
+    repeated _make_item_agency_info make_item_agency_infos = 2;
+}
+
+message WORLD_CLIENT_MAKE_ITEM_AGENCY_INFOS {
+    repeated _make_item_agency_info make_item_agency_infos = 1;
+}
+
+message CLIENT_GAME_MAKE_ITEM_AGENCY {
+    uint64 uid = 1;
+    int32 makeitem_index = 2;
+    int32 makeitem_count = 3;
+}
+
+message GAME_CLIENT_MAKE_ITEM_AGENCY {
+    int32 result = 1;
+    repeated int32 make_result = 2;
+    repeated _cost_info costInfo = 3;
+    repeated _stack_item_info update_stack_items = 4;
+    repeated _character_inven_item update_items = 5;
+    int32 makeitem_index = 6;
+    int32 makeitem_count = 7;
+    repeated _is_fail_reward is_fail_rewards = 8;
+    int32 make_count = 10;
+    int32 try_make_count = 11;
+    int32 world_make_count = 12;
+}
+
+message _reward {
+    int32 item_index = 1;
+    int32 item_count = 2;
+    int32 smelting_level = 3;
+}
+
+message _del_materialI {
+    int64 item_uid = 1;
+    int32 spend_stack_count = 2;
+    int64 period_end_time = 3;
+}
+
+message _reward_cost {
+    int32 cost_type = 1;
+    int64 cost_value = 2;
+}
+
+message _is_fail_reward {
+    repeated bool is_rewards = 2;
+}
+
+message GAME_WORLD_MAKE_ITEM_AGENCY {
+    uint64 uid = 1;
+    int32 makeitem_index = 2;
+    int32 makeitem_count = 3;
+    repeated int32 make_result = 4;
+    repeated _reward reward_list = 5;
+    repeated _del_materialI del_materialI_list = 6;
+    repeated _reward_cost reward_cost_list = 7;
+    int32 success_count = 8;
+    int32 bonus_count = 9;
+    int32 fail_count = 10;
+    repeated _is_fail_reward is_fail_rewards = 11;
+}
+
+message WORLD_GAME_MAKE_ITEM_AGENCY {
+    uint64 uid = 1;
+    int32 makeitem_index = 2;
+    int32 makeitem_count = 3;
+    repeated int32 make_result = 4;
+    repeated _reward reward_list = 5;
+    repeated _del_materialI del_materialI_list = 6;
+    repeated _reward_cost reward_cost_list = 7;
+    int32 success_count = 8;
+    int32 bonus_count = 9;
+    int32 fail_count = 10;
+    repeated _is_fail_reward is_fail_rewards = 11;
+    int32 world_make_count = 12;
+    int32 result = 14;
+}
+
+message GAME_WORLD_MAKE_ITEM_AGENCY_COUNT {
+    uint64 uid = 1;
+    int32 request_makeitem_index = 2;
+    int32 request_makeitem_count = 3;
+}
+
+message WORLD_GAME_MAKE_ITEM_AGENCY_COUNT {
+    uint64 uid = 1;
+    int32 request_makeitem_index = 2;
+    int32 request_makeitem_count = 3;
+    int32 world_make_count = 4;
+}
+
+message GAME_WORLD_CHEAT_MAKE_ITEM_AGENCY_COUNT {
+    uint64 uid = 1;
+    repeated _make_item_agency_info make_item_agency_infos = 2;
+    int32 makeitem_index = 3;
+    int32 world_make_count = 4;
+}
+
+message _expensive_item {
+    uint32 item_index = 1;
+    uint32 item_count = 2;
+}
+
+message GAME_WORLD_EXPENSIVE_ITEM_ADD_COUNT {
+    uint64 uid = 1;
+    repeated _expensive_item reward_list = 2;
+    _vector3 drop_pos = 3;
+    uint32 drop_entity_type = 4;
+    uint64 drop_entity_uid = 5;
+    uint32 drop_entity_tid = 6;
+    uint32 stage_id = 7;
+}
+
+message WORLD_GAME_EXPENSIVE_ITEM_DROP {
+    uint64 uid = 1;
+    repeated _expensive_item reward_list = 2;
+    _vector3 drop_pos = 3;
+    uint32 drop_entity_type = 4;
+    uint64 drop_entity_uid = 5;
+    uint32 drop_entity_tid = 6;
+    uint32 stage_id = 7;
+}
+
+message GAME_WORLD_EXPENSIVE_ITEM_MINUS_COUNT {
+    repeated _expensive_item reward_list = 1;
+}
+
+message CLIENT_GAME_MYSTICAL_PIECE_TRANCE_ITEM {
+    uint64 trance_itemuid = 1;
+    uint64 material_itemuid = 2;
+    bool use_item_add_rate = 3;
+}
+
+message GAME_CLIENT_MYSTICAL_PIECE_TRANCE_ITEM {
+    uint32 result = 1;
+    uint32 trance_result = 2;
+    _character_inven_item trance_iteminfo = 3;
+    repeated _cost_info cost_info = 4;
+    repeated _stack_item_info material_items = 5;
+    repeated _character_inven_item break_pieces_items = 6;
+    uint64 break_item_uid = 7;
+    repeated int32 del_deck_solt_list = 8;
+}
+
+message _make_item_xdraco_limit_package_info {
+    int32 makeitem_index = 1;
+    int32 make_count = 2;
+}
+
+message CLIENT_GAME_MAKE_ITEM_XDRACO_LIMIT_PACKAGE_INFOS {
+    
+}
+
+message GAME_CLIENT_MAKE_ITEM_XDRACO_LIMIT_PACKAGE_INFOS {
+    repeated _make_item_xdraco_limit_package_info make_item_xdraco_limit_packet_infos = 1;
+}
+
+message CLIENT_GAME_MAKE_ITEM_XDRACO_LIMIT_PACKAGE {
+    uint64 uid = 1;
+    int32 makeitem_index = 2;
+    int32 makeitem_count = 3;
+}
+
+message GAME_CLIENT_MAKE_ITEM_XDRACO_LIMIT_PACKAGE {
+    int32 result = 1;
+    repeated int32 make_result = 2;
+    repeated _cost_info costInfo = 3;
+    repeated _stack_item_info update_stack_items = 4;
+    repeated _character_inven_item update_items = 5;
+    int32 makeitem_index = 6;
+    int32 makeitem_count = 7;
+    int32 make_count = 8;
+}
+
+message CLIENT_GAME_REFINE_ITEM {
+    uint64 refine_item_uid = 1;
+}
+
+message GAME_CLIENT_REFINE_ITEM {
+    uint32 result = 1;
+    uint32 refine_result = 2;
+    repeated _cost_info costInfo = 3;
+    _character_inven_item refine_item = 4;
+    repeated _stack_item_info material_items = 5;
+}
+
+message GAME_CLIENT_ITEM_COLLECTION_PERIOD_END {
+    
+}
+

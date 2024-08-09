@@ -1,0 +1,627 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _ServerChangeInfo {
+    uint32 world_id = 1;
+    string world_name = 2;
+    bool server_change = 3;
+    int32 character_count = 4;
+    uint32 regionid = 5;
+    uint32 region = 6;
+    uint32 nft_server = 7;
+}
+
+message CLIENT_GAME_SERVER_CHANGE_LIST {
+    
+}
+
+message GAME_CLIENT_SERVER_CHANGE_LIST {
+    repeated int32 world_id_list = 1;
+}
+
+message CLIENT_GAME_SERVER_CHANGE_WORLD_LIST {
+    
+}
+
+message GAME_CLIENT_SERVER_CHANGE_WORLD_LIST {
+    uint32 current_world_id = 1;
+    repeated _ServerChangeInfo world_list = 2;
+    bool is_server_expedition = 3;
+    int64 siege_use_time = 4;
+}
+
+message CLIENT_GAME_SERVER_CHANGE_START {
+    int32 target_world_id = 1;
+}
+
+message GAME_CLIENT_SERVER_CHANGE_START {
+    int32 result = 1;
+    int32 target_world_id = 2;
+    repeated _cost_info use_cost_list = 3;
+}
+
+message CLIENT_GAME_SERVER_CHANGE_STATE {
+    
+}
+
+message GAME_CLIENT_SERVER_CHANGE_STATE {
+    int32 state = 1;
+    int64 prev_change_time_sec = 2;
+}
+
+message GAME_WORLD_SERVER_CHANGE_START {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 cur_world_id = 3;
+    uint32 next_world_id = 4;
+    uint32 level = 5;
+    bool nft_flag = 6;
+    uint64 nft_token_id = 7;
+    _contract_transaction_info contract_transaction_info = 9;
+    repeated _stat_info stat_info_list = 10;
+    _characterInfo_mint characterInfo_mint = 11;
+}
+
+message GAME_TRADE_SERVER_CHANGE_CHECK {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 cur_world_id = 3;
+    uint32 next_world_id = 4;
+    bool check_register = 5;
+    bool check_close = 6;
+    bool check_calculate = 7;
+}
+
+message TRADE_GAME_SERVER_CHANGE_CHECK {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    uint32 cur_world_id = 4;
+    uint32 next_world_id = 5;
+}
+
+message GAME_SHOP_SERVER_CHANGE_CHECK {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 cur_world_id = 3;
+    uint32 next_world_id = 4;
+}
+
+message SHOP_GAME_SERVER_CHANGE_CHECK {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    uint32 cur_world_id = 4;
+    uint32 next_world_id = 5;
+}
+
+message GAME_SHOP_SERVER_CHANGE_CLEAR_STORAGE {
+    uint64 character_uid = 1;
+}
+
+message GAME_WORLD_SERVER_CHANGE_CHECK {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 cur_world_id = 3;
+    uint32 next_world_id = 4;
+    bool check_register = 5;
+    bool check_get = 6;
+}
+
+message WORLD_GAME_SERVER_CHANGE_CHECK {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    uint32 cur_world_id = 4;
+    uint32 next_world_id = 5;
+}
+
+message WORLD_WORLDLINK_SERVER_CHANGE_CHECK {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 cur_world_id = 3;
+    uint32 next_world_id = 4;
+    uint32 zone_group = 5;
+}
+
+message WORLDLINK_WORLD_SERVER_CHANGE_CHECK {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    uint32 cur_world_id = 4;
+    uint32 next_world_id = 5;
+    uint32 zone_group = 6;
+}
+
+message WORLDLINK_FRONT_SERVER_CHANGE_CHECK {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint32 cur_world_id = 3;
+    uint32 next_world_id = 4;
+    uint32 zone_group = 5;
+}
+
+message FRONT_WORLDLINK_SERVER_CHANGE_CHECK {
+    int32 result = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    uint32 cur_world_id = 4;
+    uint32 next_world_id = 5;
+    uint32 zone_group = 6;
+}
+
+message _WorldBossInfo {
+    uint32 monster_tid = 1;
+    int64 activate_time = 2;
+}
+
+message _ServerExpeditionInfo {
+    uint32 world_id = 1;
+    string world_name = 2;
+    bool expedition_start = 3;
+    bool expedition_destination = 4;
+    int32 character_count = 5;
+    int32 users = 6;
+    int32 max_users = 7;
+    repeated _WorldBossInfo world_boss_list = 8;
+    bool plunder_possible = 9;
+    int32 nft_server = 10;
+}
+
+message CLIENT_GAME_SERVER_EXPEDITION_INFO {
+    
+}
+
+message GAME_CLIENT_SERVER_EXPEDITION_INFO {
+    uint32 dest_world_id = 1;
+    int64 departure_time = 2;
+    uint32 guild_rank = 3;
+    int32 life_count = 4;
+    int64 expedition_start_time = 5;
+    int64 expedition_end_time = 6;
+    bool assassin_mode_used_item = 7;
+}
+
+message CLIENT_GAME_SERVER_EXPEDITION_WORLD_LIST {
+    
+}
+
+message GAME_CLIENT_SERVER_EXPEDITION_WORLD_LIST {
+    uint32 current_world_id = 1;
+    repeated _ServerExpeditionInfo expedition_list = 2;
+}
+
+message CLIENT_GAME_SERVER_EXPEDITION_START {
+    int32 target_world_id = 1;
+    bool assassin_mode = 2;
+}
+
+message GAME_CLIENT_SERVER_EXPEDITION_START {
+    int32 result = 1;
+    int32 target_world_id = 2;
+    string ip = 3;
+    int32 port = 4;
+}
+
+message _SE_base_data {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint64 guild_uid = 3;
+    int32 cur_world_id = 4;
+    int32 target_world_id = 5;
+    bool check_cost = 6;
+    bool assassin_mode = 7;
+}
+
+message GAME_WORLD_SERVER_EXPEDITION_START {
+    _SE_base_data base_data = 1;
+    int32 max_users = 2;
+}
+
+message WORLD_WORLDLINK_SERVER_EXPEDITION_START {
+    _SE_base_data base_data = 1;
+    int32 max_users = 2;
+    string auth_key = 3;
+}
+
+message WORLDLINK_WORLD_SERVER_EXPEDITION_START {
+    int32 result = 1;
+    _SE_base_data base_data = 2;
+}
+
+message WORLD_MANAGER_SERVER_EXPEDITION_START {
+    _SE_base_data base_data = 1;
+}
+
+message MANAGER_WORLD_SERVER_EXPEDITION_START {
+    int32 result = 1;
+    _SE_base_data base_data = 2;
+    string ip = 3;
+    int32 port = 4;
+}
+
+message WORLD_GAME_SERVER_EXPEDITION_START {
+    int32 result = 1;
+    _SE_base_data base_data = 2;
+    string ip = 3;
+    int32 port = 4;
+}
+
+message GAME_WORLD_SERVER_EXPEDITION_CANCEL {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    int32 target_world_id = 3;
+}
+
+message WORLDLINK_WORLD_SERVER_EXPEDITION_START_AUTH_KEY {
+    _SE_base_data base_data = 1;
+    string auth_key = 2;
+}
+
+message WORLD_WORLDLINK_SERVER_EXPEDITION_START_AUTH_KEY {
+    int32 result = 1;
+    _SE_base_data base_data = 2;
+}
+
+message GAME_WORLD_SERVER_EXPEDITION_TIMELINE_ALARM {
+    int32 world_id = 1;
+    int32 timeline_tid = 2;
+}
+
+message WORLDLINK_WORLD_SERVER_EXPEDITION_TIMELINE_ALARM {
+    int32 world_id = 1;
+    int32 timeline_tid = 2;
+}
+
+message WORLD_MANAGER_SERVER_EXPEDITION_TARGET_WORLD_GATEWAY_INFO {
+    int32 world_id = 1;
+    uint64 account_uid = 2;
+}
+
+message MANAGER_WORLD_SERVER_EXPEDITION_TARGET_WORLD_GATEWAY_INFO {
+    int32 result = 1;
+    int32 world_id = 2;
+    uint64 account_uid = 3;
+    string ip = 4;
+    int32 port = 5;
+}
+
+message WORLD_CLIENT_SERVER_EXPEDITION_RETURN_WORLD {
+    bool result = 1;
+    string origin_ip = 2;
+    int32 origin_port = 3;
+    int32 origin_worldid = 4;
+}
+
+message WORLD_WORLDLINK_SERVER_EXPEDITION_END {
+    int32 world_id = 1;
+}
+
+message GATEWAY_WORLD_TRANS_SERVER_AUTH {
+    string auth_key = 1;
+    uint64 account_uid = 2;
+    string account_id = 3;
+    uint32 proxy_server_index = 4;
+    uint32 proxy_connected_session_id = 5;
+    string user_ip = 6;
+}
+
+message WORLD_GATEWAY_TRANS_SERVER_AUTH {
+    bool auth_result = 1;
+    uint64 account_uid = 2;
+    string account_id = 3;
+    uint32 proxy_server_index = 4;
+    uint32 proxy_connected_session_id = 5;
+    string user_ip = 6;
+}
+
+message CLIENT_GAME_TRANS_SERVER_SELECT_CHARACTER {
+    uint64 account_uid = 1;
+    int32 classId = 2;
+    uint64 character_uid = 3;
+    int32 world_id = 4;
+    int32 store_type = 5;
+}
+
+message CLIENT_WORLD_REQUEST_TRANS_SERVER_RETURN {
+    uint64 character_uid = 1;
+}
+
+message GAME_CLIENT_SERVER_EXPEDITION_LIFE_UPDATE {
+    int32 life_count = 1;
+}
+
+message GAME_CLIENT_SERVER_EXPEDITION_PK_REWARD {
+    int32 result = 1;
+    uint64 target_user_uid = 2;
+    int32 gain_count = 3;
+    repeated _character_inven_item reward_item_list = 4;
+}
+
+message WORLD_GAME_SERVER_EXPEDITION_RESET_TIME {
+    int64 reset_start_time = 1;
+    int64 reset_end_time = 2;
+}
+
+message MANAGER_WORLD_REQUEST_CHECK_EXPEDITION_MEMBER {
+    uint64 account_uid = 1;
+}
+
+message WORLDLINK_WORLD_SERVER_RELOAD_PRIZE_CHARACTER_INFO {
+    
+}
+
+message WORLD_WORLDLINK_SERVER_EXPEDITION_USER_LOG {
+    
+}
+
+message GAME_CLIENT_SERVER_EXPEDITION_ASSASSIN_MODE_INFO {
+    string nickname = 1;
+}
+
+message LOBBY_WORLDLINK_CHARACTER_UNSEAL {
+    uint64 account_uid = 1;
+    uint64 token_id = 2;
+    int32 unseal_world_id = 3;
+}
+
+message LOBBY_WORLDLINK_TOKEN_CHARACTER_LIST {
+    uint64 account_uid = 1;
+    repeated uint64 token_id = 2;
+    int32 world_id = 3;
+}
+
+message TOKEN_CHARACTER_INFO {
+    uint64 token_id = 1;
+    int32 region = 2;
+    int32 world_id = 3;
+    uint64 character_uid = 4;
+    string character_name = 5;
+    int32 character_level = 6;
+    uint64 money = 7;
+    int32 collection = 8;
+    int32 class_id = 9;
+}
+
+message WORLDLINK_LOBBY_TOKEN_CHARACTER_LIST {
+    uint64 account_uid = 1;
+    repeated TOKEN_CHARACTER_INFO character_list = 2;
+}
+
+message CLIENT_LOBBY_TOKEN_CHARACTER_LIST {
+    uint64 account_uid = 1;
+}
+
+message LOBBY_CLIENT_TOKEN_CHARACTER_LIST {
+    uint64 account_uid = 1;
+    repeated TOKEN_CHARACTER_INFO character_list = 2;
+}
+
+message WORLDLINK_WORLDLINK_SERVER_CHANGE_START {
+    uint32 transper_id = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    int32 cur_world_id = 4;
+    int32 next_world_id = 5;
+    int32 ori_region_id = 6;
+}
+
+message WORLDLINK_WORLDLINK_SERVER_CHANGE_COMPLETE {
+    uint32 transper_id = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    int32 cur_world_id = 4;
+    int32 next_world_id = 5;
+    int32 ori_region_id = 6;
+}
+
+message WORLDLINK_WORLDLINK_TRANSFER_DIRECT_DELETE {
+    uint32 transper_id = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    int32 cur_world_id = 4;
+    int32 next_world_id = 5;
+}
+
+message WORLDLINK_WORLDLINK_CHARACTER_SERVERCHANGESTATE_UPDATE {
+    uint32 transper_id = 1;
+    uint64 account_uid = 2;
+    uint64 character_uid = 3;
+    int32 cur_world_id = 4;
+    int32 next_world_id = 5;
+    int32 server_change_state = 6;
+}
+
+message WORLDLINK_WORLD_INFO {
+    uint32 world_id = 1;
+    uint32 regiongroup = 2;
+    uint32 region = 3;
+    uint32 changestart = 4;
+    uint32 changeend = 5;
+    string world_name = 6;
+    uint32 hidden = 7;
+    uint32 nft_server = 8;
+}
+
+message WORLDLINK_GAME_WORLD_INFO {
+    repeated WORLDLINK_WORLD_INFO info_list = 1;
+}
+
+message WORLDLINK_WORLDLINK_INFO {
+    uint32 world_id = 1;
+    uint32 regiongroup = 2;
+    uint32 region = 3;
+    uint32 changestart = 4;
+    uint32 changeend = 5;
+    uint32 regiongroupdb = 6;
+    string world_name = 7;
+    uint32 hidden = 8;
+    uint32 nft_server = 9;
+}
+
+message WORLDLINK_WORLDLINK_WORLD_INFO {
+    repeated WORLDLINK_WORLDLINK_INFO info_list = 1;
+}
+
+message WORLDLINK_WORLDLINK_TRANSFER_ROLLBACK {
+    int32 start_world_id = 1;
+    int32 dest_world_id = 2;
+    uint64 account_uid = 3;
+    uint64 character_uid = 4;
+}
+
+message WORLDLINK_WORLDLINK_TRANSFER_RESTORE {
+    int32 start_world_id = 1;
+    uint32 transper_id = 2;
+    uint64 account_uid = 3;
+    uint64 character_uid = 4;
+}
+
+message WORLDLINK_WORLDLINK_GREATBUILDING_UPGRADE_REGISTER {
+    int64 user_uid = 1;
+    int32 target_world_id = 2;
+    repeated _upgrade_building_info upgrade_building_list = 3;
+}
+
+message _conquer_server_round_info {
+    int32 round_id = 1;
+    int64 start_time = 2;
+    int64 end_time = 3;
+}
+
+message CLIENT_GAME_CONQUER_SERVER_INFO {
+    
+}
+
+message GAME_CLIENT_CONQUER_SERVER_INFO {
+    int64 latest_use_time = 1;
+    uint32 guild_rank = 2;
+    int32 life_count = 3;
+    int32 round_use_count = 4;
+    int32 user_count = 5;
+    repeated _conquer_server_round_info round_info = 6;
+}
+
+message CLIENT_GAME_CONQUER_SERVER_START {
+    
+}
+
+message GAME_CLIENT_CONQUER_SERVER_START {
+    int32 result = 1;
+    string ip = 2;
+    int32 port = 3;
+    int32 conquer_server_world_id = 4;
+}
+
+message WORLD_GAME_CONQUER_SERVER_RESET_ROUND_TIME {
+    int64 next_reset_time = 1;
+}
+
+message WORLD_MANAGER_TARGET_WORLD_GATEWAY_INFO {
+    int32 world_id = 1;
+    uint64 account_uid = 2;
+    int32 request_type = 3;
+}
+
+message MANAGER_WORLD_TARGET_WORLD_GATEWAY_INFO {
+    int32 result = 1;
+    int32 world_id = 2;
+    uint64 account_uid = 3;
+    int32 request_type = 4;
+    string ip = 5;
+    int32 port = 6;
+}
+
+message _CS_base_data {
+    uint64 account_uid = 1;
+    uint64 character_uid = 2;
+    uint64 guild_uid = 3;
+    int32 cur_world_id = 4;
+    bool add_use_count = 5;
+    int32 cheat_world_id = 6;
+}
+
+message GAME_WORLD_CONQUER_SERVER_START {
+    _CS_base_data base_data = 1;
+    int32 max_users = 2;
+}
+
+message WORLD_MANAGER_CONQUER_SERVER_START {
+    _CS_base_data base_data = 1;
+    int32 max_users = 2;
+    string auth_key = 3;
+}
+
+message MANAGER_WORLD_CONQUER_SERVER_START_RESERVE {
+    _CS_base_data base_data = 1;
+    int32 max_users = 2;
+    string auth_key = 3;
+}
+
+message WORLD_MANAGER_CONQUER_SERVER_START_RESERVE {
+    int32 result = 1;
+    _CS_base_data base_data = 2;
+}
+
+message MANAGER_WORLD_CONQUER_SERVER_START {
+    int32 result = 1;
+    _CS_base_data base_data = 2;
+    string ip = 3;
+    int32 port = 4;
+    int32 conquer_server_world_id = 5;
+}
+
+message WORLD_GAME_CONQUER_SERVER_START {
+    int32 result = 1;
+    _CS_base_data base_data = 2;
+    string ip = 3;
+    int32 port = 4;
+    int32 conquer_server_world_id = 5;
+}
+
+message MANAGER_WORLD_CONQUER_SERVER_USER_COUNT {
+    int32 user_count = 1;
+}
+
+message WORLD_GAME_CONQUER_SERVER_USER_COUNT {
+    int32 user_count = 1;
+}
+
+message WORLD_MANAGER_TRAS_USER_AUTH {
+    int32 auth_type = 1;
+    int32 world_id = 2;
+    uint64 account_uid = 3;
+}
+
+message MANAGER_WORLD_TRAS_USER_AUTH {
+    int32 auth_type = 1;
+    uint64 account_uid = 2;
+}
+
+message _world_server_state {
+    int32 world_id = 1;
+    int32 world_server_state = 2;
+}
+
+message WORLD_MANAGER_WORLD_SERVER_STATE_LIST {
+    int32 world_id = 1;
+}
+
+message MANAGER_WORLD_WORLD_SERVER_STATE_LIST {
+    repeated _world_server_state world_server_info_list = 1;
+}
+
+message WORLD_GAME_WORLD_SERVER_STATE_LIST {
+    repeated _world_server_state world_server_info_list = 1;
+}
+
+message MANAGER_WORLD_WORLD_SERVER_STATE_NOTI {
+    _world_server_state world_server_info = 1;
+}
+
+message WORLD_GAME_WORLD_SERVER_STATE_NOTI {
+    _world_server_state world_server_info = 1;
+}

@@ -1,0 +1,1468 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_item.proto";
+
+message _refuse_info {
+    uint32 buff_tid = 1;
+    int64 buff_end_time = 2;
+}
+
+message _characterInfo_login {
+    int32 eClass = 1;
+    int32 Level = 2;
+    string NickName = 3;
+    int64 LastLoginTime = 4;
+    int32 WeaponItemIndex = 5;
+    int32 WeaponSmeltingLevel = 6;
+    int32 CostumeID = 7;
+    int32 HairColorIndex = 8;
+    int32 ClothesColorIndex = 9;
+    int64 Exp = 10;
+    int32 CombatPoint = 11;
+    int32 StageID = 12;
+    int32 playtime_sec = 13;
+    uint64 character_uid = 14;
+    repeated customize_info customize_list = 15;
+    repeated _equip_costume_info costume_list = 16;
+    int64 del_time = 17;
+    string GuildName = 18;
+    int32 server_change_state = 19;
+}
+
+message _characterInfo_login_global {
+    int32 eClass = 1;
+    int32 Level = 2;
+    string NickName = 3;
+    int64 LastLoginTime = 4;
+    int32 WeaponItemIndex = 5;
+    int32 WeaponSmeltingLevel = 6;
+    int32 CostumeID = 7;
+    int32 HairColorIndex = 8;
+    int32 ClothesColorIndex = 9;
+    int64 Exp = 10;
+    int32 CombatPoint = 11;
+    int32 StageID = 12;
+    int32 playtime_sec = 13;
+    uint64 character_uid = 14;
+    repeated customize_info customize_list = 15;
+    repeated _equip_costume_info costume_list = 16;
+    int64 del_time = 17;
+    string GuildName = 18;
+    int32 server_change_state = 19;
+    int64 NftType = 20;
+    string NftTokenURL = 21;
+    int32 luxury_costume_pet_id = 22;
+}
+
+message _character_equip_item {
+    uint64 ItemUID = 1;
+    int32 Position = 2;
+    int32 mastery_count = 3;
+}
+
+message _character_equip_magic_stone_item {
+    uint64 item_uid = 1;
+    int32 equip_slot = 2;
+}
+
+message _vehicle_equip_item {
+    uint64 ItemUID = 1;
+    int32 GroupId = 2;
+    int32 Position = 3;
+}
+
+message _character_skill {
+    int32 SkillIndex = 1;
+    int32 SkillLevel = 2;
+}
+
+message _character_skill_deck {
+    int32 deckId = 1;
+    int32 slotId = 2;
+    int32 skillId = 3;
+}
+
+message _skill_passive_group {
+    uint32 group_id = 1;
+    int32 level = 2;
+    uint32 exp = 3;
+    uint32 learn_point = 4;
+}
+
+message _passive_skill_info {
+    uint32 group_id = 1;
+    uint32 passive_index = 2;
+    uint32 level = 3;
+}
+
+message _character_quest {
+    int32 QuestIndex = 1;
+    int32 State = 2;
+    int32 CurrentCount = 3;
+    int32 quest_type = 4;
+}
+
+message _character_inven_item {
+    uint64 item_uid = 1;
+    uint32 item_index = 2;
+    uint32 smelting_level = 3;
+    int32 stack_count = 4;
+    int32 durability = 5;
+    int32 period_end_time = 6;
+    bool is_equip = 7;
+    repeated ItemOptionInfo random_option_list = 8;
+    bool is_lock = 9;
+    int32 trance_step = 10;
+    int64 last_used_time = 11;
+    int64 item_remain_cooltime = 12;
+    int32 xdraco_trade_state = 13;
+    int32 acquisition_path = 14;
+    int32 acquisition_path_value = 15;
+    int64 acquisition_path_create_time = 16;
+    string serial_number = 17;
+    int32 collectable = 18;
+    string limited = 19;
+    uint32 refine_step = 20;
+}
+
+message _character_mastery_slot {
+    int32 slot_index = 1;
+    int32 mastery_count = 2;
+}
+
+message _character_play_data_info {
+    int32 play_data_id = 1;
+    int64 count = 2;
+}
+
+message _character_achievement_complete_info {
+    int32 achievement_group_id = 1;
+    int32 achievement_group_grade = 2;
+}
+
+message _reward_cost_info {
+    int32 CostType = 1;
+    int64 Value = 2;
+}
+
+message _cost_info {
+    int32 CostSubType = 1;
+    int64 CurrentValue = 2;
+}
+
+message _used_cost_info {
+    int32 CostType = 1;
+    int64 CurrentValue = 2;
+    int64 ChangeValue = 3;
+}
+
+message _time_ticket_info {
+    int32 time_ticket_type = 1;
+    int64 time_ticket_amount = 2;
+    int32 last_increase_time_sec = 3;
+}
+
+message _simple_cost_info {
+    int32 cost_type = 1;
+    int64 cost_value = 2;
+}
+
+message _simple_item_info {
+    int32 itemindex = 1;
+    int32 itemcount = 2;
+}
+
+message _simple_item_info_ex_xdraco {
+    int32 itemindex = 1;
+    int32 itemcount = 2;
+    int32 xdraco_trade_state = 3;
+}
+
+message _mail_item_info {
+    int32 item_index = 1;
+    int32 item_count = 2;
+    int32 smelting_lv = 3;
+}
+
+message _mail_item_list {
+    repeated _mail_item_info item_list = 1;
+}
+
+message _vector3 {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+message _characterInfo {
+    int64 Exp = 1;
+    int32 StageID = 2;
+    _vector3 loc = 3;
+    repeated _cost_info cost_infos = 4;
+    int32 awaken_grade = 5;
+    uint32 current_hp = 6;
+    uint32 current_mana = 7;
+    uint32 current_vigor = 8;
+    int32 pk_grade = 9;
+    int32 pk_point = 10;
+    int32 pk_assault = 11;
+    _guild_name_ui_info guild_info = 12;
+    repeated _time_ticket_info time_ticket_info = 13;
+    uint32 guild_contribution = 14;
+    uint32 current_rage = 15;
+    string profile = 16;
+    uint64 guild_gift_box_open_time = 18;
+    int32 today_get_guild_point = 19;
+    int64 last_support_time = 20;
+    repeated _dungeon_ticket_info dungeon_ticket_info = 21;
+    uint32 world_id = 22;
+    uint32 dominion_title_tid = 23;
+    uint32 exp_booster_left_time = 24;
+    uint32 account_garde = 25;
+    uint32 class_id = 26;
+    uint64 daily_wonder = 27;
+}
+
+message _stack_item_info {
+    uint64 itemuid = 1;
+    int32 itemcount = 2;
+    int64 item_lastusedtime = 3;
+    int64 item_remain_cooltime = 4;
+}
+
+message _attack_target_info {
+    int32 targettype = 1;
+    uint64 targetid = 2;
+}
+
+message _phasing_target_info {
+    int32 targettype = 1;
+    int32 targetindex = 2;
+    uint64 targetid = 3;
+}
+
+message _phasing_target_damage {
+    int32 targettype = 1;
+    uint64 targetid = 2;
+    int32 damage = 3;
+    int32 hp = 4;
+    int32 crowd = 5;
+    int32 cctime_ms = 6;
+}
+
+message _vehicle_info {
+    int32 vehicle_group = 1;
+    int32 vehicle_index = 2;
+    int32 reinforce_level = 3;
+    int32 reinforce_exp = 4;
+}
+
+message _character_quest_daily_info {
+    int32 list_receive_time = 1;
+    int32 free_reset_count = 2;
+    int32 clear_count = 3;
+    int32 plus_reward_count = 4;
+    int32 plus_reward_grade = 5;
+}
+
+message _character_quest_daily_list_info {
+    int32 slot_index = 1;
+    int32 quest_id = 2;
+    int32 count = 3;
+    int32 grade = 4;
+    int32 start_time = 5;
+    bool is_clear = 6;
+    bool is_reward = 7;
+}
+
+message _character_quest_daily_reward_list_info {
+    int32 slot_index = 1;
+    int32 grade = 2;
+}
+
+message _stat_info {
+    int32 attribute_type = 1;
+    int32 attribute_value = 2;
+}
+
+message _building_stat_info {
+    int32 building_id = 1;
+    int32 attribute_type = 2;
+    int32 attribute_value = 3;
+}
+
+message _buff_effect_info {
+    int32 buff_effect_type = 1;
+    int32 buff_effect_value = 2;
+}
+
+message _buff_info {
+    int32 buff_id = 1;
+    int32 buff_level = 2;
+    int32 stack_count = 3;
+    float buff_left_time = 4;
+    int32 buff_owner_type = 5;
+    uint64 buff_owner_uid = 6;
+    bool is_infinite = 7;
+    uint32 attach_skill_attack_id = 8;
+    repeated _buff_effect_info buff_effect_info = 10;
+    repeated _stat_info buff_stat_info = 11;
+    repeated _buff_special_effect_info buff_special_effect_info = 12;
+}
+
+message _buff_special_effect_info {
+    int32 buff_special_effect_type = 1;
+    int32 buff_index = 2;
+    int32 buff_special_effect_value = 3;
+    int32 buff_special_effect_value_ex = 4;
+}
+
+message _raid_reward_receive_info {
+    uint32 raid_id = 1;
+    uint32 receive_count = 2;
+    uint32 last_reward_receive_time = 3;
+}
+
+message _world_server_info {
+    uint32 world_id = 1;
+    string world_name = 2;
+    uint32 world_state = 3;
+    int32 order_num = 4;
+    int32 recommend_server = 5;
+    int32 new_server = 6;
+    int32 blind = 7;
+    int32 user_connect = 8;
+    int32 character_create = 9;
+    uint32 congestion = 10;
+    int32 max_user = 11;
+    int32 non_pk_server = 12;
+    int32 nft_server = 13;
+    int32 nft_block = 14;
+}
+
+message _db_info {
+    int32 db_type = 1;
+    uint32 world_id = 2;
+    string db_ip = 3;
+    int32 db_port = 4;
+    string db_user = 5;
+    string db_pw = 6;
+    string db_name = 7;
+    int32 db_connection_count = 8;
+}
+
+message _guild_name_ui_info {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+    uint32 guild_mark = 3;
+    uint32 guild_mark_edge = 4;
+    uint32 world_id = 5;
+}
+
+message _guild_simple_info {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+    string master_name = 3;
+    uint32 guild_mark = 4;
+    uint32 guild_mark_edge = 5;
+}
+
+message _guild_info {
+    uint64 guild_uid = 1;
+    string guild_name = 2;
+    string master_name = 3;
+    uint32 guild_mark = 4;
+    uint32 guild_mark_edge = 5;
+    uint32 guild_join_type = 6;
+    uint32 guild_level = 7;
+    uint32 guild_members = 9;
+    uint32 guild_max_members = 10;
+    string guild_pr = 11;
+    string guild_notice = 12;
+    uint64 master_uid = 13;
+    uint32 guild_rank = 14;
+    int64 total_combat_point = 15;
+    int64 join_limit_combat_point = 17;
+    _guild_gift_box_info guild_gift_box_info = 18;
+    string master_profile = 19;
+    int32 world_id = 20;
+}
+
+message _guild_member_partner_info {
+    uint64 member_uid = 1;
+    repeated _guild_member_authority auth_list = 10;
+}
+
+message _guild_member_simple_info {
+    uint32 member_grade = 1;
+    uint32 class_id = 2;
+    string nickname = 3;
+    string profile = 4;
+    int32 ranking = 5;
+    string guild_custom_title = 6;
+    uint32 official_grade = 7;
+    int64 member_join_time = 8;
+    bool trans_server = 9;
+    int32 current_server_pos = 10;
+    bool is_sabuk_master = 11;
+}
+
+message _guild_member_detail_info {
+    uint32 level = 1;
+    uint32 locate = 3;
+    int64 logout_time = 4;
+    int32 combat_point = 5;
+    uint64 partner_member_uid = 7;
+    int32 cost_give_count = 9;
+    repeated _guild_member_authority auth_list = 10;
+    repeated _cost_info can_receive_money_limit = 11;
+}
+
+message _guild_member_info {
+    uint64 member_uid = 1;
+    _guild_member_simple_info simple_info = 2;
+    _guild_member_detail_info detail_info = 3;
+}
+
+message _guild_option {
+    uint32 option_type = 1;
+    uint32 option_value = 2;
+}
+
+message _character_guild_receive_cost_server_sync {
+    int32 cost_type = 1;
+    int32 cost_value = 2;
+    int64 receive_time = 3;
+}
+
+message _character_guild_receive_cost_by_user_uid_server_sync {
+    int64 user_uid = 1;
+    repeated _character_guild_receive_cost_server_sync receive_info = 2;
+}
+
+message _guild_member_info_server_sync {
+    uint64 member_uid = 1;
+    string nickname = 2;
+    string guild_custom_title = 3;
+    string profile = 4;
+    uint32 class_id = 5;
+    uint32 level = 6;
+    uint32 member_grade = 7;
+    int64 contribution = 8;
+    uint32 locate = 9;
+    int64 logout_time = 10;
+    int32 combat_point = 11;
+    int64 member_join_time = 12;
+    int64 partner_member_uid = 13;
+    repeated _guild_member_authority auth_list = 14;
+    int32 cost_give_count = 16;
+    int64 cost_give_time = 17;
+    repeated _character_guild_receive_cost_server_sync receive_cost_list = 18;
+    int32 chang_bit_flag = 25;
+    int32 official_grade = 26;
+    int64 last_donation_time = 27;
+    repeated _cost_info donation_info_daily = 28;
+    repeated _cost_info donation_info_weekly = 29;
+    bool is_trans_server = 30;
+    int32 current_server_pos = 31;
+    bool is_sabuk_master = 32;
+}
+
+message _guild_stat_info {
+    int32 stat_type = 1;
+    int32 value = 2;
+}
+
+message _character_guild_donation_info {
+    uint32 money_index = 1;
+    int64 money_amount = 2;
+    int64 donation_time = 3;
+}
+
+message _history_param {
+    int32 order_num = 1;
+    int32 param_type = 2;
+    int64 num = 3;
+    string string = 4;
+}
+
+message _guild_hostility_info_server_sync {
+    uint64 enemy_guild_uid = 1;
+    uint64 declare_uid = 2;
+    uint64 target_uid = 3;
+    int64 start_time_per_sec = 4;
+    int64 end_time_per_sec = 5;
+    int32 kill_count = 6;
+    int32 death_count = 7;
+    int32 chang_bit_flag = 8;
+    int32 declare_world_id = 9;
+    int32 target_world_id = 10;
+}
+
+message _guild_member_position_server_sync {
+    uint32 position_num = 1;
+    uint64 member_uid = 2;
+}
+
+message _siege_info {
+    int32 siege_tid = 1;
+    int32 siege_status = 2;
+    _guild_simple_info occupation_guild_info = 3;
+    uint64 this_siege_auction_start_time = 4;
+    uint64 this_siege_battle_start_time = 5;
+}
+
+message _strong_point_info_v2 {
+    int32 strong_point_tid = 1;
+    uint32 strong_point_status = 2;
+    uint32 next_strong_point_status = 3;
+    int64 next_status_time = 4;
+    _guild_simple_info occupation_guild_info = 5;
+    uint64 occupy_time = 6;
+}
+
+message _strong_point_server_info {
+    int32 strong_point_tid = 1;
+    uint32 strong_point_status = 2;
+    uint32 next_strong_point_status = 3;
+    int64 next_status_time = 4;
+    _guild_simple_info occupation_guild_info = 5;
+    uint64 occupy_time = 6;
+    uint64 win_target_occupy_guild_uid = 7;
+    string occupy_guild_proclamation = 8;
+}
+
+message _guild_war_npc_info {
+    int32 war_type = 1;
+    int32 war_tid = 2;
+    int32 npc_tid = 3;
+    _guild_simple_info occupation_guild_info = 4;
+    uint64 occupy_time = 5;
+}
+
+message _sanctum_info {
+    int32 sanctum_stage_tid = 1;
+    uint32 sanctum_status = 2;
+    _guild_simple_info occupation_guild_info = 3;
+    uint64 occupy_time = 4;
+    uint64 sanctum_life_end_time = 5;
+}
+
+message _sanctum_server_info {
+    int32 sanctum_stage_tid = 1;
+    uint32 sanctum_status = 2;
+    _guild_simple_info occupation_guild_info = 3;
+    uint64 occupy_time = 4;
+}
+
+message _plunder_info {
+    int32 plunder_tid = 1;
+    int32 plunder_status = 2;
+    _guild_simple_info occupy_guild_info = 3;
+    uint64 plunder_battle_start_time = 4;
+}
+
+message _plunder_server_info {
+    int32 plunder_tid = 1;
+    int32 plunder_status = 2;
+    uint64 occupy_guild_uid = 3;
+    uint64 plunder_battle_start_time = 4;
+}
+
+message _dark_altar_info {
+    int32 dark_altar_tid = 1;
+    int32 dark_altar_status = 2;
+    uint64 this_battle_start_time = 3;
+    uint64 altar_gen_time = 4;
+}
+
+message _dark_altar_server_info {
+    int32 dark_altar_tid = 1;
+    int32 dark_altar_status = 2;
+    uint64 this_battle_start_time = 3;
+    uint64 altar_gen_time = 4;
+}
+
+message _force_info {
+    int32 force_id = 1;
+    int32 level = 2;
+    int32 upgrade_time = 3;
+}
+
+message _force_blood_info {
+    int32 force_id = 1;
+    int32 blood_slot_id = 2;
+    int32 blood_slot_level = 3;
+}
+
+message _force_level_info {
+    int32 force_id = 1;
+    int32 level = 2;
+}
+
+message _potential_info {
+    uint32 id = 1;
+    int32 level = 2;
+}
+
+message _treasure_open_info {
+    uint32 treasure_index = 1;
+}
+
+message customize_info {
+    int32 type = 1;
+    int32 value = 2;
+}
+
+message _costume_info {
+    int32 costume_id = 1;
+    int32 palette_group_id = 2;
+    int32 palette_main_id = 3;
+    int32 palette_main_brightness = 4;
+    int32 palette_sub_id = 5;
+    int32 palette_sub_brightness = 6;
+}
+
+message _equip_costume_info {
+    uint32 parts = 1;
+    int32 costume_index = 2;
+    int32 palette_group_id = 3;
+    int32 palette_main_id = 4;
+    int32 palette_main_brightness = 5;
+    int32 palette_sub_id = 6;
+    int32 palette_sub_brightness = 7;
+}
+
+message _costume_hide_info {
+    uint32 parts = 1;
+    bool is_hide = 2;
+}
+
+message _equip_luxury_costume_info {
+    uint32 parts = 1;
+    uint64 equip_item_uid = 2;
+}
+
+message _luxury_costume_hide_info {
+    uint32 parts = 1;
+    bool is_hide = 2;
+}
+
+message _shop_ui_limit_buy_item_data {
+    uint32 buy_id = 1;
+    uint32 buy_count = 2;
+    int32 last_buy_count_time = 3;
+    int64 reset_time = 4;
+}
+
+message _object_casting_info {
+    uint32 casting_time = 1;
+    uint64 casting_start_time = 2;
+}
+
+message _casting_info {
+    uint32 casting_type = 1;
+    uint32 casting_sub_type = 2;
+    uint32 casting_target_type = 3;
+    uint64 casting_target_uid = 4;
+    uint32 contents_data_ex = 5;
+    uint32 casting_time_ms = 6;
+    bool is_auto_casting = 7;
+}
+
+message _party_member_info {
+    uint64 member_uid = 1;
+    int32 member_class = 2;
+    int32 level = 3;
+    string nickname = 4;
+    int32 stageid = 5;
+    int32 combatpoint = 6;
+    int32 channel_index = 7;
+    bool alive = 8;
+    int32 slot_index = 9;
+    string guild_name = 10;
+    uint32 guild_mark = 11;
+    uint32 guild_mark_edge = 12;
+    uint64 guild_uid = 13;
+    uint32 member_voice_chat_state = 14;
+    uint32 slot_class = 15;
+    bool is_ready = 16;
+    string profile = 17;
+    _refuse_info refuse_buff_info = 18;
+    uint32 world_id = 19;
+}
+
+message _party_attribute {
+    uint32 party_stage_type = 1;
+    uint32 party_target_stage_index = 2;
+    string party_description = 3;
+    uint32 joinable_type = 4;
+    uint32 limit_combat_point = 5;
+    uint32 party_level = 6;
+    uint32 party_header_type = 7;
+    uint32 party_number_type = 8;
+}
+
+message _party_info {
+    uint64 party_leader_uid = 1;
+    uint64 party_uid = 2;
+    _party_attribute party_attribute = 3;
+    uint32 party_create_time = 4;
+    uint32 party_update_time = 5;
+    uint32 dungeon_start_time = 6;
+    uint64 party_guild_uid = 7;
+    uint32 dungeon_startable_time = 8;
+    uint32 target_entity_type = 9;
+    uint64 target_uid = 10;
+    uint64 target_zone_uid = 11;
+    uint32 target_stage_id = 12;
+    int32 dungeon_auto_start = 13;
+    bool assassin_mode = 14;
+}
+
+message _gameserver_sync_party_info {
+    uint64 party_uid = 1;
+    _party_info party_info = 2;
+    repeated _party_member_info party_member_infos = 3;
+}
+
+message _gameserver_sync_hunting_squad_info {
+    uint64 hunting_squad_uid = 1;
+    uint64 leader_uid = 2;
+}
+
+message _gameserver_sync_magic_square_exit_time {
+    uint64 exit_time = 1;
+}
+
+message _gameserver_sync_secret_dungeon_exit_time {
+    uint64 exit_time = 1;
+}
+
+message _guild_member_authority {
+    uint32 authority_type = 1;
+    bool authority_value = 2;
+}
+
+message supply_unlock_time {
+    uint32 index = 1;
+    int64 unlock_time = 2;
+}
+
+message _friend_info_base {
+    uint64 friend_uid = 1;
+    int32 friend_class = 2;
+    int32 level = 3;
+    string nickname = 4;
+    string custom_title = 5;
+    int32 stageid = 6;
+    int32 combatpoint = 7;
+    uint64 guild_uid = 8;
+    string guild_name = 9;
+    uint32 guild_mark = 10;
+    uint32 guild_mark_edge = 11;
+    uint64 last_logout_time = 12;
+    string profile = 13;
+}
+
+message _friend_info {
+    _friend_info_base friend_info_base = 1;
+    bool online = 2;
+    bool favorites = 3;
+}
+
+message _friend_request_info {
+    _friend_info_base friend_info_base = 1;
+    uint64 request_time = 2;
+}
+
+message _recommend_friend_info {
+    _friend_info_base friend_info_base = 1;
+    bool online = 2;
+}
+
+message _bless_info {
+    uint32 equip_slot_num = 1;
+    uint32 grade = 2;
+}
+
+message _pk_history_info {
+    uint64 event_time = 1;
+    bool result = 2;
+    bool isaggressor = 3;
+    uint64 character_uid = 4;
+    int32 class = 5;
+    string nickname = 6;
+    int32 combatpoint = 7;
+    _guild_name_ui_info guildinfo = 8;
+    _simple_cost_info losscostinfo = 9;
+    repeated _simple_item_info lossiteminfo = 10;
+    uint64 event_timepoint = 11;
+}
+
+message fame_quest {
+    int32 fame_quest_id = 1;
+    uint64 fame_score = 2;
+    uint32 fame_level = 3;
+}
+
+message fame_info {
+    int32 fame_category_id = 1;
+    repeated fame_quest fame_quest_list = 2;
+}
+
+message _mail_string_template {
+    int32 type = 1;
+    string value = 2;
+}
+
+message _mail_data {
+    uint64 mail_uid = 1;
+    uint32 mail_type = 2;
+    string title = 3;
+    string sub_title = 4;
+    string contents = 5;
+    string receive_nick_name = 6;
+    string sender_nick_name = 7;
+    uint32 send_time = 8;
+    uint32 exptry_time = 9;
+    bool is_read = 10;
+    repeated _cost_info gift_cost = 11;
+    repeated _simple_item_info gift_item = 12;
+    repeated _character_inven_item gift_fixitem = 13;
+    uint32 title_idx = 14;
+    uint32 sub_title_idx = 15;
+    uint32 contents_idx = 16;
+    string guild_name = 17;
+    bool is_send_mail = 18;
+    uint32 stage_id = 19;
+    uint64 guild_uid = 20;
+    uint32 mail_sub_type = 21;
+    int32 mail_button_idx = 22;
+    int32 function_type = 24;
+    int32 mail_preset_id = 25;
+    string wanted_name = 26;
+    repeated string character_name_list = 27;
+    repeated int32 dominion_id = 28;
+    int32 dominion_prize_id = 29;
+    bool attach_get_item = 31;
+    int32 monster_id = 32;
+    int32 quest_id = 33;
+    int32 pk_grade_type = 34;
+    int32 pk_point_min = 35;
+    int32 pk_point_max = 36;
+    int32 ranking = 37;
+    int64 deathpenalty_exp = 38;
+    int64 deathpenalty_date = 39;
+    int32 contribution_rank = 40;
+    int32 guild_point = 41;
+    int32 guild_war_siege_id = 42;
+    int32 guild_war_ranking = 43;
+    int32 guild_war_point = 44;
+    int32 guild_money_value = 45;
+    float donationreward_money_rate = 46;
+    int32 wanted_money = 47;
+    bool delete_character = 48;
+    int32 money_type = 49;
+    int64 money_value = 50;
+    int32 guild_war_strong_id = 51;
+    string mail_args = 52;
+    repeated int64 values = 53;
+    int32 item_id = 54;
+    int32 item_count = 55;
+    int32 guild_world_id = 56;
+}
+
+message _send_mail_data {
+    uint32 mail_type = 1;
+    string title = 2;
+    string sub_title = 3;
+    string contents = 4;
+    string receive_nick_name = 5;
+}
+
+message _pet_deck_info {
+    int32 slot_id = 1;
+    int32 pet_tid = 2;
+    int32 deck_id = 3;
+}
+
+message _pet_skill_info {
+    int32 skill_id = 1;
+    int32 skill_lv = 2;
+}
+
+message _pet_equip_item_info {
+    int32 slot_id = 1;
+    uint64 item_uid = 2;
+}
+
+message _pet_info {
+    int32 tid = 1;
+    repeated _pet_equip_item_info equip_item_list = 2;
+    int32 grade = 3;
+}
+
+message _daily_goods_info {
+    int32 DailyGoodsType = 1;
+    int32 Value = 2;
+    int32 RechargeCount = 3;
+    int64 LastSpendTime = 4;
+}
+
+message _great_building_info {
+    int32 building_uid = 1;
+    int32 opened = 2;
+    int32 upgrade_level = 3;
+    int32 upgrade_process_state = 4;
+    int64 process_remain_time = 5;
+    int64 last_harvest_time = 6;
+    int32 product_count = 7;
+}
+
+message _redis_great_building_info {
+    int32 building_uid = 1;
+    int32 opened = 2;
+    int32 level = 3;
+    int32 upgrade_process_state = 4;
+    int64 process_start_time = 5;
+    int32 upgrade_accel_time = 6;
+    int32 upgrade_support_count = 7;
+    int64 last_harvest_time = 8;
+    int32 product_count = 9;
+}
+
+message _upgrade_building_info {
+    int32 building_id = 1;
+    int32 building_level = 2;
+    int64 start_upgrade_time = 3;
+    int32 max_support_count = 4;
+    int32 upgrade_accel_time = 5;
+    int32 is_supportable = 6;
+}
+
+message _ranking_info {
+    int32 rank = 1;
+    uint64 character_uid = 2;
+    string nickname = 3;
+    int32 class = 4;
+    string profile = 5;
+    _guild_name_ui_info guild_info = 6;
+    int64 ranking_value = 7;
+}
+
+message _guild_ranking_info {
+    int32 rank = 1;
+    uint64 guild_uid = 2;
+    string guild_name = 3;
+    uint32 guild_mark = 4;
+    uint32 guild_mark_edge = 5;
+    uint64 master_uid = 6;
+    string master_nickname = 7;
+    string master_profile = 8;
+    uint32 guild_member_num = 9;
+    int64 ranking_value = 10;
+}
+
+message _guild_sort_info {
+    uint64 guild_uid = 1;
+    int32 rank = 2;
+    string guild_name = 3;
+    uint32 guild_level = 4;
+    uint32 guild_mark = 5;
+    uint32 guild_mark_edge = 6;
+    uint32 guild_members = 7;
+    uint32 guild_max_members = 8;
+    int64 total_combat_point = 9;
+    uint32 guild_join_type = 10;
+    int64 join_limit_combat_point = 11;
+    string guild_pr = 12;
+}
+
+message _guild_search_info {
+    uint64 guild_uid = 1;
+    int32 rank = 2;
+    string guild_name = 3;
+    uint32 guild_level = 4;
+    uint32 guild_mark = 5;
+    uint32 guild_mark_edge = 6;
+    uint32 guild_members = 7;
+    uint32 guild_max_members = 8;
+    int64 total_combat_point = 9;
+    string master_name = 11;
+    uint32 sabuk_title_id = 12;
+}
+
+message _character_search_info {
+    int32 rank = 1;
+    int64 character_uid = 2;
+    string nickname = 3;
+    int32 level = 4;
+    string profile = 5;
+    _guild_name_ui_info guild_info = 6;
+    int32 fame_level = 7;
+    int32 combat_point = 8;
+    int32 char_class = 9;
+    bool is_guild_invite = 10;
+    bool is_online = 11;
+    _cost_info can_receive_money_limit = 12;
+}
+
+message _guild_expedition_list {
+    uint32 guild_expedission_id = 1;
+    int32 event_state = 2;
+    bool is_clear = 3;
+    bool is_lock = 4;
+    int32 summon_count = 5;
+}
+
+message _world_event_boss_gen {
+    int32 gen_id = 1;
+    int32 boss_id = 2;
+}
+
+message upgrade_building_data {
+    int32 building_id = 1;
+    int32 building_level = 2;
+    int64 start_time_t = 3;
+    int32 support_count = 4;
+    uint64 total_accelerate_time = 5;
+    bool is_supportable = 6;
+    int32 max_support_count = 7;
+    int32 remain_time = 8;
+}
+
+message upgrade_building_notice_game_data {
+    int32 building_id = 1;
+    int32 support_count = 3;
+}
+
+message _guild_gift_box_info {
+    uint32 guild_gift_level = 1;
+    uint32 guild_gift_exp = 2;
+    uint32 guild_gift_box_key = 3;
+    uint64 guild_gift_box_key_full_time = 4;
+    uint32 guild_gift_box_key_maintain_time = 5;
+}
+
+message _guild_gift_info {
+    uint64 gift_uid = 1;
+    uint32 gift_id = 2;
+    uint32 gift_tap_type = 3;
+    uint64 send_character_uid = 4;
+    string send_character_name = 5;
+    uint32 is_open = 6;
+    uint32 gain_gift_type = 7;
+    uint32 gain_gift_sub_type = 8;
+    uint32 gain_gift_value = 9;
+    uint64 gift_recv_date = 10;
+    uint64 gift_end_date = 11;
+}
+
+message _guild_gift_gain_info {
+    uint32 gain_gift_type = 1;
+    uint32 gain_gift_sub_type = 2;
+    uint32 gain_gift_value = 3;
+}
+
+message _guild_command_mark {
+    int32 command_mark_idx = 1;
+    uint64 target_uid = 2;
+    uint32 target_world_id = 3;
+}
+
+message _pk_wanted_info {
+    uint64 wanted_uid = 1;
+    uint64 character_uid = 2;
+    string nickname = 3;
+    int32 class = 4;
+    int64 combatpoint = 5;
+    _guild_name_ui_info guildinfo = 6;
+    int32 cumulative_count = 7;
+    int32 prize_type = 8;
+    int64 prize = 9;
+    int64 fram_point = 10;
+    int64 wanted_end_time = 11;
+    int32 end_type = 12;
+}
+
+message _user_event_info {
+    int32 event_id = 1;
+    int32 event_step = 2;
+    int32 reward_available = 3;
+    int64 event_end_time = 4;
+    repeated int32 unattended_step = 5;
+    _gacha_info gacha_info = 6;
+    repeated int32 rewarded_step = 7;
+}
+
+message _imperial_order_count {
+    int32 imperial_order_id = 1;
+    int32 imperial_order_count = 2;
+}
+
+message _dominion_info {
+    int32 dominion_id = 1;
+    int32 tax_rate = 2;
+    int32 tax_rate_new = 3;
+    uint64 tax_rate_update_date = 4;
+    bool is_tax_on = 5;
+    int32 imperial_order = 6;
+    uint64 imperial_order_end_time = 7;
+    uint64 guild_uid = 8;
+    int32 dominion_type = 9;
+    repeated _dominion_prize_info dominion_prize_list = 10;
+    int32 tax_rate_gold = 11;
+    int32 tax_rate_new_gold = 12;
+    _guild_simple_info guild_info = 13;
+    bool is_member_count_over = 14;
+    bool is_storage_open = 15;
+    repeated _cost_info storage_cost_info = 16;
+    repeated _cost_info storage_guild_give_cost_info = 17;
+    repeated _imperial_order_count imperial_order_count_list = 18;
+    repeated _cost_info tax_cost_list = 19;
+    int32 world_id = 20;
+    uint64 sabuk_guild_update_date = 21;
+}
+
+message _dominion_tax_log_info {
+    int32 tax_log_type = 1;
+    int32 tax_log_kind = 2;
+    uint64 tax_log_value = 3;
+}
+
+message _dominion_tax_info {
+    repeated _dominion_tax_log_info tax_log_info = 1;
+    int32 money_type = 2;
+    uint64 tax_value = 3;
+}
+
+message _dominion_prize_info {
+    int32 prize_grade = 1;
+    int32 prize_count = 2;
+    int32 prize_max = 3;
+    repeated uint64 prize_character_list = 4;
+}
+
+message _dominion_title_info {
+    int32 title_id = 1;
+    uint64 title_user_uid = 2;
+    string title_user_name = 3;
+    string title_user_profile = 4;
+}
+
+message _gacha_info {
+    int32 gacha_type = 1;
+    int32 free_type = 2;
+    int32 free_count = 3;
+    uint64 free_time = 4;
+    int32 day_gold_pull_count = 5;
+    uint64 day_gold_pull_time = 6;
+    uint64 left_free_time = 7;
+    int32 current_event_point = 8;
+    int32 day_event_pull_count = 9;
+    uint64 day_event_pull_time = 10;
+    int32 bonus_gacha_point = 11;
+    uint64 bonus_gacha_event_end_time = 12;
+    int32 limit_gacha_count = 13;
+    uint64 limit_gacha_pull_time = 14;
+    uint64 next_limit_reset_time = 15;
+}
+
+message _item_collection_info {
+    int32 collection_id = 1;
+    repeated int32 collect_slot_list = 2;
+    int32 phase_group_id = 3;
+}
+
+message _dungeon_ticket_info {
+    int32 ticket_type = 1;
+    int32 ticket_count = 2;
+    int32 ticket_max = 3;
+    int32 ticket_buy_count = 4;
+    uint64 last_update_time = 5;
+}
+
+message _stat_contents_info {
+    int32 stat_id = 1;
+    int32 stat_contents_id = 2;
+    int32 stat_value = 3;
+}
+
+message _character_event_data_info {
+    int32 event_data_id = 1;
+    int64 count = 2;
+}
+
+message _character_battle_pass_info {
+    int32 battle_pass_idx = 1;
+    int64 battle_pass_date = 2;
+}
+
+message _character_battle_pass_complete_info {
+    int32 battle_pass_mission_id = 1;
+    uint64 battle_pass_info_uid = 2;
+    int32 battle_pass_group_type = 3;
+}
+
+message _character_battle_pass_reward_info {
+    int32 battle_pass_reward_id = 1;
+    uint64 battle_pass_info_uid = 2;
+}
+
+message _character_battle_pass_date {
+    uint64 battle_pass_info_uid = 1;
+    uint64 character_battle_pass = 2;
+    uint64 character_battle_pass2 = 3;
+    int32 order = 4;
+    uint64 mission_start_time = 5;
+    uint64 mission_end_time = 6;
+}
+
+message _character_battle_pass_check {
+    int32 battle_pass_group_type = 1;
+    int32 battle_pass_check_level = 2;
+}
+
+message _dominion_history_info {
+    uint64 history_uid = 1;
+    uint64 guild_uid = 2;
+    int32 dominion_tid = 3;
+    int32 history_type = 4;
+    int32 tax_rate = 5;
+    int32 prize_tid = 6;
+    int32 title_tid = 7;
+    int32 wanted_tid = 8;
+    uint64 send_character_uid = 9;
+    string send_character_name = 10;
+    uint64 recv_character_uid = 11;
+    string recv_character_name = 12;
+    int32 imperial_order_tid = 13;
+    uint64 regdate = 14;
+    string guild_name = 15;
+    int32 target_world_id = 16;
+    uint64 recv_guild_uid = 17;
+    string recv_guild_name = 18;
+}
+
+message _guild_develop_skill_info {
+    uint32 index = 1;
+    int64 skill_remaining_time = 2;
+}
+
+message death_penalty_info {
+    uint64 death_penalty_uid = 1;
+    int32 penalty_type = 2;
+    uint32 stage_id = 3;
+    int32 channel_id = 4;
+    float x = 6;
+    float y = 7;
+    float z = 8;
+    int64 exp = 9;
+    repeated _cost_info drop_cost = 10;
+    repeated _character_inven_item drop_item = 11;
+    int64 start_date = 12;
+    int64 end_date = 13;
+    int32 level = 14;
+    bool disabled = 15;
+    bool recovery_completed = 16;
+    int32 world_id = 17;
+}
+
+message _character_cashbag_info {
+    int32 goods_id = 1;
+    int64 insert_time = 2;
+    int64 pay_id = 3;
+    int32 pay_second_id = 4;
+    string gift_sender_nick_name = 5;
+}
+
+message _gm_contents_lock {
+    int32 contents_type = 1;
+    int32 contents_value = 2;
+    int32 contents_lock = 3;
+}
+
+message _gm_gen_time {
+    int32 stage_id = 1;
+    float gen_percent = 2;
+}
+
+message _compose_fail_data {
+    int32 fail_point_type = 1;
+    int32 corrent_fail_point = 2;
+}
+
+message _period_goods_data {
+    int32 period_id = 1;
+    int32 buy_time = 2;
+    bool is_first_reward = 3;
+    int32 last_receive_daily_reward_time = 4;
+    int32 daily_receive_count = 5;
+    bool is_end = 6;
+    int32 end_time = 7;
+    int32 total_end_time = 8;
+    int64 reset_time = 9;
+}
+
+message _item_cooltime_data {
+    int32 item_sub_type = 1;
+    int64 end_time = 2;
+    int64 item_remain_cooltime = 3;
+}
+
+message _item_subcooltime_data {
+    int32 item_sub_type = 1;
+    int64 last_used_time = 2;
+}
+
+message _closed_training_satus_data {
+    int32 status_Id = 1;
+    int32 status_level = 2;
+}
+
+message _closed_training_data {
+    int32 training_group_Id = 1;
+    repeated _closed_training_satus_data status_data_list = 2;
+}
+
+message _character_phase_info {
+    int32 open_phase_class = 1;
+    repeated _character_skill character_skill = 2;
+}
+
+message _contract_transaction_info {
+    string user_address = 1;
+    string nonce = 2;
+    string access_token = 3;
+    string validator_hash = 4;
+    string hash_sign = 5;
+    uint64 id = 6;
+    uint32 transaction_type = 7;
+    uint64 totalamount = 8;
+    uint32 amount = 9;
+    string coin_str = 10;
+    uint64 derby = 11;
+    string token_uri = 12;
+    uint64 token_id = 13;
+    int32 zone_group_id = 14;
+}
+
+message _characterInfo_mint {
+    int64 character_uid = 1;
+    int32 eClass = 2;
+    int32 Level = 3;
+    string NickName = 4;
+    int32 CombatPoint = 5;
+    int64 token_id = 6;
+}
+
+message _holy_stuff_slot_info {
+    int32 slot_Id = 1;
+    int32 slot_level = 2;
+}
+
+message _holy_stuff_info {
+    int32 holy_stuff_id = 1;
+    int32 holy_stuff_grade = 2;
+    repeated _holy_stuff_slot_info slot_infos = 3;
+}
+
+message _quick_slot {
+    uint32 slot_index = 1;
+    uint32 item_index = 2;
+}
+
+message _sabuk_taxrate_info {
+    int32 money_type = 1;
+    int32 tax_rate = 2;
+    uint64 yesterday_tax_value = 3;
+}
+
+message _dominion_sabuk_taxrate_info {
+    uint32 world_id = 1;
+    _guild_simple_info guild_info = 2;
+    repeated _sabuk_taxrate_info sabuk_taxrate_infos = 3;
+}
+
+message _dominion_sabuk_imperialorder_info {
+    uint32 world_id = 1;
+    uint32 imperial_order_buff = 2;
+    uint64 imperial_order_end_buff_time = 3;
+    _guild_simple_info guild_info = 4;
+}
+
+message _dominion_sabuk_guild_title_info {
+    int32 title_id = 1;
+    uint32 world_id = 2;
+    uint64 title_guild_id = 3;
+    _guild_simple_info guild_info = 4;
+}
+
+message _dominion_sabuk_bicheon_tax_interval {
+    uint32 world_id = 1;
+    uint64 gold_tax = 2;
+    uint64 black_iron_tax = 3;
+}
+
+message _character_event_pass_data_info {
+    int32 event_pass_data_id = 1;
+    int64 count = 2;
+}
+
+message _character_event_pass_info {
+    int32 event_pass_idx = 1;
+    int64 event_pass_date = 2;
+    int32 event_pass_user_event_id = 3;
+    int32 group_type = 4;
+}
+
+message _character_event_pass_mission_complete_info {
+    int32 event_pass_mission_id = 1;
+    int32 event_pass_user_event_id = 2;
+    int32 event_pass_group_type = 3;
+}
+
+message _character_event_pass_reward_info {
+    int32 event_pass_reward_id = 1;
+    int32 event_pass_user_event_id = 2;
+    int32 group_type = 3;
+}
+
+message _character_event_pass_date {
+    int32 event_pass_user_event_id = 1;
+    uint64 character_event_pass = 2;
+    uint64 character_event_pass2 = 3;
+    uint64 event_pass_start_time = 4;
+    uint64 event_pass_end_time = 5;
+}
+
+message _character_event_pass_check {
+    int32 event_pass_group_type = 1;
+    int32 event_pass_check_level = 2;
+}
+
+message region_mail_receipt_info {
+    uint32 event_id = 1;
+    uint32 state = 2;
+}
+
+message _guild_friendship_info {
+    int32 friendship_type = 1;
+    uint64 user_uid = 2;
+    string nickname = 3;
+    string profile = 4;
+    int32 rank = 5;
+    uint32 level = 6;
+    uint32 class_id = 7;
+    uint32 combat_point = 8;
+    _guild_name_ui_info guild_name_info = 9;
+    int32 guild_member_grade = 10;
+    int32 guild_partner_uid = 11;
+    uint32 locate = 12;
+    int64 logout_time = 13;
+    string guild_custom_title = 14;
+    _cost_info can_receive_money_limit = 15;
+}

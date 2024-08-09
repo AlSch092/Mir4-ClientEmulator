@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message CLIENT_GAME_GET_TREASURE {
+    uint64 character_uid = 1;
+    uint32 treasure_id = 2;
+}
+
+message GAME_CLIENT_GET_TREASURE {
+    uint32 get_treasure_id = 1;
+}
+
+message CLIENT_GAME_TREASURE_OPEN {
+    uint64 character_uid = 1;
+    uint32 treasure_id = 2;
+}
+
+message GAME_CLIENT_TREASURE_OPEN {
+    uint32 result = 1;
+    _treasure_open_info treasure_info = 2;
+    repeated _bless_info bless_info = 3;
+    repeated _stack_item_info update_items = 4;
+}

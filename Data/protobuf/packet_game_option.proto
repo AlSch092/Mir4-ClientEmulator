@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package MirMobile;
+
+message _game_option_info {
+    int32 option_type = 1;
+    int32 value = 2;
+}
+
+message CLIENT_GAME_GAME_OPTION_LIST {
+    
+}
+
+message GAME_CLIENT_GAME_OPTION_LIST {
+    repeated _game_option_info game_option_list = 1;
+}
+
+message CLIENT_GAME_CHANGE_GAME_OPTION {
+    int32 option_type = 1;
+    int32 value = 2;
+}
+
+message GAME_CLIENT_CHANGE_GAME_OPTION {
+    int32 result = 1;
+    int32 option_type = 2;
+    int32 value = 3;
+}

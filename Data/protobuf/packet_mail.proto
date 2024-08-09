@@ -1,0 +1,238 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _packet_c_mail_recv_gift {
+    uint64 uid = 1;
+    uint64 mail_uid = 2;
+}
+
+message GAME_CLIENT_MAIL_RECV_GIFT {
+    repeated _cost_info gift_cost = 1;
+    repeated _simple_item_info gift_item = 2;
+    repeated _character_inven_item gift_fixitem = 3;
+    repeated _cost_info character_cost = 4;
+    repeated _character_inven_item inven_item = 5;
+    uint64 del_mail_uid = 6;
+}
+
+message _ranking_mail_user_data {
+    string nick_name = 1;
+    uint32 contribution = 2;
+}
+
+message _ranking_reward {
+    repeated _cost_info reward_costInfos = 1;
+    repeated _simple_item_info reward_simple_item_info = 2;
+}
+
+message CLIENT_GAME_MAIL_DEL {
+    repeated uint64 mail_uid = 1;
+}
+
+message GAME_CLIENT_MAIL_DEL {
+    uint32 result = 1;
+    repeated uint64 del_mail_uid = 2;
+}
+
+message _packet_c_mail_del_all {
+    uint32 mail_type = 1;
+}
+
+message _packet_s_mail_del_all {
+    uint32 result = 1;
+}
+
+message _packet_c_mail_recv_gift_all {
+    uint64 uid = 1;
+    uint64 start_mail_uid = 2;
+    uint64 end_mail_uid = 3;
+}
+
+message _packet_s_mail_recv_gift_all_start {
+    
+}
+
+message _packet_s_mail_recv_gift_all_end {
+    
+}
+
+message CLIENT_GAME_MAIL_LIST {
+    
+}
+
+message GAME_CLIENT_MAIL_LIST_DATA {
+    bool is_end = 1;
+    repeated _mail_data mail_info = 2;
+    uint32 send_cost_type = 3;
+    uint64 send_cost_value = 4;
+    bool is_start = 5;
+}
+
+message CLIENT_GAME_MAIL_RECV_GIFT {
+    uint64 mail_uid = 1;
+}
+
+message CLIENT_GAME_MAIL_RECV_GIFT_ALL {
+    uint32 mail_type = 1;
+}
+
+message GAME_CLIENT_MAIL_RECV_GIFT_ALL_GIFT_INFO {
+    bool is_end = 1;
+    repeated _cost_info gift_cost = 2;
+    repeated _simple_item_info gift_item = 3;
+    repeated _character_inven_item gift_fixitem = 4;
+    bool is_start = 5;
+    uint32 mail_type = 6;
+}
+
+message GAME_CLIENT_MAIL_RECV_GIFT_ALL_UPDATE_INFO {
+    bool is_end = 1;
+    repeated _cost_info character_cost = 2;
+    repeated _character_inven_item inven_item = 3;
+    uint32 mail_type = 4;
+}
+
+message CLIENT_GAME_MAIL_SEND {
+    _send_mail_data send_mail = 1;
+}
+
+message GAME_CLIENT_MAIL_SEND {
+    uint32 result = 1;
+    _mail_data mail_data = 2;
+}
+
+message GAME_CLIENT_MAIL_NEW {
+    _mail_data mail_data = 1;
+}
+
+message GAME_WORLD_MAIL_NEW {
+    uint64 user_uid = 1;
+    _mail_data mail_data = 2;
+}
+
+message WORLD_GAME_MAIL_NEW {
+    uint64 user_uid = 1;
+    _mail_data mail_data = 2;
+}
+
+message CLIENT_GAME_MAIL_RECEIVE_NAME {
+    string receive_nick_name = 1;
+}
+
+message GAME_CLIENT_MAIL_RECEIVE_NAME {
+    uint32 result = 1;
+    string receive_nick_name = 2;
+}
+
+message CLIENT_GAME_NTF_MAIL_READ {
+    uint64 mail_uid = 1;
+    uint32 mail_type = 2;
+}
+
+message WORLD_GAME_NEW_EVENT_MAIL {
+    uint32 event_id = 1;
+    uint32 mail_preset_id = 2;
+    string title = 3;
+    string contents = 4;
+    uint32 mail_type = 5;
+    repeated _reward_cost_info reward_costInfos = 6;
+    repeated _simple_item_info reward_simple_item_info = 7;
+    uint64 start_date = 8;
+    uint64 end_date = 9;
+}
+
+message CLIENT_GAME_MAIL_DELETE_ALL {
+    uint32 mail_type = 1;
+}
+
+message SERVER_SERVER_ACCOUNT_EVENT_NEW_MAIL {
+    int32 event_id = 1;
+}
+
+message _region_mail {
+    int32 event_id = 1;
+    int32 preset_id = 2;
+    string title = 3;
+    string contents = 4;
+    int32 event_state = 5;
+    repeated _region_mail_reward reward_list = 6;
+    int64 start_date = 7;
+    int64 end_date = 8;
+}
+
+message _region_mail_reward {
+    int32 reward_type = 1;
+    int32 reward_id = 2;
+    int32 reward_value = 3;
+    int32 reward_ext_value = 4;
+}
+
+message GAME_WORLD_REGION_MAIL_LIST {
+    bool send_packet = 1;
+}
+
+message WORLD_GAME_REGION_MAIL_LIST {
+    uint64 user_uid = 1;
+    bool send_packet = 2;
+    repeated _region_mail mail_list = 3;
+}
+
+message WORLD_GAME_NEW_REGION_MAIL {
+    repeated _region_mail mail_list = 1;
+}
+
+message GAME_WORLD_REGION_MAIL_STATE {
+    int32 region_mail_uid = 1;
+    int32 mail_state = 2;
+}
+
+message WORLD_GAME_REGION_MAIL_STATE {
+    uint64 user_uid = 1;
+    uint32 result = 2;
+    int32 region_mail_uid = 3;
+    int32 mail_state = 4;
+}
+
+message SERVER_SERVER_NEW_REGION_MAIL {
+    int32 region_mail_uid = 1;
+}
+
+message CLIENT_GAME_MAIL_PACK_SEND {
+    _send_mail_data send_mail = 1;
+    repeated uint64 recv_user_id_list = 2;
+}
+
+message CLIENT_GAME_DOMINION_MAIL_SEND {
+    int32 dominion_id = 1;
+    _send_mail_data send_mail = 2;
+}
+
+message GAME_CLIENT_DOMINION_MAIL_SEND {
+    int32 result = 1;
+    int32 dominion_id = 2;
+    uint64 last_dominion_mail_send_time = 3;
+}
+
+message GAME_WORLD_DOMINION_MAIL_SEND {
+    int32 dominion_id = 1;
+    _mail_data mail_data = 2;
+    uint64 last_dominion_mail_send_time = 3;
+}
+
+message RELAY_WORLD_DOMINION_MAIL_SEND {
+    int32 dominion_id = 1;
+    _mail_data mail_data = 2;
+    uint64 last_dominion_mail_send_time = 3;
+}
+
+message GAME_WORLD_REGION_MAIL_STATE_INFO_LIST {
+    
+}
+
+message WORLD_GAME_REGION_MAIL_STATE_INFO_LIST {
+    uint64 user_uid = 1;
+    repeated region_mail_receipt_info region_mail_state_list = 2;
+}

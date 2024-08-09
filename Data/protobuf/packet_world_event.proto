@@ -1,0 +1,180 @@
+syntax = "proto3";
+
+package MirMobile;
+
+import "info_common.proto";
+
+message _world_boss_zone_info {
+    uint64 zone_unique = 1;
+    int32 channel_id = 2;
+    int32 curr_users = 3;
+    int32 zone_state = 4;
+    bool in_party_member = 5;
+}
+
+message _user_contribute_info {
+    uint32 rank = 1;
+    uint64 user_uid = 2;
+    string nickname = 3;
+    int32 class_id = 4;
+    int32 level = 5;
+    bool is_party = 6;
+    uint32 point = 7;
+    uint64 total_point = 8;
+}
+
+message _contribute_info {
+    repeated _user_contribute_info contribute_info = 1;
+}
+
+message _boss_event_info {
+    int32 event_boss_id = 1;
+    int32 event_state = 2;
+    int64 event_remaining_time = 3;
+}
+
+message WORLD_GAME_WORLD_EVENT_NOTIFY {
+    uint64 zone_uid = 1;
+    GAME_CLIENT_WORLD_EVENT_NOTIFY notify_packet = 2;
+}
+
+message GAME_CLIENT_WORLD_EVENT_NOTIFY {
+    int32 event_stage_id = 1;
+    int32 event_type = 2;
+    int32 event_value = 3;
+    int32 title_sting_id = 4;
+    int32 message_string_id = 5;
+    int32 event_state = 6;
+}
+
+message WORLD_CLIENT_WORLD_EVENT_NOTIFY_ONE_USER {
+    int32 event_type = 1;
+    int32 event_value = 2;
+    int32 title_sting_id = 3;
+    int32 message_string_id = 4;
+    int32 run_time = 5;
+    int32 event_state = 6;
+}
+
+message GAME_WORLD_EVENT_BOSS_DIE {
+    uint64 zone_uid = 1;
+    int32 boss_id = 2;
+    int32 boss_Type = 3;
+    bool is_success = 4;
+}
+
+message CLIENT_WORLD_WORLD_EVENT_BOSS_LIST {
+    int32 boss_type = 1;
+    int32 boos_area_id = 2;
+}
+
+message WORLD_CLIENT_WORLD_EVENT_BOSS_LIST {
+    int32 boss_type = 1;
+    int32 boos_area_id = 2;
+    repeated int32 run_event_list = 3;
+    repeated _boss_event_info info_list = 4;
+}
+
+message WORLD_CLIENT_WORLD_EVENT_END {
+    int32 event_type = 1;
+    int32 event_value = 2;
+}
+
+message CLIENT_WORLD_WORLD_BOSS_ZONE_LIST {
+    int32 boss_id = 1;
+}
+
+message WORLD_CLIENT_WORLD_BOSS_ZONE_LIST {
+    int32 boss_id = 1;
+    int32 event_state = 2;
+    repeated _world_boss_zone_info zone_list = 3;
+}
+
+message CLIENT_GAME_WORLD_BOSS_CONTRIBUTE_INFO {
+    
+}
+
+message GAME_CLIENT_WORLD_BOSS_CONTRIBUTE_INFO {
+    repeated _user_contribute_info contribute_list = 1;
+    _user_contribute_info my_contribute = 2;
+}
+
+message GAME_CLIENT_WORLD_BOSS_DROP_ITEM {
+    int32 boss_id = 1;
+    int32 drop_rank = 2;
+    repeated _cost_info costInfos = 3;
+    repeated _character_inven_item dropitems = 4;
+    string last_attack_nick_name = 5;
+    int32 boss_type = 6;
+    bool is_first_clear = 7;
+    repeated _cost_info reward_costInfos = 8;
+    repeated _simple_item_info reward_simple_item_info = 9;
+    int32 GuildPoint = 10;
+    int32 contribute_reward = 11;
+    string contribute_grade = 12;
+    repeated _used_cost_info reward_used_costInfos = 13;
+    int32 wave_num = 14;
+}
+
+message CLIENT_GAME_BOSS_CONTRIBUTE_LIST {
+    
+}
+
+message GAME_CLIENT_BOSS_CONTRIBUTE_LIST {
+    repeated _contribute_info contribute_list = 1;
+}
+
+message BOSS_DROP_ITEM_INFO {
+    _user_contribute_info user_contribute = 1;
+    repeated _cost_info costInfos = 2;
+    repeated _character_inven_item dropitems = 3;
+    repeated _used_cost_info used_costInfos = 4;
+    repeated _simple_item_info simple_drop_items = 5;
+    string contribute_grade = 6;
+}
+
+message BOSS_DROP_ITEM_GROUP_INFO {
+    repeated BOSS_DROP_ITEM_INFO boss_drop_item_info = 1;
+}
+
+message CLIENT_GAME_BOSS_DROP_ITEM_LIST {
+    
+}
+
+message GAME_CLIENT_BOSS_DROP_ITEM_LIST {
+    repeated BOSS_DROP_ITEM_INFO contribute_drop_item = 1;
+    repeated BOSS_DROP_ITEM_GROUP_INFO contribute_drop_group_item = 2;
+}
+
+message GAME_WORLD_EVENT_CONTENTS {
+    
+}
+
+message WORLD_GAME_EVENT_CONTENTS {
+    repeated int32 ruuning_event_contents = 1;
+}
+
+message WORLD_GAME_EVENT_CONTENTS_NOTIFY {
+    repeated int32 start_event_contents = 1;
+    repeated int32 end_event_contents = 2;
+}
+
+message _event_repeat_info {
+    int32 event_repeat_tid = 1;
+    uint64 period_start_time = 2;
+    uint64 period_end_time = 3;
+    uint64 event_start_time = 4;
+    uint64 event_end_time = 5;
+}
+
+message WORLD_GAME_EVENT_REPEAT_NOTIFY {
+    repeated _event_repeat_info event_repeat_list = 1;
+}
+
+message CLIENT_GAME_EVENT_REPEAT {
+    
+}
+
+message GAME_CLIENT_EVENT_REPEAT {
+    repeated _event_repeat_info event_repeat_list = 1;
+}
