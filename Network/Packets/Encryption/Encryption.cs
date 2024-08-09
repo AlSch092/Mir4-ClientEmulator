@@ -5,7 +5,7 @@ namespace Mir4ClientEmulator.Network.Packets.Encryption
 {
     internal class Encryption
     {
-        [DllImport("System.Encodings.dll", EntryPoint = "Encode", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("Mir4Encryption.dll", EntryPoint = "Encrypt", CallingConvention = CallingConvention.Cdecl)]  //change this to whatever dll you're using for encryption
         public static extern int Encode(byte[] data, byte[] outData, int length);
     }
 }
