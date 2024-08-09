@@ -1,0 +1,4 @@
+﻿"Name","Altar_Id","Stage_Id","Pos_Id","Monster_Id","Altar_UnsealTime","Altar_Seal_BuffId","Altar_Recovery_BuffId","Altar_StartWeek","Altar_StartWeekInterval","Altar_BattleStartDayOfWeek","Altar_BattleStartTime","Altar_BattleRunTime","Altar_BattleEnd_BuffId","Altar_RegenDay","Altar_RegenTime","Defender_DominionId","Castle_DominionId","Altar_Destroy_BuffId","Altar_Destroy_BuffApplyStageId"
+"101","101","201003013","200003","1000351","2022-04-01 23:59","500051","69","2022-06-26","1","4","22:00:00","3600","500052","28","21:50:00","3005","2001","0","(0)"
+"201","201","201003033","200003","1000352","2022-04-01 23:59","500051","69","2022-06-26","1","4","22:00:00","3600","500052","28","21:50:00","3010","2001","0","(0)"
+"301","301","201003043","200004","1000353","2022-04-01 23:59","500051","69","2022-06-26","1","4","22:00:00","3600","500052","28","21:50:00","3024","2001","0","(0)"
