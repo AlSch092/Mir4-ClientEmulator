@@ -194,7 +194,6 @@
     <Compile Include="Utilities\enums.cs" />
     <Compile Include="Utilities\FileHelper.cs" />
     <Compile Include="Utilities\HexText.cs" />
-    <Content Include="TODO.txt" />
     <EmbeddedResource Include="EntityMap.resx">
       <DependentUpon>EntityMap.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,9 +245,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="d56e2f5ff47c25c10cd83f81a5686f384b5a0055.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
