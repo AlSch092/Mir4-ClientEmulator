@@ -31,5 +31,5 @@ This project can support hundreds (if not thousands) of instances at once on a s
 - I cannot provide free support with getting this project to work for you.
 
 ## License:  
-GNU Lesser 3.0, please see the file `LICENSE` for more details. Be aware of your rights; The license does not allow you to sell this project under your own name or branding unless you make your project fully open source.
+GNU Lesser 2.1, please see the file `LICENSE` for more details. Be aware of your rights; The license does not allow you to sell this project under your own name or branding unless you make your project fully open source.
 
